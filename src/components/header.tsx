@@ -27,6 +27,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,9 +76,15 @@ export default function Header() {
 		smooth: 'easeInOutQuad',
 	};
 	return (
-		<div className="grid">
-			<div ref={headerRef} className="grid w-screen z-50">
-				<div className="flex h-12 sm:h-[4.5rem] w-full items-center gap-4 py-0 px-4 md:px-6 sm:border-b bg-background">
+		<div className="flex flex-col">
+			<div
+				ref={headerRef}
+				className={cn('grid', isFixed ? ' w-screen z-50 left-0 pb-2' : '')}>
+				<div
+					className={cn(
+						'flex h-12 sm:h-[4.5rem] w-full items-center gap-4 py-0 px-4 md:px-6 sm:border-b bg-background',
+						isFixed ? 'max-w-screen-xl mx-auto' : ''
+					)}>
 					<Link href={'/'}>
 						<Image
 							src={logo}
@@ -154,27 +161,38 @@ export default function Header() {
 						</Sheet>
 					</div>
 				</div>
-				<div className="bg-gray-300 px-4 py-2 block sm:hidden">
+				<div
+					className={cn(
+						'bg-gray-300 w-full px-4 py-2 block sm:hidden',
+						isFixed ? 'max-w-screen-xl mx-auto' : ''
+					)}>
 					<SearchForm className="bg-white text-black border border-black flex-row-reverse" />
 				</div>
-				<NavMenu className="hidden sm:flex h-10 items-center gap-4 border-b bg-background px-4 md:px-6" />
+				<NavMenu
+					className={cn(
+						'hidden sm:flex h-10 w-full items-center gap-4 border-b bg-background px-4 md:px-6',
+						isFixed ? 'max-w-screen-xl mx-auto' : ''
+					)}
+				/>
 			</div>
 			<FeaturedProducts />
-			<TooltipProvider>
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Button
-							onClick={() => animateScroll.scrollToTop(options)}
-							variant={'ghost'}
-							className="rounded-full bg-white hover:bg-green-600 shadow-md z-40 hover:text-white text-green-600 p-1 px-2.5 fixed bottom-6 right-6">
-							<ChevronUp className="w-5 h-5" strokeWidth={3} />
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent className="bg-black text-white">
-						<p className="text-xs">Back to the Top</p>
-					</TooltipContent>
-				</Tooltip>
-			</TooltipProvider>
+			{isFixed && (
+				<TooltipProvider>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button
+								onClick={() => animateScroll.scrollToTop(options)}
+								variant={'ghost'}
+								className="rounded-full bg-white hover:bg-green-600 shadow-md z-40 hover:text-white text-green-600 p-1 px-2.5 fixed bottom-6 right-6">
+								<ChevronUp className="w-5 h-5" strokeWidth={3} />
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent className="bg-black text-white">
+							<p className="text-xs">Back to the Top</p>
+						</TooltipContent>
+					</Tooltip>
+				</TooltipProvider>
+			)}
 		</div>
 	);
 }
