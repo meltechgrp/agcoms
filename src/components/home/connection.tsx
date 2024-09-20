@@ -15,8 +15,7 @@ export default function Connection() {
 								src={item.url}
 								style={{ width: '100%', height: 'auto' }}
 								alt={item.title}
-								className="w-full h-full rounded shadow"
-								objectFit="cover"
+								className="w-full h-full rounded shadow object-cover"
 							/>
 						</div>
 						<div className="space-y-6">

@@ -9,7 +9,6 @@ export default function Banner() {
 				alt="Agcoms"
 				style={{ width: '100%', height: 'auto' }}
 				className="w-full aspect-auto sm:min-h-[70vh] object-cover"
-				layout="responsive"
 			/>
 		</div>
 	);

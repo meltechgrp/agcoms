@@ -1,14 +1,6 @@
 'use client';
 import solutionBanner from '@/assets/images/banners/afme-tractor-banner.png';
 import { Button } from '../ui/button';
-import { ChevronUp } from 'lucide-react';
-import { animateScroll } from 'react-scroll';
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from '@/components/ui/tooltip';
 
 export default function Solution() {
 	const style = {
@@ -17,10 +9,6 @@ export default function Solution() {
 		backgroundRepeat: 'no-repeat',
 		borderImage:
 			'linear-gradient(to right, rgba(0,0,0,.05), rgba(0,0,0, .7)) fill 1',
-	};
-	const options = {
-		duration: 3000,
-		smooth: 'easeInOutQuad',
 	};
 	return (
 		<div className="sm:h-[30rem] my-4  relative">
@@ -48,21 +36,6 @@ export default function Solution() {
 					</div>
 				</div>
 			</div>
-			<TooltipProvider>
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Button
-							onClick={() => animateScroll.scrollToTop(options)}
-							variant={'ghost'}
-							className="rounded-full bg-white hover:bg-green-600 shadow-md z-40 hover:text-white text-green-600 p-1 px-2.5 fixed bottom-6 right-6">
-							<ChevronUp className="w-5 h-5" strokeWidth={3} />
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent className="bg-black text-white">
-						<p className="text-xs">Back to the Top</p>
-					</TooltipContent>
-				</Tooltip>
-			</TooltipProvider>
 		</div>
 	);
 }

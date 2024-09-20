@@ -10,10 +10,10 @@ import {
 
 export default function Footer() {
 	return (
-		<div className=" sm:px-16 py-16 mt-6 bg-[#e5e5e5] space-y-8">
-			<div className="grid sm:grid-cols-3 gap-8 border-b border-gray-300 pb-10">
+		<div className=" sm:px-16 pt-7 sm:pt-16 py-16 mt-6 bg-[#e5e5e5] space-y-8">
+			<div className="hidden sm:grid sm:grid-cols-3 gap-8 border-b border-gray-300 pb-10">
 				{footerData.map((fl) => (
-					<div key={fl?.title} className="hidden sm:block space-y-4">
+					<div key={fl?.title} className=" space-y-4">
 						<h2 className="text-md font-semibold">{fl.title}</h2>
 						<div className="grid gap-2">
 							{fl.links?.map((link) => (
