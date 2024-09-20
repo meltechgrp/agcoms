@@ -1,7 +1,5 @@
 import Header from '@/components/header';
 
-export const description = 'Agcoms layout';
-
 export default function UserLayout({
 	children,
 }: Readonly<{
