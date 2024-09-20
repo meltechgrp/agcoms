@@ -38,7 +38,7 @@ export const NavMenuData: NavMenuDataProps[] = [
 				imageUrl: agri,
 			},
 			{
-				title: 'Lawn and Garden',
+				title: 'Lawn & Garden',
 				link: '/products/lawn-garden',
 				imageUrl: lawn,
 			},
@@ -48,7 +48,7 @@ export const NavMenuData: NavMenuDataProps[] = [
 				imageUrl: construction,
 			},
 			{
-				title: 'Golf and Sports Turf',
+				title: 'Golf & Sports Turf',
 				link: '/products/golf',
 				imageUrl: sport,
 			},
@@ -63,7 +63,7 @@ export const NavMenuData: NavMenuDataProps[] = [
 		title: 'Finance',
 		sub: [
 			{
-				title: 'financing',
+				title: 'Financing',
 				link: '/finance',
 			},
 		],
@@ -76,7 +76,7 @@ export const NavMenuData: NavMenuDataProps[] = [
 				link: '/parts-services/parts',
 			},
 			{
-				title: 'Services and Support',
+				title: 'Services & Support',
 				link: '/parts-services/services-support',
 			},
 			{
@@ -109,7 +109,7 @@ export const midNavigationData: {
 		icon: MapPin,
 	},
 	{
-		title: 'Offers and Discount',
+		title: 'Offers & Discount',
 		link: '#',
 		icon: Tag,
 	},
@@ -143,3 +143,6 @@ export enum Paths {
 	VerifyEmail = '/verify-email',
 	ResetPassword = '/reset-password',
 }
+
+export const EMAIL_SENDER = '' as const;
+export const APP_TITLE = '' as const;

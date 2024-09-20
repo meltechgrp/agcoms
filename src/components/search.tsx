@@ -13,10 +13,10 @@ export default function SearchForm({
 		<form className={containerClassName}>
 			<div
 				className={cn(
-					'sm:w-[300px] md:w-[200px] overflow-hidden rounded-md lg:w-[300px] px-2 text-sm bg-gray-100 text-gray-600 flex items-center space-x-2',
+					'w-full md:w-[200px] overflow-hidden rounded-md lg:w-[300px] px-2 text-sm bg-gray-100 text-gray-600 flex items-center space-x-2',
 					className
 				)}>
-				<Search className="  h-4 w-4 " />
+				<Search className="  h-5 w-5 " />
 				<Input
 					type="search"
 					placeholder="Search"

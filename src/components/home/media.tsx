@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 export default function Media() {
 	return (
-		<div className="space-y-8 px-8 sm:px-12 my-6">
+		<div className="space-y-8 px-4 sm:px-12 my-6">
 			<h2 className="text-center text-black/80 text-xl sm:text-3xl font-bold">
 				News & Media
 			</h2>
@@ -18,7 +18,9 @@ export default function Media() {
 						href={m.link}
 						className={cn(
 							'space-y-4',
-							i < 2 ? 'sm:border-r sm:border-gray-200 sm:pr-8' : ''
+							i < 2
+								? 'sm:border-r border-b pb-10 sm:pb-0 border-gray-300 sm:pr-8'
+								: ''
 						)}>
 						<h3 className="text-lg text-black/80 sm:text-2xl font-semibold">
 							{m.title}
@@ -27,10 +29,8 @@ export default function Media() {
 							<Image
 								src={m.image}
 								alt={m.title}
-								width={200}
-								height={180}
-								objectFit="cover"
-								className="w-full h-[180px] rounded"
+								style={{ width: '100%', height: 'auto' }}
+								className="w-full h-[180px] rounded object-cover"
 							/>
 						</div>
 					</Link>

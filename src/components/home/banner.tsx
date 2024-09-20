@@ -7,9 +7,8 @@ export default function Banner() {
 			<Image
 				src={banner}
 				alt="Agcoms"
-				width={1920}
-				height={1080}
-				className="w-screen min-h-[70vh] object-cover"
+				style={{ width: '100%', height: 'auto' }}
+				className="w-full aspect-auto sm:min-h-[70vh] object-cover"
 				layout="responsive"
 			/>
 		</div>

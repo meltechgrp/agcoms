@@ -13,10 +13,9 @@ export const MessageFormSchema = z.object({
 	town: z.string().min(2, {
 		message: 'Please enter a valid Town Name.',
 	}),
-	message: z.string().min(2, {
-		message: 'Your message must be at least 2 characters.',
-	}),
+	message: z.string().optional(),
 	countryCode: z.string().optional(),
+	allowMarketing: z.boolean().optional(),
 });
 export type MessageFormInput = z.infer<typeof MessageFormSchema>;
 

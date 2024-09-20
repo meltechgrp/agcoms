@@ -32,7 +32,7 @@ export interface ActionResponse<T> {
 }
 
 export async function login(
-	_: any,
+	_: unknown,
 	form: AuthLoginInput
 ): Promise<ActionResponse<AuthLoginInput>> {
 	const parsed = AuthLoginSchema.safeParse(form);
@@ -96,7 +96,7 @@ export async function login(
 }
 
 export async function signup(
-	_: any,
+	_: unknown,
 	form: AuthSignupFormInput
 ): Promise<ActionResponse<AuthSignupFormInput>> {
 	const parsed = AuthSignupFormSchema.safeParse(form);
@@ -227,7 +227,7 @@ export async function resendVerificationEmail(): Promise<{
 }
 
 export async function verifyEmail(
-	_: any,
+	_: unknown,
 	code: string
 ): Promise<{ error: string } | void> {
 	if (typeof code !== 'string' || code.length !== 6) {
@@ -281,7 +281,7 @@ export async function verifyEmail(
 }
 
 export async function sendPasswordResetLink(
-	_: any,
+	_: unknown,
 	email: string
 ): Promise<{ error?: string; success?: boolean }> {
 	const parsed = z.string().trim().email().safeParse(email);
@@ -316,7 +316,7 @@ export async function sendPasswordResetLink(
 }
 
 export async function resetPassword(
-	_: any,
+	_: unknown,
 	formData: ResetPasswordInput
 ): Promise<{ error?: string; success?: boolean }> {
 	const parsed = resetPasswordSchema.safeParse(formData);

@@ -5,25 +5,24 @@ import Link from 'next/link';
 export default function FeaturedProducts() {
 	const { sub: category } = NavMenuData[0];
 	return (
-		<div className="hidden md:grid px-16 py-4">
-			<div className="flex justify-center items-center">
-				{category.map((c) => (
-					<div key={c.title} className="grid space-y-6 justify-center">
+		<div className="grid sm:px-16 py-4">
+			<div className="flex justify-center flex-col sm:flex-row items-center">
+				{category.map((c, i) => (
+					<Link key={c.title + i} href={c.link}>
 						{c?.imageUrl && (
-							<Link href={c.link}>
+							<div className="grid grid-cols-2 border-b  px-4 sm:px-0 border-gray-200 sm:border-0 sm:grid-cols-1 gap-2 sm:gap-6 justify-center items-center">
 								<Image
 									src={c.imageUrl}
 									alt={c.title}
-									width={200}
-									height={113}
-									className=" object-cover transition-transform duration-1000 hover:scale-110"
+									style={{ width: '100%', height: 'auto' }}
+									className=" w-full h-24 sm:h-28 object-cover transition-transform duration-1000 hover:scale-110"
 								/>
 								<h4 className="text-base font-semibold text-center">
 									{c.title}
 								</h4>
-							</Link>
+							</div>
 						)}
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>
