@@ -116,16 +116,8 @@ export async function signup(
 		};
 	}
 
-	const {
-		email,
-		password,
-		businessName,
-		firstName,
-		lastName,
-		phone,
-		country,
-		countryCode,
-	} = form;
+	const { email, password, firstName, lastName, phone, country, countryCode } =
+		form;
 
 	const existingUser = await prisma.user.findFirst({
 		where: {
@@ -310,7 +302,8 @@ export async function sendPasswordResetLink(
 		});
 
 		return { success: true };
-	} catch (error) {
+	} catch (e) {
+		console.log(e);
 		return { error: 'Failed to send verification email.' };
 	}
 }

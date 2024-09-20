@@ -1,5 +1,4 @@
 'use client';
-
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
@@ -22,9 +21,7 @@ import { signup } from '@/lib/auth/actions';
 import { Loader } from 'lucide-react';
 import { Checkbox } from '../ui/checkbox';
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
-	data: any;
-}
+type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
 export default function MessageForm({
 	className,
@@ -43,10 +40,10 @@ export default function MessageForm({
 		},
 	});
 	const [loading, setLoading] = React.useState(false);
-
+	//@typescript-eslint/no-unused-vars
 	const [state, dispatch] = useFormState(signup, undefined);
 
-	async function handleSubmit(data: MessageFormInput) {
+	async function handleSubmit() {
 		setLoading(true);
 	}
 	React.useEffect(() => {

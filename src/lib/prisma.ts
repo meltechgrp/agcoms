@@ -1,17 +1,16 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
-let prisma: PrismaClient
+let prisma: PrismaClient;
 
 if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient()
+	prisma = new PrismaClient();
 } else {
-  // @ts-ignore
-  if (!global.prisma) {
-    // @ts-ignore
-    global.prisma = new PrismaClient()
-  }
-  // @ts-ignore
-  prisma = global.prisma
+	// @ts-expect-error @typescript-eslint/ban-ts-comment
+	if (!global.prisma) {
+		// @ts-expect-error @typescript-eslint/ban-ts-comment
+		global.prisma = new PrismaClient();
+	} // @ts-expect-error @typescript-eslint/ban-ts-comment
+	prisma = global.prisma;
 }
 
-export default prisma
+export default prisma;

@@ -33,6 +33,7 @@ declare module 'lucia' {
 		DatabaseUserAttributes: DatabaseUserAttributes;
 	}
 }
-
+// @typescript-eslint/no-empty-object-type
 interface DatabaseSessionAttributes {}
+// @typescript-eslint/no-empty-object-type
 interface DatabaseUserAttributes extends Omit<User, 'password'> {}
