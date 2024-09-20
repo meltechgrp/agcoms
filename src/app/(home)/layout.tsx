@@ -1,9 +1,12 @@
-import { ReactNode } from 'react';
 import Header from '@/components/header';
 
 export const description = 'Agcoms layout';
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function UserLayout({
+	children,
+}: Readonly<{
+	children: React.ReactNode;
+}>) {
 	return (
 		<div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-geist-sans)]">
 			<Header />
