@@ -14,18 +14,18 @@ function Visitors() {
 					<Circle
 						value={5}
 						browser="others"
-						className=" absolute w-16 h-16 bottom-4 -z-0 left-16"
+						className=" absolute w-16 h-16 sm:w-20 sm:h-20 sm:bottom-8 sm:left-20 bottom-4 -z-0 left-16"
 					/>
 					<Circle value={20} browser="chrome" className="z-10" />
 					<Circle
 						value={15}
 						browser="safari"
-						className=" absolute w-24 h-24 top-0 z-20 right-8"
+						className=" absolute w-24 h-24 sm:w-32 sm:h-32 sm:t-4 sm:right-10 top-0 z-20 right-8"
 					/>
 					<Circle
 						value={10}
 						browser="firefox"
-						className=" absolute w-20 h-20 bottom-4 z-20 right-16"
+						className=" absolute w-20 h-20 sm:w-28 sm:h-28 bottom-4 z-20 right-16"
 					/>
 				</div>
 			</div>
@@ -35,7 +35,7 @@ function Visitors() {
 						<div
 							className={cn(
 								'w-1.5 h-1.5 rounded-full',
-								`bg-[${colors[c as keyof typeof colors]}]`
+								colors[c as keyof typeof colors]
 							)}
 						/>
 						<span className=" capitalize text-xs font-semibold">{c}</span>
@@ -58,7 +58,7 @@ function Circle({ className, value, browser }: CircleProps) {
 		<div
 			className={cn(
 				'sm:w-40 sm:h-40 w-28 h-28 text-2xl font-bold bg-gray-300 text-white rounded-full flex justify-center items-center',
-				`bg-[${colors[browser]}]`,
+				colors[browser],
 				className
 			)}>
 			<h1>{value}%</h1>
@@ -67,8 +67,8 @@ function Circle({ className, value, browser }: CircleProps) {
 }
 
 const colors = {
-	chrome: '#0b1058',
-	firefox: '#a9be99',
-	safari: '#dad3cc',
-	others: '#c09f80',
+	chrome: 'bg-[#0b1058]',
+	firefox: 'bg-[#a9be99]',
+	safari: 'bg-[#dad3cc]',
+	others: 'bg-[#c09f80]',
 } as const;

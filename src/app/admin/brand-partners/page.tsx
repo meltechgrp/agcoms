@@ -21,7 +21,9 @@ export default function Page(props: Props) {
 	return (
 		<div className="w-full h-full py-8 pl-0 space-y-6">
 			<div>
-				<h1 className=" text-3xl font-medium mb-1">Brands and Partners</h1>
+				<h1 className="text-xl sm:text-3xl font-medium mb-1">
+					Brands and Partners
+				</h1>
 			</div>
 			<Card className="w-full divide-y">
 				<div className="p-6 flex">

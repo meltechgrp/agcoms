@@ -9,10 +9,10 @@ import Logout from '@/components/shared/logout';
 import Image from 'next/image';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
-export function MainNav({
-	className,
-	...props
-}: React.HTMLAttributes<HTMLElement>) {
+interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
+	setOpen?: (state: boolean) => void;
+}
+export function MainNav({ setOpen, className, ...props }: MainNavProps) {
 	const routeHomeSection = getSectionRoutes('home');
 	const routeSettingsSection = getSectionRoutes('settings');
 	return (
@@ -25,6 +25,9 @@ export function MainNav({
 				<div className="flex h-14 items-center px-2 my-2 mb-4 sm:my-8 sm:px-6">
 					<Link
 						href="/admin/dashboard"
+						onClick={() => {
+							setOpen && setOpen(false);
+						}}
 						className="flex items-center gap-2 font-semibold">
 						<Image
 							src={Logo}
@@ -40,7 +43,7 @@ export function MainNav({
 							<h4 className="text-xs text-gray-500 font-medium">MAIN MENU</h4>
 							<div className="flex flex-col gap-px">
 								{routeHomeSection.map((route, index) => (
-									<LinkItem href={route.path} key={index}>
+									<LinkItem setOpen={setOpen} href={route.path} key={index}>
 										<route.icon className="h-5 w-5 mr-2 text-gray-500" />
 										<span className="text-gray-600 text-sm">{route.name}</span>
 									</LinkItem>
@@ -51,7 +54,7 @@ export function MainNav({
 							<h4 className="text-xs text-gray-500 font-medium">PREFEENCES</h4>
 							<div className="flex flex-col gap-y-px">
 								{routeSettingsSection.map((route, index) => (
-									<LinkItem href={route.path} key={index}>
+									<LinkItem setOpen={setOpen} href={route.path} key={index}>
 										<route.icon className="h-5 w-5 mr-2 text-gray-500" />
 										<span className="text-gray-600 text-sm">{route.name}</span>
 									</LinkItem>
