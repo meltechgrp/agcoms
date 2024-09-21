@@ -17,10 +17,8 @@ export default function Media() {
 						key={m.title}
 						href={m.link}
 						className={cn(
-							'space-y-4',
-							i < 2
-								? 'sm:border-r border-b pb-10 sm:pb-0 border-gray-300 sm:pr-8'
-								: ''
+							'space-y-4 w-full h-full overflow-hidden pb-10 border-0 sm:pb-0 border-b-gray-300 sm:border-r-gray-300 sm:pr-8',
+							i < 2 ? 'sm:border-r border-b sm:border-b-0  ' : ''
 						)}>
 						<h3 className="text-lg text-black/80 sm:text-2xl font-semibold">
 							{m.title}

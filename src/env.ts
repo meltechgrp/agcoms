@@ -8,5 +8,6 @@ const schema = z.object({
 	SMTP_PASSWORD: z.string(),
 	NEXT_PUBLIC_APP_URL: z.string(),
 	NODE_ENV: z.string(),
+	SERVER_URL: z.string(),
 });
 export const env = schema.parse(process.env);

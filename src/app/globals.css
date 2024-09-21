@@ -76,3 +76,85 @@ body {
 		@apply bg-background text-foreground;
 	}
 }
+
+@font-face {
+	font-family: 'RobotoBlack';
+	src: url('../assets/fonts/Roboto-Black.ttf');
+}
+@font-face {
+	font-family: 'RobotoBold';
+	src: url('../assets/fonts/Roboto-Bold.ttf');
+}
+@font-face {
+	font-family: 'RobotoMedium';
+	src: url('../assets/fonts/Roboto-Medium.ttf');
+}
+@font-face {
+	font-family: 'RobotoRegular';
+	src: url('../assets/fonts/Roboto-Regular.ttf');
+}
+@font-face {
+	font-family: 'RobotoLight';
+	src: url('../assets//fonts/Roboto-Light.ttf');
+}
+@font-face {
+	font-family: 'RobotoThin';
+	src: url('../assets//fonts/Roboto-Thin.ttf');
+}
+
+.border-image {
+	border-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)) fill 1;
+}
+h1,
+h2 {
+	font-family: RobotoBold;
+}
+h3 {
+	font-family: RobotoMedium;
+}
+h4 {
+	font-family: RobotoRegular;
+}
+h5 {
+	font-family: RobotoLight;
+}
+a {
+	font-family: RobotoLight;
+}
+
+@layer base {
+	th,
+	td {
+		@apply py-3 px-2 text-left;
+	}
+	thead {
+		@apply bg-secondary;
+	}
+	th {
+		@apply font-[RobotoRegular] lg:text-base text-sm;
+	}
+	td {
+		@apply font-[RobotoLight] lg:text-sm text-xs;
+	}
+	a {
+		@apply text-foreground cursor-pointer active:bg-transparent active:text-sky-300;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 0.0625rem;
+	height: 0.0625rem;
+}
+
+::-webkit-scrollbar-track {
+	background: #ffff;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #dddd;
+	border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #aaa;
+}

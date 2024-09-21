@@ -1,10 +1,10 @@
 'use client';
 import { MapPin, Menu, User2 } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import SearchForm from './search';
-import FeaturedProducts from './featured-product';
+import FeaturedProducts from '../home/featured-product';
 import NavMenu from './nav-menu';
 import { NavMenuData } from '@/lib/constants';
 import {
