@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import SearchForm from './search';
-import FeaturedProducts from '../home/featured-product';
 import NavMenu from './nav-menu';
 import { NavMenuData } from '@/lib/constants';
 import {
@@ -17,7 +16,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
-import logo from '@/assets/AGCOMS-logo-main.png';
+import logo from '@/assets/Agcoms Logo.png';
 import Image from 'next/image';
 import { ChevronUp } from 'lucide-react';
 import { animateScroll } from 'react-scroll';
@@ -41,23 +40,22 @@ export default function Header() {
 		const handleScroll = () => {
 			const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-			if (scrollTop > 0 && !isFixed) {
+			if (scrollTop > 100 && !isFixed) {
 				setIsFixed(true);
 				gsap.to(headerEl, {
 					position: 'fixed',
 					top: 0,
 					y: 0,
-					duration: 1,
+					duration: 0.9,
+					backgroundColor: '#d5d5d5',
 					ease: 'power1.out',
-					backgroundColor: 'white',
-					boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
 				});
-			} else if (scrollTop === 0 && isFixed) {
+			} else if (scrollTop <= 50 && isFixed) {
 				setIsFixed(false);
 				gsap.to(headerEl, {
 					position: 'relative',
 					y: 0,
-					duration: 1,
+					duration: 0.9,
 					ease: 'power1.out',
 					boxShadow: 'none',
 				});
@@ -79,11 +77,14 @@ export default function Header() {
 		<div className="flex flex-col">
 			<div
 				ref={headerRef}
-				className={cn('grid', isFixed ? ' w-screen z-50 left-0 pb-2' : '')}>
+				className={cn(
+					'grid',
+					isFixed ? ' w-screen bg-[#d5d5d5] z-50 left-0' : ''
+				)}>
 				<div
 					className={cn(
 						'flex h-12 sm:h-[4.5rem] w-full items-center gap-4 py-0 px-4 md:px-6 sm:border-b bg-background',
-						isFixed ? 'max-w-screen-xl mx-auto' : ''
+						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}>
 					<Link href={'/'}>
 						<Image
@@ -164,18 +165,17 @@ export default function Header() {
 				<div
 					className={cn(
 						'bg-gray-300 w-full px-4 py-2 block sm:hidden',
-						isFixed ? 'max-w-screen-xl mx-auto' : ''
+						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}>
 					<SearchForm className="bg-white text-black border border-black flex-row-reverse" />
 				</div>
 				<NavMenu
 					className={cn(
 						'hidden sm:flex h-10 w-full items-center gap-4 border-b bg-background px-4 md:px-6',
-						isFixed ? 'max-w-screen-xl mx-auto' : ''
+						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}
 				/>
 			</div>
-			<FeaturedProducts />
 			{isFixed && (
 				<TooltipProvider>
 					<Tooltip>

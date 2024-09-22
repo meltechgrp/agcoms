@@ -1,4 +1,4 @@
-import banner from '@/assets/images/banners/banner.png';
+import banner from '@/assets/images/banners/banner.jpg';
 import Image from 'next/image';
 
 export default function Banner() {

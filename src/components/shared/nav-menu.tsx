@@ -1,15 +1,21 @@
 'use client';
-import {
-	Menubar,
-	MenubarContent,
-	MenubarItem,
-	MenubarMenu,
-	MenubarTrigger,
-} from '@/components/ui/menubar';
 import { NavMenuData } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import {
+	Menubar,
+	MenubarContent,
+	MenubarGroup,
+	MenubarItem,
+	MenubarLabel,
+	MenubarMenu,
+	MenubarSub,
+	MenubarSubContent,
+	MenubarSubTrigger,
+	MenubarTrigger,
+} from '../ui/menubar';
+import { ChevronRight } from 'lucide-react';
 
 export default function NavMenu({ className }: { className?: string }) {
 	const pathname = usePathname();
@@ -32,21 +38,46 @@ export default function NavMenu({ className }: { className?: string }) {
 					<MenubarTrigger
 						className={cn(
 							'hover:text-green-500 transition-colors duration-1000',
-							pathname === '/digital'
+							pathname.split('/')[1] === item.title.toLowerCase()
 								? 'border-green-700 text-green-600 text-sm font-normal border-b-2 rounded-none '
 								: ''
 						)}>
 						{item.title}
 					</MenubarTrigger>
-					<MenubarContent>
+					<MenubarContent className=" relative">
 						{item.sub.map((sub, i) => (
-							<MenubarItem key={i + sub.title} inset asChild>
-								<Link
-									href={`/digital/${sub.link}`}
-									className="focus:text-green-600">
-									{sub.title}
-								</Link>
-							</MenubarItem>
+							<MenubarSub key={i + sub.title}>
+								<MenubarSubTrigger>{sub.title}</MenubarSubTrigger>
+								<MenubarSubContent className=" min-w-[60vw] ">
+									<div className="px-2 space-y-4 py-6">
+										<Link href={sub.link}>
+											<MenubarLabel className="text-base flex items-center px-2 font-semibold">
+												{sub.title} <ChevronRight className="w-5 h-5 ml-1" />
+											</MenubarLabel>
+										</Link>
+										<div className="flex justify-between gap-4 flex-wrap">
+											{sub?.categories?.map((c) => (
+												<div key={c.title} className="w-[22%] space-y-1">
+													<h3 className="text-xs px-2 capitalize text-gray-400">
+														{c?.title || ''}
+													</h3>
+													<ul className="grid">
+														{c.cats.map((i) => (
+															<Link key={i.title} href={i.link}>
+																<li>
+																	<MenubarItem className=" px-2 text-sm text-green-700 font-medium">
+																		{i.title}
+																	</MenubarItem>
+																</li>
+															</Link>
+														))}
+													</ul>
+												</div>
+											))}
+										</div>
+									</div>
+								</MenubarSubContent>
+							</MenubarSub>
 						))}
 					</MenubarContent>
 				</MenubarMenu>
