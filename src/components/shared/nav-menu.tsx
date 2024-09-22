@@ -59,9 +59,9 @@ export default function NavMenu({ className }: { className?: string }) {
 								<MenubarSubContent className=" min-w-[40vw] ">
 									<div className="px-2 space-y-4 py-6">
 										<Link href={sub.link}>
-											<MenubarLabel className="text-base flex items-center px-2 font-semibold">
+											<MenubarItem className="text-base flex items-center px-2 font-semibold">
 												{sub.title} <ChevronRight className="w-5 h-5 ml-1" />
-											</MenubarLabel>
+											</MenubarItem>
 										</Link>
 										<div className="flex justify-between gap-4 flex-wrap">
 											{sub?.categories?.map((c) => (

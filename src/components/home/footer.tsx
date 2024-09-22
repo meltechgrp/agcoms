@@ -20,7 +20,7 @@ export default function Footer() {
 								<Link
 									href={link.url}
 									key={link.title}
-									className="text-sm text-gray-600 font-normal">
+									className="text-sm w-fit text-gray-600 font-normal">
 									{link.title}
 								</Link>
 							))}
