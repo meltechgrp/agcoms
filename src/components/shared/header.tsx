@@ -1,24 +1,15 @@
 'use client';
-import { MapPin, Menu, User2 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import SearchForm from './search';
 import NavMenu from './nav-menu';
-import { NavMenuData } from '@/lib/constants';
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from '@/components/ui/accordion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import logo from '@/assets/Agcoms Logo.png';
 import Image from 'next/image';
-import { ChevronUp } from 'lucide-react';
+import { ChevronUp, MapPin, User2 } from 'lucide-react';
 import { animateScroll } from 'react-scroll';
 import {
 	Tooltip,
@@ -27,6 +18,7 @@ import {
 	TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import Sidebar from './sidebar';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,53 +105,7 @@ export default function Header() {
 								<span className="hidden sm:flex">Sign in</span>
 							</Link>
 						</Button>
-
-						<Sheet>
-							<SheetTrigger asChild>
-								<Button
-									variant="outline"
-									size="icon"
-									className="shrink-0 md:hidden border-0">
-									<Menu className="h-5 w-5" />
-									<span className="sr-only">Toggle sidebar menu</span>
-								</Button>
-							</SheetTrigger>
-							<SheetContent side="right" className="px-0 duration-1000">
-								<nav className="grid gap-6 text-lg py-8 font-medium">
-									<Accordion type="single" collapsible className="w-full">
-										<Link
-											href="/"
-											className={
-												' flex h-12 items-center hover:bg-gray-200 font-medium border-b  px-[2.1rem] border-gray-400'
-											}>
-											Home
-										</Link>
-										{NavMenuData.map((hf, i) => (
-											<AccordionItem key={hf.title + i} value={`item-${i}`}>
-												<AccordionTrigger
-													isPlus={true}
-													className="text-md hover:bg-gray-200 font-medium gap-2 border-b hover:no-underline px-2 border-gray-400">
-													<span className="flex-1 flex justify-start">
-														{hf.title}
-													</span>
-												</AccordionTrigger>
-												<AccordionContent className="grid gap-2 px-8 py-4">
-													{hf.sub.map((sub, i) => (
-														<div key={i + sub.title}>
-															<Link
-																href={`/digital/${sub.link}`}
-																className="focus:text-green-600 pb-1 w-full hover:text-green-600 border-b border-gray-200 text-sm font-medium">
-																{sub.title}
-															</Link>
-														</div>
-													))}
-												</AccordionContent>
-											</AccordionItem>
-										))}
-									</Accordion>
-								</nav>
-							</SheetContent>
-						</Sheet>
+						<Sidebar />
 					</div>
 				</div>
 				<div
@@ -196,3 +142,26 @@ export default function Header() {
 		</div>
 	);
 }
+
+/*
+<AccordionItem key={hf.title + i} value={`item-${i}`}>
+												<AccordionTrigger
+													isPlus={true}
+													className="text-md  hover:bg-gray-200 font-medium gap-2 border-b hover:no-underline px-2 ">
+													<span className="flex-1 text-sm text-gray-500 flex justify-start">
+														{hf.title}
+													</span>
+												</AccordionTrigger>
+												<AccordionContent className="grid gap-2 px-8 py-4">
+													{hf.sub.map((sub, i) => (
+														<div key={i + sub.title}>
+															<Link
+																href={`${sub.link}`}
+																className="focus:text-green-600 pb-1 w-full hover:text-green-600 border-b border-gray-200 text-sm font-medium">
+																{sub.title}
+															</Link>
+														</div>
+													))}
+												</AccordionContent>
+											</AccordionItem>
+*/

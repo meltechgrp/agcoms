@@ -6,9 +6,7 @@ import { usePathname } from 'next/navigation';
 import {
 	Menubar,
 	MenubarContent,
-	MenubarGroup,
 	MenubarItem,
-	MenubarLabel,
 	MenubarMenu,
 	MenubarSub,
 	MenubarSubContent,
