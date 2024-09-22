@@ -82,7 +82,7 @@ function Digital() {
 						</Button>
 					</Link>
 				</div>
-				<div className="row-start-1">
+				<div className="row-start-1 sm:col-start-2">
 					<Image
 						src={dealerTools}
 						alt="Dealer Tools"
