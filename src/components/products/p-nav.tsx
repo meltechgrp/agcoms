@@ -80,7 +80,7 @@ function ProductNavigation() {
 	return (
 		<div
 			ref={menuRef}
-			className="transition-all w-full sm:w-[1350px] max-w-[1350px] duration-300 bg-[#d3d1d1] px-16 shadow sm:px-4 ">
+			className="transition-all w-screen sm:w-[1350px] sm:max-w-[1350px] duration-300 bg-[#d3d1d1] px-16 shadow sm:px-4 ">
 			<div className="space-x-2 hidden sm:flex">
 				{grouped.map((key) => (
 					<ScrollLink
@@ -101,6 +101,9 @@ function ProductNavigation() {
 			<Carousel
 				setApi={(api) => {
 					api?.scrollTo(active.index, true);
+				}}
+				opts={{
+					duration: 30,
 				}}
 				className="w-full bg-[#d3d1d1] max-w-sm sm:hidden">
 				<CarouselContent className="-ml-1 flex items-center">

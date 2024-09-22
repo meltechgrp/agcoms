@@ -50,19 +50,17 @@ function ProductCategory({ params: { category } }: Props) {
 				</BreadcrumbList>
 			</Breadcrumb>
 			<div>
-				<div className="py-2 relative h-80 flex justify-center items-center">
-					<h2 className="text-5xl capitalize text-white font-bold relative z-10">
-						{cat?.title || ''}
-					</h2>
-					<Image
+				<div className="py-2 relative sm:h-80 space-y-4 flex flex-col justify-center items-center">
+					<img
 						src={`/p-categories/${category}.avif`}
 						alt={category}
-						width={1300}
-						height={320}
-						className="w-full h-full object-cover absolute top-0 left-0 right-0 bottom-0"
+						className="w-screen sm:w-[1350px] object-fill h-[150px] sm:h-[320px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
 					/>
+					<h2 className="text-3xl sm:text-5xl text-center sm:text-start capitalize text-black sm:text-white font-bold relative z-10">
+						{cat?.title || ''}
+					</h2>
 				</div>
-				<div className="px-4 sm:px-12 py-10">
+				<div className="px-4 sm:px-12 py-10 bg-[#f4f3f3]">
 					<div className="flex justify-between gap-6 flex-wrap">
 						{cat?.categories?.map((c) => (
 							<div key={c.title} className="w-[45%] sm:w-[22%] space-y-2">
