@@ -10,7 +10,7 @@ import {
 
 export default function Footer() {
 	return (
-		<div className=" sm:px-16 pt-7 sm:pt-16 py-16 mt-6 bg-[#e5e5e5] space-y-8">
+		<div className=" sm:px-12 pt-7 sm:pt-16 py-16 mt-6 bg-[#e5e5e5] space-y-8">
 			<div className="hidden sm:grid sm:grid-cols-3 gap-8 border-b border-gray-300 pb-10">
 				{footerData.map((fl) => (
 					<div key={fl?.title} className=" space-y-4">

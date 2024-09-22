@@ -377,7 +377,25 @@ export const NavMenuData: NavMenuDataProps[] = [
 		sub: [
 			{
 				title: 'Financing',
-				link: '/finance',
+				link: '/financing',
+				categories: [
+					{
+						cats: [
+							{
+								title: 'Leap Forward',
+								link: '/financing/#',
+							},
+							{
+								title: 'Commercial Farming',
+								link: '/financing/#',
+							},
+							{
+								title: 'Emerging Farming',
+								link: '/financing/#',
+							},
+						],
+					},
+				],
 			},
 		],
 	},

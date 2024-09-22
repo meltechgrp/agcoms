@@ -1,6 +1,11 @@
 'use client';
 
-import { Link as ScrollLink, Events, scrollSpy } from 'react-scroll';
+import {
+	Link as ScrollLink,
+	Events,
+	scrollSpy,
+	animateScroll,
+} from 'react-scroll';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import {
@@ -19,6 +24,7 @@ function ProductNavigation() {
 	const menuRef = useRef<HTMLDivElement>(null);
 	const [grouped, setGrouped] = useState<string[]>([]);
 	const handleSetActive = (key: string) => {
+		console.log(key, 'key');
 		setActive({
 			key,
 			index: grouped.indexOf(key),
@@ -35,6 +41,8 @@ function ProductNavigation() {
 	useEffect(() => {
 		scrollSpy.update();
 		Events.scrollEvent.register('end', (to) => {
+			console.log(to, 'scroll');
+			if (to == '') return;
 			setActive({
 				key: to,
 				index: grouped.indexOf(to),
@@ -77,6 +85,7 @@ function ProductNavigation() {
 			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
+	console.log(active);
 	return (
 		<div
 			ref={menuRef}

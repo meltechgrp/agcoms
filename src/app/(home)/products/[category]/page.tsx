@@ -7,7 +7,6 @@ import {
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { NavMenuData } from '@/lib/constants';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo } from 'react';
 

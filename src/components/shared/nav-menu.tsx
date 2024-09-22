@@ -47,8 +47,16 @@ export default function NavMenu({ className }: { className?: string }) {
 					<MenubarContent className=" relative">
 						{item.sub.map((sub, i) => (
 							<MenubarSub key={i + sub.title}>
-								<MenubarSubTrigger>{sub.title}</MenubarSubTrigger>
-								<MenubarSubContent className=" min-w-[60vw] ">
+								{sub?.categories && sub?.categories.length > 0 ? (
+									<MenubarSubTrigger>{sub.title}</MenubarSubTrigger>
+								) : (
+									<Link href={sub.link}>
+										<MenubarItem className="text-sm flex items-center px-2 font-semibold">
+											{sub.title}
+										</MenubarItem>
+									</Link>
+								)}
+								<MenubarSubContent className=" min-w-[40vw] ">
 									<div className="px-2 space-y-4 py-6">
 										<Link href={sub.link}>
 											<MenubarLabel className="text-base flex items-center px-2 font-semibold">
@@ -57,7 +65,7 @@ export default function NavMenu({ className }: { className?: string }) {
 										</Link>
 										<div className="flex justify-between gap-4 flex-wrap">
 											{sub?.categories?.map((c) => (
-												<div key={c.title} className="w-[22%] space-y-1">
+												<div key={c.title} className="min-w-[22%] space-y-1">
 													<h3 className="text-xs px-2 capitalize text-gray-400">
 														{c?.title || ''}
 													</h3>
@@ -65,7 +73,7 @@ export default function NavMenu({ className }: { className?: string }) {
 														{c.cats.map((i) => (
 															<Link key={i.title} href={i.link}>
 																<li>
-																	<MenubarItem className=" px-2 text-sm text-green-700 font-medium">
+																	<MenubarItem className=" px-2 text-nowrap text-sm text-green-700 font-medium">
 																		{i.title}
 																	</MenubarItem>
 																</li>

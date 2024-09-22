@@ -107,7 +107,7 @@ export default function Header() {
 						<div className="hidden sm:flex h-[60%] w-px bg-gray-300" />
 						<Button className=" p-0 sm:px-4 hover:bg-gray-100 bg-transparent border-none focus-visible:ring-0 focus-visible:ring-transparent text-black">
 							<Link
-								href={'#'}
+								href={'/digital'}
 								className="flex space-x-2 items-center text-sm text-gray-600">
 								<User2 />
 								<span className="hidden sm:flex">Sign in</span>

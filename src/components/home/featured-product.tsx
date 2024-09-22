@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function FeaturedProducts() {
 	const { sub: category } = NavMenuData[0];
 	return (
-		<div className="grid sm:px-16 py-4">
+		<div className="grid sm:px-16 bg-white py-4">
 			<div className="flex justify-center flex-col sm:flex-row items-center">
 				{category.map((c, i) => (
 					<Link key={c.title + i} href={c.link}>
