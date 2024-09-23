@@ -1,4 +1,4 @@
-import { BlogCategory, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient({
 	log: ['query'],
@@ -172,7 +172,7 @@ For generations, we have been enabling our customers to purchase the equipment t
 It’s about building an enduring relationship by ensuring your financing works as hard and reliably for you as your equipment.
 
 After all, your success is our sole focus — your business is why we’re in business.`,
-			category: BlogCategory.FINANCING,
+			category: 'FINANCING',
 			bannerImage: '/blog-banners/how-to-finance.avif',
 		},
 		{
@@ -204,7 +204,7 @@ provides custom-designed financial solutions and support with fast approvals. Jo
 Financial invites customers based in the construction, mining, quarrying business,
 and farmers interested in purchasing new equipment to contact their nearest
 John Deere Financial representative.`,
-			category: BlogCategory.FINANCING,
+			category: 'FINANCING',
 			bannerImage: '/blog-banners/construction-and-mining-machinery.avif',
 		},
 	];
@@ -221,7 +221,7 @@ John Deere Financial representative.`,
 				bannerImage,
 				slug,
 				content,
-				category,
+				category: category as any,
 			},
 		});
 
