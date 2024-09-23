@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
+		"build": "prisma generate && next build",
 		"lint": "next lint",
 		"seed": "prisma db seed",
 		"migrate": "bunx prisma migrate dev",
@@ -13,7 +13,7 @@
 		"prisma:deploy": "bunx prisma deploy",
 		"prisma:push": "bunx prisma db push",
 		"studio": "bunx prisma studio --port 5599",
-		"start": "bunx prisma migrate deploy && bunx prisma db seed && bun src/index.ts"
+		"postbuild": "npm run prisma:seed"
 	},
 	"dependencies": {
 		"@gsap/react": "^2.1.1",
