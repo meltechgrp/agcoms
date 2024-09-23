@@ -1,6 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["relationJoins", "tracing", "prismaSchemaFolder", "views", "postgresqlExtensions"]
+  seed            = "ts-node --transpile-only prisma/seed.ts"
 }
 
 datasource db {
@@ -19,4 +20,19 @@ model Message {
   intlPhone   String? @unique
   country     String?
   countryCode String?
+}
+
+// Define the Image model
+model Image {
+  id        String    @id @default(cuid())
+  url       String
+  blog      Blog?     @relation(fields: [blogId], references: [id]) // Optionally related to a Blog
+  blogId    String?
+  product   Products? @relation(fields: [productId], references: [id]) // Optionally related to a Product
+  productId String?
+  user      User?     @relation(fields: [userId], references: [id]) // Optionally related to a User
+  userId    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

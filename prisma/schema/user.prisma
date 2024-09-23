@@ -1,14 +1,13 @@
 model User {
-    id        String @id @default(cuid())
-    firstName String @db.VarChar(100)
-    lastName  String @db.VarChar(100)
+    id        String  @id @default(cuid())
+    firstName String? @db.VarChar(100)
+    lastName  String? @db.VarChar(100)
 
-    email       String @unique
-    phone       String
-    intlPhone   String @unique
-    country     String
-    countryCode String
-    password    String
+    email       String  @unique
+    phone       String?
+    country     String?
+    countryCode String?
+    password    String?
 
     dob           DateTime?
     createdAt     DateTime  @default(now())
@@ -19,6 +18,7 @@ model User {
     sessions            AuthSession[]
     verificationTokens  VerificationToken[]
     passwordResetTokens PasswordResetTokens[]
+    images              Image[]
 }
 
 model AuthSession {
@@ -59,6 +59,6 @@ model PasswordResetTokens {
 enum UserType {
     USER
     STAFF
+    ADMIN
     OWNER
-    VISTOR
 }

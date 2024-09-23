@@ -5,8 +5,15 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"seed": "prisma db seed",
+		"migrate": "bunx prisma migrate dev",
+		"prisma:migrate": "bunx prisma migrate dev",
+		"prisma:gen": "bunx prisma generate",
+		"prisma:deploy": "bunx prisma deploy",
+		"prisma:push": "bunx prisma db push",
+		"studio": "bunx prisma studio --port 5599",
+		"start": "bunx prisma migrate deploy && bunx prisma db seed && bun src/index.ts"
 	},
 	"dependencies": {
 		"@gsap/react": "^2.1.1",
@@ -35,6 +42,7 @@
 		"@react-email/render": "^1.0.1",
 		"@tanstack/react-table": "^8.20.5",
 		"@types/react-scroll": "^1.8.10",
+		"@vercel/postgres": "^0.10.0",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"cmdk": "1.0.0",
@@ -71,6 +79,15 @@
 		"postcss": "^8.4.39",
 		"prisma": "^5.10.2",
 		"tailwindcss": "^3.4.6",
-		"typescript": "^5.3.3"
-	}
+		"ts-node": "^10.9.2",
+		"typescript": "^5.6.2"
+	},
+	"prisma": {
+		"seed": "bun run prisma/seed.ts"
+	},
+	"trustedDependencies": [
+		"@prisma/client",
+		"@prisma/engines",
+		"prisma"
+	]
 }

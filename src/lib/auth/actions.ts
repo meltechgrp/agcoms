@@ -144,7 +144,6 @@ export async function signup(
 				firstName,
 				lastName,
 				phone,
-				intlPhone: formatPhoneNumber(phone, countryCode),
 				country,
 				countryCode,
 			},

@@ -1,6 +1,6 @@
 'use client';
 
-import { columns } from '@/app/admin/blogs/components/columns';
+import { columns } from '@/app/admin/brand-partners/components/columns';
 import { DataTable } from '@/components/shared/data-table';
 import { DataTableToolbar } from '@/components/shared/data-table-toolbar';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';

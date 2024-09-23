@@ -13,7 +13,6 @@ import { useState } from 'react';
 
 function Sidebar() {
 	const [state1, setState1] = useState(false);
-	const [state2, setState2] = useState(false);
 
 	return (
 		<Sheet open={state1} onOpenChange={setState1}>
