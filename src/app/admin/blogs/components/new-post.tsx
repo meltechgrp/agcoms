@@ -28,30 +28,33 @@ import ImageUploader from '@/components/shared/image-uploader';
 import { Textarea } from '@/components/ui/text-area';
 import { ImageListType } from 'react-images-uploading';
 
-const NewPost = (props: { data?: PostData }) => {
-	const { data } = props;
+const NewPost = (props: { post?: PostData }) => {
+	const { post } = props;
 	const [images, setImages] = useState<ImageListType>([]);
 	const form = useForm<PostFormInput>({
 		resolver: zodResolver(PostFormSchema),
 		defaultValues: {
-			id: data?.id,
-			title: data?.title || '',
-			content: data?.content || '',
-			category: data?.category?.name || '',
-			imagePaths: [],
+			id: post?.id,
+			title: post?.title || '',
+			content: post?.content || '',
+			category: post?.category?.name || '',
+			imagePaths: post?.images || [],
 		},
 	});
 	const [loading, setLoading] = React.useState(false);
 	const dismissAlert = useAlertToggle();
 	const [state, dispatch] = useFormState(CreatePost, undefined);
 
-	const handleUpload = async () => {
+	const handleUpload = async (title: string) => {
+		if (!title) return false;
+		console.log(title, 'in a lot');
 		const formData = new FormData();
 		images.forEach((image) => {
 			if (image.file) {
 				formData.append('image', image.file);
 			}
 		});
+		formData.append('title', title);
 		try {
 			const response = await fetch('/api/blog-upload', {
 				method: 'POST',
@@ -59,14 +62,8 @@ const NewPost = (props: { data?: PostData }) => {
 			});
 
 			const data: { uploadedFiles: string[] } = await response.json();
-			console.log('Uploade:', data);
-			form.setValue(
-				'imagePaths',
-				data.uploadedFiles.map((u) => {
-					return { url: u };
-				})
-			);
-			return data.uploadedFiles.length > 0 ? true : false;
+			console.log(data, 'a lot');
+			return data;
 		} catch (error) {
 			console.error('Upload failed:', error);
 			toast.error('Failed to upload images');
@@ -76,9 +73,7 @@ const NewPost = (props: { data?: PostData }) => {
 
 	async function handleSubmit(data: PostFormInput) {
 		setLoading(true);
-		const saved = await handleUpload();
-		if (saved) return dispatch(data);
-		toast.error('Upload failed');
+		return dispatch(data);
 	}
 	useEffect(() => {
 		if (state?.fieldError) {
@@ -95,14 +90,22 @@ const NewPost = (props: { data?: PostData }) => {
 			toast.error(state.formError);
 		}
 		if (state?.data) {
-			setLoading(false);
-			toast.success(
-				data?.id
-					? 'Publication updated successfully'
-					: 'Publication created successfully'
-			);
-			form.reset();
-			data ? dismissAlert('edit', 'true') : dismissAlert('postId', 'new');
+			console.log('at state data', form.getValues('title'));
+			handleUpload(form.getValues('title') as string)
+				.then(() => {
+					setLoading(false);
+					toast.success(
+						post?.id
+							? 'Publication updated successfully'
+							: 'Publication created successfully'
+					);
+					form.reset();
+					post ? dismissAlert('edit', 'true') : dismissAlert('postId', 'new');
+				})
+				.catch(() => {
+					setLoading(false);
+					toast.error('Failed to upload publication images');
+				});
 		}
 	}, [state?.formError, state?.fieldError, state?.data]);
 	return (
@@ -110,7 +113,7 @@ const NewPost = (props: { data?: PostData }) => {
 			<div className="space-y-4">
 				<h2 className="space-x-3">
 					<span className="text-xl font-medium">
-						{data?.id ? 'Update Publication' : 'Add New Publication'}
+						{post?.id ? 'Update Publication' : 'Add New Publication'}
 					</span>
 				</h2>
 			</div>
@@ -203,14 +206,11 @@ const NewPost = (props: { data?: PostData }) => {
 							/>
 
 							<AlertDialogFooter className="w-full flex flex-row gap-3 mt-3 ">
-								<AlertTriggerButton alertKey="postId" alertValue="new" asChild>
-									<Button
-										size={'lg'}
-										className="w-full"
-										variant={'outline'}
-										type="button">
-										Cancel
-									</Button>
+								<AlertTriggerButton
+									alertKey="postId"
+									alertValue={'new'}
+									className="px-8 py-2">
+									Cancel
 								</AlertTriggerButton>
 								<Button
 									disabled={loading}
@@ -220,7 +220,7 @@ const NewPost = (props: { data?: PostData }) => {
 									{loading && (
 										<LoaderIcon className="mr-2 h-4 w-4 animate-spin" />
 									)}
-									{data?.id ? 'Update' : 'Save'}
+									{post?.id ? 'Update' : 'Save'}
 								</Button>
 							</AlertDialogFooter>
 						</div>

@@ -25,9 +25,6 @@ export async function getBlogs(args: {
 				images: {
 					select: { url: true },
 					take: 1,
-					orderBy: {
-						createdAt: 'desc',
-					},
 				},
 			},
 			...(args.cursor && { cursor: { id: args.cursor } }),
@@ -56,11 +53,8 @@ export async function getPostData(blogId?: string) {
 				title: true,
 				slug: true,
 				images: {
-					select: { url: true },
+					select: { url: true, id: true },
 					take: 2,
-					orderBy: {
-						createdAt: 'desc',
-					},
 				},
 			},
 		});
@@ -106,11 +100,6 @@ export async function CreatePost(
 				data: {
 					title,
 					content,
-					images: {
-						createMany: {
-							data: imagePaths?.map((image) => image) || [],
-						},
-					},
 					category: {
 						connect: { name: category },
 					},
@@ -124,11 +113,6 @@ export async function CreatePost(
 			data: {
 				title,
 				content,
-				images: {
-					createMany: {
-						data: imagePaths?.map((image) => image) || [],
-					},
-				},
 				category: {
 					connect: { name: category },
 				},

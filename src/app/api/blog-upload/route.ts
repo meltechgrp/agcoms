@@ -1,18 +1,17 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/lib/prisma';
 import mime from 'mime';
 import { join } from 'path';
 import { stat, mkdir, writeFile } from 'fs/promises';
 import { NextRequest, NextResponse } from 'next/server';
 import _ from 'lodash';
 
-const prisma = new PrismaClient();
-
 export async function POST(req: NextRequest) {
 	const formData = await req.formData();
 	const images = formData.getAll('image') as File[];
-
+	const title = formData.get('title') as string;
+	if (!title) return NextResponse.json([]);
+	console.log('in api');
 	const uploadedFiles: string[] = [];
-
 	for (const image of images) {
 		// Ensure the file is valid
 		if (image && image instanceof File) {
@@ -41,10 +40,7 @@ export async function POST(req: NextRequest) {
 
 			try {
 				// Generate a unique filename
-				const filename = `${image.name.replace(
-					/\.[^/.]+$/,
-					''
-				)}.${mime.getExtension(image.type)}`;
+				const filename = `${image.name}`;
 
 				// Write the file to the upload directory
 				await writeFile(`${uploadDir}/${filename}`, buffer);
@@ -62,6 +58,19 @@ export async function POST(req: NextRequest) {
 		}
 	}
 	try {
+		let c = await prisma.blog.findFirst({ where: { title: title } });
+		console.log(c, uploadedFiles);
+		c &&
+			uploadedFiles?.map(async (img) => {
+				await prisma.image.create({
+					data: {
+						url: img,
+						blog: {
+							connect: { id: c.id },
+						},
+					},
+				});
+			});
 		return NextResponse.json({ uploadedFiles });
 	} catch (e) {
 		console.error('Error while trying to save to the file\n', e);

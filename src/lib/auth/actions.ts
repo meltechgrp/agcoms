@@ -24,12 +24,12 @@ import { env } from '@/env';
 import { UserType } from '@prisma/client';
 import prisma from '../prisma';
 import { validateRequest } from './validate-request';
-import { formatPhoneNumber } from '../utils';
 
 export interface ActionResponse<T> {
 	fieldError?: Partial<Record<keyof T, string | undefined>>;
 	formError?: string;
 	data?: boolean;
+	res?: Partial<Record<keyof T, string | undefined>>;
 }
 
 export async function login(

@@ -103,6 +103,7 @@ export const ImageSchema = z
 
 export const imagePath = z.object({
 	url: z.string(),
+	id: z.string().optional(),
 });
 
 export const PostFormSchema = z.object({
