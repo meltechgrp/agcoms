@@ -209,7 +209,8 @@ const NewPost = (props: { post?: PostData }) => {
 								<AlertTriggerButton
 									alertKey="postId"
 									alertValue={'new'}
-									className="px-8 py-2">
+									type="button"
+									className="px-8 py-2 flex-1">
 									Cancel
 								</AlertTriggerButton>
 								<Button
