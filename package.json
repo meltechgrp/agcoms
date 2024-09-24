@@ -12,8 +12,7 @@
 		"prisma:gen": "bunx prisma generate",
 		"prisma:deploy": "bunx prisma deploy",
 		"prisma:push": "bunx prisma db push",
-		"studio": "bunx prisma studio --port 5599",
-		"postbuild": "npm run prisma:seed"
+		"studio": "bunx prisma studio --port 5599"
 	},
 	"dependencies": {
 		"@gsap/react": "^2.1.1",

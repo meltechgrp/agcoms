@@ -14,7 +14,16 @@ import { Card } from '@/components/ui/card';
 import { ChevronRight } from 'lucide-react';
 import { financeCardData } from '@/components/financing/data';
 import { Separator } from '@/components/ui/separator';
-function Financing() {
+import { getBlogs } from '@/app/admin/blogs/components/query';
+import { format } from 'date-fns';
+async function Financing() {
+	const data = await getBlogs({
+		orderBy: {
+			createdAt: 'desc',
+		},
+		take: 3,
+		skip: 0,
+	});
 	return (
 		<div className="">
 			<Breadcrumb className="px-4 sm:px-12 py-6">
@@ -67,7 +76,7 @@ function Financing() {
 						</div>
 					</div>
 				</div>
-				<div className="px-4 sm:px-12 pt-4 sm:pt-8">
+				<div className="px-4 sm:px-12 pt-4 sm:pt-8 space-y-8">
 					<div className="grid sm:grid-cols-4 gap-4">
 						{financeCardData.map((c, i) => (
 							<div key={c.title} className="flex flex-col sm:flex-row gap-4">
@@ -96,6 +105,38 @@ function Financing() {
 										/>
 									</>
 								)}
+							</div>
+						))}
+					</div>
+					<div className="grid grid-cols-3 gap-4 ">
+						{data.map((b) => (
+							<div
+								key={b.title}
+								className=" bg-transparent shadow-none h-full w-full flex flex-col  gap-2">
+								<div className="w-full">
+									<img
+										src={b.images[0].url || ''}
+										alt={b.title}
+										className="w-full object-cover h-48 rounded-md"
+									/>
+								</div>
+								<div className="flex flex-1 flex-col gap-1 py-2">
+									<h2 className="text-xl sm:text-2xl text-green-500">
+										{b.title}
+									</h2>
+									<div className="flex-1">
+										<p className="text-base font-bold line-clamp-6 text-gray-500">
+											{b.content}
+										</p>
+									</div>
+								</div>
+								<Link href={`#`}>
+									<Button
+										variant={'outline'}
+										className="border-2 border-green-600 text-green">
+										Read More
+									</Button>
+								</Link>
 							</div>
 						))}
 					</div>

@@ -31,7 +31,7 @@ export async function getBlogs(args: {
 				},
 			},
 			...(args.cursor && { cursor: { id: args.cursor } }),
-
+			take,
 			orderBy,
 		});
 		return blogs;
