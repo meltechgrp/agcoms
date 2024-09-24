@@ -7,6 +7,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/accordion';
+import NigeriaIcon from '../icons/nigeria-icon';
 
 export default function Footer() {
 	return (
@@ -54,7 +55,8 @@ export default function Footer() {
 					<Link href={'#'}>
 						<Button
 							variant={'outline'}
-							className=" h-12 px-8 bg-transparent border-2 border-gray-300">
+							className=" h-12 px-8 flex items-center gap-2 bg-transparent border-2 border-gray-300">
+							<NigeriaIcon width={20} height={20} />
 							Africa & the Middle East
 						</Button>
 					</Link>

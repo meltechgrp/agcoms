@@ -15,7 +15,10 @@ import { ChevronRight } from 'lucide-react';
 import { financeCardData } from '@/components/financing/data';
 import { Separator } from '@/components/ui/separator';
 import { getBlogs } from '@/app/admin/blogs/components/query';
-import { format } from 'date-fns';
+import HowToFinance from '@/assets/finance/home-how-to-finance.avif';
+import ContactUs from '@/assets/finance/home-contact-us.avif';
+import Offers from '@/assets/finance/home-current-offers.webp';
+
 async function Financing() {
 	const data = await getBlogs({
 		orderBy: {
@@ -76,8 +79,8 @@ async function Financing() {
 						</div>
 					</div>
 				</div>
-				<div className="px-4 sm:px-12 pt-4 sm:pt-8 space-y-8">
-					<div className="grid sm:grid-cols-4 gap-4">
+				<div className=" pt-4 sm:pt-8 grid gap-10">
+					<div className="grid sm:grid-cols-4 gap-4 px-4 sm:px-12">
 						{financeCardData.map((c, i) => (
 							<div key={c.title} className="flex flex-col sm:flex-row gap-4">
 								<Card className="px-6 bg-[#f5f4f4] py-6 flex flex-col space-y-4">
@@ -108,37 +111,113 @@ async function Financing() {
 							</div>
 						))}
 					</div>
-					<div className="grid grid-cols-3 gap-4 ">
-						{data.map((b) => (
+					<div className="bg-[#333] grid sm:grid-cols-[auto,60%] text-white">
+						<div className="py-8 pt-16 px-4 sm:px-12 flex flex-col gap-4">
+							<h3 className="text-xl font-bold">Get Finance</h3>
+							<p>
+								Whether you are getting ready for a new season or starting a new
+								construction project, we can ensure that you have what you need
+								to be successful and alleviate any concerns, stresses, or
+								frustrations you may carry.
+							</p>
+							<p>
+								This is why we offer value that no other lender can — a deep
+								understanding of your industry, unmatched equipment expertise,
+								and personal financial solutions, provided to you how you
+								prefer, as fast as possible.
+							</p>
+						</div>
+						<div
+							style={{
+								position: 'relative',
+								paddingBottom: '56.25%',
+								overflow: 'hidden',
+								maxWidth: '100%',
+								height: 'auto',
+							}}>
+							<iframe
+								style={{
+									position: 'absolute',
+									top: 0,
+									left: 0,
+									width: '100%',
+									height: '100%',
+								}}
+								src="https://www.youtube.com/embed/esOg1TBrVBM"
+								title="YouTube video player"
+								frameBorder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowFullScreen></iframe>
+						</div>
+					</div>
+					<div className="grid sm:grid-cols-3 gap-4 px-4 mt-3 sm:px-12 ">
+						{financeData.map((b) => (
 							<div
 								key={b.title}
 								className=" bg-transparent shadow-none h-full w-full flex flex-col  gap-2">
 								<div className="w-full">
 									<img
-										src={b.images[0].url || ''}
+										src={b.image.src}
 										alt={b.title}
 										className="w-full object-cover h-48 rounded-md"
 									/>
 								</div>
 								<div className="flex flex-1 flex-col gap-1 py-2">
-									<h2 className="text-xl sm:text-2xl text-green-500">
+									<h2 className="text-lg sm:text-xl text-green-500">
 										{b.title}
 									</h2>
 									<div className="flex-1">
-										<p className="text-base font-bold line-clamp-6 text-gray-500">
-											{b.content}
-										</p>
+										<p className="text-base text-black">{b.des}</p>
 									</div>
 								</div>
-								<Link href={`#`}>
+								<Link href={b.link}>
 									<Button
 										variant={'outline'}
 										className="border-2 border-green-600 text-green">
-										Read More
+										{b.slug}
 									</Button>
 								</Link>
 							</div>
 						))}
+					</div>
+					<div className="grid gap-8 px-4 py-8 bg-[#f4f3f3] sm:px-12">
+						<div>
+							<h1 className="text-xl sm:text-3xl text-center">
+								Latest News & Updates
+							</h1>
+						</div>
+						<div className="grid sm:grid-cols-3 gap-4 px-4 sm:px-12 ">
+							{data.map((b) => (
+								<div
+									key={b.title}
+									className=" bg-transparent shadow-none h-full w-full flex flex-col  gap-2">
+									<div className="w-full">
+										<img
+											src={b.images[0].url || ''}
+											alt={b.title}
+											className="w-full object-cover h-48 rounded-md"
+										/>
+									</div>
+									<div className="flex flex-1 flex-col gap-1 py-2">
+										<h2 className="text-lg sm:text-xl text-green-500">
+											{b.title}
+										</h2>
+										<div className="flex-1">
+											<p className="text-base  line-clamp-6 text-black">
+												{b.content}
+											</p>
+										</div>
+									</div>
+									<Link href={`#`}>
+										<Button
+											variant={'outline'}
+											className="border-2 border-green-600 text-green">
+											Read More
+										</Button>
+									</Link>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -147,3 +226,27 @@ async function Financing() {
 }
 
 export default Financing;
+
+const financeData = [
+	{
+		title: 'How to Finance',
+		des: 'We can make owning and operating equipment easy and affordable. By helping you find the right financial solution to keep your business running, we enable you to purchase the John Deere equipment you need at the right time. Find out more about our easy process.',
+		link: '/finance/#',
+		slug: 'Read More',
+		image: HowToFinance,
+	},
+	{
+		title: 'Current Offers',
+		des: 'At John Deere Financial, we continuously work towards providing you with the best solution for your business. With special offers across South Africa and Sub-Saharan Africa, you can purchase quality John Deere equipment while enjoying the full John Deere experience.',
+		link: '/finance/#',
+		slug: 'View Offers',
+		image: Offers,
+	},
+	{
+		title: 'Contact Us',
+		des: 'At John Deere Financial, we want to participate in your decision-making journey. Trust us to be your advisor when making new equipment decisions. We’ll help design a financial solution that enables you to purchase the equipment you need.',
+		link: '/finance/#',
+		slug: 'Contact Us',
+		image: ContactUs,
+	},
+];
