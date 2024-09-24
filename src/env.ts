@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const schema = z.object({
-	DATABASE_URL: z.string(),
+	POSTGRES_URL: z.string(),
 	SMTP_HOST: z.string(),
 	SMTP_PORT: z.string(),
 	SMTP_USER: z.string(),
