@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ImageListType } from 'react-images-uploading';
 
 export const MessageFormSchema = z.object({
 	fullName: z.string().min(2, {
@@ -92,3 +93,27 @@ export const AuthSignupFormSchema = z.object({
 	state: z.string().optional(),
 });
 export type AuthSignupFormInput = z.infer<typeof AuthSignupFormSchema>;
+
+export const ImageSchema = z
+	.object({
+		dataURL: z.string().optional(),
+		file: z.any().optional(),
+	})
+	.catchall(z.any().optional());
+
+export const imagePath = z.object({
+	url: z.string(),
+});
+
+export const PostFormSchema = z.object({
+	title: z.string().min(2, {
+		message: 'Title must be at least 2 characters.',
+	}),
+	content: z.string().min(10, {
+		message: 'Content must be at least 10 characters.',
+	}),
+	id: z.string().optional(),
+	imagePaths: z.array(imagePath).optional(),
+	category: z.string(),
+});
+export type PostFormInput = z.infer<typeof PostFormSchema>;

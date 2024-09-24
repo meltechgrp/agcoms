@@ -29,6 +29,7 @@ import { formatPhoneNumber } from '../utils';
 export interface ActionResponse<T> {
 	fieldError?: Partial<Record<keyof T, string | undefined>>;
 	formError?: string;
+	data?: boolean;
 }
 
 export async function login(

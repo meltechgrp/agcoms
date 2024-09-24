@@ -2,8 +2,10 @@ import { Card } from '@/components/ui/card';
 import EmptyState from '@/components/shared/empty-state';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { getBlogs } from './components/query';
+import { getBlogs, getPostData } from './components/query';
 import RecentBlogs from './components/recent-blogs';
+import { AlertTriggerButton } from '@/components/shared/alert-wrapper';
+import { PostAlert } from './components/post';
 
 type Props = {
 	searchParams: {
@@ -11,8 +13,8 @@ type Props = {
 		orderBy?: string;
 		take?: string;
 		skip?: string;
-		memberId?: string;
-		editMember?: string;
+		postId?: string;
+		edit?: string;
 	};
 };
 export default async function Page(props: Props) {
@@ -24,6 +26,7 @@ export default async function Page(props: Props) {
 		take: 50,
 		skip: 0,
 	});
+	const postData = await getPostData(searchParams.postId);
 	return (
 		<div className="w-full h-full py-8 pl-0 space-y-6">
 			<div>
@@ -37,20 +40,24 @@ export default async function Page(props: Props) {
 					<Card className="w-full divide-y">
 						<div className="p-6 flex justify-between">
 							<div className="flex-1">
-								<h2 className="font-medium text-lg">All AGCOMS Blogs</h2>
+								<h2 className="font-medium text-lg">All AGCOMS Publications</h2>
 								<p className="text-gray-500 text-xs">
-									Find all new and existing blogs.
+									Find all new and existing publications.
 								</p>
 							</div>
-							<Button variant="outline">
+
+							<AlertTriggerButton
+								variant="outline"
+								alertKey="postId"
+								alertValue="new">
 								<Plus className="h-5 w-5 mr-2" />
-								New Blog post
-							</Button>
+								New publication
+							</AlertTriggerButton>
 						</div>
 					</Card>
 					<div>
 						<div className="flex flex-col gap-4">
-							<h4>Recent blogs posts</h4>
+							<h4>Recent publications</h4>
 							<RecentBlogs data={data} />
 						</div>
 					</div>
@@ -60,12 +67,21 @@ export default async function Page(props: Props) {
 					className=" border-0 shadow-none"
 					title="No available data"
 					description="Blogs will be shown when created!">
-					<Button variant="outline">
+					<AlertTriggerButton
+						variant="outline"
+						alertKey="postId"
+						alertValue="new">
 						<Plus className="h-5 w-5 mr-2" />
-						New Blog post
-					</Button>
+						New publication
+					</AlertTriggerButton>
 				</EmptyState>
 			)}
+			<PostAlert
+				open={!!searchParams.postId}
+				postId={searchParams.postId}
+				edit={searchParams.edit}
+				post={postData}
+			/>
 		</div>
 	);
 }

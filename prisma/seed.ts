@@ -3,6 +3,19 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient({
 	log: ['query'],
 });
+async function clearDatabase() {
+	try {
+		// Disable foreign key checks (PostgreSQL)
+		await prisma.$executeRaw`TRUNCATE TABLE "Blog", "BlogCategory", "Products", "Category", "Subcategory", "Image", "User" RESTART IDENTITY CASCADE`;
+
+		console.log('Database cleared');
+	} catch (error) {
+		console.error('Error clearing the database:', error);
+	} finally {
+		await prisma.$disconnect();
+	}
+}
+
 async function main() {
 	await prisma.$connect();
 	console.log('Populating data');
@@ -105,16 +118,21 @@ async function main() {
 	for (const categoryData of categoriesWithSubcategories) {
 		const { categoryName, bannerImage, link, slug, subcategories } =
 			categoryData;
-
-		// Create or upsert category with a banner image
-		const category = await prisma.category.upsert({
+		const cat = await prisma.category.findUnique({
 			where: { name: categoryName },
-			update: {}, // If the category already exists, do nothing
-			create: {
+		});
+		if (cat) continue;
+		// Create or upsert category with a banner image
+		const category = await prisma.category.create({
+			data: {
 				name: categoryName,
-				bannerImage: bannerImage,
 				link: link,
 				slug: slug,
+				images: {
+					create: {
+						url: bannerImage,
+					},
+				},
 			},
 		});
 
@@ -122,6 +140,10 @@ async function main() {
 		if (!subcategories) continue;
 		// Create subcategories for each category with banner images
 		for (const subcategoryData of subcategories) {
+			const sub = await prisma.subcategory.findFirst({
+				where: { name: subcategoryData.name },
+			});
+			if (sub) continue;
 			await prisma.subcategory.create({
 				data: {
 					name: subcategoryData.name,
@@ -172,7 +194,7 @@ For generations, we have been enabling our customers to purchase the equipment t
 It’s about building an enduring relationship by ensuring your financing works as hard and reliably for you as your equipment.
 
 After all, your success is our sole focus — your business is why we’re in business.`,
-			category: 'FINANCING',
+			category: 'Financing',
 			bannerImage: '/blog-banners/how-to-finance.avif',
 		},
 		{
@@ -204,7 +226,7 @@ provides custom-designed financial solutions and support with fast approvals. Jo
 Financial invites customers based in the construction, mining, quarrying business,
 and farmers interested in purchasing new equipment to contact their nearest
 John Deere Financial representative.`,
-			category: 'FINANCING',
+			category: 'Financing',
 			bannerImage: '/blog-banners/construction-and-mining-machinery.avif',
 		},
 	];
@@ -218,14 +240,42 @@ John Deere Financial representative.`,
 		await prisma.blog.create({
 			data: {
 				title,
-				bannerImage,
+				images: {
+					create: {
+						url: bannerImage,
+					},
+				},
 				slug,
 				content,
-				category: category as any,
+				category: {
+					connectOrCreate: {
+						where: { name: category },
+						create: { name: category },
+					},
+				},
 			},
 		});
 
 		console.log(`Blog ${title} created or already exists.`);
+	}
+}
+
+async function BlogCategory() {
+	const categories = [
+		{ name: 'Financing' },
+		{ name: 'Construction' },
+		{ name: 'Products' },
+	];
+
+	for (const category of categories) {
+		const { name } = category;
+		const c = await prisma.category.findFirst({ where: { name } });
+		if (c) continue;
+		await prisma.blogCategory.create({
+			data: {
+				name,
+			},
+		});
 	}
 }
 
@@ -239,6 +289,15 @@ main()
 		await prisma.$disconnect();
 	});
 blogs()
+	.catch(async (e) => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
+	})
+	.finally(async () => {
+		await prisma.$disconnect();
+	});
+BlogCategory()
 	.catch(async (e) => {
 		console.error(e);
 		await prisma.$disconnect();

@@ -1,23 +1,20 @@
 // Define the Blc og model
 model Blog {
-  id          String        @id @default(cuid())
-  title       String
-  header      String?
-  headerDes   String?
-  content     String
-  slug        String?
-  category    BlogCategory?
-  bannerImage String? // URL of the product's banner image
-  products    Products[]    @relation("ProductBlogs") // Many-to-many relation with Products
-  images      Image[] // A Blog can have many Images
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  id         String        @id @default(cuid())
+  title      String
+  content    String
+  slug       String?
+  category   BlogCategory? @relation(fields: [categoryId], references: [id]) // Relation to BlogCategory
+  categoryId String?
+  images     Image[] // A Blog can have many Images
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
 }
 
-enum BlogCategory {
-  FINANCING
-  TECHNOLOGY
-  PRODUCTS
-  SCIENCE
-  OTHERS
+model BlogCategory {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  blogs     Blog[] // A BlogCategory can have many Blogs
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

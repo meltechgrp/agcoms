@@ -17,7 +17,7 @@ export const AppRoutes = [
 	},
 	{
 		path: '/admin/blogs',
-		name: 'Blogs',
+		name: 'Publications',
 		icon: MessageCircleIcon,
 		section: 'home',
 		note: 'Can edit and delete splits',

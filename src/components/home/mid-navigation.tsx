@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function MidNavigation() {
 	return (
 		<div className="py-8">
-			<div className="w-full px-4 sm:w-fit py-2 gap-x-10 gap-y-2 flex flex-col sm:flex-row  sm:bg-black/80 mx-auto">
+			<div className="w-full px-4 sm:w-fit gap-x-12 xl:gap-x-16 gap-y-2 flex flex-col sm:flex-row  sm:bg-black/80 mx-auto">
 				{midNavigationData.map((nav) => (
 					<div
 						key={nav.title}

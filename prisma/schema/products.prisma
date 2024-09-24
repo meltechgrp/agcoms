@@ -1,26 +1,25 @@
 model Category {
   id            String        @id @default(cuid())
   name          String        @unique
-  bannerImage   String?
   slug          String?
   link          String
   subcategories Subcategory[]
+  images        Image[] // A Product can have many Images
   products      Products[]
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 }
 
 model Subcategory {
-  id          String     @id @default(cuid())
-  name        String
-  category    Category   @relation(fields: [categoryId], references: [id]) // Belongs to a Category
-  categoryId  String
-  bannerImage String?
-  slug        String?
-  link        String?
-  products    Products[] // A Subcategory has many Products
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id         String     @id @default(cuid())
+  name       String
+  category   Category   @relation(fields: [categoryId], references: [id]) // Belongs to a Category
+  categoryId String
+  slug       String?
+  link       String?
+  products   Products[] // A Subcategory has many Products
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 }
 
 // Define the Product model
@@ -33,10 +32,8 @@ model Products {
   categoryId    String
   subcategory   Subcategory? @relation(fields: [subcategoryId], references: [id]) // Optionally belongs to a Subcategory
   subcategoryId String?
-  bannerImage   String?
   slug          String?
   link          String?
-  blogs         Blog[]       @relation("ProductBlogs") // Many-to-many relation with Blogs
   images        Image[] // A Product can have many Images
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
