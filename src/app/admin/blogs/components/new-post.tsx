@@ -216,7 +216,7 @@ const NewPost = (props: { post?: PostData }) => {
 								<Button
 									disabled={loading}
 									size={'lg'}
-									className="w-full"
+									className=" flex-1"
 									type="submit">
 									{loading && (
 										<LoaderIcon className="mr-2 h-4 w-4 animate-spin" />

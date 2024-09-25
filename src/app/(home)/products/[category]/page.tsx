@@ -8,7 +8,8 @@ import {
 } from '@/components/ui/breadcrumb';
 import { NavMenuData } from '@/lib/constants';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+import Agriculture from './agriculture';
 
 interface Props {
 	params: {
@@ -20,6 +21,14 @@ function ProductCategory({ params: { category } }: Props) {
 		return NavMenuData[0].sub.find(
 			(c) => c.title.toLowerCase() === category || c?.slug === category
 		);
+	}, [category]);
+	const PageDetails = useCallback(() => {
+		switch (category) {
+			case 'agriculture':
+				return <Agriculture />;
+			default:
+				return <div>Nothing to see here</div>;
+		}
 	}, [category]);
 	return (
 		<div>
@@ -81,6 +90,7 @@ function ProductCategory({ params: { category } }: Props) {
 						))}
 					</div>
 				</div>
+				<PageDetails />
 			</div>
 		</div>
 	);
