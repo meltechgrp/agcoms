@@ -50,23 +50,23 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: 'Specialty Narrow (36 HP)',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/tractors/3-family-compact-utility-tractors/3038e-compact-utility-tractor/',
 							},
 							{
 								title: '5 Series (30-90 HP)',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/tractors/5-series-tractors/',
 							},
 							{
 								title: '6 Series (95-250 HP)',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/tractors/6-series-tractors/',
 							},
 							{
 								title: '7 Series (200-230 HP)',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/tractors/row-crop-tractors/7-family-row-crop-tractors/7j-series-tractors/',
 							},
 							{
 								title: 'Front end loaders',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/front-end-loaders-tractors/',
 							},
 						],
 					},
@@ -75,11 +75,11 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: '8R Series (230-410 HP)',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/tractors/8-series-tractor/',
 							},
 							{
 								title: '9R Series (470-570 HP)',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/tractors/9-series-tractors/',
 							},
 						],
 					},
@@ -88,7 +88,7 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: '9R Series (520-570 HP)',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/tractors/scraper-special-tractors/',
 							},
 						],
 					},
@@ -97,35 +97,35 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: 'Precision Ag Technology',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/technology-products/precision-ag/',
 							},
 							{
 								title: 'Tillage',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/tillage/',
 							},
 							{
 								title: 'Planting Equipments',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/planting-equipment/',
 							},
 							{
 								title: 'Seeding Equipments',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/seeding-equipment/',
 							},
 							{
 								title: 'Application Equipments',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/application-equipment/',
 							},
 							{
 								title: 'Combines',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/combine-harvesters/',
 							},
 							{
 								title: 'Hay Forage',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/hay-forage/',
 							},
 							{
 								title: 'Scrapers',
-								link: '/products/agriculture/#',
+								link: 'https://www.deere.africa/en/scraper-systems/',
 							},
 						],
 					},
@@ -142,11 +142,11 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: 'Lawn Tractors',
-								link: '/products/lawn-garden/#',
+								link: 'https://www.deere.africa/en/mowers/lawn-tractors/',
 							},
 							{
 								title: 'Residential ZTrak™ Zero-Turn Mowers',
-								link: '/products/lawn-garden/#',
+								link: 'https://www.deere.africa/en/mowers/residential-ztrak-zero-turn-mowers/',
 							},
 						],
 					},
@@ -161,11 +161,11 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: 'Skid Steers',
-								link: '/products/construction/#',
+								link: 'https://www.deere.africa/en/skid-steers/',
 							},
 							{
 								title: 'Backhoes',
-								link: '/products/construction/#',
+								link: 'https://www.deere.africa/en/backhoes/',
 							},
 						],
 					},
@@ -173,11 +173,11 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: 'Wheel Loaders',
-								link: '/products/construction/#',
+								link: 'https://www.deere.africa/en/wheel-loaders/',
 							},
 							{
 								title: 'Dozers',
-								link: '/products/construction/#',
+								link: 'https://www.deere.africa/en/dozers/',
 							},
 						],
 					},
@@ -185,11 +185,11 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: 'Motor Graders',
-								link: '/products/construction/#',
+								link: 'https://www.deere.africa/en/motor-graders/',
 							},
 							{
 								title: 'Excavators',
-								link: '/products/construction/#',
+								link: 'https://www.deere.africa/en/excavators/',
 							},
 						],
 					},
@@ -383,15 +383,15 @@ export const NavMenuData: NavMenuDataProps[] = [
 						cats: [
 							{
 								title: 'Leap Forward',
-								link: '/financing/#',
+								link: 'https://www.deere.africa/en/finance/financing/leapforward/',
 							},
 							{
 								title: 'Commercial Farming',
-								link: '/financing/#',
+								link: 'https://www.deere.africa/en/finance/financing/commercial-farming/',
 							},
 							{
 								title: 'Emerging Farming',
-								link: '/financing/#',
+								link: 'https://www.deere.africa/en/finance/financing/emerging-farming/',
 							},
 						],
 					},
@@ -404,15 +404,15 @@ export const NavMenuData: NavMenuDataProps[] = [
 		sub: [
 			{
 				title: 'Parts',
-				link: '/parts-services/parts',
+				link: 'https://www.deere.africa/en/parts-service/parts/',
 			},
 			{
 				title: 'Services & Support',
-				link: '/parts-services/services-support',
+				link: 'https://www.deere.africa/en/parts-service/safety/',
 			},
 			{
 				title: 'Shop Parts',
-				link: '/parts-services/shop-parts',
+				link: 'https://www.deere.africa/en/stellarsupport/',
 			},
 		],
 	},
@@ -436,32 +436,32 @@ export const midNavigationData: {
 }[] = [
 	{
 		title: 'Locate a Dealer',
-		link: '#',
+		link: 'https://www.deere.africa/en/our-company/contact-us/',
 		icon: MapPin,
 	},
 	{
 		title: 'Offers & Discount',
-		link: '#',
+		link: 'https://www.deere.africa/en/finance/financing/current-offers/',
 		icon: Tag,
 	},
 	{
 		title: 'Parts',
-		link: '#',
+		link: 'https://www.deere.africa/en/parts-service/parts/',
 		icon: Shield,
 	},
 	{
 		title: 'Parts Online',
-		link: '#',
+		link: 'https://parts.deere.africa/index.php?route=common/home',
 		icon: ShoppingCart,
 	},
 	{
 		title: 'Technology',
-		link: '#',
+		link: 'https://www.deere.africa/en/technology-products/precision-ag/',
 		icon: MailOpen,
 	},
 	{
 		title: 'News Released',
-		link: '#',
+		link: 'https://www.deere.africa/en/our-company/news-media/',
 		icon: Download,
 	},
 ] as const;

@@ -54,7 +54,7 @@ function ProductSections() {
 										.slice(rowIndex * 3, rowIndex * 3 + 3)
 										.map((product) => (
 											<Link
-												href={`/products/${product.link}`}
+												href={`${product.link}`}
 												key={product.title}
 												className=" text-sm w-fit text-green-600 font-semibold">
 												{product.title}

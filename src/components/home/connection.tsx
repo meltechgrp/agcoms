@@ -41,11 +41,11 @@ const data = [
 	{
 		title: 'Get Connected!',
 		url: image1,
-		link: '#',
+		link: 'https://www.deere.com/en/technology-products/precision-ag-technology/data-management/jdlink/',
 	},
 	{
 		title: 'Manage Your Farm, Remotely',
 		url: image2,
-		link: '#',
+		link: 'https://www.deere.com/en/technology-products/precision-ag-technology/data-management/operations-center/',
 	},
 ];

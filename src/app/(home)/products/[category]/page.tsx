@@ -27,7 +27,7 @@ function ProductCategory({ params: { category } }: Props) {
 			case 'agriculture':
 				return <Agriculture />;
 			default:
-				return <div>Nothing to see here</div>;
+				return <div></div>;
 		}
 	}, [category]);
 	return (

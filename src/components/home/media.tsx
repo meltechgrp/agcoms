@@ -42,16 +42,16 @@ const data = [
 	{
 		title: 'Read',
 		image: read,
-		link: '#',
+		link: 'https://www.deere.africa/en/our-company/news-media/',
 	},
 	{
 		title: 'Watch',
 		image: watch,
-		link: '#',
+		link: 'https://www.youtube.com/c/JohnDeereAfrica/videos',
 	},
 	{
 		title: 'Listen',
 		image: podcast,
-		link: '#',
+		link: 'https://www.youtube.com/playlist?list=PLLtxGbAY1VBC9RolKMTrAlkCaxkHkVIEt',
 	},
 ];

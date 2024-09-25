@@ -52,7 +52,7 @@ export default function Footer() {
 			</Accordion>
 			<div className="space-y-10 sm:space-y-6 px-4">
 				<div className=" w-fit mx-auto">
-					<Link href={'#'}>
+					<Link href={'https://www.deere.africa/en/global-country-selector/'}>
 						<Button
 							variant={'outline'}
 							className=" h-12 px-8 flex items-center gap-2 bg-transparent border-2 border-gray-300">
@@ -112,37 +112,92 @@ const footerData = [
 	{
 		title: 'Products & Support',
 		links: [
-			{ title: 'Tractors', url: '#' },
-			{ title: 'Contact a Dealer', url: '#' },
-			{ title: 'Shop Parts', url: '#' },
-			{ title: 'Free Tractor Operator Training Ts&Cs', url: '#' },
-			{ title: 'Competition Ts&Cs', url: '#' },
-			{ title: "Tell us you're a John Deere Fan", url: '#' },
-			{ title: 'John Deere Financial', url: '#' },
-			{ title: "Free Service Parts T's and C's", url: '#' },
+			{ title: 'Tractors', url: 'https://www.deere.africa/en/tractors/' },
+			{
+				title: 'Contact a Dealer',
+				url: 'https://www.deere.africa/en/our-company/contact-us/',
+			},
+			{
+				title: 'Shop Parts',
+				url: 'https://www.deere.africa/en/finance/financing/',
+			},
+			{
+				title: 'Free Tractor Operator Training Ts&Cs',
+				url: 'https://parts.deere.africa/',
+			},
+			{
+				title: 'Competition Ts&Cs',
+				url: 'https://www.deere.africa/en/our-company/news-media/news-releases/2022/nov/competitions-terms-and-conditions/',
+			},
+			{
+				title: "Tell us you're a John Deere Fan",
+				url: 'https://www.deere.africa/en/our-company/news-media/news-releases/2022/dec/competition-terms-and-conditions/',
+			},
+			{
+				title: 'John Deere Financial',
+				url: 'https://www.deere.africa/en/campaigns/nampo-2023/',
+			},
+			{
+				title: "Free Service Parts T's and C's",
+				url: 'https://www.deere.com/assets/docs/region-1/ag-free-parts-campaign-5d-5e-6b-customer-tcs.docx',
+			},
 		],
 	},
 	{
 		title: 'Company Information',
 		links: [
-			{ title: 'PAIA MANUAL', url: '#' },
-			{ title: 'About Our Company', url: '#' },
-			{ title: 'History', url: '#' },
-			{ title: 'Careers', url: '#' },
-			{ title: 'Competition Ts&Cs', url: '#' },
-			{ title: 'News and Media', url: '#' },
-			{ title: 'Sustainability', url: '#' },
-			{ title: 'Terms and Conditions', url: '#' },
-			{ title: 'Ethics & Compliance', url: '#' },
+			{
+				title: 'PAIA MANUAL',
+				url: 'https://www.deere.com/assets/pdfs/region-1/homepage/032024-updated-john-deere-paia-manual-29-feb-2024-publication.pdf',
+			},
+			{
+				title: 'About Our Company',
+				url: 'https://www.deere.africa/en/our-company/',
+			},
+			{
+				title: 'History',
+				url: 'https://www.deere.africa/en/our-company/history/',
+			},
+			{
+				title: 'Careers',
+				url: 'https://www.deere.africa/en/our-company/john-deere-careers/',
+			},
+			{
+				title: 'News and Media',
+				url: 'https://www.deere.africa/en/our-company/news-media/',
+			},
+			{
+				title: 'Sustainability',
+				url: 'https://www.deere.africa/en/current-offers/promotions/',
+			},
+			{
+				title: 'Terms and Conditions',
+				url: 'https://www.deere.africa/en/current-offers/promotions/',
+			},
+			{
+				title: 'Ethics & Compliance',
+				url: 'https://about.deere.com/en-us/explore-john-deere/ethics-compliance/',
+			},
 		],
 	},
 ];
 
 const simpleF = [
-	{ link: '#', title: 'Site Map' },
-	{ link: '#', title: 'Privacy and Data' },
-	{ link: '#', title: 'Cookie Statement' },
-	{ link: '#', title: 'Terms of Use' },
-	{ link: '#', title: 'Contact Us' },
-	{ link: '#', title: 'Cookie Preferences' },
+	{ link: 'https://www.deere.africa/en/equipment/', title: 'Site Map' },
+	{
+		link: 'https://www.deere.africa/en/privacy-and-data/',
+		title: 'Privacy and Data',
+	},
+	{
+		link: 'https://www.deere.africa/en/privacy-and-data/cookie-statement/',
+		title: 'Cookie Statement',
+	},
+	{
+		link: 'https://www.deere.africa/en/privacy-and-data/terms/',
+		title: 'Terms of Use',
+	},
+	{
+		link: 'https://www.deere.africa/en/our-company/contact-us/',
+		title: 'Contact Us',
+	},
 ];

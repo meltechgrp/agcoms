@@ -1,6 +1,7 @@
 'use client';
 import solutionBanner from '@/assets/images/banners/afme-tractor-banner.png';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 export default function Solution() {
 	const style = {
@@ -27,12 +28,19 @@ export default function Solution() {
 						</p>
 					</div>
 					<div className="flex space-x-2 sm:space-x-4">
-						<Button className="px-6 h-12 hover:bg-green-600 hover:text-white transition-all duration-700 text-black sm:text-white bg-transparent text-sm font-bold sm:font-semibold border-2 hover:border-green-600 border-green-600 sm:border-white">
-							Agcoms Finacials
-						</Button>
-						<Button className="px-6 h-12 hover:bg-green-600 hover:text-white transition-all duration-700 text-black sm:text-white bg-transparent text-sm font-bold sm:font-semibold border-2 hover:border-green-600 border-green-600 sm:border-white">
-							Leap Forward
-						</Button>
+						<Link href={'https://www.deere.africa/en/finance/financing/'}>
+							<Button className="px-6 h-12 hover:bg-green-600 hover:text-white transition-all duration-700 text-black sm:text-white bg-transparent text-sm font-bold sm:font-semibold border-2 hover:border-green-600 border-green-600 sm:border-white">
+								Agcoms Finacials
+							</Button>
+						</Link>
+						<Link
+							href={
+								'https://www.deere.africa/en/finance/financing/leapforward/'
+							}>
+							<Button className="px-6 h-12 hover:bg-green-600 hover:text-white transition-all duration-700 text-black sm:text-white bg-transparent text-sm font-bold sm:font-semibold border-2 hover:border-green-600 border-green-600 sm:border-white">
+								Leap Forward
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</div>
