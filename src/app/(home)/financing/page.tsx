@@ -208,7 +208,7 @@ async function Financing() {
 											</p>
 										</div>
 									</div>
-									<Link href={`#`}>
+									<Link href={`/blogs/${b.id}`}>
 										<Button
 											variant={'outline'}
 											className="border-2 border-green-600 text-green">
