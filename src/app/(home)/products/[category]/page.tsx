@@ -27,7 +27,7 @@ function ProductCategory({ params: { category } }: Props) {
 			case 'agriculture':
 				return <Agriculture />;
 			default:
-				return <div></div>;
+				return <Agriculture />;
 		}
 	}, [category]);
 	return (
@@ -62,17 +62,18 @@ function ProductCategory({ params: { category } }: Props) {
 					<img
 						src={`/p-categories/${category}.avif`}
 						alt={category}
-						className="w-screen sm:w-[1350px] object-fill h-[150px] sm:h-[320px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
+						className="w-screen sm:w-[1350px] object-fill h-[150px] sm:h-[420px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
 					/>
 					<h2 className="text-3xl sm:text-5xl text-center sm:text-start capitalize text-black sm:text-white font-bold relative z-10">
 						{cat?.title || ''}
+						<span className="absolute inset-0 bg-black rounded-lg blur-lg -z-10"></span>
 					</h2>
 				</div>
 				<div className="px-4 sm:px-12 py-10 bg-[#f4f3f3]">
 					<div className="flex justify-between gap-6 flex-wrap">
 						{cat?.categories?.map((c) => (
 							<div key={c.title} className="w-[45%] sm:w-[22%] space-y-2">
-								<h3 className="text-base capitalize text-gray-800 font-bold">
+								<h3 className="text-base capitalize  text-gray-800 font-bold">
 									{c?.title || ''}
 								</h3>
 								<ul className="grid gap-1 py-2">
