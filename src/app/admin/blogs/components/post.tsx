@@ -3,13 +3,13 @@ import {
 	AlertTriggerButton,
 	AlertWrapper,
 } from '@/components/shared/alert-wrapper';
-import { SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { format } from 'date-fns';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { PostData } from './query';
+import { DeletePost, PostData } from './query';
 import NewPost from './new-post';
+import { toast } from 'sonner';
 
 type Props = {
 	open: boolean;
@@ -89,6 +89,20 @@ export function PostAlert({ open, post, postId, edit }: Props) {
 											alertValue={post?.id || 'new'}
 											className="px-8 py-2">
 											Cancel
+										</AlertTriggerButton>
+										<AlertTriggerButton
+											onClick={async () => {
+												const res = await DeletePost(post?.id || '');
+												if (!res) {
+													toast.error('Please try again');
+												} else {
+													toast.success('Post deleted successfully');
+												}
+											}}
+											alertKey="postId"
+											alertValue={post?.id || 'new'}
+											className="px-8 py-2">
+											Delete
 										</AlertTriggerButton>
 									</div>
 								</div>

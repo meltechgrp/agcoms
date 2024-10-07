@@ -1,82 +1,64 @@
 import prisma from '@/lib/prisma';
-import mime from 'mime';
 import { join } from 'path';
 import { stat, mkdir, writeFile } from 'fs/promises';
 import { NextRequest, NextResponse } from 'next/server';
-import _ from 'lodash';
 
 export async function POST(req: NextRequest) {
-	const formData = await req.formData();
-	const images = formData.getAll('image') as File[];
-	const title = formData.get('title') as string;
-	if (!title) return NextResponse.json([]);
-	console.log('in api');
-	const uploadedFiles: string[] = [];
-	for (const image of images) {
-		// Ensure the file is valid
-		if (image && image instanceof File) {
-			const buffer = Buffer.from(await image.arrayBuffer());
-			const relativeUploadDir = `/blog-banners`;
-
-			const uploadDir = join(process.cwd(), 'public', relativeUploadDir);
-
-			// Create the directory if it doesn't exist
-			try {
-				await stat(uploadDir);
-			} catch (e: any) {
-				if (e.code === 'ENOENT') {
-					await mkdir(uploadDir, { recursive: true });
-				} else {
-					console.error(
-						'Error while trying to create directory when uploading a file\n',
-						e
-					);
-					return NextResponse.json(
-						{ error: 'Something went wrong.' },
-						{ status: 500 }
-					);
-				}
-			}
-
-			try {
-				// Generate a unique filename
-				const filename = `${image.name}`;
-
-				// Write the file to the upload directory
-				await writeFile(`${uploadDir}/${filename}`, buffer);
-				const fileUrl = `${relativeUploadDir}/${filename}`;
-
-				// Save the uploaded file path to the array
-				uploadedFiles.push(fileUrl);
-			} catch (e) {
-				console.error('Error while trying to upload a file\n', e);
-				return NextResponse.json(
-					{ error: 'Something went wrong.' },
-					{ status: 500 }
-				);
-			}
-		}
-	}
 	try {
-		let c = await prisma.blog.findFirst({ where: { title: title } });
-		console.log(c, uploadedFiles);
-		c &&
-			uploadedFiles?.map(async (img) => {
-				await prisma.image.create({
-					data: {
-						url: img,
-						blog: {
-							connect: { id: c.id },
-						},
-					},
-				});
-			});
+		const formData = await req.formData();
+		const images = formData.getAll('image') as File[];
+		const title = formData.get('title') as string;
+		if (!title) return NextResponse.json({ message: 'Title is required' });
+
+		const existingBlog = await prisma.blog.findFirst({ where: { title } });
+		if (!existingBlog) return NextResponse.json({ message: 'Blog not found' });
+
+		const existingImages = await prisma.image.findMany({
+			where: { blogId: existingBlog.id },
+			select: { url: true },
+		});
+		const existingImageUrls = existingImages.map((img) => img.url);
+
+		const relativeUploadDir = '/blog-banners';
+		const uploadDir = join(process.cwd(), 'public', relativeUploadDir);
+
+		await ensureDirectoryExists(uploadDir);
+
+		const newFiles = await Promise.all(
+			images.map(async (image) => {
+				const fileUrl = `${relativeUploadDir}/${image.name}`;
+				if (existingImageUrls.includes(fileUrl)) return null;
+
+				const buffer = Buffer.from(await image.arrayBuffer());
+				await writeFile(join(uploadDir, image.name), buffer);
+				return fileUrl;
+			})
+		);
+
+		const uploadedFiles = newFiles.filter(Boolean) as string[];
+
+		await prisma.image.createMany({
+			data: uploadedFiles.map((url) => ({ url, blogId: existingBlog.id })),
+		});
+
 		return NextResponse.json({ uploadedFiles });
 	} catch (e) {
-		console.error('Error while trying to save to the file\n', e);
+		console.error('Error handling upload', e);
 		return NextResponse.json(
-			{ error: 'Failed to save images to the files.' },
+			{ error: 'Something went wrong' },
 			{ status: 500 }
 		);
+	}
+}
+
+async function ensureDirectoryExists(directory: string) {
+	try {
+		await stat(directory);
+	} catch (e: any) {
+		if (e.code === 'ENOENT') {
+			await mkdir(directory, { recursive: true });
+		} else {
+			throw new Error(`Failed to create directory: ${e.message}`);
+		}
 	}
 }

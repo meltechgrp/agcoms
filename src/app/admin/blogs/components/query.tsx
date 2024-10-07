@@ -128,3 +128,15 @@ export async function CreatePost(
 		};
 	}
 }
+
+export async function DeletePost(postId: string) {
+	try {
+		await prisma.blog.delete({
+			where: { id: postId },
+		});
+		return true;
+	} catch (error) {
+		console.log(error);
+		return false;
+	}
+}

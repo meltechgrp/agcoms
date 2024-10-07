@@ -27,6 +27,7 @@ import BlogCategorySelect from '@/components/shared/select-blog-category';
 import ImageUploader from '@/components/shared/image-uploader';
 import { Textarea } from '@/components/ui/text-area';
 import { ImageListType } from 'react-images-uploading';
+import { Img } from '@react-email/components';
 
 const NewPost = (props: { post?: PostData }) => {
 	const { post } = props;
@@ -76,6 +77,10 @@ const NewPost = (props: { post?: PostData }) => {
 		return dispatch(data);
 	}
 	useEffect(() => {
+		const urls = post?.images.map((im) => ({ dataURL: im.url }));
+		urls && setImages([...urls]);
+	}, [post]);
+	useEffect(() => {
 		if (state?.fieldError) {
 			setLoading(false);
 			Object.entries(state.fieldError).forEach(([key, value]) => {
@@ -100,11 +105,13 @@ const NewPost = (props: { post?: PostData }) => {
 							: 'Publication created successfully'
 					);
 					form.reset();
-					post ? dismissAlert('edit', 'true') : dismissAlert('postId', 'new');
+					return post
+						? dismissAlert('edit', 'true')
+						: dismissAlert('postId', 'new');
 				})
 				.catch(() => {
 					setLoading(false);
-					toast.error('Failed to upload publication images');
+					return toast.error('Failed to upload publication images');
 				});
 		}
 	}, [state?.formError, state?.fieldError, state?.data]);
@@ -117,7 +124,7 @@ const NewPost = (props: { post?: PostData }) => {
 					</span>
 				</h2>
 			</div>
-			<div className="my-4">
+			<div className="my-4 px-2">
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleSubmit)}
@@ -207,8 +214,8 @@ const NewPost = (props: { post?: PostData }) => {
 
 							<AlertDialogFooter className="w-full flex flex-row gap-3 mt-3 ">
 								<AlertTriggerButton
-									alertKey="postId"
-									alertValue={'new'}
+									alertKey="edit"
+									alertValue={'true'}
 									type="button"
 									className="px-8 py-2 flex-1">
 									Cancel
