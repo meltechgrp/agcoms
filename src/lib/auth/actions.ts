@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 // import { generateId, Scrypt } from 'lucia';
 // import { isWithinExpirationDate, TimeSpan, createDate } from 'oslo';
-import { generateRandomString, alphabet } from 'oslo/crypto';
+// import { generateRandomString, alphabet } from 'oslo/crypto';
 
 import {
 	AuthLoginSchema,

@@ -4,21 +4,12 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "prisma generate && next build",
-		"lint": "next lint",
-		"seed": "prisma db seed",
-		"migrate": "bunx prisma migrate dev",
-		"prisma:migrate": "bunx prisma migrate dev",
-		"prisma:gen": "bunx prisma generate",
-		"prisma:deploy": "bunx prisma deploy",
-		"prisma:push": "bunx prisma db push",
-		"studio": "bunx prisma studio --port 5599"
+		"build": "next build",
+		"lint": "next lint"
 	},
 	"dependencies": {
 		"@gsap/react": "^2.1.1",
 		"@hookform/resolvers": "^3.9.0",
-		"@lucia-auth/adapter-prisma": "^4.0.1",
-		"@prisma/client": "^5.10.2",
 		"@radix-ui/react-accordion": "^1.2.0",
 		"@radix-ui/react-alert-dialog": "^1.1.1",
 		"@radix-ui/react-avatar": "^1.1.0",
@@ -37,13 +28,10 @@
 		"@radix-ui/react-switch": "^1.1.0",
 		"@radix-ui/react-tabs": "^1.1.0",
 		"@radix-ui/react-tooltip": "^1.1.2",
-		"@react-email/components": "^0.0.25",
-		"@react-email/render": "^1.0.1",
 		"@tanstack/react-table": "^8.20.5",
 		"@types/lodash": "^4.17.9",
 		"@types/react-scroll": "^1.8.10",
 		"@types/uuid": "^10.0.0",
-		"@vercel/postgres": "^0.10.0",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"cmdk": "1.0.0",
@@ -53,12 +41,10 @@
 		"fs": "^0.0.1-security",
 		"google-libphonenumber": "^3.2.37",
 		"gsap": "^3.12.5",
-		"lucia": "^3.2.0",
 		"lucide-react": "^0.441.0",
 		"mime": "^4.0.4",
 		"next": "14.2.12",
 		"node-appwrite": "^14.1.0",
-		"nodemailer": "^6.9.15",
 		"path": "^0.12.7",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
@@ -78,24 +64,14 @@
 	"devDependencies": {
 		"@types/google-libphonenumber": "^7.4.30",
 		"@types/node": "^20.14.11",
-		"@types/nodemailer": "^6.4.15",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"autoprefixer": "^10.4.18",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
 		"postcss": "^8.4.39",
-		"prisma": "^5.10.2",
 		"tailwindcss": "^3.4.6",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.6.2"
-	},
-	"prisma": {
-		"seed": "bun run prisma/seed.ts"
-	},
-	"trustedDependencies": [
-		"@prisma/client",
-		"@prisma/engines",
-		"prisma"
-	]
+	}
 }
