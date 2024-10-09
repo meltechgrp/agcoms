@@ -1,6 +1,6 @@
 'use server';
 import { ActionResponse } from '@/lib/auth/actions';
-import { validateRequest } from '@/lib/auth/validate-request';
+// import { validateRequest } from '@/lib/auth/validate-request';
 import { PostFormInput, PostFormSchema } from '@/lib/validators/auth';
 
 export async function getBlogs(args: {

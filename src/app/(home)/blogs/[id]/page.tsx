@@ -6,7 +6,6 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import prisma from '@/lib/prisma';
 
 interface Props {
 	params: {
@@ -15,23 +14,7 @@ interface Props {
 }
 
 async function NewsUpdates({ params: { id } }: Props) {
-	const data = await prisma.blog.findUnique({
-		where: {
-			id: id,
-		},
-		select: {
-			id: true,
-			title: true,
-			createdAt: true,
-			content: true,
-			images: {
-				select: { url: true },
-			},
-			category: {
-				select: { name: true },
-			},
-		},
-	});
+	const data: any = null;
 	return (
 		<div className="space-y-20">
 			<Breadcrumb className="px-4 sm:px-12 py-6">

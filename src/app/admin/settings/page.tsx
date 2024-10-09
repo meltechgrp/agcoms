@@ -2,7 +2,7 @@ import AccountDropdown from '@/app/admin/settings/components/account-dropdown';
 import { buttonVariants } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { validateRequest } from '@/lib/auth/validate-request';
+// import { validateRequest } from '@/lib/auth/validate-request';
 import { PlusIcon } from 'lucide-react';
 import Link from 'next/link';
 
