@@ -8,6 +8,7 @@ import {
 	AccordionTrigger,
 } from '@/components/ui/accordion';
 import NigeriaIcon from '../icons/nigeria-icon';
+import { uniqueId } from '@/lib/utils';
 
 export default function Footer() {
 	return (
@@ -15,13 +16,13 @@ export default function Footer() {
 			<div className="hidden sm:grid sm:grid-cols-3 gap-8 border-b border-gray-300 pb-10">
 				{footerData.map((fl) => (
 					<div key={fl?.title} className=" space-y-4">
-						<h2 className="text-md font-semibold">{fl.title}</h2>
+						<h2 className="text-md font-bold">{fl.title}</h2>
 						<div className="grid gap-2">
 							{fl.links?.map((link) => (
 								<Link
 									href={link.url}
-									key={link.title}
-									className="text-sm w-fit text-gray-600 font-normal">
+									key={uniqueId()}
+									className="text-sm w-fit text-gray-600 font-bold">
 									{link.title}
 								</Link>
 							))}
@@ -31,18 +32,18 @@ export default function Footer() {
 			</div>
 			<Accordion type="single" collapsible className=" sm:hidden w-full">
 				{footerData.map((fl, i) => (
-					<AccordionItem key={fl.title + i} value={`item-${i}`}>
+					<AccordionItem key={uniqueId()} value={`item-${i}`}>
 						<AccordionTrigger
 							isPlus={true}
-							className="text-md font-semibold gap-2 border-b hover:no-underline px-4 border-gray-400">
+							className="text-md font-bold gap-2 border-b hover:no-underline px-4 border-gray-400">
 							<span className="flex-1 flex justify-start">{fl.title}</span>
 						</AccordionTrigger>
 						<AccordionContent className="grid gap-2 px-8 py-4">
 							{fl.links?.map((link) => (
 								<Link
 									href={link.url}
-									key={link.title}
-									className="text-sm text-gray-700 font-normal">
+									key={uniqueId()}
+									className="text-sm text-gray-700 font-bold">
 									{link.title}
 								</Link>
 							))}
@@ -55,7 +56,7 @@ export default function Footer() {
 					<Link href={'https://www.deere.africa/en/global-country-selector/'}>
 						<Button
 							variant={'outline'}
-							className=" h-12 px-8 flex items-center gap-2 bg-transparent border-2 border-gray-300">
+							className=" h-12 px-8 flex text-sm font-bold items-center gap-2 bg-transparent border-2 border-gray-300">
 							<NigeriaIcon width={20} height={20} />
 							Africa & the Middle East
 						</Button>
@@ -65,14 +66,14 @@ export default function Footer() {
 					{simpleF.map((s) => (
 						<Link
 							href={s.link}
-							key={s.title}
-							className="text-xs font-normal transition-all duration-700  hover:underline text-gray-500">
+							key={uniqueId()}
+							className="text-xs font-bold transition-all duration-700  hover:underline text-gray-700">
 							{s.title}
 						</Link>
 					))}
 				</div>
 				<div className="flex justify-center">
-					<span className="text-xs font-normal text-gray-500">
+					<span className="text-xs font-bold text-gray-500">
 						Copyright © 2024 Agcoms Company. All Rights Reserved.
 					</span>
 				</div>
@@ -82,7 +83,7 @@ export default function Footer() {
 							<Link
 								target="_blank"
 								href={`https://www.${s.toLowerCase()}.com`}
-								key={s}
+								key={uniqueId()}
 								className="">
 								{s === 'Facebook' && (
 									<Facebook className="text-blue-600 w-5 h-5" />

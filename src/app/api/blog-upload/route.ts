@@ -1,4 +1,3 @@
-import prisma from '@/lib/prisma';
 import { join } from 'path';
 import { stat, mkdir, writeFile } from 'fs/promises';
 import { NextRequest, NextResponse } from 'next/server';
@@ -10,15 +9,6 @@ export async function POST(req: NextRequest) {
 		const title = formData.get('title') as string;
 		if (!title) return NextResponse.json({ message: 'Title is required' });
 
-		const existingBlog = await prisma.blog.findFirst({ where: { title } });
-		if (!existingBlog) return NextResponse.json({ message: 'Blog not found' });
-
-		const existingImages = await prisma.image.findMany({
-			where: { blogId: existingBlog.id },
-			select: { url: true },
-		});
-		const existingImageUrls = existingImages.map((img) => img.url);
-
 		const relativeUploadDir = '/blog-banners';
 		const uploadDir = join(process.cwd(), 'public', relativeUploadDir);
 
@@ -27,7 +17,6 @@ export async function POST(req: NextRequest) {
 		const newFiles = await Promise.all(
 			images.map(async (image) => {
 				const fileUrl = `${relativeUploadDir}/${image.name}`;
-				if (existingImageUrls.includes(fileUrl)) return null;
 
 				const buffer = Buffer.from(await image.arrayBuffer());
 				await writeFile(join(uploadDir, image.name), buffer);
@@ -36,10 +25,6 @@ export async function POST(req: NextRequest) {
 		);
 
 		const uploadedFiles = newFiles.filter(Boolean) as string[];
-
-		await prisma.image.createMany({
-			data: uploadedFiles.map((url) => ({ url, blogId: existingBlog.id })),
-		});
 
 		return NextResponse.json({ uploadedFiles });
 	} catch (e) {

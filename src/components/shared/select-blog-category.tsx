@@ -16,30 +16,29 @@ import { useEffect, useMemo, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { GetBlogCategories } from '@/lib/get-sectors-data';
+import {
+	getProductCategories,
+	ProCategories,
+} from '@/lib/actions/get-products';
 
 interface BlogCategorySelectProps {
 	name: string;
 	onValueChange: (name: string) => void;
 }
 
-interface BlogCategory {
-	name: string;
-}
-
 const BlogCategorySelect = ({
 	name,
 	onValueChange,
 }: BlogCategorySelectProps) => {
-	const [categories, setBlogCategories] = useState<BlogCategory[]>([]);
+	const [categories, setBlogCategories] = useState<ProCategories>([]);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
-		const fetchCountries = async () => {
-			const categories = await GetBlogCategories();
+		const fetchCats = async () => {
+			const categories = await getProductCategories();
 			setBlogCategories(categories);
 		};
-		fetchCountries();
+		fetchCats();
 	}, []);
 	const category = useMemo(() => {
 		return categories && categories.find((item) => item.name == name)?.name;

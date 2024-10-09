@@ -27,9 +27,8 @@ import BlogCategorySelect from '@/components/shared/select-blog-category';
 import ImageUploader from '@/components/shared/image-uploader';
 import { Textarea } from '@/components/ui/text-area';
 import { ImageListType } from 'react-images-uploading';
-import { Img } from '@react-email/components';
 
-const NewPost = (props: { post?: PostData }) => {
+const NewPost = (props: { post?: any }) => {
 	const { post } = props;
 	const [images, setImages] = useState<ImageListType>([]);
 	const form = useForm<PostFormInput>({
@@ -57,14 +56,7 @@ const NewPost = (props: { post?: PostData }) => {
 		});
 		formData.append('title', title);
 		try {
-			const response = await fetch('/api/blog-upload', {
-				method: 'POST',
-				body: formData,
-			});
-
-			const data: { uploadedFiles: string[] } = await response.json();
-			console.log(data, 'a lot');
-			return data;
+			return null;
 		} catch (error) {
 			console.error('Upload failed:', error);
 			toast.error('Failed to upload images');
@@ -77,7 +69,7 @@ const NewPost = (props: { post?: PostData }) => {
 		return dispatch(data);
 	}
 	useEffect(() => {
-		const urls = post?.images.map((im) => ({ dataURL: im.url }));
+		const urls = post?.images.map((im: any) => ({ dataURL: im.url }));
 		urls && setImages([...urls]);
 	}, [post]);
 	useEffect(() => {

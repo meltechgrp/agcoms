@@ -1,7 +1,6 @@
 'use server';
 import { ActionResponse } from '@/lib/auth/actions';
 import { validateRequest } from '@/lib/auth/validate-request';
-import prisma from '@/lib/prisma';
 import { PostFormInput, PostFormSchema } from '@/lib/validators/auth';
 
 export async function getBlogs(args: {
@@ -14,24 +13,7 @@ export async function getBlogs(args: {
 }) {
 	try {
 		const { take, skip, orderBy } = args;
-		const blogs = await prisma.blog.findMany({
-			select: {
-				id: true,
-				createdAt: true,
-				content: true,
-				category: true,
-				title: true,
-				slug: true,
-				images: {
-					select: { url: true },
-					take: 1,
-				},
-			},
-			...(args.cursor && { cursor: { id: args.cursor } }),
-			take,
-			orderBy,
-		});
-		return blogs;
+		return [];
 	} catch (error) {
 		console.log(error);
 		return [];
@@ -41,24 +23,7 @@ export type BlogsData = Awaited<ReturnType<typeof getBlogs>>;
 export async function getPostData(blogId?: string) {
 	try {
 		if (!blogId) return null;
-		const post = await prisma.blog.findUnique({
-			where: { id: blogId },
-			select: {
-				id: true,
-				createdAt: true,
-				content: true,
-				category: {
-					select: { name: true },
-				},
-				title: true,
-				slug: true,
-				images: {
-					select: { url: true, id: true },
-					take: 2,
-				},
-			},
-		});
-		return post;
+		return null;
 	} catch (error) {
 		console.log(error);
 		return null;
@@ -93,31 +58,10 @@ export async function CreatePost(
 		const { title, content, imagePaths, category, id } = form;
 
 		if (id) {
-			await prisma.blog.update({
-				where: {
-					id,
-				},
-				data: {
-					title,
-					content,
-					category: {
-						connect: { name: category },
-					},
-				},
-			});
 			return {
 				data: true,
 			};
 		}
-		await prisma.blog.create({
-			data: {
-				title,
-				content,
-				category: {
-					connect: { name: category },
-				},
-			},
-		});
 		return {
 			data: true,
 		};
@@ -131,9 +75,6 @@ export async function CreatePost(
 
 export async function DeletePost(postId: string) {
 	try {
-		await prisma.blog.delete({
-			where: { id: postId },
-		});
 		return true;
 	} catch (error) {
 		console.log(error);

@@ -1,4 +1,3 @@
-'use client';
 import { Card } from '@/components/ui/card';
 import TabsView from './components/tabs-view';
 import EmptyState from '@/components/shared/empty-state';

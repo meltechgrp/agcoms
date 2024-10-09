@@ -1,5 +1,4 @@
 import AccountDropdown from '@/app/admin/settings/components/account-dropdown';
-import AddAdminDrawer from '@/app/admin/settings/components/add-admin-drawer';
 import { buttonVariants } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';

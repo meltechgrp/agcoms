@@ -29,7 +29,7 @@ export default function Solution() {
 					</div>
 					<div className="flex space-x-2 sm:space-x-4">
 						<Link href={'https://www.deere.africa/en/finance/financing/'}>
-							<Button className="px-6 h-12 hover:bg-green-600 hover:text-white transition-all duration-700 text-black sm:text-white bg-transparent text-sm font-bold sm:font-semibold border-2 hover:border-green-600 border-green-600 sm:border-white">
+							<Button className="px-6 h-12 hover:bg-blue-600 hover:text-white transition-all duration-700 text-black sm:text-white bg-transparent text-sm font-bold sm:font-semibold border-2 hover:border-blue-600 border-blue-600">
 								Agcoms Finacials
 							</Button>
 						</Link>
@@ -37,7 +37,7 @@ export default function Solution() {
 							href={
 								'https://www.deere.africa/en/finance/financing/leapforward/'
 							}>
-							<Button className="px-6 h-12 hover:bg-green-600 hover:text-white transition-all duration-700 text-black sm:text-white bg-transparent text-sm font-bold sm:font-semibold border-2 hover:border-green-600 border-green-600 sm:border-white">
+							<Button className="px-6 h-12 hover:bg-blue-600 hover:text-white transition-all duration-700 text-black sm:text-white bg-transparent text-sm font-bold sm:font-semibold border-2 hover:border-blue-600 border-blue-600">
 								Leap Forward
 							</Button>
 						</Link>
