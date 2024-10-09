@@ -50,12 +50,11 @@ export async function CreatePost(
 				fieldError: {
 					title: err.fieldErrors.title?.[0],
 					content: err.fieldErrors.content?.[0],
-					imagePaths: err.fieldErrors.imagePaths?.[0],
 					category: err.fieldErrors.category?.[0],
 				},
 			};
 		}
-		const { title, content, imagePaths, category, id } = form;
+		const { title, content, category, id } = form;
 
 		if (id) {
 			return {

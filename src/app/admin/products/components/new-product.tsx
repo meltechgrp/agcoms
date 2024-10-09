@@ -23,15 +23,10 @@ import {
 import { toast } from 'sonner';
 import { LoaderIcon } from 'lucide-react';
 import { AlertDialogFooter } from '@/components/ui/alert-dialog';
-import ProductCategorySelect from '@/components/shared/select-product-category';
-import ImageUploader from '@/components/shared/image-uploader';
 import { Textarea } from '@/components/ui/text-area';
-import { ImageListType } from 'react-images-uploading';
-import ProductSubCategorySelect from '@/components/shared/select-product-subCat';
 
 const NewPost = (props: { product?: any }) => {
 	const { product } = props;
-	const [images, setImages] = useState<ImageListType>([]);
 	const form = useForm<PostFormInput>({
 		resolver: zodResolver(PostFormSchema),
 		defaultValues: {
@@ -39,40 +34,16 @@ const NewPost = (props: { product?: any }) => {
 			title: product?.title || '',
 			content: product?.content || '',
 			category: product?.category?.name || '',
-			imagePaths: product?.images || [],
 		},
 	});
 	const [loading, setLoading] = React.useState(false);
 	const dismissAlert = useAlertToggle();
 	const [state, dispatch] = useFormState(CreatePost, undefined);
 
-	const handleUpload = async (title: string) => {
-		if (!title) return false;
-		console.log(title, 'in a lot');
-		const formData = new FormData();
-		images.forEach((image) => {
-			if (image.file) {
-				formData.append('image', image.file);
-			}
-		});
-		formData.append('title', title);
-		try {
-			return null;
-		} catch (error) {
-			console.error('Upload failed:', error);
-			toast.error('Failed to upload images');
-			return false;
-		}
-	};
-
 	async function handleSubmit(data: PostFormInput) {
 		setLoading(true);
 		return dispatch(data);
 	}
-	useEffect(() => {
-		const urls = product?.images.map((im: any) => ({ dataURL: im.url }));
-		urls && setImages([...urls]);
-	}, [product]);
 	useEffect(() => {
 		if (state?.fieldError) {
 			setLoading(false);
@@ -88,24 +59,16 @@ const NewPost = (props: { product?: any }) => {
 			toast.error(state.formError);
 		}
 		if (state?.data) {
-			console.log('at state data', form.getValues('title'));
-			handleUpload(form.getValues('title') as string)
-				.then(() => {
-					setLoading(false);
-					toast.success(
-						product?.id
-							? 'Product updated successfully'
-							: 'Product created successfully'
-					);
-					form.reset();
-					return product
-						? dismissAlert('edit', 'true')
-						: dismissAlert('productId', 'new');
-				})
-				.catch(() => {
-					setLoading(false);
-					return toast.error('Failed to upload publication images');
-				});
+			setLoading(false);
+			toast.success(
+				product?.id
+					? 'Product updated successfully'
+					: 'Product created successfully'
+			);
+			form.reset();
+			return product
+				? dismissAlert('edit', 'true')
+				: dismissAlert('productId', 'new');
 		}
 	}, [state?.formError, state?.fieldError, state?.data]);
 	return (
@@ -152,7 +115,7 @@ const NewPost = (props: { product?: any }) => {
 								)}
 							/>
 							<div className="grid sm:grid-cols-2 gap-4">
-								<FormField
+								{/* <FormField
 									control={form.control}
 									name="category"
 									render={() => (
@@ -169,8 +132,8 @@ const NewPost = (props: { product?: any }) => {
 											<FormMessage />
 										</FormItem>
 									)}
-								/>
-								<FormField
+								/> */}
+								{/* <FormField
 									control={form.control}
 									name="category"
 									render={() => (
@@ -188,27 +151,9 @@ const NewPost = (props: { product?: any }) => {
 											<FormMessage />
 										</FormItem>
 									)}
-								/>
+								/> */}
 							</div>
 
-							<FormField
-								control={form.control}
-								name="imagePaths"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Product images</FormLabel>
-										<FormControl>
-											<ImageUploader
-												images={images}
-												saveImages={(images) => {
-													setImages(images);
-												}}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
 							<FormField
 								control={form.control}
 								name="content"
