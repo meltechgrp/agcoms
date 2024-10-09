@@ -475,5 +475,4 @@ export enum Paths {
 	ResetPassword = '/reset-password',
 }
 
-export const EMAIL_SENDER = '' as const;
-export const APP_TITLE = '' as const;
+export const APP_TITLE = 'Agcoms' as const;

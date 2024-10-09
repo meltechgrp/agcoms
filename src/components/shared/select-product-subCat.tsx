@@ -17,30 +17,32 @@ import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
-	getProductCategories,
-	ProCategories,
+	ProSubCategories,
+	getProductSubCategories,
 } from '@/lib/actions/get-products';
 
-interface BlogCategorySelectProps {
+interface ProductSubCategorySelectProps {
+	category: string;
 	name: string;
 	onValueChange: (name: string) => void;
 }
 
-const BlogCategorySelect = ({
+const ProductSubCategorySelect = ({
+	category,
 	name,
 	onValueChange,
-}: BlogCategorySelectProps) => {
-	const [categories, setBlogCategories] = useState<ProCategories>([]);
+}: ProductSubCategorySelectProps) => {
+	const [categories, setProductCategories] = useState<ProSubCategories>([]);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		const fetchCats = async () => {
-			const categories = await getProductCategories();
-			setBlogCategories(categories);
+			const categories = await getProductSubCategories(category);
+			setProductCategories(categories);
 		};
 		fetchCats();
-	}, []);
-	const category = useMemo(() => {
+	}, [category]);
+	const subCategory = useMemo(() => {
 		return categories && categories.find((item) => item.name == name)?.name;
 	}, [name, categories]);
 	return (
@@ -53,7 +55,7 @@ const BlogCategorySelect = ({
 						aria-expanded={open}
 						aria-label="Select a model"
 						className="w-full justify-between">
-						{category ? category : 'Select a category...'}
+						{subCategory ? subCategory : 'Select a sub category...'}
 						<ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 					</Button>
 				</PopoverTrigger>
@@ -92,4 +94,4 @@ const BlogCategorySelect = ({
 	);
 };
 
-export default BlogCategorySelect;
+export default ProductSubCategorySelect;

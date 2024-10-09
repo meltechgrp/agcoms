@@ -23,31 +23,56 @@ import {
 import { toast } from 'sonner';
 import { LoaderIcon } from 'lucide-react';
 import { AlertDialogFooter } from '@/components/ui/alert-dialog';
-import BlogCategorySelect from '@/components/shared/select-product-category';
+import ProductCategorySelect from '@/components/shared/select-product-category';
 import ImageUploader from '@/components/shared/image-uploader';
+import { Textarea } from '@/components/ui/text-area';
 import { ImageListType } from 'react-images-uploading';
-import TextEditor from '@/components/shared/text-editor';
+import ProductSubCategorySelect from '@/components/shared/select-product-subCat';
 
-const NewPost = (props: { post?: any }) => {
-	const { post } = props;
+const NewPost = (props: { product?: any }) => {
+	const { product } = props;
+	const [images, setImages] = useState<ImageListType>([]);
 	const form = useForm<PostFormInput>({
 		resolver: zodResolver(PostFormSchema),
 		defaultValues: {
-			id: post?.id,
-			title: post?.title || '',
-			content: post?.content || '',
-			category: post?.category?.name || '',
-			imageId: post?.images || [],
+			id: product?.id,
+			title: product?.title || '',
+			content: product?.content || '',
+			category: product?.category?.name || '',
+			imagePaths: product?.images || [],
 		},
 	});
 	const [loading, setLoading] = React.useState(false);
 	const dismissAlert = useAlertToggle();
 	const [state, dispatch] = useFormState(CreatePost, undefined);
 
+	const handleUpload = async (title: string) => {
+		if (!title) return false;
+		console.log(title, 'in a lot');
+		const formData = new FormData();
+		images.forEach((image) => {
+			if (image.file) {
+				formData.append('image', image.file);
+			}
+		});
+		formData.append('title', title);
+		try {
+			return null;
+		} catch (error) {
+			console.error('Upload failed:', error);
+			toast.error('Failed to upload images');
+			return false;
+		}
+	};
+
 	async function handleSubmit(data: PostFormInput) {
 		setLoading(true);
 		return dispatch(data);
 	}
+	useEffect(() => {
+		const urls = product?.images.map((im: any) => ({ dataURL: im.url }));
+		urls && setImages([...urls]);
+	}, [product]);
 	useEffect(() => {
 		if (state?.fieldError) {
 			setLoading(false);
@@ -63,16 +88,24 @@ const NewPost = (props: { post?: any }) => {
 			toast.error(state.formError);
 		}
 		if (state?.data) {
-			setLoading(false);
-			toast.success(
-				post?.id
-					? 'Publication updated successfully'
-					: 'Publication created successfully'
-			);
-			form.reset();
-			return post
-				? dismissAlert('edit', 'true')
-				: dismissAlert('postId', 'new');
+			console.log('at state data', form.getValues('title'));
+			handleUpload(form.getValues('title') as string)
+				.then(() => {
+					setLoading(false);
+					toast.success(
+						product?.id
+							? 'Product updated successfully'
+							: 'Product created successfully'
+					);
+					form.reset();
+					return product
+						? dismissAlert('edit', 'true')
+						: dismissAlert('productId', 'new');
+				})
+				.catch(() => {
+					setLoading(false);
+					return toast.error('Failed to upload publication images');
+				});
 		}
 	}, [state?.formError, state?.fieldError, state?.data]);
 	return (
@@ -80,7 +113,7 @@ const NewPost = (props: { post?: any }) => {
 			<div className="space-y-4">
 				<h2 className="space-x-3">
 					<span className="text-xl font-medium">
-						{post?.id ? 'Update Publication' : 'Add New Publication'}
+						{product?.id ? 'Update Product' : 'Add New Product'}
 					</span>
 				</h2>
 			</div>
@@ -101,25 +134,24 @@ const NewPost = (props: { post?: any }) => {
 									</FormItem>
 								)}
 							/>
+							<FormField
+								control={form.control}
+								name="title"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Product title</FormLabel>
+										<FormControl>
+											<Input
+												type="text"
+												placeholder="Product title"
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
 							<div className="grid sm:grid-cols-2 gap-4">
-								<FormField
-									control={form.control}
-									name="title"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Publbication title</FormLabel>
-											<FormControl>
-												<Input
-													type="text"
-													placeholder="Publbication title"
-													{...field}
-												/>
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-
 								<FormField
 									control={form.control}
 									name="category"
@@ -127,8 +159,27 @@ const NewPost = (props: { post?: any }) => {
 										<FormItem>
 											<FormLabel>Category</FormLabel>
 											<FormControl>
-												<BlogCategorySelect
-													name={form.getValues('category') ?? ''}
+												<ProductCategorySelect
+													name={form.getValues('category')}
+													onValueChange={(name) => {
+														form.setValue('category', name);
+													}}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="category"
+									render={() => (
+										<FormItem>
+											<FormLabel>Sub category</FormLabel>
+											<FormControl>
+												<ProductSubCategorySelect
+													category={form.getValues('category')}
+													name={form.getValues('category')}
 													onValueChange={(name) => {
 														form.setValue('category', name);
 													}}
@@ -142,14 +193,16 @@ const NewPost = (props: { post?: any }) => {
 
 							<FormField
 								control={form.control}
-								name="imageId"
+								name="imagePaths"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Publbication images</FormLabel>
+										<FormLabel>Product images</FormLabel>
 										<FormControl>
 											<ImageUploader
-												images={form.getValues('imageId')}
-												saveImages={(image) => form.setValue('imageId', image)}
+												images={images}
+												saveImages={(images) => {
+													setImages(images);
+												}}
 											/>
 										</FormControl>
 										<FormMessage />
@@ -161,12 +214,9 @@ const NewPost = (props: { post?: any }) => {
 								name="content"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Publbication content</FormLabel>
+										<FormLabel>Product content</FormLabel>
 										<FormControl>
-											<TextEditor
-												placeholder="Publbication content"
-												{...field}
-											/>
+											<Textarea placeholder="Product content" {...field} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>
@@ -175,8 +225,8 @@ const NewPost = (props: { post?: any }) => {
 
 							<AlertDialogFooter className="w-full flex flex-row gap-3 mt-3 ">
 								<AlertTriggerButton
-									alertKey="postId"
-									alertValue={post ? 'true' : 'new'}
+									alertKey="productId"
+									alertValue={product ? 'true' : 'new'}
 									type="button"
 									className="px-8 py-2 flex-1">
 									Cancel
@@ -189,7 +239,7 @@ const NewPost = (props: { post?: any }) => {
 									{loading && (
 										<LoaderIcon className="mr-2 h-4 w-4 animate-spin" />
 									)}
-									{post?.id ? 'Update' : 'Save'}
+									{product?.id ? 'Update' : 'Save'}
 								</Button>
 							</AlertDialogFooter>
 						</div>

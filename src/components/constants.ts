@@ -1,6 +1,6 @@
 import { DashboardIcon } from '@radix-ui/react-icons';
 import {
-	Briefcase,
+	Package,
 	HandshakeIcon,
 	MessageCircleIcon,
 	SettingsIcon,
@@ -24,9 +24,9 @@ export const AppRoutes = [
 		hasAction: true,
 	},
 	{
-		path: '/admin/projects',
-		name: 'Recent Projects',
-		icon: Briefcase,
+		path: '/admin/products',
+		name: 'Products',
+		icon: Package,
 		section: 'home',
 		note: 'Can edit and delete users',
 		hasAction: true,
