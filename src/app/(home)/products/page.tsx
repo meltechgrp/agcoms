@@ -9,7 +9,7 @@ import {
 import ProductNavigation from '@/components/products/p-nav';
 import ProductSections from '@/components/products/p-sections';
 
-async function Products() {
+function Products() {
 	return (
 		<div>
 			<Breadcrumb className="px-4 sm:px-12 py-6">

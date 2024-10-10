@@ -8,7 +8,7 @@ import {
 	Download,
 	LucideProps,
 	MailOpen,
-	CircleHelp,
+	MapPin,
 	Shield,
 	ShoppingCart,
 	Tag,
@@ -435,9 +435,9 @@ export const midNavigationData: {
 	>;
 }[] = [
 	{
-		title: 'Request quote',
+		title: 'Locate a Dealer',
 		link: 'https://www.deere.africa/en/our-company/contact-us/',
-		icon: CircleHelp,
+		icon: MapPin,
 	},
 	{
 		title: 'Offers & Discount',

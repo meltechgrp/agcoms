@@ -166,7 +166,7 @@ export default function MessageForm({
 															!form.getValues('allowMarketing')
 														);
 													}}
-													className=" checked:bg-blue-600"
+													className=" checked:bg-green-600"
 												/>
 												<label htmlFor="check" className="text-sm font-normal">
 													Do you want to receive our marketing and promotional
@@ -180,7 +180,7 @@ export default function MessageForm({
 							/>
 							<Button
 								disabled={loading}
-								className="mt-4 bg-blue-600 text-white hover:border transition-colors duration-700 hover:border-blue-600 hover:text-black hover:bg-transparent"
+								className="mt-4 bg-green-600 text-white hover:border transition-colors duration-700 hover:border-green-600 hover:text-black hover:bg-transparent"
 								type="submit">
 								{loading && <Loader className="mr-2 h-4 w-4 animate-spin" />}
 								Continue

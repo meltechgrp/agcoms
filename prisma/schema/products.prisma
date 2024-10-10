@@ -1,0 +1,40 @@
+model Category {
+  id            String        @id @default(cuid())
+  name          String        @unique
+  slug          String?
+  link          String
+  subcategories Subcategory[]
+  images        Image[] // A Product can have many Images
+  products      Products[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Subcategory {
+  id         String     @id @default(cuid())
+  name       String
+  category   Category   @relation(fields: [categoryId], references: [id]) // Belongs to a Category
+  categoryId String
+  slug       String?
+  link       String?
+  products   Products[] // A Subcategory has many Products
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+// Define the Product model
+model Products {
+  id            String       @id @default(cuid())
+  name          String
+  description   String
+  price         Float
+  category      Category     @relation(fields: [categoryId], references: [id]) // Belongs to a Category
+  categoryId    String
+  subcategory   Subcategory? @relation(fields: [subcategoryId], references: [id]) // Optionally belongs to a Subcategory
+  subcategoryId String?
+  slug          String?
+  link          String?
+  images        Image[] // A Product can have many Images
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}

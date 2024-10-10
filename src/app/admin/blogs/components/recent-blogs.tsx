@@ -4,14 +4,14 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 
 interface RecentProps {
-	data: any;
+	data: BlogsData;
 }
 
 function RecentBlogs({ data }: RecentProps) {
 	return (
 		<div>
 			<div className="grid grid-cols-4 gap-2 ">
-				{data.splice(0, 4).map((b: any) => (
+				{data.splice(0, 4).map((b) => (
 					<Card
 						key={b.title}
 						className=" bg-transparent h-full w-full bg-white  gap-1 grid grid-rows-[60%,auto]">

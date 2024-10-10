@@ -24,7 +24,7 @@ export default function Connection() {
 								<Link href={item.link}>
 									<Button
 										variant={'outline'}
-										className="border-blue-600 transition-colors duration-700 hover:bg-blue-600 hover:text-white h-10 px-6 text-blue-600">
+										className="border-green-600 transition-colors duration-700 hover:bg-green-600 hover:text-white h-10 px-6 text-green-600">
 										Learn More
 									</Button>
 								</Link>

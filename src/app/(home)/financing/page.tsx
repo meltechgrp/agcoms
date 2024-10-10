@@ -14,14 +14,19 @@ import { Card } from '@/components/ui/card';
 import { ChevronRight } from 'lucide-react';
 import { financeCardData } from '@/components/financing/data';
 import { Separator } from '@/components/ui/separator';
+import { getBlogs } from '@/app/admin/blogs/components/query';
 import HowToFinance from '@/assets/finance/home-how-to-finance.avif';
 import ContactUs from '@/assets/finance/home-contact-us.avif';
 import Offers from '@/assets/finance/home-current-offers.webp';
-import { getBlogs } from '@/lib/actions/get-blogs';
-import { uniqueId } from '@/lib/utils';
 
 async function Financing() {
-	const blogs = await getBlogs();
+	const data = await getBlogs({
+		orderBy: {
+			createdAt: 'desc',
+		},
+		take: 3,
+		skip: 0,
+	});
 	return (
 		<div className="">
 			<Breadcrumb className="px-4 sm:px-12 py-6">
@@ -148,7 +153,7 @@ async function Financing() {
 					<div className="grid sm:grid-cols-3 gap-4 px-4 mt-3 sm:px-12 ">
 						{financeData.map((b) => (
 							<div
-								key={uniqueId()}
+								key={b.title}
 								className=" bg-transparent shadow-none h-full w-full flex flex-col  gap-2">
 								<div className="w-full">
 									<img
@@ -182,18 +187,16 @@ async function Financing() {
 							</h1>
 						</div>
 						<div className="grid sm:grid-cols-3 gap-4 px-4 sm:px-12 ">
-							{blogs.map((b) => (
+							{data.map((b) => (
 								<div
-									key={uniqueId()}
+									key={b.title}
 									className=" bg-transparent shadow-none h-full w-full flex flex-col  gap-2">
 									<div className="w-full">
-										{b.images[0] && (
-											<img
-												src={b.images[0].url || ''}
-												alt={b.title}
-												className="w-full object-cover h-48 rounded-md"
-											/>
-										)}
+										<img
+											src={b.images[0].url || ''}
+											alt={b.title}
+											className="w-full object-cover h-48 rounded-md"
+										/>
 									</div>
 									<div className="flex flex-1 flex-col gap-1 py-2">
 										<h2 className="text-lg sm:text-xl text-green-500">
@@ -205,7 +208,7 @@ async function Financing() {
 											</p>
 										</div>
 									</div>
-									<Link href={`/blogs/${b.$id}`}>
+									<Link href={`/blogs/${b.id}`}>
 										<Button
 											variant={'outline'}
 											className="border-2 border-green-600 text-green">

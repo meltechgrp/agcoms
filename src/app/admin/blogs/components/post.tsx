@@ -14,7 +14,7 @@ import { toast } from 'sonner';
 type Props = {
 	open: boolean;
 	postId?: string;
-	post: any;
+	post: PostData;
 	edit?: string;
 };
 
@@ -37,7 +37,7 @@ export function PostAlert({ open, post, postId, edit }: Props) {
 							<div className="w-full">
 								<div className="flex flex-col gap-5 py-3">
 									<div className="grid sm:grid-cols-3 gap-4">
-										{post?.images.map((im: any) => (
+										{post?.images.map((im) => (
 											<div
 												key={im.id}
 												className="flex justify-center w-full h-32 items-center">

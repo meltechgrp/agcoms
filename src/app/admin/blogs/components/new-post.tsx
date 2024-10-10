@@ -28,7 +28,7 @@ import ImageUploader from '@/components/shared/image-uploader';
 import { ImageListType } from 'react-images-uploading';
 import TextEditor from '@/components/shared/text-editor';
 
-const NewPost = (props: { post?: any }) => {
+const NewPost = (props: { post?: PostData }) => {
 	const { post } = props;
 	const form = useForm<PostFormInput>({
 		resolver: zodResolver(PostFormSchema),

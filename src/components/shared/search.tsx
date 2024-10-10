@@ -16,7 +16,7 @@ export default function SearchForm({
 					'w-full md:w-[200px] overflow-hidden rounded-md lg:w-[300px] px-2 text-sm bg-gray-100 text-gray-600 flex items-center space-x-2',
 					className
 				)}>
-				<Search className=" text-blue-500  h-5 w-5 " />
+				<Search className="  h-5 w-5 " />
 				<Input
 					type="search"
 					placeholder="Search"

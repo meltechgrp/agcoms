@@ -10,7 +10,6 @@ import { ChevronLeft, ChevronRight, Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import { useState } from 'react';
-import { uniqueId } from '@/lib/utils';
 
 function Sidebar() {
 	const [state1, setState1] = useState(false);
@@ -42,7 +41,7 @@ function Sidebar() {
 						<h3 className="font-medium">Home</h3>
 					</Link>
 					{NavMenuData.map((hf, i) => (
-						<Sheet key={uniqueId()}>
+						<Sheet key={hf.title + i}>
 							<SheetTrigger asChild>
 								<div className="flex h-12 font-bold text-sm text-gray-500 items-center hover:bg-gray-200 hover:text-green-600 transition-colors duration-700  px-[1rem] justify-between">
 									{hf.title} <ChevronRight className="w-5 h-5 ml-1" />
@@ -63,7 +62,7 @@ function Sidebar() {
 									{hf.sub.map((s, i) => (
 										<>
 											{s?.categories && s?.categories.length > 0 ? (
-												<Sheet key={uniqueId()}>
+												<Sheet key={s.title + i}>
 													<SheetTrigger asChild>
 														<div className="flex h-12 font-medium text-sm text-gray-500 items-center hover:bg-gray-200 hover:text-green-600 transition-colors duration-700  px-[1rem] justify-between">
 															{s.title}
@@ -96,14 +95,14 @@ function Sidebar() {
 															<div className="flex flex-col gap-6 ">
 																{s?.categories?.map((c) => (
 																	<div
-																		key={uniqueId()}
+																		key={c.title}
 																		className="w-full space-y-1">
 																		<h3 className="text-xs px-2 capitalize text-gray-400">
 																			{c?.title || ''}
 																		</h3>
 																		<ul className="grid">
 																			{c.cats.map((i) => (
-																				<Link key={uniqueId()} href={i.link}>
+																				<Link key={i.title} href={i.link}>
 																					<li>
 																						<SheetClose
 																							onClick={() => setState1(false)}
@@ -121,7 +120,7 @@ function Sidebar() {
 													</SheetContent>
 												</Sheet>
 											) : (
-												<Link key={uniqueId()} href={s.link}>
+												<Link key={s.title + i} href={s.link}>
 													<SheetClose
 														onClick={() => setState1(false)}
 														className="flex w-full h-12 font-bold text-sm text-gray-500 items-center hover:bg-gray-200 hover:text-green-600 transition-colors duration-700  px-[1rem]">
