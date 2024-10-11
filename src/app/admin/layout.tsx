@@ -2,10 +2,8 @@ import type { Metadata } from 'next';
 import { MainNav } from './_components/main-nav';
 // import { validateRequest } from '@/lib/validate-user';
 // import { redirect } from 'next/navigation';
-import { env } from '@/env';
 import Footer from './_components/footer';
 import Header from './_components/header';
-import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
 	title: 'AGCOMS Admin',
