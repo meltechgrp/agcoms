@@ -7,7 +7,7 @@ generator client {
 datasource db {
   provider   = "postgresql"
   url        = env("POSTGRES_URL")
-  extensions = [postgis]
+  extensions = [pg_graphql, pgcrypto, supabase_vault, pgsodium, pgjwt, pg_stat_statements, postgis]
 }
 
 model Message {
@@ -25,7 +25,7 @@ model Message {
 // Define the Image model
 model Image {
   id         String    @id @default(cuid())
-  url        String
+  url        String    @unique
   blog       Blog?     @relation(fields: [blogId], references: [id]) // Optionally related to a Blog
   blogId     String?
   product    Products? @relation(fields: [productId], references: [id]) // Optionally related to a Product

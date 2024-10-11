@@ -10,6 +10,7 @@ import { NavMenuData } from '@/lib/constants';
 import Link from 'next/link';
 import { useCallback, useMemo } from 'react';
 import Agriculture from './agriculture';
+import Image from '@/components/shared/image';
 
 interface Props {
 	params: {
@@ -59,10 +60,12 @@ function ProductCategory({ params: { category } }: Props) {
 			</Breadcrumb>
 			<div>
 				<div className="py-2 relative sm:h-80 space-y-4 flex flex-col justify-center items-center">
-					<img
-						src={`/p-categories/${category}.avif`}
+					<Image
+						src={`${category}.avif`}
 						alt={category}
 						className="w-screen sm:w-[1350px] object-fill h-[150px] sm:h-[420px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
+						bucketName="banners"
+						folderName="product-categories"
 					/>
 					<h2 className="text-3xl sm:text-5xl text-center sm:text-start capitalize text-black sm:text-white font-bold relative z-10">
 						{cat?.title || ''}

@@ -4,12 +4,21 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
-		"lint": "next lint"
+		"build": "prisma generate && next build",
+		"lint": "next lint",
+		"seed": "prisma db seed",
+		"migrate": "bunx prisma migrate dev",
+		"prisma:migrate": "bunx prisma migrate dev",
+		"prisma:gen": "bunx prisma generate",
+		"prisma:deploy": "bunx prisma deploy",
+		"prisma:push": "bunx prisma db push",
+		"studio": "bunx prisma studio --port 5599"
 	},
 	"dependencies": {
+		"@aws-sdk/client-s3": "^3.669.0",
 		"@gsap/react": "^2.1.1",
 		"@hookform/resolvers": "^3.9.0",
+		"@lucia-auth/adapter-prisma": "^4.0.1",
 		"@prisma/client": "^5.20.0",
 		"@radix-ui/react-accordion": "^1.2.0",
 		"@radix-ui/react-alert-dialog": "^1.1.1",
@@ -29,6 +38,7 @@
 		"@radix-ui/react-switch": "^1.1.0",
 		"@radix-ui/react-tabs": "^1.1.0",
 		"@radix-ui/react-tooltip": "^1.1.2",
+		"@supabase/ssr": "^0.5.1",
 		"@tanstack/react-table": "^8.20.5",
 		"@types/lodash": "^4.17.9",
 		"@types/react-scroll": "^1.8.10",
@@ -71,8 +81,17 @@
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
 		"postcss": "^8.4.39",
+		"prisma": "^5.20.0",
 		"tailwindcss": "^3.4.6",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.6.2"
-	}
+	},
+	"prisma": {
+		"seed": "bun run prisma/seed.ts"
+	},
+	"trustedDependencies": [
+		"@prisma/client",
+		"@prisma/engines",
+		"prisma"
+	]
 }

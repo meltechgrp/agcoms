@@ -1,42 +1,49 @@
 'use client';
-import React, { useEffect, useMemo } from 'react';
+import React from 'react';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
 import { Button } from '../ui/button';
 import { toast } from 'sonner';
-import { useFormState } from 'react-dom';
-import { uploadImage } from '@/lib/actions/image-handler';
+import useImageHandler from '@/hooks/useImageHandler';
+import { Loader } from 'lucide-react';
 
-export type Ids = string[];
-
-const bucketId = process.env.NEXT_PUBLIC_APPWRITE_PRODUCT_IMAGES;
-const key = process.env.NEXT_PUBLIC_APPWRITE_API_KEY;
-
-export const productImageUrl = (id: string) =>
-	`https://cloud.appwrite.io/v1/storage/buckets/${bucketId}/files/${id}/view?project=agcom&key=${key}`;
-
-interface Props {
-	saveImages: (images: Ids) => void;
-	className?: string;
-	images?: Ids;
+export interface ImageType {
+	url: string;
 }
 
-export default function ImageUploader({ saveImages, images }: Props) {
+interface Props {
+	saveImages: (images: ImageType[]) => void;
+	className?: string;
+	images: ImageType[];
+	bucketName: string;
+	folderName: string;
+}
+
+export default function ImageUploader({
+	saveImages,
+	images,
+	bucketName,
+	folderName,
+}: Props) {
 	const maxNumber = 4;
-	const [state, formAction] = useFormState(uploadImage, {});
-	function handleUpload(images: ImageListType) {
+	const { uploadImages, deleteImage, loading, getImageUrl } = useImageHandler(
+		bucketName,
+		folderName
+	);
+	async function handleUpload(images: ImageListType) {
 		const formData = new FormData();
 		images.forEach((image) => {
 			image?.file && formData.append('image', image.file);
 		});
-		formAction(formData);
+		let res = await uploadImages(formData);
+		if (res.error) return toast.error(res.error);
+		res?.data && saveImages(res.data);
 	}
-	useEffect(() => {
-		if (state?.error) toast.error(state.error);
-		if (state?.data) {
-			console.log(state);
-			saveImages(state.data);
-		}
-	}, [state?.error, state?.data]);
+	async function handleDelete(key: string) {
+		const res = await deleteImage(key);
+		if (res.error) return toast.error(res.error);
+		toast.success('Image removed successfully');
+		saveImages(images.filter((image) => image.url !== key));
+	}
 	return (
 		<div className="grid gap-3">
 			<ImageUploading
@@ -49,6 +56,7 @@ export default function ImageUploader({ saveImages, images }: Props) {
 					onImageUpload,
 					onImageRemoveAll,
 					onImageRemove,
+					onImageUpdate,
 					isDragging,
 					dragProps,
 				}) => (
@@ -59,12 +67,11 @@ export default function ImageUploader({ saveImages, images }: Props) {
 								type="button"
 								style={isDragging ? { color: 'red' } : undefined}
 								onClick={onImageUpload}
+								disabled={loading}
+								className="flex gap-1 items-center disabled:opacity-80"
 								{...dragProps}>
+								{loading && <Loader className=" h-4 w-4 animate-spin" />}
 								Click or Drop here
-							</Button>
-							&nbsp;
-							<Button size={'sm'} type="button" onClick={onImageRemoveAll}>
-								Remove all images
 							</Button>
 						</div>
 						<div className="flex flex-wrap gap-4">
@@ -72,7 +79,7 @@ export default function ImageUploader({ saveImages, images }: Props) {
 								images.map((image, index) => (
 									<div key={index} className="grid gap-1">
 										<img
-											src={productImageUrl(image)}
+											src={getImageUrl(image.url)}
 											alt=""
 											className="w-[150px] sm:w-[250px] h-100px] sm:h-[150px] object-cover"
 										/>
@@ -80,7 +87,9 @@ export default function ImageUploader({ saveImages, images }: Props) {
 											<Button
 												size={'sm'}
 												type="button"
-												onClick={() => onImageRemove(index)}>
+												disabled={loading}
+												className="flex gap-1 disabled:opacity-80 items-center"
+												onClick={() => handleDelete(image.url)}>
 												Remove
 											</Button>
 										</div>
@@ -92,20 +101,4 @@ export default function ImageUploader({ saveImages, images }: Props) {
 			</ImageUploading>
 		</div>
 	);
-}
-
-function arrayBufferToImageString(buffer: ArrayBuffer): Promise<string> {
-	return new Promise((resolve, reject) => {
-		const blob = new Blob([buffer], { type: 'image/jpeg' });
-		const reader = new FileReader();
-		reader.onload = () => {
-			if (typeof reader.result === 'string') {
-				resolve(reader.result);
-			} else {
-				reject(new Error('Failed to convert ArrayBuffer to Base64 string'));
-			}
-		};
-		reader.onerror = () => reject(new Error('Error reading ArrayBuffer'));
-		reader.readAsDataURL(blob);
-	});
 }

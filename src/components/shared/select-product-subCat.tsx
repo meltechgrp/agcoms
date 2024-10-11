@@ -16,10 +16,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import {
-	ProSubCategories,
-	getProductSubCategories,
-} from '@/lib/actions/get-products';
 
 interface ProductSubCategorySelectProps {
 	category: string;
@@ -32,18 +28,20 @@ const ProductSubCategorySelect = ({
 	name,
 	onValueChange,
 }: ProductSubCategorySelectProps) => {
-	const [categories, setProductCategories] = useState<ProSubCategories>([]);
+	const [categories, setProductCategories] = useState<any>([]);
 	const [open, setOpen] = useState(false);
 
-	useEffect(() => {
-		const fetchCats = async () => {
-			const categories = await getProductSubCategories(category);
-			setProductCategories(categories);
-		};
-		fetchCats();
-	}, [category]);
+	// useEffect(() => {
+	// 	const fetchCats = async () => {
+	// 		const categories = [];
+	// 		setProductCategories(categories);
+	// 	};
+	// 	fetchCats();
+	// }, [category]);
 	const subCategory = useMemo(() => {
-		return categories && categories.find((item) => item.name == name)?.name;
+		return (
+			categories && categories.find((item: any) => item.name == name)?.name
+		);
 	}, [name, categories]);
 	return (
 		<div>
@@ -65,7 +63,7 @@ const ProductSubCategorySelect = ({
 						<CommandEmpty>No results found.</CommandEmpty>
 						<CommandList>
 							<CommandGroup>
-								{categories.map((item) => {
+								{categories.map((item: any) => {
 									const label = item.name;
 									return (
 										<CommandItem

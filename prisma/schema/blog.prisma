@@ -6,7 +6,7 @@ model Blog {
   slug       String?
   category   BlogCategory? @relation(fields: [categoryId], references: [id]) // Relation to BlogCategory
   categoryId String?
-  images     Image[] // A Blog can have many Images
+  images     Image[]
   createdAt  DateTime      @default(now())
   updatedAt  DateTime      @updatedAt
 }
@@ -14,7 +14,8 @@ model Blog {
 model BlogCategory {
   id        String   @id @default(cuid())
   name      String   @unique
-  blogs     Blog[] // A BlogCategory can have many Blogs
+  slug      String
+  blogs     Blog[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

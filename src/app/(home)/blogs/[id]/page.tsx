@@ -6,6 +6,7 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { getPostData } from '@/lib/actions/blog-actions';
 
 interface Props {
 	params: {
@@ -14,7 +15,7 @@ interface Props {
 }
 
 async function NewsUpdates({ params: { id } }: Props) {
-	const data: any = null;
+	const data = await getPostData(id);
 	return (
 		<div className="space-y-20">
 			<Breadcrumb className="px-4 sm:px-12 py-6">

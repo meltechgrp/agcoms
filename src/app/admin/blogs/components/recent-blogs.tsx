@@ -1,25 +1,31 @@
+import HtmlText from '@/components/shared/html-text';
+import Image from '@/components/shared/image';
 import { Card } from '@/components/ui/card';
-import { BlogsData } from './query';
+import { PostsType } from '@/lib/actions/blog-actions';
+import { uniqueId } from '@/lib/utils';
 import { format } from 'date-fns';
+import { HtmlContext } from 'next/dist/server/future/route-modules/app-page/vendored/contexts/entrypoints';
 import Link from 'next/link';
 
 interface RecentProps {
-	data: BlogsData;
+	data: PostsType;
 }
 
 function RecentBlogs({ data }: RecentProps) {
 	return (
 		<div>
-			<div className="grid grid-cols-4 gap-2 ">
-				{data.splice(0, 4).map((b) => (
+			<div className="grid grid-cols-3 gap-2 ">
+				{data.map((b) => (
 					<Card
-						key={b.title}
-						className=" bg-transparent h-full w-full bg-white  gap-1 grid grid-rows-[60%,auto]">
-						<div className="w-full">
-							<img
-								src={b.images[0]?.url || ''}
+						key={uniqueId()}
+						className=" bg-transparent min-h-96 h-full w-full bg-white  gap-1 grid grid-rows-[60%,auto]">
+						<div className="w-full h-full bg-gray-50">
+							<Image
+								src={b.images[0].url}
+								className="rounded-md"
 								alt={b.title}
-								className="w-full object-cover h-44 rounded-md"
+								bucketName="images"
+								folderName="blog-images"
 							/>
 						</div>
 						<div className="flex flex-col gap-1 px-3 py-2">
@@ -27,10 +33,11 @@ function RecentBlogs({ data }: RecentProps) {
 								{format(new Date(b.createdAt), 'MMM d, yyyy,  hh:mm a')}
 							</time>
 							<Link href={`/admin/blogs/?postId=${b.id}`} className="space-y-2">
-								<h2 className="text-sm">{b.title}</h2>
-								<p className="text-xs line-clamp-2 text-gray-500 text-ellipsis h-8 overflow-hidden">
-									{b.content}
-								</p>
+								<h2 className="text-base">{b.title}</h2>
+								<HtmlText
+									text={b.content}
+									className="text-sm line-clamp-4 text-gray-500"
+								/>
 							</Link>
 						</div>
 					</Card>

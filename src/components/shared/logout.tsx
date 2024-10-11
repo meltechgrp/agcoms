@@ -11,7 +11,6 @@ import {
 	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { logout } from '@/lib/auth/actions';
 import { cn } from '@/lib/utils';
 import { LogOutIcon } from 'lucide-react';
 import { toast } from 'sonner';
@@ -45,12 +44,12 @@ export default function Logout({ className }: Props) {
 				<AlertDialogFooter className="flex flex-row gap-2 mt-3 flex-nowrap">
 					<AlertDialogCancel className="w-full mt-0">Cancel</AlertDialogCancel>
 					<form
-						action={async () => {
-							const res = await logout();
-							if (res?.error) {
-								toast.error(res.error);
-							}
-						}}
+						// action={async () => {
+						// 	const res = await logout();
+						// 	if (res?.error) {
+						// 		toast.error(res.error);
+						// 	}
+						// }}
 						className="w-full">
 						<AlertDialogAction type="submit" className="w-full">
 							Continue

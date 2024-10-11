@@ -17,7 +17,6 @@ import { useForm } from 'react-hook-form';
 import { MessageFormInput, MessageFormSchema } from '@/lib/validators/auth';
 import { useFormState } from 'react-dom';
 import { toast } from 'sonner';
-import { signup } from '@/lib/auth/actions';
 import { Loader } from 'lucide-react';
 import { Checkbox } from '../ui/checkbox';
 
@@ -40,18 +39,17 @@ export default function MessageForm({
 		},
 	});
 	const [loading, setLoading] = React.useState(false);
-	//@typescript-eslint/no-unused-vars
-	const [state, dispatch] = useFormState(signup, undefined);
+	// const [state, dispatch] = useFormState(signup, undefined);
 
-	async function handleSubmit() {
-		setLoading(true);
-	}
-	React.useEffect(() => {
-		if (state?.formError) {
-			toast.error(state.formError);
-		}
-		setLoading(false);
-	}, [state?.formError, state?.fieldError]);
+	// async function handleSubmit() {
+	// 	setLoading(true);
+	// }
+	// React.useEffect(() => {
+	// 	if (state?.formError) {
+	// 		toast.error(state.formError);
+	// 	}
+	// 	setLoading(false);
+	// }, [state?.formError, state?.fieldError]);
 	return (
 		<>
 			<div
@@ -61,7 +59,7 @@ export default function MessageForm({
 				)}
 				{...props}>
 				<Form {...form}>
-					<form onSubmit={form.handleSubmit(handleSubmit)}>
+					<form>
 						<div className="grid gap-4">
 							<FormField
 								control={form.control}
@@ -166,7 +164,7 @@ export default function MessageForm({
 															!form.getValues('allowMarketing')
 														);
 													}}
-													className=" checked:bg-green-600"
+													className=" checked:bg-blue-600"
 												/>
 												<label htmlFor="check" className="text-sm font-normal">
 													Do you want to receive our marketing and promotional
@@ -180,7 +178,7 @@ export default function MessageForm({
 							/>
 							<Button
 								disabled={loading}
-								className="mt-4 bg-green-600 text-white hover:border transition-colors duration-700 hover:border-green-600 hover:text-black hover:bg-transparent"
+								className="mt-4 bg-blue-600 text-white hover:border transition-colors duration-700 hover:border-blue-600 hover:text-black hover:bg-transparent"
 								type="submit">
 								{loading && <Loader className="mr-2 h-4 w-4 animate-spin" />}
 								Continue

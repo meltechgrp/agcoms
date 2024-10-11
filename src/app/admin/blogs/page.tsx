@@ -1,11 +1,10 @@
 import { Card } from '@/components/ui/card';
 import EmptyState from '@/components/shared/empty-state';
-import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { getBlogs, getPostData } from './components/query';
 import RecentBlogs from './components/recent-blogs';
 import { AlertTriggerButton } from '@/components/shared/alert-wrapper';
 import { PostAlert } from './components/post';
+import { getPostData, getPosts } from '@/lib/actions/blog-actions';
 
 type Props = {
 	searchParams: {
@@ -19,11 +18,11 @@ type Props = {
 };
 export default async function Page(props: Props) {
 	const { searchParams } = props;
-	const data = await getBlogs({
+	const data = await getPosts({
 		orderBy: {
 			createdAt: 'desc',
 		},
-		take: 50,
+		take: 20,
 		skip: 0,
 	});
 	const postData = await getPostData(searchParams.postId);

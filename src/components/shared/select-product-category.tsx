@@ -16,7 +16,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { GetBlogCategories } from '@/lib/get-sectors-data';
+import { GetBlogCategories } from '@/lib/actions';
 
 interface ProductCategorySelectProps {
 	name: string;

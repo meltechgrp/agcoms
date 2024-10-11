@@ -7,7 +7,6 @@ import { format } from 'date-fns';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { DeletePost, PostData } from './query';
 import NewProduct from './new-product';
 import { toast } from 'sonner';
 
@@ -96,14 +95,14 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
 											Cancel
 										</AlertTriggerButton>
 										<AlertTriggerButton
-											onClick={async () => {
-												const res = await DeletePost(product?.id || '');
-												if (!res) {
-													toast.error('Please try again');
-												} else {
-													toast.success('Post deleted successfully');
-												}
-											}}
+											// onClick={async () => {
+											// 	const res = await DeletePost(product?.id || '');
+											// 	if (!res) {
+											// 		toast.error('Please try again');
+											// 	} else {
+											// 		toast.success('Post deleted successfully');
+											// 	}
+											// }}
 											alertKey="productId"
 											alertValue={product?.id || 'new'}
 											className="px-8 py-2">

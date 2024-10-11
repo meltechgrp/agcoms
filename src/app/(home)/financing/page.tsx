@@ -14,13 +14,13 @@ import { Card } from '@/components/ui/card';
 import { ChevronRight } from 'lucide-react';
 import { financeCardData } from '@/components/financing/data';
 import { Separator } from '@/components/ui/separator';
-import { getBlogs } from '@/app/admin/blogs/components/query';
 import HowToFinance from '@/assets/finance/home-how-to-finance.avif';
 import ContactUs from '@/assets/finance/home-contact-us.avif';
 import Offers from '@/assets/finance/home-current-offers.webp';
+import { getPosts } from '@/lib/actions/blog-actions';
 
 async function Financing() {
-	const data = await getBlogs({
+	const data = await getPosts({
 		orderBy: {
 			createdAt: 'desc',
 		},

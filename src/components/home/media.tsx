@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils';
 
 export default function Media() {
 	return (
-		<div className="space-y-8 px-4 sm:px-12 my-6">
-			<h2 className="text-center text-black/80 text-xl sm:text-3xl font-bold">
+		<div className="space-y-8 px-4 flex flex-col sm:px-12 my-6">
+			<h2 className="text-center text-black/80 self-center border-b-2 border-blue-600 pb-1 text-xl sm:text-3xl font-bold">
 				News & Media
 			</h2>
 			<div className="grid sm:grid-cols-3 gap-4 sm:gap-8">

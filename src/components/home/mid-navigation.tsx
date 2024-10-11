@@ -11,7 +11,7 @@ export default function MidNavigation() {
 						className="w-full border-b sm:border-none py-2 rounded bg-gray-700 sm:bg-transparent ">
 						<Link
 							href={nav.link}
-							className="flex text-white px-4 sm:px-2 transition-all duration-700 hover:text-green-400 hover:-translate-y-1 items-center">
+							className="flex text-white px-4 sm:px-2 transition-all duration-700 hover:text-blue-400 hover:-translate-y-1 items-center">
 							<nav.icon strokeWidth={2} className=" w-10 h-10 mr-2" />
 							<span className="text-base sm:text-sm text-nowrap font-semibold">
 								{nav.title}

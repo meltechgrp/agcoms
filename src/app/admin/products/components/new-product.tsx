@@ -15,7 +15,6 @@ import {
 import { PostFormInput, PostFormSchema } from '@/lib/validators/auth';
 import { useFormState } from 'react-dom';
 import { Input } from '@/components/ui/input';
-import { CreatePost, PostData } from './query';
 import {
 	AlertTriggerButton,
 	useAlertToggle,
@@ -38,39 +37,39 @@ const NewPost = (props: { product?: any }) => {
 	});
 	const [loading, setLoading] = React.useState(false);
 	const dismissAlert = useAlertToggle();
-	const [state, dispatch] = useFormState(CreatePost, undefined);
+	// const [state, dispatch] = useFormState(CreatePost, undefined);
 
-	async function handleSubmit(data: PostFormInput) {
-		setLoading(true);
-		return dispatch(data);
-	}
-	useEffect(() => {
-		if (state?.fieldError) {
-			setLoading(false);
-			Object.entries(state.fieldError).forEach(([key, value]) => {
-				form.setError(key as any, {
-					type: 'manual',
-					message: value,
-				});
-			});
-		}
-		if (state?.formError) {
-			setLoading(false);
-			toast.error(state.formError);
-		}
-		if (state?.data) {
-			setLoading(false);
-			toast.success(
-				product?.id
-					? 'Product updated successfully'
-					: 'Product created successfully'
-			);
-			form.reset();
-			return product
-				? dismissAlert('edit', 'true')
-				: dismissAlert('productId', 'new');
-		}
-	}, [state?.formError, state?.fieldError, state?.data]);
+	// async function handleSubmit(data: PostFormInput) {
+	// 	setLoading(true);
+	// 	return dispatch(data);
+	// }
+	// useEffect(() => {
+	// 	if (state?.fieldError) {
+	// 		setLoading(false);
+	// 		Object.entries(state.fieldError).forEach(([key, value]) => {
+	// 			form.setError(key as any, {
+	// 				type: 'manual',
+	// 				message: value,
+	// 			});
+	// 		});
+	// 	}
+	// 	if (state?.formError) {
+	// 		setLoading(false);
+	// 		toast.error(state.formError);
+	// 	}
+	// 	if (state?.data) {
+	// 		setLoading(false);
+	// 		toast.success(
+	// 			product?.id
+	// 				? 'Product updated successfully'
+	// 				: 'Product created successfully'
+	// 		);
+	// 		form.reset();
+	// 		return product
+	// 			? dismissAlert('edit', 'true')
+	// 			: dismissAlert('productId', 'new');
+	// 	}
+	// }, [state?.formError, state?.fieldError, state?.data]);
 	return (
 		<>
 			<div className="space-y-4">
@@ -83,7 +82,7 @@ const NewPost = (props: { product?: any }) => {
 			<div className="my-4 px-2">
 				<Form {...form}>
 					<form
-						onSubmit={form.handleSubmit(handleSubmit)}
+						// onSubmit={form.handleSubmit(handleSubmit)}
 						encType="multipart/form-data">
 						<div className="grid gap-4">
 							<FormField

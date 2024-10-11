@@ -15,7 +15,6 @@ import {
 import { PostFormInput, PostFormSchema } from '@/lib/validators/auth';
 import { useFormState } from 'react-dom';
 import { Input } from '@/components/ui/input';
-import { CreatePost, PostData } from './query';
 import {
 	AlertTriggerButton,
 	useAlertToggle,
@@ -24,11 +23,14 @@ import { toast } from 'sonner';
 import { LoaderIcon } from 'lucide-react';
 import { AlertDialogFooter } from '@/components/ui/alert-dialog';
 import BlogCategorySelect from '@/components/shared/select-product-category';
-import ImageUploader from '@/components/shared/image-uploader';
-import { ImageListType } from 'react-images-uploading';
-import TextEditor from '@/components/shared/text-editor';
+import ImageUploader, { ImageType } from '@/components/shared/image-uploader';
+import dynamic from 'next/dynamic';
+import { PostType, createPost } from '@/lib/actions/blog-actions';
+const TextEditor = dynamic(() => import('@/components/shared/text-editor'), {
+	ssr: false,
+});
 
-const NewPost = (props: { post?: PostData }) => {
+const NewPost = (props: { post?: PostType }) => {
 	const { post } = props;
 	const form = useForm<PostFormInput>({
 		resolver: zodResolver(PostFormSchema),
@@ -37,12 +39,12 @@ const NewPost = (props: { post?: PostData }) => {
 			title: post?.title || '',
 			content: post?.content || '',
 			category: post?.category?.name || '',
-			imageId: post?.images || [],
+			images: post?.images || [],
 		},
 	});
 	const [loading, setLoading] = React.useState(false);
 	const dismissAlert = useAlertToggle();
-	const [state, dispatch] = useFormState(CreatePost, undefined);
+	const [state, dispatch] = useFormState(createPost, undefined);
 
 	async function handleSubmit(data: PostFormInput) {
 		setLoading(true);
@@ -142,14 +144,16 @@ const NewPost = (props: { post?: PostData }) => {
 
 							<FormField
 								control={form.control}
-								name="imageId"
+								name="images"
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel>Publbication images</FormLabel>
 										<FormControl>
 											<ImageUploader
-												images={form.getValues('imageId')}
-												saveImages={(image) => form.setValue('imageId', image)}
+												bucketName="images"
+												folderName="blog-images"
+												images={form.getValues('images') as ImageType[]}
+												saveImages={(image) => form.setValue('images', image)}
 											/>
 										</FormControl>
 										<FormMessage />
@@ -175,8 +179,8 @@ const NewPost = (props: { post?: PostData }) => {
 
 							<AlertDialogFooter className="w-full flex flex-row gap-3 mt-3 ">
 								<AlertTriggerButton
-									alertKey="postId"
-									alertValue={post ? 'true' : 'new'}
+									alertKey={post?.id ? 'edit' : 'postId'}
+									alertValue={post?.id ? 'true' : 'new'}
 									type="button"
 									className="px-8 py-2 flex-1">
 									Cancel

@@ -94,7 +94,9 @@ export const AuthSignupFormSchema = z.object({
 });
 export type AuthSignupFormInput = z.infer<typeof AuthSignupFormSchema>;
 
-export const id = z.string();
+export const ImageType = z.object({
+	url: z.string(),
+});
 
 export const PostFormSchema = z.object({
 	title: z.string().min(2, {
@@ -104,7 +106,11 @@ export const PostFormSchema = z.object({
 		message: 'Content must be at least 10 characters.',
 	}),
 	id: z.string().optional(),
-	imageId: z.array(id).optional(),
-	category: z.string().optional(),
+	images: z.array(ImageType).min(1, {
+		message: 'Upload atleast one image',
+	}),
+	category: z.string().min(2, {
+		message: 'Please select a category',
+	}),
 });
 export type PostFormInput = z.infer<typeof PostFormSchema>;
