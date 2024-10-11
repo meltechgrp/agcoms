@@ -31,7 +31,7 @@ export default function useImageHandler(
 	const [loading, setLoading] = useState<boolean>(false);
 
 	const getImageUrl = (key: string) => {
-		return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${bucketName}/${folderName}/${key}`;
+		return `https://gwaoeuzdusyotbrfqkki.supabase.co/storage/v1/object/public/${bucketName}/${folderName}/${key}`;
 	};
 	const uploadImages = useCallback(
 		async (formData: FormData): Promise<UploadResponse> => {
