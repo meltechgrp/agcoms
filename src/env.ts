@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 const schema = z.object({
-	NEXT_PUBLIC_APP_URL: z.string(),
-	NODE_ENV: z.string(),
+	NEXT_PUBLIC_APP_URL: z.string().optional(),
+	NODE_ENV: z.string().optional(),
 	SUPABASE_ANON_KEY: z.string(),
 	SUPABASE_URL: z.string(),
 	POSTGRES_URL: z.string(),
