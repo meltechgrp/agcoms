@@ -4,6 +4,7 @@ import { Plus } from 'lucide-react';
 import { AlertTriggerButton } from '@/components/shared/alert-wrapper';
 import RecentProducts from './components/recent-products';
 import { ProductAlert } from './components/product';
+import { getProductData, getProducts } from '@/lib/actions/product-actions';
 
 type Props = {
 	searchParams: {
@@ -15,14 +16,21 @@ type Props = {
 		edit?: string;
 	};
 };
-export default function Page(props: Props) {
+export default async function Page(props: Props) {
 	const { searchParams } = props;
-	const data = [];
+	const data = await getProducts({
+		orderBy: {
+			createdAt: 'desc',
+		},
+		take: 20,
+		skip: 0,
+	});
+	const productData = await getProductData(searchParams.productId);
 	return (
-		<div className="w-full h-full py-8 pl-0 space-y-6">
+		<div className="w-full h-full py-8 space-y-6">
 			<div>
 				<h1 className=" text-xl sm:text-3xl font-medium mb-1">Products</h1>
-				<p className="text-gray-500">View all posted products.</p>
+				<p className="text-gray-500">View all producted products.</p>
 			</div>
 			{data.length > 0 ? (
 				<>
@@ -47,7 +55,7 @@ export default function Page(props: Props) {
 					<div>
 						<div className="flex flex-col gap-4">
 							<h4>Recent publications</h4>
-							<RecentProducts data={[]} />
+							<RecentProducts data={data} />
 						</div>
 					</div>
 				</>
@@ -55,7 +63,7 @@ export default function Page(props: Props) {
 				<EmptyState
 					className=" border-0 shadow-none"
 					title="No available data"
-					description="Projects will be shown when created!">
+					description="Products will be shown when created!">
 					<AlertTriggerButton
 						variant="outline"
 						alertKey="productId"
@@ -69,7 +77,7 @@ export default function Page(props: Props) {
 				open={!!searchParams.productId}
 				productId={searchParams.productId}
 				edit={searchParams.edit}
-				product={null}
+				product={productData}
 			/>
 		</div>
 	);

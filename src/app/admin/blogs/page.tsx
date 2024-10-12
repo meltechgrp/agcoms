@@ -27,7 +27,7 @@ export default async function Page(props: Props) {
 	});
 	const postData = await getPostData(searchParams.postId);
 	return (
-		<div className="w-full h-full py-8 pl-0 space-y-6">
+		<div className="w-full h-full py-4 sm:py-8 space-y-6">
 			<div>
 				<h1 className="text-xl sm:text-3xl font-medium mb-1">
 					News and Blog Stories
@@ -39,7 +39,9 @@ export default async function Page(props: Props) {
 					<Card className="w-full divide-y">
 						<div className="p-6 flex justify-between">
 							<div className="flex-1">
-								<h2 className="font-medium text-lg">All AGCOMS Publications</h2>
+								<h2 className="font-medium text-base sm:text-lg">
+									All AGCOMS Publications
+								</h2>
 								<p className="text-gray-500 text-xs">
 									Find all new and existing publications.
 								</p>
@@ -50,7 +52,8 @@ export default async function Page(props: Props) {
 								alertKey="postId"
 								alertValue="new">
 								<Plus className="h-5 w-5 mr-2" />
-								New publication
+								New{' '}
+								<span className="hidden ml-1 sm:inline-block">publication</span>
 							</AlertTriggerButton>
 						</div>
 					</Card>

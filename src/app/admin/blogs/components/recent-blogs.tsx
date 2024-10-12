@@ -4,7 +4,6 @@ import { Card } from '@/components/ui/card';
 import { PostsType } from '@/lib/actions/blog-actions';
 import { uniqueId } from '@/lib/utils';
 import { format } from 'date-fns';
-import { HtmlContext } from 'next/dist/server/future/route-modules/app-page/vendored/contexts/entrypoints';
 import Link from 'next/link';
 
 interface RecentProps {
@@ -14,7 +13,7 @@ interface RecentProps {
 function RecentBlogs({ data }: RecentProps) {
 	return (
 		<div>
-			<div className="grid grid-cols-3 gap-2 ">
+			<div className="grid sm:grid-cols-3 gap-2 ">
 				{data.map((b) => (
 					<Card
 						key={uniqueId()}

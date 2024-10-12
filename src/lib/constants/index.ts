@@ -435,7 +435,7 @@ export const midNavigationData: {
 	>;
 }[] = [
 	{
-		title: 'Locate a Dealer',
+		title: 'Request quote',
 		link: 'https://www.deere.africa/en/our-company/contact-us/',
 		icon: MapPin,
 	},

@@ -16,28 +16,28 @@ import { useEffect, useMemo, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { getProCats } from '@/lib/actions';
+import { getBlogCategories } from '@/lib/actions';
 
-interface ProductCategorySelectProps {
+interface BlogCategorySelectProps {
 	name: string;
 	onValueChange: (name: string) => void;
 }
 
-interface ProCategory {
+interface BlogCategory {
 	name: string;
 }
 
-const ProductCategorySelect = ({
+const BlogCategorySelect = ({
 	name,
 	onValueChange,
-}: ProductCategorySelectProps) => {
-	const [categories, setProCategories] = useState<ProCategory[]>([]);
+}: BlogCategorySelectProps) => {
+	const [categories, setBlogCategories] = useState<BlogCategory[]>([]);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		const fetchCountries = async () => {
-			const categories = await getProCats();
-			setProCategories(categories);
+			const categories = await getBlogCategories();
+			setBlogCategories(categories);
 		};
 		fetchCountries();
 	}, []);
@@ -93,4 +93,4 @@ const ProductCategorySelect = ({
 	);
 };
 
-export default ProductCategorySelect;
+export default BlogCategorySelect;

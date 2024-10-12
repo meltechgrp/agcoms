@@ -9,7 +9,7 @@ import { useState } from 'react';
 function Header() {
 	const [open, setOpen] = useState(false);
 	return (
-		<header className="sm:hidden flex min-h-16 py-4 items-center w-full gap-4 border-b bg-muted/40 px-3 sm:h-[60px] sm:px-6">
+		<header className="sm:hidden flex min-h-16 py-4 items-center w-full gap-4 border-b bg-muted/40 px-4 sm:h-[60px] sm:px-6">
 			<Sheet open={open} onOpenChange={setOpen}>
 				<SheetTrigger asChild>
 					<Button variant="outline" size="icon" className="shrink-0 md:hidden">

@@ -1,4 +1,5 @@
 import { midNavigationData } from '@/lib/constants';
+import { uniqueId } from '@/lib/utils';
 import Link from 'next/link';
 
 export default function MidNavigation() {
@@ -10,7 +11,8 @@ export default function MidNavigation() {
 						key={nav.title}
 						className="w-full border-b sm:border-none py-2 rounded bg-gray-700 sm:bg-transparent ">
 						<Link
-							href={nav.link}
+							href={uniqueId()}
+							target="_blank"
 							className="flex text-white px-4 sm:px-2 transition-all duration-700 hover:text-blue-400 hover:-translate-y-1 items-center">
 							<nav.icon strokeWidth={2} className=" w-10 h-10 mr-2" />
 							<span className="text-base sm:text-sm text-nowrap font-semibold">

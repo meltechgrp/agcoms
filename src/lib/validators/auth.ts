@@ -1,6 +1,4 @@
 import { z } from 'zod';
-import { ImageListType } from 'react-images-uploading';
-
 export const MessageFormSchema = z.object({
 	fullName: z.string().min(2, {
 		message: 'Your full name must be at least 2 characters.',
@@ -29,12 +27,6 @@ export const signupSchema = z.object({
 });
 export type SignupInput = z.infer<typeof signupSchema>;
 
-export const loginSchema = z.object({
-	email: z.string().email('Please enter a valid email.'),
-	password: z.string().min(1, 'Please provide your password.').max(255),
-});
-export type LoginInput = z.infer<typeof loginSchema>;
-
 export const resetPasswordSchema = z.object({
 	token: z.string().min(1, 'Invalid token'),
 	password: z.string().min(8, 'Password is too short').max(255),
@@ -50,10 +42,6 @@ export const AuthLoginSchema = z.object({
 });
 export type AuthLoginInput = z.infer<typeof AuthLoginSchema>;
 
-export const forgotPasswordSchema = z.object({
-	email: z.string().email(),
-});
-export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
 export const manualResetPasswordSchema = z.object({
 	currentPassword: z.string().min(8, 'Password is too short').max(255),
 	newPassword: z.string().min(8, 'Password is too short').max(255),
@@ -62,37 +50,6 @@ export const manualResetPasswordSchema = z.object({
 export type ManualResetPasswordInput = z.infer<
 	typeof manualResetPasswordSchema
 >;
-
-export const AuthSignupFormSchema = z.object({
-	firstName: z.string().min(2, {
-		message: 'Your first name must be at least 2 characters.',
-	}),
-	lastName: z.string().min(2, {
-		message: 'Your last name must be at least 2 characters.',
-	}),
-	email: z.string().email({
-		message: 'Please enter a valid email address.',
-	}),
-	phone: z.string().min(10, {
-		message: 'Please enter a valid phone number.',
-	}),
-	password: z.string().min(8, {
-		message: 'Your password must be at least 8 characters.',
-	}),
-	businessName: z.string().min(2, {
-		message: 'Your business name must be at least 2 characters.',
-	}),
-	country: z.string().min(2, {
-		message: 'Please select your country.',
-	}),
-	countryCode: z.string().min(2, {
-		message: 'Please select your country code.',
-	}),
-	id: z.string().optional(),
-	city: z.string().optional(),
-	state: z.string().optional(),
-});
-export type AuthSignupFormInput = z.infer<typeof AuthSignupFormSchema>;
 
 export const ImageType = z.object({
 	url: z.string(),
@@ -114,3 +71,46 @@ export const PostFormSchema = z.object({
 	}),
 });
 export type PostFormInput = z.infer<typeof PostFormSchema>;
+
+export const Feature = z.object({
+	name: z.string().min(2, {
+		message: 'Feature name must be at least 2 characters.',
+	}),
+	content: z.string().min(5, {
+		message: 'description must be at least 5 characters.',
+	}),
+	id: z.string().optional(),
+});
+export const Spec = z.object({
+	name: z.string().min(2, {
+		message: 'Specification name must be at least 2 characters.',
+	}),
+	content: z.string().min(5, {
+		message: 'description must be at least 5 characters.',
+	}),
+	id: z.string().optional(),
+});
+
+export const ProductFormSchema = z.object({
+	name: z.string().min(2, {
+		message: 'product name must be at least 2 characters.',
+	}),
+	price: z.string().optional(),
+	description: z.string().min(5, {
+		message: 'description must be at least 5 characters.',
+	}),
+	id: z.string().optional(),
+	category: z.string().min(2, {
+		message: 'Please select a category',
+	}),
+	subCategory: z.string().optional(),
+	images: z.array(ImageType).min(1, {
+		message: 'Upload at least one image',
+	}),
+	features: z.array(Feature).min(1, {
+		message: 'Add at least one feature',
+	}),
+	specs: z.array(Spec).optional(),
+});
+
+export type ProductFormInput = z.infer<typeof ProductFormSchema>;

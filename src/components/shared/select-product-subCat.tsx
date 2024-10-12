@@ -16,6 +16,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { getProSubCats } from '@/lib/actions';
 
 interface ProductSubCategorySelectProps {
 	category: string;
@@ -28,20 +29,18 @@ const ProductSubCategorySelect = ({
 	name,
 	onValueChange,
 }: ProductSubCategorySelectProps) => {
-	const [categories, setProductCategories] = useState<any>([]);
+	const [categories, setProductCategories] = useState<{ name: string }[]>([]);
 	const [open, setOpen] = useState(false);
 
-	// useEffect(() => {
-	// 	const fetchCats = async () => {
-	// 		const categories = [];
-	// 		setProductCategories(categories);
-	// 	};
-	// 	fetchCats();
-	// }, [category]);
+	useEffect(() => {
+		const fetchCats = async () => {
+			const categories = await getProSubCats(category);
+			setProductCategories(categories);
+		};
+		fetchCats();
+	}, [category]);
 	const subCategory = useMemo(() => {
-		return (
-			categories && categories.find((item: any) => item.name == name)?.name
-		);
+		return categories && categories.find((item) => item.name == name)?.name;
 	}, [name, categories]);
 	return (
 		<div>
@@ -52,7 +51,10 @@ const ProductSubCategorySelect = ({
 						role="combobox"
 						aria-expanded={open}
 						aria-label="Select a model"
-						className="w-full justify-between">
+						className={cn(
+							'w-full justify-between text-sm font-medium',
+							subCategory ? 'lowercase' : ''
+						)}>
 						{subCategory ? subCategory : 'Select a sub category...'}
 						<ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 					</Button>
@@ -63,12 +65,13 @@ const ProductSubCategorySelect = ({
 						<CommandEmpty>No results found.</CommandEmpty>
 						<CommandList>
 							<CommandGroup>
-								{categories.map((item: any) => {
+								{categories.map((item) => {
 									const label = item.name;
 									return (
 										<CommandItem
 											key={item.name}
 											value={label}
+											className="text-sm font-medium lowercase"
 											onSelect={() => {
 												onValueChange(item.name);
 												setOpen(false);

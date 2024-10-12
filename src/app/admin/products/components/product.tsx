@@ -9,11 +9,15 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import NewProduct from './new-product';
 import { toast } from 'sonner';
+import { cn, uniqueId } from '@/lib/utils';
+import { deleteProduct, ProductType } from '@/lib/actions/product-actions';
+import Image from '@/components/shared/image';
+import HtmlText from '@/components/shared/html-text';
 
 type Props = {
 	open: boolean;
 	productId?: string;
-	product: any;
+	product: ProductType;
 	edit?: string;
 };
 
@@ -23,26 +27,31 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
 			alertKey="productId"
 			alertValue={productId || 'new'}
 			open={open}
-			className={'sm:min-w-[56rem] overflow-scroll max-h-screen sm:w-[75vw]'}>
+			className={cn(
+				'sm:min-w-[56rem] overflow-scroll max-h-screen sm:w-[75vw]',
+				productId === 'new' || edit === 'true' ? 'px-0 py-0' : ''
+			)}>
 			<div className="overflow-y-scroll">
 				{productId === 'new' || edit === 'true' ? (
 					<NewProduct product={product} />
 				) : (
 					<>
 						<div className="space-y-4">
-							<h2 className="text-xl">Post Details</h2>
+							<h2 className="text-xl">Product Details</h2>
 						</div>
 						<div className=" mt-1">
 							<div className="w-full">
 								<div className="flex flex-col gap-5 py-3">
 									<div className="grid sm:grid-cols-3 gap-4">
-										{product?.images.map((im: any) => (
+										{product?.images.map((im) => (
 											<div
-												key={im.id}
+												key={uniqueId()}
 												className="flex justify-center w-full h-32 items-center">
-												<img
+												<Image
 													src={im.url}
-													className="w-full h-full object-cover"
+													alt={product.name}
+													bucketName="images"
+													folderName="product-images"
 												/>
 											</div>
 										))}
@@ -51,7 +60,7 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
 										<CardContent className="space-y-4 px-4 py-1">
 											<div className="flex justify-between items-center w-full text-sm">
 												<span className="text-gray-500">Title:</span>
-												<span>{product?.title || ''}</span>
+												<span>{product?.name || ''}</span>
 											</div>
 											<div className="flex justify-between items-center w-full text-sm">
 												<span className="text-gray-500">Date created:</span>
@@ -75,7 +84,10 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
 										</CardContent>
 									</Card>
 									<Card className="px-4 py-2">
-										<p className="text-xs font-semibold">{product?.content}</p>
+										<HtmlText
+											text={product?.description ?? ''}
+											className="text-xs font-semibold"
+										/>
 									</Card>
 									<div className="flex gap-4 items-center">
 										<Link
@@ -85,7 +97,7 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
 												className=" border-2"
 												variant={'outline'}
 												size={'lg'}>
-												Edit Post
+												Edit Product
 											</Button>
 										</Link>
 										<AlertTriggerButton
@@ -95,14 +107,14 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
 											Cancel
 										</AlertTriggerButton>
 										<AlertTriggerButton
-											// onClick={async () => {
-											// 	const res = await DeletePost(product?.id || '');
-											// 	if (!res) {
-											// 		toast.error('Please try again');
-											// 	} else {
-											// 		toast.success('Post deleted successfully');
-											// 	}
-											// }}
+											onClick={async () => {
+												const res = await deleteProduct(product?.id || '');
+												if (!res) {
+													toast.error('Please try again');
+												} else {
+													toast.success('Product deleted successfully');
+												}
+											}}
 											alertKey="productId"
 											alertValue={product?.id || 'new'}
 											className="px-8 py-2">
