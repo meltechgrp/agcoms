@@ -75,8 +75,6 @@ export function MainNav({ setOpen, className, ...props }: MainNavProps) {
 							<span className="text-xs text-gray-500">Admin</span>
 						</div>
 					</div>
-					<Separator className="my-4" />
-					<Logout className="" />
 				</div>
 			</div>
 		</aside>

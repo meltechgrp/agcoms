@@ -4,7 +4,6 @@ import { revalidatePath } from 'next/cache';
 import { ActionResponse } from '.';
 import prisma from '../prisma';
 import { ProductFormInput, ProductFormSchema } from '../validators/auth';
-import { connect } from 'http2';
 
 export async function getProducts(args: {
 	cursor?: string;
@@ -24,6 +23,7 @@ export async function getProducts(args: {
 				category: {
 					select: {
 						name: true,
+						slug: true,
 					},
 				},
 				images: {
@@ -35,6 +35,7 @@ export async function getProducts(args: {
 				subcategory: {
 					select: {
 						name: true,
+						slug: true,
 					},
 				},
 			},
@@ -53,7 +54,7 @@ export async function getProductData(productId?: string) {
 			where: { id: productId },
 			include: {
 				category: {
-					select: { name: true },
+					select: { name: true, slug: true },
 				},
 				images: {
 					select: { url: true },
@@ -62,6 +63,7 @@ export async function getProductData(productId?: string) {
 				subcategory: {
 					select: {
 						name: true,
+						slug: true,
 					},
 				},
 				features: {
@@ -129,15 +131,11 @@ export async function createProduct(
 							name: category,
 						},
 					},
-					...(subCategory
-						? {
-								subcategory: {
-									connect: {
-										name: subCategory,
-									},
-								},
-						  }
-						: {}),
+					subcategory: {
+						connect: {
+							name: subCategory,
+						},
+					},
 					...(images?.length
 						? {
 								images: {
@@ -155,14 +153,10 @@ export async function createProduct(
 					...(features?.length
 						? {
 								features: {
-									connectOrCreate: features.map(({ name, content, id }) => ({
-										where: {
-											id,
-										},
-										create: {
-											name,
-											content,
-										},
+									deleteMany: {},
+									create: features.map(({ name, content }) => ({
+										name,
+										content,
 									})),
 								},
 						  }
@@ -170,20 +164,17 @@ export async function createProduct(
 					...(specs?.length
 						? {
 								specs: {
-									connectOrCreate: specs.map(({ name, content, id }) => ({
-										where: {
-											id,
-										},
-										create: {
-											name,
-											content,
-										},
+									deleteMany: {},
+									create: specs.map(({ name, content }) => ({
+										name,
+										content,
 									})),
 								},
 						  }
 						: {}),
 				},
 			});
+			revalidatePath('/admin/products');
 			return {
 				data: true,
 			};
@@ -197,50 +188,41 @@ export async function createProduct(
 							name: category,
 						},
 					},
-					...(subCategory
-						? {
-								subcategory: {
-									connect: {
-										name: subCategory,
-									},
-								},
-						  }
-						: {}),
+					subcategory: {
+						connect: {
+							name: subCategory,
+						},
+					},
 					...(images
 						? {
 								images: {
-									createMany: {
-										data: images.map(({ url }) => ({ url })),
-									},
+									create: images.map(({ url }) => ({ url })),
 								},
 						  }
 						: {}),
 					...(features?.length
 						? {
 								features: {
-									createMany: {
-										data: features.map(({ name, content }) => ({
-											name,
-											content,
-										})),
-									},
+									create: features.map(({ name, content }) => ({
+										name,
+										content,
+									})),
 								},
 						  }
 						: {}),
 					...(specs?.length
 						? {
 								specs: {
-									createMany: {
-										data: specs.map(({ name, content }) => ({
-											name,
-											content,
-										})),
-									},
+									create: specs.map(({ name, content }) => ({
+										name,
+										content,
+									})),
 								},
 						  }
 						: {}),
 				},
 			});
+			revalidatePath('/admin/products');
 			return {
 				data: true,
 			};

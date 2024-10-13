@@ -6,18 +6,14 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import banner from '@/assets/images/category/financing.jpg';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ChevronRight } from 'lucide-react';
 import { financeCardData } from '@/components/financing/data';
 import { Separator } from '@/components/ui/separator';
-import HowToFinance from '@/assets/finance/home-how-to-finance.avif';
-import ContactUs from '@/assets/finance/home-contact-us.avif';
-import Offers from '@/assets/finance/home-current-offers.webp';
 import { getPosts } from '@/lib/actions/blog-actions';
+import Image from '@/components/shared/image';
 
 async function Financing() {
 	const data = await getPosts({
@@ -33,12 +29,12 @@ async function Financing() {
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink
-							className="text-base font-medium text-green-500"
+							className="text-base font-medium text-blue-500"
 							href="/">
 							Home
 						</BreadcrumbLink>
 					</BreadcrumbItem>
-					<BreadcrumbSeparator className=" text-green-500 font-bold" />
+					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbPage className="text-sm text-gray-500 font-normal  capitalize">
 							Financing
@@ -49,9 +45,10 @@ async function Financing() {
 			<div>
 				<div className="py-2 sm:h-[450px] relative space-y-4">
 					<Image
-						src={banner}
+						src={'financing.jpg'}
 						alt={'Financing'}
-						style={{ width: 'auto', height: 'auto' }}
+						bucketName="banners"
+						folderName="finance-banners"
 						className="w-screen sm:w-[1350px] object-fill h-[250px] sm:h-[500px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
 					/>
 					<div className="relative px-8 py-8 flex flex-col z-10 w-full space-y-2 items-center sm:items-end">
@@ -150,13 +147,13 @@ async function Financing() {
 								allowFullScreen></iframe>
 						</div>
 					</div>
-					<div className="grid sm:grid-cols-3 gap-4 px-4 mt-3 sm:px-12 ">
+					{/* <div className="grid sm:grid-cols-3 gap-4 px-4 mt-3 sm:px-12 ">
 						{financeData.map((b) => (
 							<div
 								key={b.title}
 								className=" bg-transparent shadow-none h-full w-full flex flex-col  gap-2">
 								<div className="w-full">
-									<img
+									<Image
 										src={b.image.src}
 										alt={b.title}
 										className="w-full object-cover h-48 rounded-md"
@@ -179,7 +176,7 @@ async function Financing() {
 								</Link>
 							</div>
 						))}
-					</div>
+					</div> */}
 					<div className="grid gap-8 px-4 py-8 bg-[#f4f3f3] sm:px-12">
 						<div>
 							<h1 className="text-xl sm:text-3xl text-center">
@@ -226,27 +223,3 @@ async function Financing() {
 }
 
 export default Financing;
-
-const financeData = [
-	{
-		title: 'How to Finance',
-		des: 'We can make owning and operating equipment easy and affordable. By helping you find the right financial solution to keep your business running, we enable you to purchase the John Deere equipment you need at the right time. Find out more about our easy process.',
-		link: '/finance/#',
-		slug: 'Read More',
-		image: HowToFinance,
-	},
-	{
-		title: 'Current Offers',
-		des: 'At John Deere Financial, we continuously work towards providing you with the best solution for your business. With special offers across South Africa and Sub-Saharan Africa, you can purchase quality John Deere equipment while enjoying the full John Deere experience.',
-		link: '/finance/#',
-		slug: 'View Offers',
-		image: Offers,
-	},
-	{
-		title: 'Contact Us',
-		des: 'At John Deere Financial, we want to participate in your decision-making journey. Trust us to be your advisor when making new equipment decisions. We’ll help design a financial solution that enables you to purchase the equipment you need.',
-		link: '/finance/#',
-		slug: 'Contact Us',
-		image: ContactUs,
-	},
-];

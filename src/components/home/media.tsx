@@ -1,9 +1,6 @@
-import read from '@/assets/images/media-read.png';
-import watch from '@/assets/images/media-watch.png';
-import podcast from '@/assets/images/media-podcast.png';
 import Link from 'next/link';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import Image from '../shared/image';
 
 export default function Media() {
 	return (
@@ -26,9 +23,10 @@ export default function Media() {
 						<div className="flex-1 h-full">
 							<Image
 								src={m.image}
+								className="h-[180px] rounded"
 								alt={m.title}
-								style={{ width: '100%', height: 'auto' }}
-								className="w-full h-[180px] rounded object-cover"
+								bucketName="banners"
+								folderName="home-banners"
 							/>
 						</div>
 					</Link>
@@ -41,17 +39,17 @@ export default function Media() {
 const data = [
 	{
 		title: 'Read',
-		image: read,
+		image: 'media-read.png',
 		link: 'https://www.deere.africa/en/our-company/news-media/',
 	},
 	{
 		title: 'Watch',
-		image: watch,
+		image: 'media-watch.png',
 		link: 'https://www.youtube.com/c/JohnDeereAfrica/videos',
 	},
 	{
 		title: 'Listen',
-		image: podcast,
+		image: 'media-podcast.png',
 		link: 'https://www.youtube.com/playlist?list=PLLtxGbAY1VBC9RolKMTrAlkCaxkHkVIEt',
 	},
 ];

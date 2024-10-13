@@ -7,33 +7,38 @@ generator client {
 datasource db {
   provider   = "postgresql"
   url        = env("POSTGRES_URL")
-  extensions = [pg_graphql, pgcrypto, supabase_vault, pgsodium, pgjwt, pg_stat_statements, postgis]
+  directUrl  = env("DIRECT_URL")
+  extensions = [postgis]
 }
 
 model Message {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   fullName    String
   email       String
   town        String
   message     String
   phone       String
-  intlPhone   String? @unique
+  intlPhone   String?
   country     String?
   countryCode String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 // Define the Image model
 model Image {
-  id         String    @id @default(cuid())
-  url        String    @unique
-  blog       Blog?     @relation(fields: [blogId], references: [id]) // Optionally related to a Blog
-  blogId     String?
-  product    Products? @relation(fields: [productId], references: [id]) // Optionally related to a Product
-  productId  String?
-  user       User?     @relation(fields: [userId], references: [id]) // Optionally related to a User
-  userId     String?
-  categoryId String?
-  category   Category? @relation(fields: [categoryId], references: [id]) // Optionally related to a Category])
+  id                   String                @id @default(cuid())
+  url                  String                @unique
+  post                 Posts?                @relation(fields: [postId], references: [id], onDelete: Cascade) // Optionally related to a Blog
+  postId               String?
+  product              Products?             @relation(fields: [productId], references: [id], onDelete: Cascade) // Optionally related to a Product
+  productId            String?
+  user                 User?                 @relation(fields: [userId], references: [id], onDelete: Cascade) // Optionally related to a User
+  userId               String?
+  productCategoryId    String?
+  productCategory      ProductCategories?    @relation(fields: [productCategoryId], references: [id], onDelete: Cascade)
+  productSubCategoryId String?
+  productSubCategory   ProductSubCategories? @relation(fields: [productSubCategoryId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

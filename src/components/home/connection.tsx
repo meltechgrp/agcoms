@@ -1,8 +1,6 @@
-import image1 from '@/assets/images/connect1.png';
-import image2 from '@/assets/images/connect2.png';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../ui/button';
+import Image from '../shared/image';
 
 export default function Connection() {
 	return (
@@ -13,9 +11,10 @@ export default function Connection() {
 						<div className="flex-1">
 							<Image
 								src={item.url}
-								style={{ width: '100%', height: 'auto' }}
+								className="w-full h-full rounded shadow"
 								alt={item.title}
-								className="w-full h-full rounded shadow object-cover"
+								bucketName="banners"
+								folderName="home-banners"
 							/>
 						</div>
 						<div className="space-y-6">
@@ -40,12 +39,12 @@ export default function Connection() {
 const data = [
 	{
 		title: 'Get Connected!',
-		url: image1,
+		url: 'connect1.png',
 		link: 'https://www.deere.com/en/technology-products/precision-ag-technology/data-management/jdlink/',
 	},
 	{
 		title: 'Manage Your Farm, Remotely',
-		url: image2,
+		url: 'connect2.png',
 		link: 'https://www.deere.com/en/technology-products/precision-ag-technology/data-management/operations-center/',
 	},
 ];

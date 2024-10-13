@@ -1,41 +1,65 @@
 'use client';
 
-import { Link as ScrollLink, Element, Events, scrollSpy } from 'react-scroll';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Element } from 'react-scroll';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { NavMenuData } from '@/lib/constants';
+import useNavStore from '@/stores/use-nav-store';
+import { charSet } from './p-nav';
 
-interface groupedProducts {
-	[key: string]: {
-		title: string;
-		link: string;
-	}[];
-}
+type Product = {
+	name: string;
+	id: string;
+	sub: string;
+	cat: string;
+};
 
+type GroupedProducts = {
+	[key: string]: Product[] | string[];
+};
 function ProductSections() {
-	const [grouped, setGrouped] = useState<groupedProducts>({});
+	const [grouped, setGrouped] = useState<GroupedProducts>({});
+	const products = useNavStore((s) => s.product);
+	const chars = charSet();
 	useEffect(() => {
-		const groupedProducts: groupedProducts = {};
-		NavMenuData.map((s) => s.sub.map((c) => c.categories?.map((cc) => cc.cats)))
-			.flat(3)
-			?.sort((a, b) =>
-				a?.title ? a?.title?.localeCompare(b?.title ? b?.title : '') : -1
-			)
-			.forEach((product) => {
-				if (!product) return;
-				const firstChar = product.title[0].toUpperCase();
-				if (/\d/.test(firstChar)) {
-					if (!groupedProducts['1-9']) {
-						groupedProducts['1-9'] = [];
-					}
-					groupedProducts['1-9'].push(product);
-				} else if (firstChar >= 'A' && firstChar <= 'Z') {
-					if (!groupedProducts[firstChar]) {
-						groupedProducts[firstChar] = [];
-					}
-					groupedProducts[firstChar].push(product);
+		const groupedProducts: GroupedProducts = chars.reduce<GroupedProducts>(
+			(acc, char) => {
+				if (/\d/.test(char)) {
+					acc['1-9'] = acc['1-9'] || ['Currently, no matches found'];
+				} else if (char >= 'A' && char <= 'Z') {
+					acc[char] = acc[char] || ['Currently, no matches found'];
 				}
+				return acc;
+			},
+			{}
+		);
+
+		// Process products in one pass using reduce
+		products.forEach((c) => {
+			c.subcategories.forEach((s) => {
+				s.products.forEach(({ name, id }) => {
+					const firstChar = name[0].toUpperCase();
+					const productEntry: Product = {
+						name,
+						id,
+						sub: s.slug,
+						cat: c.slug,
+					};
+
+					if (/\d/.test(firstChar)) {
+						if (groupedProducts['1-9'][0] === 'no products yet') {
+							groupedProducts['1-9'] = [];
+						}
+						groupedProducts['1-9'].push(productEntry as any);
+					} else if (firstChar >= 'A' && firstChar <= 'Z') {
+						if (groupedProducts[firstChar][0] === 'no products yet') {
+							groupedProducts[firstChar] = [];
+						}
+						groupedProducts[firstChar].push(productEntry as any);
+					}
+				});
 			});
+		});
+
 		setGrouped(groupedProducts);
 	}, []);
 
@@ -50,16 +74,20 @@ function ProductSections() {
 						{Array.from({ length: Math.ceil(value.length / 3) }).map(
 							(_, rowIndex) => (
 								<div key={rowIndex} className="w-[45%] flex flex-col gap-2">
-									{value
-										.slice(rowIndex * 3, rowIndex * 3 + 3)
-										.map((product) => (
-											<Link
-												href={`${product.link}`}
-												key={product.title}
-												className=" text-sm w-fit text-green-600 font-semibold">
-												{product.title}
-											</Link>
-										))}
+									{value.slice(rowIndex * 3, rowIndex * 3 + 3).map((p) => (
+										<>
+											{typeof p === 'string' ? (
+												<div>{p}</div>
+											) : (
+												<Link
+													href={`/products/${p.cat}/${p.sub}/${p.id}`}
+													key={p.id}
+													className=" text-sm w-fit text-green-600 font-semibold">
+													{p.name}
+												</Link>
+											)}
+										</>
+									))}
 								</div>
 							)
 						)}

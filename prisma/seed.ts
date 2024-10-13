@@ -15,20 +15,24 @@ async function main() {
 			slug: 'agriculture',
 			subcategories: [
 				{
-					name: 'WHEEL TRACTORS',
+					name: 'Tractors',
 					slug: 'tractors',
+					image: 'tractor.webp',
 				},
 				{
-					name: 'WHEEL AND TRACK TRACTORS',
-					slug: 'tractors',
+					name: 'Combines',
+					slug: 'combines',
+					image: 'combines.webp',
 				},
 				{
-					name: 'SCRAPER TRACTORS',
-					slug: 'tractors',
+					name: 'Drills',
+					slug: 'drills',
+					image: 'drills.webp',
 				},
 				{
-					name: 'FARM EQUIPMENTS & TECHNOLOGY PRODUCTS',
-					slug: 'technology-products',
+					name: 'Balers',
+					slug: 'balers',
+					image: 'balers.jpg',
 				},
 			],
 		},
@@ -38,8 +42,14 @@ async function main() {
 			slug: 'lawn-garden',
 			subcategories: [
 				{
-					name: 'Riding Lawn Equipment',
-					slug: 'equipment',
+					name: 'Lawn Tractors',
+					slug: 'lawn-tractors',
+					image: 'lawn-tractors.avif',
+				},
+				{
+					name: 'Residential ZTrak™ Zero-Turn Mowers',
+					slug: 'mowers',
+					image: 'ztrak-mowers.avif',
 				},
 			],
 		},
@@ -47,6 +57,33 @@ async function main() {
 			categoryName: 'Construction',
 			bannerImage: 'construction.avif',
 			slug: 'construction',
+			subcategories: [
+				{
+					name: 'Dozers',
+					slug: 'dozers',
+					image: 'dozers.webp',
+				},
+				{
+					name: 'Skid Steers',
+					slug: 'skid-steers',
+					image: 'skid-steers.avif',
+				},
+				{
+					name: 'Excavators',
+					slug: 'excavators',
+					image: 'excavators.avif',
+				},
+				{
+					name: 'Wheel Loaders',
+					slug: 'wheel-loaders',
+					image: 'wheel-loaders.avif',
+				},
+				{
+					name: 'Motor Graders',
+					slug: 'motor-graders',
+					image: 'motor-graders.avif',
+				},
+			],
 		},
 		{
 			categoryName: 'Commercial Mowing',
@@ -55,7 +92,8 @@ async function main() {
 			subcategories: [
 				{
 					name: 'Commercial ZTrak™ Zero Turn Mowers',
-					slug: 'mowers',
+					slug: 'commercial-mowers',
+					image: 'commercial-mowers.avif',
 				},
 			],
 		},
@@ -65,16 +103,19 @@ async function main() {
 			bannerImage: 'golf-sports-turf.avif',
 			subcategories: [
 				{
-					name: 'Golf Course Mowers',
-					slug: 'mowers',
+					name: 'Fairway Mowers',
+					slug: 'fairway-mowers',
+					image: 'fairway-mowers.avif',
 				},
 				{
-					name: 'Specialty Equipment',
-					slug: 'specialty-equipment',
+					name: 'Riding Greens Mowers',
+					slug: 'riding-greens-mowers',
+					image: 'riding-greens-mowers.jpg',
 				},
 				{
-					name: 'All-Purpose Equipment',
-					slug: 'all-purpose-equipment',
+					name: 'Turf Gator™ Utility Vehicles Lineup',
+					slug: 'turf-gator',
+					image: 'turf-gator.avif',
 				},
 			],
 		},
@@ -84,16 +125,24 @@ async function main() {
 			bannerImage: 'forestry.avif',
 			subcategories: [
 				{
-					name: 'Forestry Equipment',
-					slug: 'forestry-equipment',
+					name: 'Tracked Feller Bunchers',
+					slug: 'tracked-feller-bunchers',
+					image: 'tracked-feller-bunchers.avif',
 				},
 				{
 					name: 'Wheeled Harvesters',
 					slug: 'wheeled-harvesters',
+					image: 'wheeled-harvesters.webp',
 				},
 				{
 					name: 'Skidders',
 					slug: 'skidders',
+					image: 'skidders.avif',
+				},
+				{
+					name: 'Forwarders',
+					slug: 'forwarders',
+					image: 'forwarders.avif',
 				},
 			],
 		},
@@ -102,12 +151,12 @@ async function main() {
 	// Loop through categories to create them and their subcategories
 	for (const categoryData of categoriesWithSubcategories) {
 		const { categoryName, bannerImage, slug, subcategories } = categoryData;
-		const cat = await prisma.category.findUnique({
+		const cat = await prisma.productCategories.findUnique({
 			where: { name: categoryName },
 		});
 		if (cat) continue;
 		// Create or upsert category with a banner image
-		const category = await prisma.category.create({
+		await prisma.productCategories.create({
 			data: {
 				name: categoryName,
 				slug: slug,
@@ -116,31 +165,23 @@ async function main() {
 						url: bannerImage,
 					},
 				},
+				...(subcategories?.length
+					? {
+							subcategories: {
+								create: subcategories.map((subcategory) => ({
+									name: subcategory.name,
+									slug: subcategory.slug,
+									images: {
+										create: {
+											url: subcategory.image,
+										},
+									},
+								})),
+							},
+					  }
+					: {}),
 			},
 		});
-
-		console.log(`Category ${categoryName} created or already exists.`);
-		if (!subcategories) continue;
-		// Create subcategories for each category with banner images
-		for (const subcategoryData of subcategories) {
-			const sub = await prisma.subcategory.findFirst({
-				where: { name: subcategoryData.name },
-			});
-			if (sub) continue;
-			await prisma.subcategory.create({
-				data: {
-					name: subcategoryData.name,
-					slug: subcategoryData.slug,
-					category: {
-						connect: { id: category.id }, // Link subcategory to the created category
-					},
-				},
-			});
-
-			console.log(
-				`Subcategory ${subcategoryData.name} created for category ${categoryName}.`
-			);
-		}
 	}
 
 	console.log(
@@ -157,9 +198,9 @@ async function BlogCategory() {
 
 	for (const category of categories) {
 		const { name } = category;
-		const c = await prisma.category.findFirst({ where: { name } });
+		const c = await prisma.postCategories.findFirst({ where: { name } });
 		if (c) continue;
-		await prisma.blogCategory.create({
+		await prisma.postCategories.create({
 			data: {
 				name,
 				slug: name.toLowerCase().replace(/\s/g, '-'),
@@ -167,16 +208,6 @@ async function BlogCategory() {
 		});
 	}
 }
-
-BlogCategory()
-	.catch(async (e) => {
-		console.error(e);
-		await prisma.$disconnect();
-		process.exit(1);
-	})
-	.finally(async () => {
-		await prisma.$disconnect();
-	});
 
 main()
 	.catch(async (e) => {
@@ -187,3 +218,12 @@ main()
 	.finally(async () => {
 		await prisma.$disconnect();
 	});
+// BlogCategory()
+// 	.catch(async (e) => {
+// 		console.error(e);
+// 		await prisma.$disconnect();
+// 		process.exit(1);
+// 	})
+// 	.finally(async () => {
+// 		await prisma.$disconnect();
+// 	});

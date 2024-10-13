@@ -1,11 +1,29 @@
 -- CreateExtension
+CREATE EXTENSION IF NOT EXISTS "pg_graphql";
+
+-- CreateExtension
+CREATE EXTENSION IF NOT EXISTS "pg_stat_statements";
+
+-- CreateExtension
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+-- CreateExtension
+CREATE EXTENSION IF NOT EXISTS "pgjwt";
+
+-- CreateExtension
+CREATE EXTENSION IF NOT EXISTS "pgsodium";
+
+-- CreateExtension
 CREATE EXTENSION IF NOT EXISTS "postgis";
+
+-- CreateExtension
+CREATE EXTENSION IF NOT EXISTS "supabase_vault";
 
 -- CreateEnum
 CREATE TYPE "UserType" AS ENUM ('USER', 'STAFF', 'ADMIN', 'OWNER');
 
 -- CreateTable
-CREATE TABLE "Blog" (
+CREATE TABLE "Posts" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
@@ -14,42 +32,41 @@ CREATE TABLE "Blog" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Blog_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Posts_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "BlogCategory" (
+CREATE TABLE "PostCategories" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "BlogCategory_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "PostCategories_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Category" (
+CREATE TABLE "ProductCategories" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "slug" TEXT,
-    "link" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "ProductCategories_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Subcategory" (
+CREATE TABLE "ProductSubCategories" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "categoryId" TEXT NOT NULL,
-    "slug" TEXT,
-    "link" TEXT,
+    "slug" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Subcategory_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "ProductSubCategories_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -57,15 +74,37 @@ CREATE TABLE "Products" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "price" DOUBLE PRECISION NOT NULL,
+    "price" DOUBLE PRECISION,
     "categoryId" TEXT NOT NULL,
     "subcategoryId" TEXT,
-    "slug" TEXT,
-    "link" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Products_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ProductSpecs" (
+    "id" TEXT NOT NULL,
+    "productId" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "ProductSpecs_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ProductFeatures" (
+    "id" TEXT NOT NULL,
+    "productId" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "ProductFeatures_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -151,13 +190,19 @@ CREATE TABLE "PasswordResetTokens" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "BlogCategory_name_key" ON "BlogCategory"("name");
+CREATE UNIQUE INDEX "PostCategories_name_key" ON "PostCategories"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");
+CREATE UNIQUE INDEX "ProductCategories_name_key" ON "ProductCategories"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Message_intlPhone_key" ON "Message"("intlPhone");
+CREATE UNIQUE INDEX "ProductSubCategories_name_key" ON "ProductSubCategories"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Products_name_key" ON "Products"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Image_url_key" ON "Image"("url");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
@@ -172,28 +217,34 @@ CREATE UNIQUE INDEX "VerificationToken_email_token_key" ON "VerificationToken"("
 CREATE UNIQUE INDEX "PasswordResetTokens_token_key" ON "PasswordResetTokens"("token");
 
 -- AddForeignKey
-ALTER TABLE "Blog" ADD CONSTRAINT "Blog_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "BlogCategory"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Posts" ADD CONSTRAINT "Posts_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "PostCategories"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Subcategory" ADD CONSTRAINT "Subcategory_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ProductSubCategories" ADD CONSTRAINT "ProductSubCategories_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "ProductCategories"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Products" ADD CONSTRAINT "Products_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Products" ADD CONSTRAINT "Products_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "ProductCategories"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Products" ADD CONSTRAINT "Products_subcategoryId_fkey" FOREIGN KEY ("subcategoryId") REFERENCES "Subcategory"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Products" ADD CONSTRAINT "Products_subcategoryId_fkey" FOREIGN KEY ("subcategoryId") REFERENCES "ProductSubCategories"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Image" ADD CONSTRAINT "Image_blogId_fkey" FOREIGN KEY ("blogId") REFERENCES "Blog"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "ProductSpecs" ADD CONSTRAINT "ProductSpecs_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Products"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Image" ADD CONSTRAINT "Image_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Products"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "ProductFeatures" ADD CONSTRAINT "ProductFeatures_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Products"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Image" ADD CONSTRAINT "Image_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Image" ADD CONSTRAINT "Image_blogId_fkey" FOREIGN KEY ("blogId") REFERENCES "Posts"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Image" ADD CONSTRAINT "Image_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Image" ADD CONSTRAINT "Image_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Products"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Image" ADD CONSTRAINT "Image_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Image" ADD CONSTRAINT "Image_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "ProductCategories"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "AuthSession" ADD CONSTRAINT "AuthSession_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

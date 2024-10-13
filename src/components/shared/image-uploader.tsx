@@ -3,7 +3,7 @@ import React from 'react';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
 import { Button } from '../ui/button';
 import { toast } from 'sonner';
-import useImageHandler from '@/hooks/useImageHandler';
+import useImageHandler from '@/hooks/use-image-handler';
 import { Loader } from 'lucide-react';
 
 export interface ImageType {

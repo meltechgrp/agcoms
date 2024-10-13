@@ -1,11 +1,15 @@
 'use client';
-import solutionBanner from '@/assets/images/banners/afme-tractor-banner.png';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import { getImageUrl } from '@/hooks/use-image-handler';
 
 export default function Solution() {
 	const style = {
-		backgroundImage: `url(${solutionBanner.src})`,
+		backgroundImage: `url(${getImageUrl(
+			'afme-tractor-banner.png',
+			'banners',
+			'home-banners'
+		)})`,
 		backgroundSize: 'cover',
 		backgroundRepeat: 'no-repeat',
 		borderImage:

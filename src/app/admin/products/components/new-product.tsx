@@ -307,7 +307,16 @@ function Features({ form }: FormProps) {
 					<h3 className="text-sm sm:text-base font-medium">Product features</h3>
 					<p className="text-xs font-medium">Add at least one feature</p>
 				</div>
-				<Button type="button" onClick={() => append({ name: '', content: '' })}>
+				<Button
+					type="button"
+					onClick={() =>
+						append(
+							{ name: '', content: '' },
+							{
+								shouldFocus: true,
+							}
+						)
+					}>
 					<Plus className="h-5 w-5 mr-2" />
 					New Feature
 				</Button>

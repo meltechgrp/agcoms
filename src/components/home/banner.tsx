@@ -1,14 +1,14 @@
-import banner from '@/assets/images/banners/banner.jpg';
-import Image from 'next/image';
+import Image from '../shared/image';
 
 export default function Banner() {
 	return (
 		<div>
 			<Image
-				src={banner}
-				alt="Agcoms"
-				style={{ width: '100%', height: 'auto' }}
-				className="w-full aspect-auto sm:min-h-[70vh] object-cover"
+				src={'banner.jpg'}
+				className="w-full aspect-auto sm:min-h-[70vh]"
+				alt={'agcoms banner'}
+				bucketName="banners"
+				folderName="home-banners"
 			/>
 		</div>
 	);

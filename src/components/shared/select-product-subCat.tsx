@@ -51,10 +51,7 @@ const ProductSubCategorySelect = ({
 						role="combobox"
 						aria-expanded={open}
 						aria-label="Select a model"
-						className={cn(
-							'w-full justify-between text-sm font-medium',
-							subCategory ? 'lowercase' : ''
-						)}>
+						className={cn('w-full justify-between text-sm font-medium')}>
 						{subCategory ? subCategory : 'Select a sub category...'}
 						<ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 					</Button>
@@ -71,7 +68,7 @@ const ProductSubCategorySelect = ({
 										<CommandItem
 											key={item.name}
 											value={label}
-											className="text-sm font-medium lowercase"
+											className="text-sm font-medium"
 											onSelect={() => {
 												onValueChange(item.name);
 												setOpen(false);

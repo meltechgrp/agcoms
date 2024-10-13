@@ -34,12 +34,13 @@ const AccordionTrigger = React.forwardRef<
 		<AccordionPrimitive.Trigger
 			ref={ref}
 			className={cn(
-				'flex flex-1 items-center justify-between py-4 font-medium transition-all duration-700 hover:underline [&[data-state=open]>svg]:rotate-180',
-				className
+				'flex flex-1 items-center py-4 font-medium transition-all duration-700 hover:underline [&[data-state=open]>svg]:rotate-180',
+				className,
+				isPlus ? 'justify-start gap-1' : 'justify-between'
 			)}
 			{...props}>
 			{isPlus && (
-				<Plus className="h-5 w-5 text-green-600 font-bold shrink-0 transition-transform duration-1000" />
+				<Plus className="h-5 w-5 text-blue-600 font-bold shrink-0 transition-transform duration-1000" />
 			)}
 			{children}
 			{!isPlus && (

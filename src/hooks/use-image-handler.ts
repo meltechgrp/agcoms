@@ -23,7 +23,13 @@ type UseImageStorageHook = {
 	loading: boolean;
 	getImageUrl: (key: string) => string;
 };
-
+export const getImageUrl = (
+	key: string,
+	bucketName: string,
+	folderName: string
+) => {
+	return `https://gwaoeuzdusyotbrfqkki.supabase.co/storage/v1/object/public/${bucketName}/${folderName}/${key}`;
+};
 export default function useImageHandler(
 	bucketName: string,
 	folderName: string

@@ -10,7 +10,7 @@ export interface ActionResponse<T> {
 }
 
 export const getBlogCategories = async () => {
-	const categories = await prisma.blogCategory.findMany({
+	const categories = await prisma.postCategories.findMany({
 		select: {
 			name: true,
 		},
@@ -19,7 +19,7 @@ export const getBlogCategories = async () => {
 	return [];
 };
 export const getProCats = async () => {
-	const proCats = await prisma.category.findMany({
+	const proCats = await prisma.productCategories.findMany({
 		select: {
 			name: true,
 		},
@@ -28,7 +28,7 @@ export const getProCats = async () => {
 	return [];
 };
 export const getProSubCats = async (name: string) => {
-	const proSubs = await prisma.subcategory.findMany({
+	const proSubs = await prisma.productSubCategories.findMany({
 		where: {
 			category: {
 				name,
@@ -40,4 +40,26 @@ export const getProSubCats = async (name: string) => {
 	});
 	if (proSubs) return proSubs;
 	return [];
+};
+
+export const getProNavData = async () => {
+	const nav = await prisma.productCategories.findMany({
+		select: {
+			name: true,
+			slug: true,
+			subcategories: {
+				select: {
+					name: true,
+					slug: true,
+					products: {
+						select: {
+							id: true,
+							name: true,
+						},
+					},
+				},
+			},
+		},
+	});
+	return nav ? nav : [];
 };

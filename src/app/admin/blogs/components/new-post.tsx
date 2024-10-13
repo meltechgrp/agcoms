@@ -22,10 +22,10 @@ import {
 import { toast } from 'sonner';
 import { LoaderIcon } from 'lucide-react';
 import { AlertDialogFooter } from '@/components/ui/alert-dialog';
-import BlogCategorySelect from '@/components/shared/select-product-category';
 import ImageUploader, { ImageType } from '@/components/shared/image-uploader';
 import dynamic from 'next/dynamic';
 import { PostType, createPost } from '@/lib/actions/blog-actions';
+import BlogCategorySelect from '@/components/shared/select-blog-category';
 const TextEditor = dynamic(() => import('@/components/shared/text-editor'), {
 	ssr: false,
 });

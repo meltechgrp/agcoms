@@ -103,7 +103,7 @@ export const ProductFormSchema = z.object({
 	category: z.string().min(2, {
 		message: 'Please select a category',
 	}),
-	subCategory: z.string().optional(),
+	subCategory: z.string(),
 	images: z.array(ImageType).min(1, {
 		message: 'Upload at least one image',
 	}),

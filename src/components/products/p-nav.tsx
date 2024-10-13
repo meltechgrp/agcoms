@@ -1,11 +1,6 @@
 'use client';
 
-import {
-	Link as ScrollLink,
-	Events,
-	scrollSpy,
-	animateScroll,
-} from 'react-scroll';
+import { Link as ScrollLink, Events, scrollSpy } from 'react-scroll';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import {
@@ -15,6 +10,14 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from '@/components/ui/carousel';
+
+export function charSet() {
+	const result: string[] = ['1-9'];
+	for (let charCode = 65; charCode <= 90; charCode++) {
+		result.push(String.fromCharCode(charCode));
+	}
+	return result;
+}
 
 function ProductNavigation() {
 	const [active, setActive] = useState<{ key: string; index: number }>({
@@ -32,10 +35,7 @@ function ProductNavigation() {
 	};
 
 	useEffect(() => {
-		const result: string[] = ['1-9'];
-		for (let charCode = 65; charCode <= 90; charCode++) {
-			result.push(String.fromCharCode(charCode));
-		}
+		const result = charSet();
 		setGrouped(result);
 	}, []);
 	useEffect(() => {
@@ -85,7 +85,6 @@ function ProductNavigation() {
 			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
-	console.log(active);
 	return (
 		<div
 			ref={menuRef}

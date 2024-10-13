@@ -15,7 +15,7 @@ export async function getPosts(args: {
 }) {
 	try {
 		const { take, skip, orderBy } = args;
-		const blogs = await prisma.blog.findMany({
+		const posts = await prisma.posts.findMany({
 			...(args.cursor && { cursor: { id: args.cursor } }),
 			take,
 			orderBy,
@@ -33,7 +33,7 @@ export async function getPosts(args: {
 				},
 			},
 		});
-		return blogs;
+		return posts;
 	} catch (error) {
 		console.error(error);
 		return [];
@@ -41,11 +41,11 @@ export async function getPosts(args: {
 }
 
 export type PostsType = Awaited<ReturnType<typeof getPosts>>;
-export async function getPostData(blogId?: string) {
+export async function getPostData(postId?: string) {
 	try {
-		if (!blogId) return null;
-		const blog = await prisma.blog.findUnique({
-			where: { id: blogId },
+		if (!postId) return null;
+		const post = await prisma.posts.findUnique({
+			where: { id: postId },
 			select: {
 				id: true,
 				createdAt: true,
@@ -60,7 +60,7 @@ export async function getPostData(blogId?: string) {
 				},
 			},
 		});
-		return blog;
+		return post;
 	} catch (error) {
 		console.log(error);
 		return null;
@@ -88,7 +88,7 @@ export async function createPost(
 		}
 		const { id, images, title, content, category } = data;
 		if (id) {
-			await prisma.blog.update({
+			await prisma.posts.update({
 				where: {
 					id,
 				},
@@ -105,7 +105,7 @@ export async function createPost(
 								images: {
 									connectOrCreate: images.map(({ url }) => ({
 										where: {
-											url, // Assuming you're matching images by their URL
+											url,
 										},
 										create: {
 											url,
@@ -116,18 +116,17 @@ export async function createPost(
 						: {}),
 				},
 			});
+			revalidatePath('/admin/blogs');
 			return {
 				data: true,
 			};
 		} else {
-			await prisma.blog.create({
+			await prisma.posts.create({
 				data: {
 					...(images
 						? {
 								images: {
-									createMany: {
-										data: images.map(({ url }) => ({ url })),
-									},
+									create: images.map(({ url }) => ({ url })),
 								},
 						  }
 						: {}),
@@ -140,6 +139,7 @@ export async function createPost(
 					},
 				},
 			});
+			revalidatePath('/admin/blog');
 			return {
 				data: true,
 			};
@@ -155,7 +155,7 @@ export async function createPost(
 export async function DeletePost(postId: string) {
 	try {
 		if (!postId) return false;
-		await prisma.blog.delete({
+		await prisma.posts.delete({
 			where: { id: postId },
 		});
 		revalidatePath('/admin/blog');

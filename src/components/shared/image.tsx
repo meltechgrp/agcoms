@@ -1,7 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { useMemo, useState } from 'react';
-import useImageHandler from '@/hooks/useImageHandler';
+import { useMemo } from 'react';
+import useImageHandler from '@/hooks/use-image-handler';
 
 interface Props {
 	bucketName: string;

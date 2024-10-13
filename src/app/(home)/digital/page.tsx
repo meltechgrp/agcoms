@@ -6,11 +6,9 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import digital from '@/assets/images/category/digital.avif';
-import dealerTools from '@/assets/images/dealer-tools-image.avif';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import Image from '@/components/shared/image';
 
 function Digital() {
 	return (
@@ -45,9 +43,10 @@ function Digital() {
 				</div>
 				<div className="py-2">
 					<Image
-						src={digital}
+						src={'digital.avif'}
 						alt={'Dgital Tools'}
-						style={{ width: '100%', height: 'auto' }}
+						folderName="home-banners"
+						bucketName="banners"
 						className="w-full h-[350px] sm:h-[520px] object-cover"
 					/>
 				</div>
@@ -84,9 +83,10 @@ function Digital() {
 				</div>
 				<div className="row-start-1 sm:col-start-2">
 					<Image
-						src={dealerTools}
+						src={'dealer-tools-image.avif'}
 						alt="Dealer Tools"
-						style={{ width: '100%', height: 'auto' }}
+						bucketName="banners"
+						folderName="home-banners"
 						className="w-full h-[200px] sm:h-[400px] object-cover"
 					/>
 				</div>

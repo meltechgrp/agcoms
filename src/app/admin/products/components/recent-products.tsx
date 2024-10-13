@@ -36,7 +36,7 @@ function RecentProducts({ data }: RecentProps) {
 								<h2 className="text-sm">{b.name}</h2>
 								<HtmlText
 									text={b.description}
-									className="text-xs font-semibold"
+									className="text-xs line-clamp-4 font-semibold"
 								/>
 							</Link>
 						</div>
