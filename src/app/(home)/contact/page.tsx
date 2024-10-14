@@ -1,3 +1,4 @@
+'use client';
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -9,8 +10,17 @@ import {
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from '@/components/shared/image';
+import RequestForm from './components/request-form';
+import { useRouter } from 'next/navigation';
 
-function Digital() {
+interface Props {
+	searchParams: {
+		request?: string;
+	};
+}
+
+function Contact({ searchParams }: Props) {
+	const router = useRouter();
 	return (
 		<div className="px-4 sm:px-12">
 			<Breadcrumb className=" py-6">
@@ -33,13 +43,12 @@ function Digital() {
 			<div>
 				<div className="flex my-8 justify-between items-center">
 					<h1 className="text-2xl sm:text-4xl text-center">Contact us</h1>
-					<Link href={'#'}>
-						<Button
-							variant="outline"
-							className="h-12 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-700 font-bold border-2 border-blue-500">
-							Request a quote
-						</Button>
-					</Link>
+					<Button
+						onClick={() => router.replace('?request=quote')}
+						variant="outline"
+						className="h-12 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-700 font-bold border-2 border-blue-500">
+						Request a quote
+					</Button>
 				</div>
 				<div className="py-2">
 					<Image
@@ -58,7 +67,9 @@ function Digital() {
 						Manage your farm or jobsite, including equipment, performance and
 						more
 					</p>
-					<Button className="bg-green-400 hover:bg-green-500 text-black font-semibold w-56 h-12">
+					<Button
+						onClick={() => router.replace('?request=quote')}
+						className="bg-green-400 hover:bg-green-500 text-black font-semibold w-56 h-12">
 						Request a quote
 					</Button>
 				</div>
@@ -81,8 +92,9 @@ function Digital() {
 					/>
 				</div>
 			</div>
+			<RequestForm open={!!searchParams?.request} />
 		</div>
 	);
 }
 
-export default Digital;
+export default Contact;

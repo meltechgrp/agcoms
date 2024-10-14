@@ -43,13 +43,13 @@ async function Financing() {
 				</BreadcrumbList>
 			</Breadcrumb>
 			<div>
-				<div className="py-2 sm:h-[450px] relative space-y-4">
+				<div className="py-2 sm:h-[460px] relative space-y-4">
 					<Image
 						src={'financing.jpg'}
 						alt={'Financing'}
 						bucketName="banners"
-						folderName="finance-banners"
-						className="w-screen sm:w-[1350px] object-fill h-[250px] sm:h-[500px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
+						folderName="home-banners"
+						className="w-screen sm:w-[1350px] object-fill h-[250px] sm:h-[460px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
 					/>
 					<div className="relative px-8 py-8 flex flex-col z-10 w-full space-y-2 items-center sm:items-end">
 						<h2 className="text-3xl sm:text-5xl text-center sm:text-end  capitalize text-black sm:text-white font-bold">

@@ -66,7 +66,9 @@ export default function MessageForm({
 								name="fullName"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Fullname</FormLabel>
+										<FormLabel>
+											Fullname<sup className="text-red-500">*</sup>
+										</FormLabel>
 										<FormControl>
 											<Input placeholder="Your fullname" {...field} />
 										</FormControl>
@@ -80,7 +82,9 @@ export default function MessageForm({
 								name="email"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Email</FormLabel>
+										<FormLabel>
+											Email<sup className="text-red-500">*</sup>
+										</FormLabel>
 										<FormControl>
 											<Input
 												type="text"
@@ -98,7 +102,9 @@ export default function MessageForm({
 								name="phone"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Phone Number</FormLabel>
+										<FormLabel>
+											Phone Number<sup className="text-red-500">*</sup>
+										</FormLabel>
 										<FormControl>
 											<PhoneNumberInput
 												placeholder="Your phone number"
@@ -119,7 +125,7 @@ export default function MessageForm({
 								name="town"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Password</FormLabel>
+										<FormLabel>Location</FormLabel>
 										<FormControl>
 											<Input
 												type="text"
@@ -136,7 +142,9 @@ export default function MessageForm({
 								name="message"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Password</FormLabel>
+										<FormLabel>
+											Message<sup className="text-red-500">*</sup>
+										</FormLabel>
 										<FormControl>
 											<Input
 												type="text"
