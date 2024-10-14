@@ -32,7 +32,7 @@ model Products {
   categoryId    String
   subcategory   ProductSubCategories @relation(fields: [subcategoryId], references: [id], onUpdate: Cascade)
   subcategoryId String
-  specs         ProductSpecs[]
+  specs         ProductSpecContent[]
   features      ProductFeatures[]
   images        Image[] // A Product can have many Images
   createdAt     DateTime             @default(now())
@@ -40,13 +40,11 @@ model Products {
 }
 
 model ProductSpecs {
-  id        String   @id @default(cuid())
-  product   Products @relation(fields: [productId], references: [id], onDelete: Cascade) // Belongs to a Product
-  productId String
-  name      String
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String               @id @default(cuid())
+  name      String               @unique
+  contents  ProductSpecContent[]
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
 }
 
 model ProductFeatures {
@@ -57,4 +55,16 @@ model ProductFeatures {
   content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model ProductSpecContent {
+  id        String       @id @default(cuid())
+  name      String
+  content   String
+  product   Products     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  specId    String
+  spec      ProductSpecs @relation(fields: [specId], references: [id])
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
 }

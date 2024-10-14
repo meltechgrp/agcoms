@@ -88,6 +88,9 @@ export const Spec = z.object({
 	content: z.string().min(5, {
 		message: 'description must be at least 5 characters.',
 	}),
+	group: z.string().min(2, {
+		message: 'Group name must be at least 2 characters.',
+	}),
 	id: z.string().optional(),
 });
 

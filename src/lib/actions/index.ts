@@ -41,6 +41,15 @@ export const getProSubCats = async (name: string) => {
 	if (proSubs) return proSubs;
 	return [];
 };
+export const getSpecGroups = async () => {
+	const specs = await prisma.productSpecs.findMany({
+		select: {
+			name: true,
+		},
+	});
+	if (specs) return specs;
+	return [];
+};
 
 export const getProNavData = async () => {
 	const nav = await prisma.productCategories.findMany({

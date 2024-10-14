@@ -2,16 +2,15 @@
 import { cn } from '@/lib/utils';
 import { useMemo } from 'react';
 import useImageHandler from '@/hooks/use-image-handler';
+import Img, { ImageProps } from 'next/image';
 
-interface Props {
+type Props = Omit<ImageProps, 'width' | 'height'> & {
 	bucketName: string;
 	folderName: string;
-	height?: number | string;
-	width?: number | string;
 	className?: string;
 	src: string;
 	alt: string;
-}
+};
 
 const Image = ({
 	className,
@@ -24,13 +23,15 @@ const Image = ({
 	const { getImageUrl } = useImageHandler(bucketName, folderName);
 	return useMemo(
 		() => (
-			<img
-				{...props}
-				src={getImageUrl(src)}
-				alt={alt}
-				style={{ color: 'transparent' }}
-				className={cn('w-full h-full object-cover', className)}
-			/>
+			<div className={cn('w-full relative h-full object-cover', className)}>
+				<Img
+					{...props}
+					src={getImageUrl(src)}
+					priority={true}
+					alt={alt}
+					fill={true}
+				/>
+			</div>
 		),
 		[props]
 	);

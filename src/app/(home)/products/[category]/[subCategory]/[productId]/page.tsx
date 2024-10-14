@@ -46,7 +46,7 @@ async function Product({ params }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href={`/products/${data?.category.name}`}>
+							href={`/products/${data?.category.slug}`}>
 							{data?.category.name}
 						</BreadcrumbLink>
 					</BreadcrumbItem>
@@ -54,7 +54,7 @@ async function Product({ params }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href={`/products/${data?.category.name}/${data?.subcategory?.name}`}>
+							href={`/products/${data?.category.slug}/${data?.subcategory?.slug}`}>
 							{data?.subcategory?.name}
 						</BreadcrumbLink>
 					</BreadcrumbItem>

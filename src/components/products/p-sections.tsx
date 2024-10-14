@@ -46,12 +46,12 @@ function ProductSections() {
 					};
 
 					if (/\d/.test(firstChar)) {
-						if (groupedProducts['1-9'][0] === 'no products yet') {
+						if (groupedProducts['1-9'][0] != undefined) {
 							groupedProducts['1-9'] = [];
 						}
 						groupedProducts['1-9'].push(productEntry as any);
 					} else if (firstChar >= 'A' && firstChar <= 'Z') {
-						if (groupedProducts[firstChar][0] === 'no products yet') {
+						if (groupedProducts[firstChar][0] != undefined) {
 							groupedProducts[firstChar] = [];
 						}
 						groupedProducts[firstChar].push(productEntry as any);

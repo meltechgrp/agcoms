@@ -78,6 +78,11 @@ export async function getProductData(productId?: string) {
 						name: true,
 						content: true,
 						id: true,
+						spec: {
+							select: {
+								name: true,
+							},
+						},
 					},
 				},
 			},
@@ -165,9 +170,14 @@ export async function createProduct(
 						? {
 								specs: {
 									deleteMany: {},
-									create: specs.map(({ name, content }) => ({
+									create: specs.map(({ name, content, group }) => ({
 										name,
 										content,
+										spec: {
+											connect: {
+												name: group,
+											},
+										},
 									})),
 								},
 						  }
@@ -213,9 +223,14 @@ export async function createProduct(
 					...(specs?.length
 						? {
 								specs: {
-									create: specs.map(({ name, content }) => ({
+									create: specs.map(({ name, content, group }) => ({
 										name,
 										content,
+										spec: {
+											connect: {
+												name: group,
+											},
+										},
 									})),
 								},
 						  }

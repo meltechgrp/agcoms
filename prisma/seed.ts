@@ -208,6 +208,29 @@ async function BlogCategory() {
 		});
 	}
 }
+async function Specs() {
+	const specs = [
+		{ name: 'Engine' },
+		{ name: 'Vehicle' },
+		{ name: 'Operating Weight' },
+		{ name: 'Controls' },
+		{ name: 'Dimensions' },
+		{ name: 'Cutting Units' },
+		{ name: 'Warranty' },
+		{ name: 'Certification' },
+	];
+
+	for (const spec of specs) {
+		const { name } = spec;
+		const c = await prisma.productSpecs.findFirst({ where: { name } });
+		if (c) continue;
+		await prisma.productSpecs.create({
+			data: {
+				name,
+			},
+		});
+	}
+}
 
 main()
 	.catch(async (e) => {
@@ -218,12 +241,21 @@ main()
 	.finally(async () => {
 		await prisma.$disconnect();
 	});
-// BlogCategory()
-// 	.catch(async (e) => {
-// 		console.error(e);
-// 		await prisma.$disconnect();
-// 		process.exit(1);
-// 	})
-// 	.finally(async () => {
-// 		await prisma.$disconnect();
-// 	});
+Specs()
+	.catch(async (e) => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
+	})
+	.finally(async () => {
+		await prisma.$disconnect();
+	});
+BlogCategory()
+	.catch(async (e) => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
+	})
+	.finally(async () => {
+		await prisma.$disconnect();
+	});

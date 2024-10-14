@@ -4,7 +4,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'cloud.appwrite.io',
+				hostname: 'gwaoeuzdusyotbrfqkki.supabase.co',
 				pathname: '**',
 			},
 		],
