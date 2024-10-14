@@ -7,11 +7,11 @@ export default function FeaturedProducts() {
 		<div className="grid sm:px-16 bg-white py-4">
 			<div className="flex justify-center flex-col sm:flex-row items-center">
 				{data.map((c, i) => (
-					<Link key={uniqueId()} href={c.link}>
+					<Link key={uniqueId()} href={c.link} className="w-48">
 						<div className="grid grid-cols-2 border-b transition-color duration-1000 has-[h4]:hover:text-blue-600  px-4 sm:px-0 border-gray-200 sm:border-0 sm:grid-cols-1 gap-2 sm:gap-6 justify-center items-center">
 							<Image
 								src={c.image}
-								className="h-24 sm:h-28 object-cover transition-transform duration-1000 hover:scale-110"
+								className="h-24 sm:h-28 w-full object-cover transition-transform duration-1000 hover:scale-110"
 								alt={c.title}
 								bucketName="banners"
 								folderName="home-machines"

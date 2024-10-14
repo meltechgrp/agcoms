@@ -63,9 +63,7 @@ export default function NavMenu({ className }: { className?: string }) {
 								)}
 								{keys.includes(item.slug) &&
 									store[item.slug as Key].map((sub, i) => (
-										<Link
-											key={uniqueId()}
-											href={sub?.link ?? `/${item.slug}/${sub.slug}`}>
+										<Link key={uniqueId()} href={sub?.link ?? `/${sub.slug}`}>
 											<MenubarItem className="text-sm flex items-center px-2 font-semibold">
 												{sub.name}
 											</MenubarItem>

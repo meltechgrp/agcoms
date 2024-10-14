@@ -17,34 +17,34 @@ function Digital() {
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink
-							className="text-base font-medium text-green-500"
+							className="text-base font-medium text-blue-500"
 							href="/">
 							Home
 						</BreadcrumbLink>
 					</BreadcrumbItem>
-					<BreadcrumbSeparator className=" text-green-500 font-bold" />
+					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbPage className="text-sm text-gray-500 font-normal  capitalize">
-							Digital Tools
+							Contact us
 						</BreadcrumbPage>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
 			<div>
 				<div className="flex my-8 justify-between items-center">
-					<h1 className="text-3xl sm:text-5xl text-center">Digital Tools</h1>
+					<h1 className="text-2xl sm:text-4xl text-center">Contact us</h1>
 					<Link href={'#'}>
 						<Button
 							variant="outline"
-							className="h-12 text-black hover:bg-black hover:text-white transition-colors duration-700 font-bold border-2 border-black">
-							Create an account
+							className="h-12 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-700 font-bold border-2 border-blue-500">
+							Request a quote
 						</Button>
 					</Link>
 				</div>
 				<div className="py-2">
 					<Image
 						src={'digital.avif'}
-						alt={'Dgital Tools'}
+						alt={'Contact us'}
 						folderName="home-banners"
 						bucketName="banners"
 						className="w-full h-[350px] sm:h-[520px] object-cover"
@@ -52,34 +52,24 @@ function Digital() {
 				</div>
 				<div className="w-fit mx-auto my-6 space-y-4 flex flex-col items-center">
 					<h3 className="text-xl text-center sm:text-2xl">
-						John Deere Operations Center™
+						Agcoms Operations Center™
 					</h3>
 					<p className="text-center">
 						Manage your farm or jobsite, including equipment, performance and
 						more
 					</p>
-					<Link href={'#'}>
-						<Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold w-56 h-12">
-							Sign in to Operations Center
-						</Button>
-					</Link>
+					<Button className="bg-green-400 hover:bg-green-500 text-black font-semibold w-56 h-12">
+						Request a quote
+					</Button>
 				</div>
 			</div>
 			<div className="grid sm:grid-cols-[auto,65%] gap-6 pt-16">
 				<div className="flex flex-col space-y-4 pt-4 sm:pt-12">
 					<h2 className="text-lg sm:text-2xl">Dealer Tools</h2>
 					<p className="text-gray-600">
-						John Deere offers a suite of digital tools for dealers to provide
-						exceptional customer service.
+						Agcoms offers a suite of digital tools to provide exceptional
+						customer service.
 					</p>
-
-					<Link href={'#'} className="mx-auto sm:mx-0">
-						<Button
-							variant={'outline'}
-							className="border-green-600 border-2 hover:bg-green-500 text-green-600 hover:text-white transition-colors duration-700 font-semibold w-24 h-12">
-							Sign in
-						</Button>
-					</Link>
 				</div>
 				<div className="row-start-1 sm:col-start-2">
 					<Image

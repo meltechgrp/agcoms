@@ -92,7 +92,7 @@ export default function Header() {
 							variant="outline"
 							className=" p-0 sm:px-4 hover:bg-gray-100 bg-transparent border-blue-500 focus-visible:ring-0 focus-visible:ring-transparent text-black">
 							<Link
-								href={'#'}
+								href={'/contact'}
 								className="flex space-x-2 items-center text-sm text-gray-600">
 								<CircleHelp className="text-blue-500" />
 								<span className="hidden sm:flex">Request quote</span>

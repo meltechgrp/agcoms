@@ -68,9 +68,11 @@ function Sidebar() {
 									<>
 										{page.slug === 'product' ? (
 											<>
-												<div>
+												<div className="px-2">
 													<Link href={'/products'}>
-														<SheetClose className="text-sm flex items-center px-2 font-semibold">
+														<SheetClose
+															onClick={() => setState1(false)}
+															className="text-sm flex items-center px-2 font-medium">
 															All products (A -Z)
 														</SheetClose>
 													</Link>

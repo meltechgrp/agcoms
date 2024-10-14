@@ -21,12 +21,12 @@ export type ProCats = {
 };
 type StateWithoutProduct = Omit<State, 'product'>;
 export type Key = keyof StateWithoutProduct;
-export const keys = ['financing', 'digital', 'parts'];
+export const keys = ['financing', 'contact', 'parts'];
 export type State = {
 	pages: Basic[];
 	product: ProCats[];
 	financing: Basic[];
-	digital: Basic[];
+	contact: Basic[];
 	parts: Basic[];
 };
 type Actions = {
@@ -37,10 +37,10 @@ const initialState: State = {
 		{ name: 'Products', slug: 'product' },
 		{ name: 'Finance', slug: 'financing' },
 		{ name: 'Parts & Services', slug: 'parts' },
-		{ name: 'Digital', slug: 'digital' },
+		{ name: 'Contact', slug: 'contact' },
 	],
 	product: [],
-	digital: [{ name: 'Digital Tools', slug: 'digital' }],
+	contact: [{ name: 'Contact us', slug: 'contact' }],
 	parts: [
 		{
 			name: 'Parts',
@@ -97,7 +97,7 @@ const useNavStore = create<StateAndActions>()(
 		{
 			name: 'agcom-storage',
 			partialize: (state) => ({
-				pages: state.pages,
+				// pages: state.pages,
 			}),
 		}
 	)

@@ -18,7 +18,7 @@ export const midNavigationData: {
 }[] = [
 	{
 		title: 'Request quote',
-		link: 'https://www.deere.africa/en/our-company/contact-us/',
+		link: '/contact',
 		icon: MapPin,
 	},
 	{

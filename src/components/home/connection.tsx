@@ -8,7 +8,7 @@ export default function Connection() {
 			<div className="grid sm:grid-cols-2 gap-6">
 				{data.map((item) => (
 					<div key={item.title} className="grid space-y-6">
-						<div className="flex-1">
+						<div className=" bg-gray-200 h-64 w-full">
 							<Image
 								src={item.url}
 								className="w-full h-full rounded shadow"
