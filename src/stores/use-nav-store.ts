@@ -34,7 +34,7 @@ type Actions = {
 };
 const initialState: State = {
 	pages: [
-		{ name: 'Products', slug: 'product' },
+		{ name: 'Products', slug: 'products' },
 		{ name: 'Finance', slug: 'financing' },
 		{ name: 'Parts & Services', slug: 'parts' },
 		{ name: 'Contact', slug: 'contact' },
@@ -97,7 +97,7 @@ const useNavStore = create<StateAndActions>()(
 		{
 			name: 'agcom-storage',
 			partialize: (state) => ({
-				// pages: state.pages,
+				// products: state.product,
 			}),
 		}
 	)

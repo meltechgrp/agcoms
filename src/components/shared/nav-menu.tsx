@@ -49,8 +49,8 @@ export default function NavMenu({ className }: { className?: string }) {
 						{item.name}
 					</MenubarTrigger>
 					<MenubarContent className=" relative">
-						{item.slug === 'product' && <Product products={product} />}
-						{item.slug !== 'product' && (
+						{item.slug === 'products' && <Product products={product} />}
+						{item.slug !== 'products' && (
 							<>
 								{item.slug === 'financing' && (
 									<div>

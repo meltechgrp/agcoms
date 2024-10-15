@@ -132,7 +132,7 @@ async function ProductCategory({ params: { category } }: Props) {
 										{c.products.map((p) => (
 											<Link
 												key={p.id}
-												href={`/products/${data.name}/${c.name}/${p.id}`}>
+												href={`/products/${data.slug}/${c.slug}/${p.id}`}>
 												<li>
 													<h4 className="text-sm text-green-700 font-medium">
 														{p.name}

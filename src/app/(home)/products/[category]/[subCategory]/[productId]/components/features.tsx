@@ -13,15 +13,16 @@ import React, { useMemo, useState } from 'react';
 import { Element } from 'react-scroll';
 
 interface Props {
-	data: ProductType;
+	data: ProductType['product'];
 }
 
 const Features = ({ data }: Props) => {
 	if (!data) return;
+	const { features: featurez } = data;
 	const [feats, setFeats] = useState<string[]>([]);
 	const [showAll, setShowAll] = useState<boolean>(false);
 	const features = useMemo(() => {
-		return showAll ? data.features : data.features.slice(0, 6);
+		return showAll ? featurez : featurez.slice(0, 6);
 	}, [showAll]);
 	return (
 		<Element name="feats">
@@ -63,7 +64,7 @@ const Features = ({ data }: Props) => {
 							</AccordionItem>
 						))}
 					</Accordion>
-					{data.features.length > 6 && (
+					{featurez.length > 6 && (
 						<div className="flex justify-center">
 							<Button
 								onClick={() => setShowAll(!showAll)}

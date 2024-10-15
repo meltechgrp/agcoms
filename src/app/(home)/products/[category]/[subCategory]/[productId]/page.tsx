@@ -14,6 +14,7 @@ import HtmlText from '@/components/shared/html-text';
 import Features from './components/features';
 import Specifications from './components/specs';
 import ScrollLink from '@/components/shared/scroll-link';
+import ImageSlides from '@/components/image-slides';
 
 interface Props {
 	params: {
@@ -22,7 +23,7 @@ interface Props {
 }
 async function Product({ params }: Props) {
 	const { productId } = params;
-	const data = await getProductData(productId);
+	const { product, specs } = await getProductData(productId);
 	return (
 		<div>
 			<Breadcrumb className="px-4 sm:px-12 py-6">
@@ -46,45 +47,37 @@ async function Product({ params }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href={`/products/${data?.category.slug}`}>
-							{data?.category.name}
+							href={`/products/${product?.category.slug}`}>
+							{product?.category.name}
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href={`/products/${data?.category.slug}/${data?.subcategory?.slug}`}>
-							{data?.subcategory?.name}
+							href={`/products/${product?.category.slug}/${product?.subcategory?.slug}`}>
+							{product?.subcategory?.name}
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbPage className="text-sm text-gray-500 font-normal  capitalize">
-							{data?.name}
+							{product?.name}
 						</BreadcrumbPage>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			{data ? (
+			{product ? (
 				<div className=" space-y-8 ">
-					<div className="grid px-4 sm:px-12 sm:grid-cols-[60%,auto]">
-						<div className="relative h-full">
-							<div>
-								<Image
-									src={data.images[0].url}
-									className="rounded-md bg-transparent"
-									alt={data.name}
-									bucketName="images"
-									folderName="product-images"
-								/>
-							</div>
+					<div className="grid sm:grid-cols-[60%,auto] bg-white">
+						<div className="relative h-[36rem]">
+							<ImageSlides images={product.images} />
 						</div>
-						<div className="px-3 py-4">
+						<div className="px-7 sm:px-16 py-4">
 							<div className="space-y-3 pb-4">
-								<h2 className="text-2xl font-bold">{data.name}</h2>
+								<h2 className="text-2xl font-bold">{product.name}</h2>
 								<HtmlText
-									text={data.description}
+									text={product.description}
 									className="text-sm px-3 [&_ul]:space-y-2 [&_li]:list-disc [&_li]:marker:text-blue-600 [&_li]:list-outside  font-semibold"
 								/>
 								<Separator />
@@ -112,8 +105,8 @@ async function Product({ params }: Props) {
 							/>
 						</div>
 						<div>
-							<Features data={data} />
-							<Specifications data={data} />
+							<Features data={product} />
+							<Specifications data={specs} />
 						</div>
 					</div>
 				</div>

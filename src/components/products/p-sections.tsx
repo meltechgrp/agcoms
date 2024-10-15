@@ -33,10 +33,9 @@ function ProductSections() {
 			{}
 		);
 
-		// Process products in one pass using reduce
-		products.forEach((c) => {
-			c.subcategories.forEach((s) => {
-				s.products.forEach(({ name, id }) => {
+		products.map((c) => {
+			c.subcategories.map((s) => {
+				s.products.map(({ name, id }) => {
 					const firstChar = name[0].toUpperCase();
 					const productEntry: Product = {
 						name,
@@ -61,7 +60,7 @@ function ProductSections() {
 		});
 
 		setGrouped(groupedProducts);
-	}, []);
+	}, [products]);
 
 	return (
 		<div className="grid gap-6 px-4 pt-12 pb-6 sm:px-12 bg-[#d5d5d5]">

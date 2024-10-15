@@ -49,16 +49,26 @@ export async function getProducts(args: {
 export type ProductsType = Awaited<ReturnType<typeof getProducts>>;
 export async function getProductData(productId?: string) {
 	try {
-		if (!productId) return null;
+		if (!productId)
+			return {
+				product: null,
+				specs: [],
+			};
 		const product = await prisma.products.findUnique({
 			where: { id: productId },
-			include: {
+			select: {
+				id: true,
+				name: true,
+				description: true,
+				price: true,
+				categoryId: true,
+				subcategoryId: true,
+				createdAt: true,
 				category: {
 					select: { name: true, slug: true },
 				},
 				images: {
 					select: { url: true },
-					take: 2,
 				},
 				subcategory: {
 					select: {
@@ -73,24 +83,32 @@ export async function getProductData(productId?: string) {
 						id: true,
 					},
 				},
-				specs: {
+			},
+		});
+		const specs = await prisma.productSpecs.findMany({
+			where: {
+				contents: {
+					some: { productId },
+				},
+			},
+			select: {
+				name: true,
+				contents: {
 					select: {
+						id: true,
 						name: true,
 						content: true,
-						id: true,
-						spec: {
-							select: {
-								name: true,
-							},
-						},
 					},
 				},
 			},
 		});
-		return product;
+		return { product, specs };
 	} catch (error) {
 		console.log(error);
-		return null;
+		return {
+			product: null,
+			specs: [],
+		};
 	}
 }
 export type ProductType = Awaited<ReturnType<typeof getProductData>>;

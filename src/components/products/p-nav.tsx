@@ -27,7 +27,6 @@ function ProductNavigation() {
 	const menuRef = useRef<HTMLDivElement>(null);
 	const [grouped, setGrouped] = useState<string[]>([]);
 	const handleSetActive = (key: string) => {
-		console.log(key, 'key');
 		setActive({
 			key,
 			index: grouped.indexOf(key),
