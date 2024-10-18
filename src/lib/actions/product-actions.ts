@@ -49,11 +49,7 @@ export async function getProducts(args: {
 export type ProductsType = Awaited<ReturnType<typeof getProducts>>;
 export async function getProductData(productId?: string) {
 	try {
-		if (!productId)
-			return {
-				product: null,
-				specs: [],
-			};
+		if (!productId) return null;
 		const product = await prisma.products.findUnique({
 			where: { id: productId },
 			select: {
@@ -85,30 +81,27 @@ export async function getProductData(productId?: string) {
 				},
 			},
 		});
-		const specs = await prisma.productSpecs.findMany({
-			where: {
-				contents: {
-					some: { productId },
-				},
-			},
-			select: {
-				name: true,
-				contents: {
-					select: {
-						id: true,
-						name: true,
-						content: true,
-					},
-				},
-			},
-		});
-		return { product, specs };
+		// const specs = await prisma.productSpecs.findMany({
+		// 	where: {
+		// 		contents: {
+		// 			some: { productId },
+		// 		},
+		// 	},
+		// 	select: {
+		// 		name: true,
+		// 		contents: {
+		// 			select: {
+		// 				id: true,
+		// 				name: true,
+		// 				content: true,
+		// 			},
+		// 		},
+		// 	},
+		// });
+		return product;
 	} catch (error) {
 		console.log(error);
-		return {
-			product: null,
-			specs: [],
-		};
+		return null;
 	}
 }
 export type ProductType = Awaited<ReturnType<typeof getProductData>>;
@@ -188,22 +181,22 @@ export async function createProduct(
 								},
 						  }
 						: {}),
-					...(specs?.length
-						? {
-								specs: {
-									deleteMany: {},
-									create: specs.map(({ name, content, group }) => ({
-										name,
-										content,
-										spec: {
-											connect: {
-												name: group,
-											},
-										},
-									})),
-								},
-						  }
-						: {}),
+					// ...(specs?.length
+					// 	? {
+					// 			specs: {
+					// 				deleteMany: {},
+					// 				create: specs.map(({ name, content, group }) => ({
+					// 					name,
+					// 					content,
+					// 					spec: {
+					// 						connect: {
+					// 							name: group,
+					// 						},
+					// 					},
+					// 				})),
+					// 			},
+					// 	  }
+					// 	: {}),
 				},
 			});
 			revalidatePath('/admin/products');
@@ -246,21 +239,21 @@ export async function createProduct(
 								},
 						  }
 						: {}),
-					...(specs?.length
-						? {
-								specs: {
-									create: specs.map(({ name, content, group }) => ({
-										name,
-										content,
-										spec: {
-											connect: {
-												name: group,
-											},
-										},
-									})),
-								},
-						  }
-						: {}),
+					// ...(specs?.length
+					// 	? {
+					// 			specs: {
+					// 				create: specs.map(({ name, content, group }) => ({
+					// 					name,
+					// 					content,
+					// 					spec: {
+					// 						connect: {
+					// 							name: group,
+					// 						},
+					// 					},
+					// 				})),
+					// 			},
+					// 	  }
+					// 	: {}),
 				},
 			});
 			revalidatePath('/admin/products');

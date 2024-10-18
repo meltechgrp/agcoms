@@ -13,7 +13,7 @@ import React, { useMemo, useState } from 'react';
 import { Element } from 'react-scroll';
 
 interface Props {
-	data: ProductType['product'];
+	data: ProductType;
 }
 
 const Features = ({ data }: Props) => {

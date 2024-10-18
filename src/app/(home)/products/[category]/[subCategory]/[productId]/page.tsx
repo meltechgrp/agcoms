@@ -12,7 +12,7 @@ import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import HtmlText from '@/components/shared/html-text';
 import Features from './components/features';
-import Specifications from './components/specs';
+// import Specifications from './components/specs';
 import ScrollLink from '@/components/shared/scroll-link';
 import ImageSlides from '@/components/image-slides';
 
@@ -23,7 +23,7 @@ interface Props {
 }
 async function Product({ params }: Props) {
 	const { productId } = params;
-	const { product, specs } = await getProductData(productId);
+	const product = await getProductData(productId);
 	return (
 		<div>
 			<Breadcrumb className="px-4 sm:px-12 py-6">
@@ -106,7 +106,7 @@ async function Product({ params }: Props) {
 						</div>
 						<div>
 							<Features data={product} />
-							<Specifications data={specs} />
+							{/* <Specifications data={specs} /> */}
 						</div>
 					</div>
 				</div>

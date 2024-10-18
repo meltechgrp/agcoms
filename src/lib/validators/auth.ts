@@ -74,7 +74,7 @@ export type PostFormInput = z.infer<typeof PostFormSchema>;
 
 export const Feature = z.object({
 	name: z.string().min(2, {
-		message: 'Feature name must be at least 2 characters.',
+		message: 'Name must be at least 2 characters.',
 	}),
 	content: z.string().min(5, {
 		message: 'description must be at least 5 characters.',
@@ -85,13 +85,7 @@ export const Spec = z.object({
 	name: z.string().min(2, {
 		message: 'Specification name must be at least 2 characters.',
 	}),
-	content: z.string().min(5, {
-		message: 'description must be at least 5 characters.',
-	}),
-	group: z.string().min(2, {
-		message: 'Group name must be at least 2 characters.',
-	}),
-	id: z.string().optional(),
+	contents: z.array(Feature),
 });
 
 export const ProductFormSchema = z.object({

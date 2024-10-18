@@ -31,7 +31,7 @@ import ProductSubCategorySelect from '@/components/shared/select-product-subCat'
 import ProductCategorySelect from '@/components/shared/select-product-category';
 import ImageUploader from '@/components/shared/image-uploader';
 import { createProduct, ProductType } from '@/lib/actions/product-actions';
-import SpecsGroupSelect from '@/components/shared/select-spec-group';
+// import SpecsGroupSelect from '@/components/shared/select-spec-group';
 const TextEditor = dynamic(() => import('@/components/shared/text-editor'), {
 	ssr: false,
 });
@@ -48,9 +48,9 @@ const FeatsSchema = ProductFormSchema.pick({
 	features: true,
 });
 
-const SpecsSchema = ProductFormSchema.pick({
-	specs: true,
-});
+// const SpecsSchema = ProductFormSchema.pick({
+// 	specs: true,
+// });
 const ImgsSchema = ProductFormSchema.pick({
 	images: true,
 });
@@ -69,7 +69,7 @@ const NewProduct = (props: { product?: ProductType }) => {
 			subCategory: product?.subcategory?.name || '',
 			images: product?.images || [],
 			features: product?.features || [],
-			specs: product?.specs || [],
+			// specs: product?.specs || [],
 		},
 	});
 	function handleNext() {
@@ -82,11 +82,11 @@ const NewProduct = (props: { product?: ProductType }) => {
 			let parsed = FeatsSchema.safeParse(form.getValues());
 			if (!parsed.success) return form.trigger(['features']);
 		}
+		// if (step === 3) {
+		// 	let parsed = SpecsSchema.safeParse(form.getValues());
+		// 	if (!parsed.success) return form.trigger(['specs']);
+		// }
 		if (step === 3) {
-			let parsed = SpecsSchema.safeParse(form.getValues());
-			if (!parsed.success) return form.trigger(['specs']);
-		}
-		if (step === 4) {
 			let parsed = ImgsSchema.safeParse(form.getValues());
 			if (!parsed.success) return form.trigger(['images']);
 		}
@@ -94,7 +94,7 @@ const NewProduct = (props: { product?: ProductType }) => {
 		setStep((prev) => prev + 1);
 	}
 	const progress = useMemo(() => {
-		return step * 25;
+		return step * 33;
 	}, [step]);
 	const dismissAlert = useAlertToggle();
 	const [state, dispatch] = useFormState(createProduct, undefined);
@@ -152,8 +152,8 @@ const NewProduct = (props: { product?: ProductType }) => {
 							<div className="grid gap-4">
 								{step === 1 && <Basic form={form} />}
 								{step === 2 && <Features form={form} />}
-								{step === 3 && <Specifications form={form} />}
-								{step >= 4 && <Images form={form} />}
+								{/* {step === 3 && <Specifications form={form} />} */}
+								{step >= 3 && <Images form={form} />}
 
 								<Controls
 									loading={loading}
@@ -205,9 +205,9 @@ function Controls(props: ControlProps) {
 				disabled={loading}
 				onClick={handleNext}
 				className=" flex-1"
-				type={step > 4 ? 'submit' : 'button'}>
+				type={step > 3 ? 'submit' : 'button'}>
 				{loading && <Loader className="mr-2 h-4 w-4 animate-spin" />}
-				{step > 3 ? (product?.id ? 'Update' : 'Save') : 'Next'}
+				{step > 2 ? (product?.id ? 'Update' : 'Save') : 'Next'}
 			</Button>
 		</AlertDialogFooter>
 	);
@@ -397,123 +397,123 @@ function Features({ form }: FormProps) {
 		</div>
 	);
 }
-function Specifications({ form }: FormProps) {
-	const { fields, append, remove } = useFieldArray({
-		control: form.control,
-		name: 'specs',
-	});
-	const { errors } = form.formState;
-	const [currentSpec, setCurrentSpec] = useState('0');
-	return (
-		<div className="grid gap-4">
-			<div className="flex justify-between">
-				<div className="space-y-1">
-					<h3 className="text-sm sm:text-base font-medium">
-						Product specifications
-					</h3>
-					<p className="text-xs font-medium">
-						This is optional, remove if there are no specifications
-					</p>
-				</div>
-			</div>
-			<Accordion
-				type="single"
-				value={currentSpec}
-				onValueChange={setCurrentSpec}
-				className="w-full grid gap-4">
-				{fields.map((field, index) => (
-					<AccordionItem className="" key={field.id} value={index.toString()}>
-						<AccordionTrigger className="w-full text-sm hover:no-underline">
-							Specification {index + 1}
-						</AccordionTrigger>
-						<AccordionContent className="space-y-2">
-							<div className="grid sm:grid-cols-[70%,auto] gap-2">
-								<FormField
-									control={form.control}
-									name={`specs.${index}.name`}
-									render={({ field }) => (
-										<FormItem>
-											<FormControl>
-												<Input
-													className="rounded-none focus-visible:ring-0 focus-visible:ring-transparent"
-													placeholder="Specification name"
-													{...field}
-												/>
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<FormField
-									control={form.control}
-									name={`specs.${index}.group`}
-									render={({ field }) => (
-										<FormItem>
-											<FormControl>
-												<SpecsGroupSelect {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-							</div>
-							<FormField
-								control={form.control}
-								name={`specs.${index}.content`}
-								render={({ field }) => (
-									<FormItem>
-										<FormControl>
-											<TextEditor
-												placeholder="Specification content"
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<div className="flex justify-end items-center gap-3">
-								<Button
-									variant="ghost"
-									type="button"
-									onClick={() => {
-										setCurrentSpec(
-											(parseInt(currentSpec) > 0
-												? parseInt(currentSpec) - 1
-												: parseInt(currentSpec)
-											).toString()
-										);
-										remove(index);
-									}}>
-									<Trash className="h-5 w-5 text-destructive" />
-								</Button>
-								{fields.length - 1 == index && (
-									<Button
-										type="button"
-										variant="outline"
-										className="text-blue-500 px-2 py-1 h-6 border-blue-600"
-										onClick={() => {
-											append(
-												{ name: '', content: '', group: '' },
-												{
-													shouldFocus: true,
-												}
-											);
-											setCurrentSpec((parseInt(currentSpec) + 1).toString());
-										}}>
-										<Plus className="h-5 w-5 mr-2" />
-										New
-									</Button>
-								)}
-							</div>
-						</AccordionContent>
-					</AccordionItem>
-				))}
-			</Accordion>
-			<FormMessage>{errors.specs?.message}</FormMessage>
-		</div>
-	);
-}
+// function Specifications({ form }: FormProps) {
+// 	const { fields, append, remove } = useFieldArray({
+// 		control: form.control,
+// 		name: 'specs',
+// 	});
+// 	const { errors } = form.formState;
+// 	const [currentSpec, setCurrentSpec] = useState('0');
+// 	return (
+// 		<div className="grid gap-4">
+// 			<div className="flex justify-between">
+// 				<div className="space-y-1">
+// 					<h3 className="text-sm sm:text-base font-medium">
+// 						Product specifications
+// 					</h3>
+// 					<p className="text-xs font-medium">
+// 						This is optional, remove if there are no specifications
+// 					</p>
+// 				</div>
+// 			</div>
+// 			<Accordion
+// 				type="single"
+// 				value={currentSpec}
+// 				onValueChange={setCurrentSpec}
+// 				className="w-full grid gap-4">
+// 				{fields.map((field, index) => (
+// 					<AccordionItem className="" key={field.id} value={index.toString()}>
+// 						<AccordionTrigger className="w-full text-sm hover:no-underline">
+// 							Specification {index + 1}
+// 						</AccordionTrigger>
+// 						<AccordionContent className="space-y-2">
+// 							<div className="grid sm:grid-cols-[70%,auto] gap-2">
+// 								<FormField
+// 									control={form.control}
+// 									name={`specs.${index}.name`}
+// 									render={({ field }) => (
+// 										<FormItem>
+// 											<FormControl>
+// 												<Input
+// 													className="rounded-none focus-visible:ring-0 focus-visible:ring-transparent"
+// 													placeholder="Specification name"
+// 													{...field}
+// 												/>
+// 											</FormControl>
+// 											<FormMessage />
+// 										</FormItem>
+// 									)}
+// 								/>
+// 								<FormField
+// 									control={form.control}
+// 									name={`specs.${index}.group`}
+// 									render={({ field }) => (
+// 										<FormItem>
+// 											<FormControl>
+// 												<SpecsGroupSelect {...field} />
+// 											</FormControl>
+// 											<FormMessage />
+// 										</FormItem>
+// 									)}
+// 								/>
+// 							</div>
+// 							<FormField
+// 								control={form.control}
+// 								name={`specs.${index}.content`}
+// 								render={({ field }) => (
+// 									<FormItem>
+// 										<FormControl>
+// 											<TextEditor
+// 												placeholder="Specification content"
+// 												{...field}
+// 											/>
+// 										</FormControl>
+// 										<FormMessage />
+// 									</FormItem>
+// 								)}
+// 							/>
+// 							<div className="flex justify-end items-center gap-3">
+// 								<Button
+// 									variant="ghost"
+// 									type="button"
+// 									onClick={() => {
+// 										setCurrentSpec(
+// 											(parseInt(currentSpec) > 0
+// 												? parseInt(currentSpec) - 1
+// 												: parseInt(currentSpec)
+// 											).toString()
+// 										);
+// 										remove(index);
+// 									}}>
+// 									<Trash className="h-5 w-5 text-destructive" />
+// 								</Button>
+// 								{fields.length - 1 == index && (
+// 									<Button
+// 										type="button"
+// 										variant="outline"
+// 										className="text-blue-500 px-2 py-1 h-6 border-blue-600"
+// 										onClick={() => {
+// 											append(
+// 												{ name: '', content: '', group: '' },
+// 												{
+// 													shouldFocus: true,
+// 												}
+// 											);
+// 											setCurrentSpec((parseInt(currentSpec) + 1).toString());
+// 										}}>
+// 										<Plus className="h-5 w-5 mr-2" />
+// 										New
+// 									</Button>
+// 								)}
+// 							</div>
+// 						</AccordionContent>
+// 					</AccordionItem>
+// 				))}
+// 			</Accordion>
+// 			<FormMessage>{errors.specs?.message}</FormMessage>
+// 		</div>
+// 	);
+// }
 
 function Images({ form }: FormProps) {
 	return (
