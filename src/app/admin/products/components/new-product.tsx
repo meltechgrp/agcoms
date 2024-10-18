@@ -68,8 +68,8 @@ const NewProduct = (props: { product?: ProductType }) => {
 			category: product?.category?.name || '',
 			subCategory: product?.subcategory?.name || '',
 			images: product?.images || [],
-			features: product?.features || [{ name: '', content: '' }],
-			specs: product?.specs || [{ name: '', content: '', group: '' }],
+			features: product?.features || [],
+			specs: product?.specs || [],
 		},
 	});
 	function handleNext() {
@@ -356,22 +356,20 @@ function Features({ form }: FormProps) {
 								)}
 							/>
 							<div className="flex justify-end items-center gap-3">
-								{fields.length > 1 && (
-									<Button
-										variant="ghost"
-										type="button"
-										onClick={() => {
-											setCurrentFeat(
-												(parseInt(currentFeat) > 0
-													? parseInt(currentFeat) - 1
-													: parseInt(currentFeat)
-												).toString()
-											);
-											remove(index);
-										}}>
-										<Trash className="h-5 w-5 text-destructive" />
-									</Button>
-								)}
+								<Button
+									variant="ghost"
+									type="button"
+									onClick={() => {
+										setCurrentFeat(
+											(parseInt(currentFeat) > 0
+												? parseInt(currentFeat) - 1
+												: parseInt(currentFeat)
+											).toString()
+										);
+										remove(index);
+									}}>
+									<Trash className="h-5 w-5 text-destructive" />
+								</Button>
 								{fields.length - 1 == index && (
 									<Button
 										type="button"
@@ -475,22 +473,20 @@ function Specifications({ form }: FormProps) {
 								)}
 							/>
 							<div className="flex justify-end items-center gap-3">
-								{fields.length > 1 && (
-									<Button
-										variant="ghost"
-										type="button"
-										onClick={() => {
-											setCurrentSpec(
-												(parseInt(currentSpec) > 0
-													? parseInt(currentSpec) - 1
-													: parseInt(currentSpec)
-												).toString()
-											);
-											remove(index);
-										}}>
-										<Trash className="h-5 w-5 text-destructive" />
-									</Button>
-								)}
+								<Button
+									variant="ghost"
+									type="button"
+									onClick={() => {
+										setCurrentSpec(
+											(parseInt(currentSpec) > 0
+												? parseInt(currentSpec) - 1
+												: parseInt(currentSpec)
+											).toString()
+										);
+										remove(index);
+									}}>
+									<Trash className="h-5 w-5 text-destructive" />
+								</Button>
 								{fields.length - 1 == index && (
 									<Button
 										type="button"
@@ -518,76 +514,6 @@ function Specifications({ form }: FormProps) {
 		</div>
 	);
 }
-
-// function Specifications({ form }: FormProps) {
-// 	const { fields, append, remove } = useFieldArray({
-// 		control: form.control,
-// 		name: 'specs',
-// 	});
-// 	const { errors } = form.formState;
-// 	return (
-// 		<div className="grid gap-4">
-// 			<div className="flex justify-between">
-// 				<div className="space-y-1">
-// 					<h3 className="text-sm sm:text-base font-medium">
-// 						Product specifications
-// 					</h3>
-// 					<p className="text-xs font-medium">
-// 						This is optional, remove if there are no specifications
-// 					</p>
-// 				</div>
-// 				<Button type="button" onClick={() => append({ name: '', content: '' })}>
-// 					<Plus className="h-5 w-5 mr-2" />
-// 					New Specification
-// 				</Button>
-// 			</div>
-// 			<div className="grid gap-4">
-// 				{fields.map((field, index) => (
-// 					<div key={field.id} className="flex flex-col gap-2 mb-4">
-// 						<FormField
-// 							control={form.control}
-// 							name={`specs.${index}.name`}
-// 							render={({ field }) => (
-// 								<FormItem>
-// 									<FormLabel>Title</FormLabel>
-// 									<FormControl>
-// 										<Input placeholder="Specification name" {...field} />
-// 									</FormControl>
-// 									<FormMessage />
-// 								</FormItem>
-// 							)}
-// 						/>
-// 						<FormField
-// 							control={form.control}
-// 							name={`specs.${index}.content`}
-// 							render={({ field }) => (
-// 								<FormItem>
-// 									<FormLabel>Content</FormLabel>
-// 									<FormControl>
-// 										<TextEditor
-// 											placeholder="Specification content"
-// 											{...field}
-// 										/>
-// 									</FormControl>
-// 									<FormMessage />
-// 								</FormItem>
-// 							)}
-// 						/>
-// 						<Button
-// 							variant="destructive"
-// 							type="button"
-// 							className="self-start"
-// 							onClick={() => remove(index)}>
-// 							<Trash className="h-5 w-5" />
-// 							Remove Specification
-// 						</Button>
-// 					</div>
-// 				))}
-// 			</div>
-// 			<FormMessage>{errors.specs?.message}</FormMessage>
-// 		</div>
-// 	);
-// }
 
 function Images({ form }: FormProps) {
 	return (

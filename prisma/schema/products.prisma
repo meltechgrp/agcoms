@@ -24,19 +24,19 @@ model ProductSubCategories {
 
 // Define the Product model
 model Products {
-  id            String               @id @default(cuid())
-  name          String               @unique
+  id            String                @id @default(cuid())
+  name          String                @unique
   description   String
   price         Float?
-  category      ProductCategories    @relation(fields: [categoryId], references: [id], onUpdate: Cascade)
+  category      ProductCategories     @relation(fields: [categoryId], references: [id], onUpdate: Cascade)
   categoryId    String
-  subcategory   ProductSubCategories @relation(fields: [subcategoryId], references: [id], onUpdate: Cascade)
+  subcategory   ProductSubCategories? @relation(fields: [subcategoryId], references: [id], onUpdate: Cascade)
   subcategoryId String
   specs         ProductSpecContent[]
   features      ProductFeatures[]
   images        Image[] // A Product can have many Images
-  createdAt     DateTime             @default(now())
-  updatedAt     DateTime             @updatedAt
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
 }
 
 model ProductSpecs {

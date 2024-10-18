@@ -154,11 +154,15 @@ export async function createProduct(
 							name: category,
 						},
 					},
-					subcategory: {
-						connect: {
-							name: subCategory,
-						},
-					},
+					...(subCategory
+						? {
+								subcategory: {
+									connect: {
+										name: subCategory,
+									},
+								},
+						  }
+						: {}),
 					...(images?.length
 						? {
 								images: {
@@ -216,11 +220,15 @@ export async function createProduct(
 							name: category,
 						},
 					},
-					subcategory: {
-						connect: {
-							name: subCategory,
-						},
-					},
+					...(subCategory
+						? {
+								subcategory: {
+									connect: {
+										name: subCategory,
+									},
+								},
+						  }
+						: {}),
 					...(images
 						? {
 								images: {
