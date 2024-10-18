@@ -5,7 +5,7 @@ export default function Banner() {
 		<div>
 			<Image
 				src={'banner.jpg'}
-				className="w-full aspect-auto sm:min-h-[70vh]"
+				className="w-full sm:h-[35rem]"
 				alt={'agcoms banner'}
 				bucketName="banners"
 				folderName="home-banners"

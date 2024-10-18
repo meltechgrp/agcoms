@@ -17,7 +17,7 @@ function SubCard(props: Props) {
 	return (
 		<>
 			<div className="w-full grid space-y-4 bg-[#f5f4f4] rounded-md">
-				<div className="h-56">
+				<div className="h-72">
 					<Image
 						src={images[0].url}
 						className="rounded-md"

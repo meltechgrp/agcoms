@@ -15,6 +15,8 @@ import Features from './components/features';
 // import Specifications from './components/specs';
 import ScrollLink from '@/components/shared/scroll-link';
 import ImageSlides from '@/components/image-slides';
+import ProductCard from '../../components/product-card';
+import Link from 'next/link';
 
 interface Props {
 	params: {
@@ -73,9 +75,11 @@ async function Product({ params }: Props) {
 						<div className="relative h-[36rem]">
 							<ImageSlides images={product.images} />
 						</div>
-						<div className="px-7 sm:px-16 py-4">
+						<div className="px-7 sm:px-8 py-4">
 							<div className="space-y-3 pb-4">
-								<h2 className="text-2xl font-bold">{product.name}</h2>
+								<h2 className="text-2xl sm:text-3xl text-blue-600 font-bold">
+									{product.name}
+								</h2>
 								<HtmlText
 									text={product.description}
 									className="text-sm px-3 [&_ul]:space-y-2 [&_li]:list-disc [&_li]:marker:text-blue-600 [&_li]:list-outside  font-semibold"
@@ -83,32 +87,50 @@ async function Product({ params }: Props) {
 								<Separator />
 							</div>
 							<div className="my-4">
-								<Button
-									variant="outline"
-									className="bg-blue-600 text-white transition-colors duration-700 font-bold">
-									Contact us
-								</Button>
+								<Link href={'/contact'}>
+									<Button
+										variant="outline"
+										className="bg-blue-600 text-white transition-colors duration-700 font-bold">
+										Contact us
+									</Button>
+								</Link>
 							</div>
 						</div>
 					</div>
 					<div>
-						<div className="flex bg-[#e5e5e5] px-2">
-							<ScrollLink
-								className="px-3 py-4 text-base text-blue-700 bg-[#eff0f0] font-bold"
-								to="feats"
-								name="Features"
-							/>
-							<ScrollLink
+						{product.features?.length > 0 && (
+							<div className="flex bg-[#e5e5e5] px-2">
+								<ScrollLink
+									className="px-3 py-4 text-base text-blue-700 bg-[#eff0f0] font-bold"
+									to="feats"
+									name="Features"
+								/>
+								{/* <ScrollLink
 								className="px-3 py-4 text-base font-bold text-black"
 								to="specs"
 								name="Specifications"
-							/>
-						</div>
+							/> */}
+							</div>
+						)}
 						<div>
 							<Features data={product} />
 							{/* <Specifications data={specs} /> */}
 						</div>
 					</div>
+					{product?.subcategory?.products && (
+						<div className="space-y-4">
+							<div className="flex justify-center bg-[#e5e5e5] px-2">
+								<h3 className="px-3 py-4 text-xl  font-medium">
+									Related models
+								</h3>
+							</div>
+							<div className="grid sm:grid-cols-3 gap-4 px-4 sm:px-12">
+								{product.subcategory?.products.map((p) => (
+									<ProductCard key={p.id} {...p} />
+								))}
+							</div>
+						</div>
+					)}
 				</div>
 			) : (
 				<div className="flex justify-center items-center h-96">

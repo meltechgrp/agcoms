@@ -25,58 +25,62 @@ const Features = ({ data }: Props) => {
 		return showAll ? featurez : featurez.slice(0, 6);
 	}, [showAll]);
 	return (
-		<Element name="feats">
-			<div className="space-y-2 px-4 sm:px-12 py-8 bg-[#eff0f0]">
-				<div className="flex justify-between items-center">
-					<h3 className="text-xl font-bold">Features</h3>
-					<Button
-						onClick={() =>
-							feats.length > 0
-								? setFeats([])
-								: setFeats([...features.map((f) => f.name)])
-						}
-						variant="ghost"
-						className="text-blue-600 hover:text-black transition-colors">
-						{feats.length > 0 ? 'Collapse All' : 'Expand All'}
-					</Button>
-				</div>
-				<Separator className="bg-gray-400" />
-				<div className="space-y-6">
-					<Accordion
-						value={feats}
-						onValueChange={setFeats}
-						type="multiple"
-						className="w-full">
-						{features.map((f) => (
-							<AccordionItem
-								className="border-gray-400"
-								key={f.id}
-								value={f.name}>
-								<AccordionTrigger className="" isPlus={true}>
-									{f.name}
-								</AccordionTrigger>
-								<AccordionContent className="px-3 py-0">
-									<HtmlText
-										text={f.content}
-										className="text-sm px-3 [&_ul]:px-3 space-y-2 [&_ul]:space-y-2 [&_li]:list-disc [&_li]:marker:text-blue-600 [&_li]:list-outside  font-semibold"
-									/>
-								</AccordionContent>
-							</AccordionItem>
-						))}
-					</Accordion>
-					{featurez.length > 6 && (
-						<div className="flex justify-center">
+		<>
+			{features.length > 0 && (
+				<Element name="feats">
+					<div className="space-y-2 px-4 sm:px-12 py-8 bg-[#eff0f0]">
+						<div className="flex justify-between items-center">
+							<h3 className="text-xl font-bold">Features</h3>
 							<Button
-								onClick={() => setShowAll(!showAll)}
-								variant="outline"
-								className="text-blue-600 py-3 px-6 border-blue-600 transition-colors">
-								{showAll ? 'Show less' : 'Show more'}
+								onClick={() =>
+									feats.length > 0
+										? setFeats([])
+										: setFeats([...features.map((f) => f.name)])
+								}
+								variant="ghost"
+								className="text-blue-600 hover:text-black transition-colors">
+								{feats.length > 0 ? 'Collapse All' : 'Expand All'}
 							</Button>
 						</div>
-					)}
-				</div>
-			</div>
-		</Element>
+						<Separator className="bg-gray-400" />
+						<div className="space-y-6">
+							<Accordion
+								value={feats}
+								onValueChange={setFeats}
+								type="multiple"
+								className="w-full">
+								{features.map((f) => (
+									<AccordionItem
+										className="border-gray-400"
+										key={f.id}
+										value={f.name}>
+										<AccordionTrigger className="" isPlus={true}>
+											{f.name}
+										</AccordionTrigger>
+										<AccordionContent className="px-3 py-0">
+											<HtmlText
+												text={f.content}
+												className="text-sm px-3 [&_ul]:px-3 space-y-2 [&_ul]:space-y-2 [&_li]:list-disc [&_li]:marker:text-blue-600 [&_li]:list-outside  font-semibold"
+											/>
+										</AccordionContent>
+									</AccordionItem>
+								))}
+							</Accordion>
+							{featurez.length > 6 && (
+								<div className="flex justify-center">
+									<Button
+										onClick={() => setShowAll(!showAll)}
+										variant="outline"
+										className="text-blue-600 py-3 px-6 border-blue-600 transition-colors">
+										{showAll ? 'Show less' : 'Show more'}
+									</Button>
+								</div>
+							)}
+						</div>
+					</div>
+				</Element>
+			)}
+		</>
 	);
 };
 

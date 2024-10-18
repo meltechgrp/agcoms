@@ -70,6 +70,35 @@ export async function getProductData(productId?: string) {
 					select: {
 						name: true,
 						slug: true,
+						products: {
+							select: {
+								id: true,
+								name: true,
+								description: true,
+								images: {
+									select: {
+										url: true,
+									},
+									take: 1,
+								},
+								category: {
+									select: {
+										name: true,
+										slug: true,
+									},
+								},
+								subcategory: {
+									select: {
+										name: true,
+										slug: true,
+									},
+								},
+							},
+							take: 6,
+							orderBy: {
+								createdAt: 'desc',
+							},
+						},
 					},
 				},
 				features: {

@@ -32,8 +32,30 @@ async function SubCategory({ params }: Props) {
 						select: {
 							id: true,
 							name: true,
+							description: true,
+							images: {
+								select: {
+									url: true,
+								},
+								take: 1,
+							},
+							category: {
+								select: {
+									name: true,
+									slug: true,
+								},
+							},
+							subcategory: {
+								select: {
+									name: true,
+									slug: true,
+								},
+							},
 						},
 						take: 6,
+						orderBy: {
+							createdAt: 'desc',
+						},
 					},
 				},
 			},
@@ -60,6 +82,10 @@ async function SubCategory({ params }: Props) {
 							slug: true,
 						},
 					},
+				},
+				take: 20,
+				orderBy: {
+					createdAt: 'desc',
 				},
 			},
 		},
@@ -106,9 +132,11 @@ async function SubCategory({ params }: Props) {
 							{data.name}
 						</h2>
 					</div>
-					<div className="px-4 sm:px-12  space-y-3">
-						<div className="py-2 px-2 bg-gray-300 flex justify-between">
-							<h3 className="text-base font-medium">Recent products</h3>
+					<div className="px-4 sm:px-12  space-y-6">
+						<div className="py-3 px-2 bg-gray-300 flex justify-between">
+							<h3 className="text-base sm:text-xl font-medium">
+								Recent products
+							</h3>
 						</div>
 						<div className="grid sm:grid-cols-3 gap-4">
 							{data.products.map((p) => (
@@ -116,6 +144,18 @@ async function SubCategory({ params }: Props) {
 							))}
 						</div>
 					</div>
+					{data?.category?.products && (
+						<div className="space-y-4">
+							<div className="flex justify-center bg-[#e5e5e5] px-2">
+								<h3 className="px-3 py-4 text-xl  font-medium">Other models</h3>
+							</div>
+							<div className="grid sm:grid-cols-3 gap-4 px-4 sm:px-12">
+								{data?.category?.products.map((p) => (
+									<ProductCard key={p.id} {...p} />
+								))}
+							</div>
+						</div>
+					)}
 				</div>
 			) : (
 				<div className="flex justify-center items-center h-96">

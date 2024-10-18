@@ -23,17 +23,19 @@ const ProductCard = (props: Props) => {
 						alt={name ?? ''}
 						bucketName="images"
 						folderName="product-images"
+						scale={true}
+						zoomIn={true}
 					/>
 				)}
 			</div>
 			<div className="">
 				<Link
 					href={`/products/${category?.slug}/${subcategory?.slug}/${id}`}
-					className="flex flex-col gap-1 px-3 py-2">
+					className="flex flex-col gap-2 px-3 py-2">
 					<h2 className="text-base self-start border-b border-black">{name}</h2>
 					<HtmlText
 						text={description ?? ''}
-						className="text-xs line-clamp-4 font-semibold"
+						className="font-bold [&_li]:text-start [&_ul]:space-y-2 text-xs line-clamp-3 "
 					/>
 				</Link>
 			</div>

@@ -76,6 +76,9 @@ async function ProductCategory({ params: { category } }: Props) {
 					},
 				},
 				take: 6,
+				orderBy: {
+					createdAt: 'desc',
+				},
 			},
 		},
 	});
@@ -112,6 +115,7 @@ async function ProductCategory({ params: { category } }: Props) {
 						<Image
 							src={data.images[0].url}
 							alt={category}
+							scale={true}
 							className="w-screen sm:w-[1350px] object-fill h-[150px] sm:h-[420px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
 							bucketName="banners"
 							folderName="product-categories"
