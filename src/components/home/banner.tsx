@@ -2,7 +2,7 @@ import Image from '../shared/image';
 
 export default function Banner() {
 	return (
-		<div>
+		<div className="relative">
 			<Image
 				src={'banner.jpg'}
 				className="w-full sm:h-[35rem]"

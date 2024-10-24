@@ -24,7 +24,7 @@ function Products() {
 					<BreadcrumbSeparator className=" text-green-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbPage className="text-sm text-gray-500 font-normal  capitalize">
-							Products
+							Equipments
 						</BreadcrumbPage>
 					</BreadcrumbItem>
 				</BreadcrumbList>

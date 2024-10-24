@@ -79,7 +79,7 @@ function ProductSections() {
 												<div>{p}</div>
 											) : (
 												<Link
-													href={`/products/${p.cat}/${p.sub}/${p.id}`}
+													href={`/equipments/${p.cat}/${p.sub}/${p.id}`}
 													key={p.id}
 													className=" text-sm w-fit text-green-600 font-semibold">
 													{p.name}

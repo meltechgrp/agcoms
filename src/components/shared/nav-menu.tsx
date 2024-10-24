@@ -13,8 +13,9 @@ import {
 	MenubarTrigger,
 } from '../ui/menubar';
 import { ChevronRight } from 'lucide-react';
-import useNavStore, { Key, keys, ProCats } from '@/stores/use-nav-store';
+import useNavStore, { ProCats } from '@/stores/use-nav-store';
 import { useEffect } from 'react';
+import { Button } from '../ui/button';
 
 export default function NavMenu({ className }: { className?: string }) {
 	const pathname = usePathname();
@@ -38,41 +39,39 @@ export default function NavMenu({ className }: { className?: string }) {
 				</Link>
 			</MenubarMenu>
 			{pages.map((item, i) => (
-				<MenubarMenu key={uniqueId()}>
-					<MenubarTrigger
-						className={cn(
-							'hover:text-blue-500 transition-colors duration-1000',
-							pathname.split('/')[1] === item.slug
-								? 'border-blue-700 text-blue-600 text-sm font-normal border-b-2 rounded-none '
-								: ''
-						)}>
-						{item.name}
-					</MenubarTrigger>
-					<MenubarContent className=" relative">
-						{item.slug === 'products' && <Product products={product} />}
-						{item.slug !== 'products' && (
-							<>
-								{item.slug === 'financing' && (
-									<div>
-										<Link key={uniqueId()} href={`/${item.slug}`}>
-											<MenubarItem className="text-sm capitalize flex items-center px-2 font-semibold">
-												{item.slug}
-											</MenubarItem>
-										</Link>
-									</div>
-								)}
-								{keys.includes(item.slug) &&
-									store[item.slug as Key].map((sub, i) => (
-										<Link key={uniqueId()} href={sub?.link ?? `/${sub.slug}`}>
-											<MenubarItem className="text-sm flex items-center px-2 font-semibold">
-												{sub.name}
-											</MenubarItem>
-										</Link>
-									))}
-							</>
-						)}
-					</MenubarContent>
-				</MenubarMenu>
+				<div>
+					{item.slug === 'equipments' ? (
+						<MenubarMenu key={uniqueId()}>
+							<MenubarTrigger
+								className={cn(
+									'hover:text-blue-500 font-normal transition-colors duration-1000',
+									pathname.split('/')[1] === item.slug
+										? 'border-blue-700 text-blue-600 text-sm font-normal border-b-2 rounded-none '
+										: ''
+								)}>
+								{item.name}
+							</MenubarTrigger>
+							<MenubarContent className=" relative">
+								<Product products={product} />
+							</MenubarContent>
+						</MenubarMenu>
+					) : (
+						<MenubarMenu key={uniqueId()}>
+							<Link
+								href={item.slug}
+								className={cn(
+									'hover:text-blue-500 font-semibold transition-colors text-sm text-black duration-1000',
+									pathname === item.slug
+										? 'border-blue-700 text-blue-600 border-b-2 rounded-none '
+										: 'text-black'
+								)}>
+								<Button variant="link" className="font-semibold font-roboto">
+									{item.name}
+								</Button>
+							</Link>
+						</MenubarMenu>
+					)}
+				</div>
 			))}
 		</Menubar>
 	);
@@ -84,9 +83,9 @@ function Product(props: { products: any }) {
 	return (
 		<>
 			<div>
-				<Link href={'/products'}>
+				<Link href={'/equipments'}>
 					<MenubarItem className="text-sm flex items-center px-2 font-semibold">
-						All products (A -Z)
+						All Equipments (A -Z)
 					</MenubarItem>
 				</Link>
 			</div>
@@ -95,7 +94,7 @@ function Product(props: { products: any }) {
 					<MenubarSubTrigger>{c.name}</MenubarSubTrigger>
 					<MenubarSubContent className=" min-w-[40vw] ">
 						<div className="px-2 space-y-4 py-6">
-							<Link href={`/products/${c.slug}`}>
+							<Link href={`/equipments/${c.slug}`}>
 								<MenubarItem className="text-base flex items-center px-2 font-semibold">
 									{c.name} <ChevronRight className="w-5 h-5 ml-1" />
 								</MenubarItem>
@@ -110,7 +109,7 @@ function Product(props: { products: any }) {
 											{s.products.map((p) => (
 												<Link
 													key={uniqueId()}
-													href={`/products/${c.slug}/${s.slug}/${p.id}`}>
+													href={`/equipments/${c.slug}/${s.slug}/${p.id}`}>
 													<MenubarItem className=" px-2 text-nowrap text-sm text-blue-700 font-medium">
 														{p.name}
 													</MenubarItem>

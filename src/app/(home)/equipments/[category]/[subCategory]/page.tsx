@@ -105,15 +105,15 @@ async function SubCategory({ params }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-green-500"
-							href="/products">
-							Products
+							href="/equipments">
+							Equipments
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					<BreadcrumbSeparator className=" text-green-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-green-500"
-							href={`/products/${data?.category.slug}`}>
+							href={`/equipments/${data?.category.slug}`}>
 							{data?.category.name}
 						</BreadcrumbLink>
 					</BreadcrumbItem>

@@ -97,8 +97,8 @@ async function ProductCategory({ params: { category } }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href="/products">
-							Products
+							href="/equipments">
+							Equipments
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
@@ -136,7 +136,7 @@ async function ProductCategory({ params: { category } }: Props) {
 										{c.products.map((p) => (
 											<Link
 												key={p.id}
-												href={`/products/${data.slug}/${c.slug}/${p.id}`}>
+												href={`/equipments/${data.slug}/${c.slug}/${p.id}`}>
 												<li>
 													<h4 className="text-sm text-green-700 font-medium">
 														{p.name}

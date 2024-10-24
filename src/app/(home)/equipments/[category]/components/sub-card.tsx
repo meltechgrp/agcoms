@@ -34,7 +34,7 @@ function SubCard(props: Props) {
 						<p className="text-sm text-gray-500">{description}</p>
 					)}
 					<Link
-						href={`/products/${category}/${slug}`}
+						href={`/equipments/${category}/${slug}`}
 						className="text-sm font-bold flex items-center gap-1 text-blue-500 hover:text-blue-600">
 						View our <span>{slug}</span>{' '}
 						<ChevronRight width={20} height={34} className="" />

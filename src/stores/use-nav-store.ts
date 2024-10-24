@@ -19,62 +19,22 @@ export type ProCats = {
 		}[];
 	}[];
 };
-type StateWithoutProduct = Omit<State, 'product'>;
-export type Key = keyof StateWithoutProduct;
-export const keys = ['financing', 'contact', 'parts'];
 export type State = {
 	pages: Basic[];
 	product: ProCats[];
-	financing: Basic[];
-	contact: Basic[];
-	parts: Basic[];
 };
 type Actions = {
 	getProductData: () => Promise<void>;
 };
 const initialState: State = {
 	pages: [
-		{ name: 'Products', slug: 'products' },
-		{ name: 'Finance', slug: 'financing' },
+		{ name: 'Equipments', slug: 'equipments' },
 		{ name: 'Parts & Services', slug: 'parts' },
-		{ name: 'Contact', slug: 'contact' },
+		{ name: 'Offers and Discount', slug: 'offers' },
+		{ name: 'Request for Quotation', slug: 'requests' },
+		{ name: 'About', slug: 'about' },
 	],
 	product: [],
-	contact: [{ name: 'Contact us', slug: 'contact' }],
-	parts: [
-		{
-			name: 'Parts',
-			slug: 'parts',
-			link: 'https://www.deere.africa/en/parts-service/parts/',
-		},
-		{
-			name: 'Services & Support',
-			slug: 'services-support',
-			link: 'https://www.deere.africa/en/stellarsupport/',
-		},
-		{
-			name: 'Shop Parts',
-			slug: 'shop-parts',
-			link: 'https://www.deere.africa/en/stellarsupport/help/',
-		},
-	],
-	financing: [
-		{
-			name: 'Leap Forward',
-			slug: 'leap-forward',
-			link: 'https://www.deere.africa/en/finance/financing/leapforward/',
-		},
-		{
-			name: 'Commercial Farming',
-			slug: 'commercial-farming',
-			link: 'https://www.deere.africa/en/finance/financing/commercial-farming/',
-		},
-		{
-			name: 'Emerging Farming',
-			slug: 'emerging-farming',
-			link: 'https://www.deere.africa/en/finance/financing/emerging-farming/',
-		},
-	],
 };
 type StateAndActions = State & Actions;
 const useNavStore = create<StateAndActions>()(

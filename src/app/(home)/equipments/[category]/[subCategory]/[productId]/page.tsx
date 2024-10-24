@@ -41,15 +41,15 @@ async function Product({ params }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href="/products">
-							Products
+							href="/equipments">
+							Equipments
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href={`/products/${product?.category.slug}`}>
+							href={`/equipments/${product?.category.slug}`}>
 							{product?.category.name}
 						</BreadcrumbLink>
 					</BreadcrumbItem>
@@ -57,7 +57,7 @@ async function Product({ params }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href={`/products/${product?.category.slug}/${product?.subcategory?.slug}`}>
+							href={`/equipments/${product?.category.slug}/${product?.subcategory?.slug}`}>
 							{product?.subcategory?.name}
 						</BreadcrumbLink>
 					</BreadcrumbItem>
@@ -87,7 +87,7 @@ async function Product({ params }: Props) {
 								<Separator />
 							</div>
 							<div className="my-4">
-								<Link href={'/contact'}>
+								<Link href={'/request'}>
 									<Button
 										variant="outline"
 										className="bg-blue-600 text-white transition-colors duration-700 font-bold">
