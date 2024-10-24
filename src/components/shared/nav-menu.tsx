@@ -25,7 +25,7 @@ export default function NavMenu({ className }: { className?: string }) {
 		getProductData();
 	}, []);
 	return (
-		<Menubar className={cn('gap-x-6 pb-0 border-t-0', className)}>
+		<Menubar className={cn('gap-x-6 pb-0 border-0', className)}>
 			<MenubarMenu>
 				<Link
 					href="/"
