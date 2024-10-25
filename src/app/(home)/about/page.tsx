@@ -1,7 +1,14 @@
 import AboutRequest from '@/components/about/about-request';
 import AboutCarousel from '@/components/about/carousel';
 import RequestForm from '../requests/components/request-form';
-
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 interface Props {
 	searchParams: {
 		request?: string;
@@ -11,6 +18,23 @@ interface Props {
 export default function About({ searchParams }: Props) {
 	return (
 		<div>
+			<Breadcrumb className=" py-6 px-4 sm:px-16">
+				<BreadcrumbList>
+					<BreadcrumbItem>
+						<BreadcrumbLink
+							className="text-base font-medium text-blue-500"
+							href="/">
+							Home
+						</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
+					<BreadcrumbItem>
+						<BreadcrumbPage className="text-sm text-gray-500 font-normal  capitalize">
+							About us
+						</BreadcrumbPage>
+					</BreadcrumbItem>
+				</BreadcrumbList>
+			</Breadcrumb>
 			<AboutCarousel />
 			<div className="px-4 sm:px-16 space-y-6 py-20">
 				<h1 className="text-2xl sm:text-5xl">AGCOMS</h1>

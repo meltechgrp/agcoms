@@ -25,7 +25,6 @@ import { AlertDialogFooter } from '@/components/ui/alert-dialog';
 import ImageUploader, { ImageType } from '@/components/shared/image-uploader';
 import dynamic from 'next/dynamic';
 import { PostType, createPost } from '@/lib/actions/blog-actions';
-import BlogCategorySelect from '@/components/shared/select-blog-category';
 const TextEditor = dynamic(() => import('@/components/shared/text-editor'), {
 	ssr: false,
 });
@@ -38,7 +37,6 @@ const NewPost = (props: { post?: PostType }) => {
 			id: post?.id,
 			title: post?.title || '',
 			content: post?.content || '',
-			category: post?.category?.name || '',
 			images: post?.images || [],
 		},
 	});
@@ -121,7 +119,7 @@ const NewPost = (props: { post?: PostType }) => {
 										</FormItem>
 									)}
 								/>
-
+								{/* 
 								<FormField
 									control={form.control}
 									name="category"
@@ -139,7 +137,7 @@ const NewPost = (props: { post?: PostType }) => {
 											<FormMessage />
 										</FormItem>
 									)}
-								/>
+								/> */}
 							</div>
 
 							<FormField

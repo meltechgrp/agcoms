@@ -6,16 +6,12 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import Image from '@/components/shared/image';
 import { getProductData } from '@/lib/actions/product-actions';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import HtmlText from '@/components/shared/html-text';
-import Features from './components/features';
-// import Specifications from './components/specs';
-import ScrollLink from '@/components/shared/scroll-link';
 import ImageSlides from '@/components/image-slides';
-import ProductCard from '../../components/product-card';
+import ProductCard from '../components/product-card';
 import Link from 'next/link';
 
 interface Props {
@@ -33,14 +29,6 @@ async function Product({ params }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href="/">
-							Home
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
-					<BreadcrumbItem>
-						<BreadcrumbLink
-							className="text-sm font-medium text-blue-500"
 							href="/equipments">
 							Equipments
 						</BreadcrumbLink>
@@ -55,14 +43,6 @@ async function Product({ params }: Props) {
 					</BreadcrumbItem>
 					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
-						<BreadcrumbLink
-							className="text-sm font-medium text-blue-500"
-							href={`/equipments/${product?.category.slug}/${product?.subcategory?.slug}`}>
-							{product?.subcategory?.name}
-						</BreadcrumbLink>
-					</BreadcrumbItem>
-					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
-					<BreadcrumbItem>
 						<BreadcrumbPage className="text-sm text-gray-500 font-normal  capitalize">
 							{product?.name}
 						</BreadcrumbPage>
@@ -72,7 +52,7 @@ async function Product({ params }: Props) {
 			{product ? (
 				<div className=" space-y-8 ">
 					<div className="grid sm:grid-cols-[60%,auto] bg-white">
-						<div className="relative h-[36rem]">
+						<div className="relative h-[18rem] sm:h-[36rem]">
 							<ImageSlides images={product.images} />
 						</div>
 						<div className="px-7 sm:px-8 py-4">
@@ -87,7 +67,7 @@ async function Product({ params }: Props) {
 								<Separator />
 							</div>
 							<div className="my-4">
-								<Link href={'/request'}>
+								<Link href={'/requests'}>
 									<Button
 										variant="outline"
 										className="bg-blue-600 text-white transition-colors duration-700 font-bold">
@@ -97,27 +77,7 @@ async function Product({ params }: Props) {
 							</div>
 						</div>
 					</div>
-					<div>
-						{product.features?.length > 0 && (
-							<div className="flex bg-[#e5e5e5] px-2">
-								<ScrollLink
-									className="px-3 py-4 text-base text-blue-700 bg-[#eff0f0] font-bold"
-									to="feats"
-									name="Features"
-								/>
-								{/* <ScrollLink
-								className="px-3 py-4 text-base font-bold text-black"
-								to="specs"
-								name="Specifications"
-							/> */}
-							</div>
-						)}
-						<div>
-							<Features data={product} />
-							{/* <Specifications data={specs} /> */}
-						</div>
-					</div>
-					{product?.subcategory?.products && (
+					{product?.category?.products && (
 						<div className="space-y-4">
 							<div className="flex justify-center bg-[#e5e5e5] px-2">
 								<h3 className="px-3 py-4 text-xl  font-medium">
@@ -125,7 +85,7 @@ async function Product({ params }: Props) {
 								</h3>
 							</div>
 							<div className="grid sm:grid-cols-3 gap-4 px-4 sm:px-12">
-								{product.subcategory?.products.map((p) => (
+								{product.category?.products.map((p) => (
 									<ProductCard key={p.id} {...p} />
 								))}
 							</div>

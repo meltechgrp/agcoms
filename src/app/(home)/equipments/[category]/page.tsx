@@ -9,7 +9,6 @@ import {
 import Link from 'next/link';
 import Image from '@/components/shared/image';
 import prisma from '@/lib/prisma';
-import SubCard from './components/sub-card';
 import ProductCard from './components/product-card';
 import { uniqueId } from '@/lib/utils';
 
@@ -32,25 +31,6 @@ async function ProductCategory({ params: { category } }: Props) {
 				},
 				take: 1,
 			},
-			subcategories: {
-				select: {
-					name: true,
-					slug: true,
-					description: true,
-					products: {
-						select: {
-							id: true,
-							name: true,
-						},
-					},
-					images: {
-						select: {
-							url: true,
-						},
-						take: 1,
-					},
-				},
-			},
 			products: {
 				select: {
 					id: true,
@@ -68,14 +48,8 @@ async function ProductCategory({ params: { category } }: Props) {
 							slug: true,
 						},
 					},
-					subcategory: {
-						select: {
-							name: true,
-							slug: true,
-						},
-					},
 				},
-				take: 6,
+				take: 9,
 				orderBy: {
 					createdAt: 'desc',
 				},
@@ -122,39 +96,22 @@ async function ProductCategory({ params: { category } }: Props) {
 						/>
 						<h2 className="text-3xl sm:text-5xl text-center sm:text-start capitalize text-black sm:text-white font-bold relative z-10">
 							{data.name}
-							<span className="absolute inset-0 bg-black rounded-lg blur-lg -z-10"></span>
+							<span className="absolute inset-0 sm:bg-black rounded-lg blur-lg -z-10"></span>
 						</h2>
 					</div>
 					<div className="px-4 sm:px-12 py-10 bg-[#f4f3f3]">
 						<div className="flex justify-between gap-6 flex-wrap">
-							{data.subcategories.map((c) => (
-								<div key={c.name} className="w-[45%] sm:w-[22%] space-y-2">
-									<h3 className="text-base capitalize  text-gray-800 font-bold">
-										{c?.name || ''}
-									</h3>
-									<ul className="grid gap-1 py-2">
-										{c.products.map((p) => (
-											<Link
-												key={p.id}
-												href={`/equipments/${data.slug}/${c.slug}/${p.id}`}>
-												<li>
-													<h4 className="text-sm text-green-700 font-medium">
-														{p.name}
-													</h4>
-												</li>
-											</Link>
-										))}
-									</ul>
-								</div>
-							))}
-						</div>
-					</div>
-
-					<div className="px-4 sm:px-12 py-10">
-						<div className="grid sm:grid-cols-2 gap-6 sm:gap-12">
-							{data.subcategories.map((c) => (
-								<SubCard key={uniqueId()} category={category} {...c} />
-							))}
+							<ul className="grid grid-cols-2 sm:grid-cols-5 gap-2 py-2">
+								{data.products.map((p) => (
+									<Link key={p.id} href={`/equipments/${data.slug}/${p.id}`}>
+										<div key={p.id} className=" space-y-2">
+											<h4 className="text-sm text-green-700 font-medium">
+												{p.name}
+											</h4>
+										</div>
+									</Link>
+								))}
+							</ul>
 						</div>
 					</div>
 					<div className="px-4 sm:px-12  space-y-3">

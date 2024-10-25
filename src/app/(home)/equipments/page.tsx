@@ -8,8 +8,10 @@ import {
 } from '@/components/ui/breadcrumb';
 import ProductNavigation from '@/components/products/p-nav';
 import ProductSections from '@/components/products/p-sections';
+import { getProNavData } from '@/lib/actions';
 
-function Products() {
+async function Products() {
+	const data = await getProNavData();
 	return (
 		<div>
 			<Breadcrumb className="px-4 sm:px-12 py-6">
@@ -36,7 +38,7 @@ function Products() {
 					</h1>
 				</div>
 				<ProductNavigation />
-				<ProductSections />
+				<ProductSections navData={data} />
 			</div>
 		</div>
 	);

@@ -3,22 +3,24 @@
 import { Element } from 'react-scroll';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import useNavStore from '@/stores/use-nav-store';
 import { charSet } from './p-nav';
+import { getProNavData, ProNavData } from '@/lib/actions';
 
 type Product = {
 	name: string;
 	id: string;
-	sub: string;
 	cat: string;
 };
+
+interface Props {
+	navData: ProNavData;
+}
 
 type GroupedProducts = {
 	[key: string]: Product[] | string[];
 };
-function ProductSections() {
+function ProductSections({ navData }: Props) {
 	const [grouped, setGrouped] = useState<GroupedProducts>({});
-	const products = useNavStore((s) => s.product);
 	const chars = charSet();
 	useEffect(() => {
 		const groupedProducts: GroupedProducts = chars.reduce<GroupedProducts>(
@@ -33,35 +35,29 @@ function ProductSections() {
 			{}
 		);
 
-		products.map((c) => {
-			c.subcategories.map((s) => {
-				s.products.map(({ name, id }) => {
-					const firstChar = name[0].toUpperCase();
-					const productEntry: Product = {
-						name,
-						id,
-						sub: s.slug,
-						cat: c.slug,
-					};
+		navData.map(({ name, id, category }) => {
+			const firstChar = name[0].toUpperCase();
+			const productEntry: Product = {
+				name,
+				id,
+				cat: category.slug,
+			};
 
-					if (/\d/.test(firstChar)) {
-						if (groupedProducts['1-9'][0] != undefined) {
-							groupedProducts['1-9'] = [];
-						}
-						groupedProducts['1-9'].push(productEntry as any);
-					} else if (firstChar >= 'A' && firstChar <= 'Z') {
-						if (groupedProducts[firstChar][0] != undefined) {
-							groupedProducts[firstChar] = [];
-						}
-						groupedProducts[firstChar].push(productEntry as any);
-					}
-				});
-			});
+			if (/\d/.test(firstChar)) {
+				if (groupedProducts['1-9'][0] != undefined) {
+					groupedProducts['1-9'] = [];
+				}
+				groupedProducts['1-9'].push(productEntry as any);
+			} else if (firstChar >= 'A' && firstChar <= 'Z') {
+				if (groupedProducts[firstChar][0] != undefined) {
+					groupedProducts[firstChar] = [];
+				}
+				groupedProducts[firstChar].push(productEntry as any);
+			}
 		});
 
 		setGrouped(groupedProducts);
-	}, [products]);
-
+	}, [navData]);
 	return (
 		<div className="grid gap-6 px-4 pt-12 pb-6 sm:px-12 bg-[#d5d5d5]">
 			{Object.entries(grouped).map(([key, value]) => (
@@ -79,7 +75,7 @@ function ProductSections() {
 												<div>{p}</div>
 											) : (
 												<Link
-													href={`/equipments/${p.cat}/${p.sub}/${p.id}`}
+													href={`/equipments/${p.cat}/${p.id}`}
 													key={p.id}
 													className=" text-sm w-fit text-green-600 font-semibold">
 													{p.name}

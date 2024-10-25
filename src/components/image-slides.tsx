@@ -45,6 +45,7 @@ const ImageSlides = ({ images }: Props) => {
 						bucketName="images"
 						alt={currentImage.url.split('.')[0]}
 						folderName="product-images"
+						className="object-cover"
 					/>
 				</div>
 			</div>

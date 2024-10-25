@@ -20,11 +20,6 @@ export async function getPosts(args: {
 			take,
 			orderBy,
 			include: {
-				category: {
-					select: {
-						name: true,
-					},
-				},
 				images: {
 					select: {
 						url: true,
@@ -50,9 +45,6 @@ export async function getPostData(postId?: string) {
 				id: true,
 				createdAt: true,
 				content: true,
-				category: {
-					select: { name: true },
-				},
 				title: true,
 				images: {
 					select: { url: true },
@@ -95,11 +87,6 @@ export async function createPost(
 				data: {
 					title,
 					content,
-					category: {
-						connect: {
-							name: category,
-						},
-					},
 					...(images?.length
 						? {
 								images: {
@@ -132,11 +119,6 @@ export async function createPost(
 						: {}),
 					title,
 					content,
-					category: {
-						connect: {
-							name: category,
-						},
-					},
 				},
 			});
 			revalidatePath('/admin/blog');

@@ -1,8 +1,8 @@
 import {
-	Download,
+	Users,
 	LucideProps,
 	MailOpen,
-	MapPin,
+	NotepadText,
 	Shield,
 	ShoppingCart,
 	Tag,
@@ -18,8 +18,8 @@ export const midNavigationData: {
 }[] = [
 	{
 		title: 'Request quote',
-		link: '/contact',
-		icon: MapPin,
+		link: '/request',
+		icon: NotepadText,
 	},
 	{
 		title: 'Offers & Discount',
@@ -42,9 +42,9 @@ export const midNavigationData: {
 		icon: MailOpen,
 	},
 	{
-		title: 'News Released',
-		link: 'https://www.deere.africa/en/our-company/news-media/',
-		icon: Download,
+		title: 'About Us',
+		link: '/about',
+		icon: Users,
 	},
 ] as const;
 

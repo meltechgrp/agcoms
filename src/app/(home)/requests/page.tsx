@@ -22,8 +22,8 @@ interface Props {
 function Contact({ searchParams }: Props) {
 	const router = useRouter();
 	return (
-		<div className="px-4 sm:px-12">
-			<Breadcrumb className=" py-6">
+		<div className="">
+			<Breadcrumb className=" py-6 px-4 sm:px-12">
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink
@@ -35,31 +35,33 @@ function Contact({ searchParams }: Props) {
 					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbPage className="text-sm text-gray-500 font-normal  capitalize">
-							Contact us
+							Request
 						</BreadcrumbPage>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
 			<div>
-				<div className="flex my-8 justify-between items-center">
-					<h1 className="text-2xl sm:text-4xl text-center">Contact us</h1>
+				<div className="flex my-8  px-4 sm:px-12 justify-between items-center">
+					<h1 className="text-xl  sm:text-4xl text-center">
+						Request for Quotation
+					</h1>
 					<Button
 						onClick={() => router.replace('?request=quote')}
 						variant="outline"
-						className="h-12 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-700 font-bold border-2 border-blue-500">
+						className="h-12 hidden sm:flex text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-700 font-bold border-2 border-blue-500">
 						Request a quote
 					</Button>
 				</div>
 				<div className="py-2">
 					<Image
-						src={'digital.avif'}
+						src={'request.jpg'}
 						alt={'Contact us'}
 						folderName="home-banners"
 						bucketName="banners"
 						className="w-full h-[350px] sm:h-[520px] object-cover"
 					/>
 				</div>
-				<div className="w-fit mx-auto my-6 space-y-4 flex flex-col items-center">
+				<div className="w-fit mx-auto my-6 px-4 sm:px-12 space-y-4 flex flex-col items-center">
 					<h3 className="text-xl text-center sm:text-2xl">
 						Agcoms Operations Center™
 					</h3>
@@ -75,7 +77,7 @@ function Contact({ searchParams }: Props) {
 				</div>
 			</div>
 			<div className="grid sm:grid-cols-[auto,65%] gap-6 pt-16">
-				<div className="flex flex-col space-y-4 pt-4 sm:pt-12">
+				<div className="flex flex-col  px-4 sm:px-12 space-y-4 pt-4 sm:pt-12">
 					<h2 className="text-lg sm:text-2xl">Dealer Tools</h2>
 					<p className="text-gray-600">
 						Agcoms offers a suite of digital tools to provide exceptional
@@ -84,7 +86,7 @@ function Contact({ searchParams }: Props) {
 				</div>
 				<div className="row-start-1 sm:col-start-2">
 					<Image
-						src={'dealer-tools-image.avif'}
+						src={'help.jpg'}
 						alt="Dealer Tools"
 						bucketName="banners"
 						folderName="home-banners"

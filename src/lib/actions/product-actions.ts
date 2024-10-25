@@ -32,12 +32,6 @@ export async function getProducts(args: {
 					},
 					take: 2,
 				},
-				subcategory: {
-					select: {
-						name: true,
-						slug: true,
-					},
-				},
 			},
 		});
 		return products;
@@ -57,16 +51,8 @@ export async function getProductData(productId?: string) {
 				name: true,
 				description: true,
 				price: true,
-				categoryId: true,
-				subcategoryId: true,
 				createdAt: true,
 				category: {
-					select: { name: true, slug: true },
-				},
-				images: {
-					select: { url: true },
-				},
-				subcategory: {
 					select: {
 						name: true,
 						slug: true,
@@ -87,12 +73,6 @@ export async function getProductData(productId?: string) {
 										slug: true,
 									},
 								},
-								subcategory: {
-									select: {
-										name: true,
-										slug: true,
-									},
-								},
 							},
 							take: 6,
 							orderBy: {
@@ -101,32 +81,11 @@ export async function getProductData(productId?: string) {
 						},
 					},
 				},
-				features: {
-					select: {
-						name: true,
-						content: true,
-						id: true,
-					},
+				images: {
+					select: { url: true },
 				},
 			},
 		});
-		// const specs = await prisma.productSpecs.findMany({
-		// 	where: {
-		// 		contents: {
-		// 			some: { productId },
-		// 		},
-		// 	},
-		// 	select: {
-		// 		name: true,
-		// 		contents: {
-		// 			select: {
-		// 				id: true,
-		// 				name: true,
-		// 				content: true,
-		// 			},
-		// 		},
-		// 	},
-		// });
 		return product;
 	} catch (error) {
 		console.log(error);
@@ -149,20 +108,10 @@ export async function createProduct(
 					description: err.fieldErrors.description?.[0],
 					category: err.fieldErrors.category?.[0],
 					images: err.fieldErrors.images?.[0],
-					features: err.fieldErrors.features?.[0],
 				},
 			};
 		}
-		const {
-			id,
-			images,
-			name,
-			description,
-			subCategory,
-			features,
-			specs,
-			category,
-		} = data;
+		const { id, images, name, description, subCategory, category } = data;
 		if (id) {
 			await prisma.products.update({
 				where: {
@@ -199,17 +148,17 @@ export async function createProduct(
 								},
 						  }
 						: {}),
-					...(features?.length
-						? {
-								features: {
-									deleteMany: {},
-									create: features.map(({ name, content }) => ({
-										name,
-										content,
-									})),
-								},
-						  }
-						: {}),
+					// ...(features?.length
+					// 	? {
+					// 			features: {
+					// 				deleteMany: {},
+					// 				create: features.map(({ name, content }) => ({
+					// 					name,
+					// 					content,
+					// 				})),
+					// 			},
+					// 	  }
+					// 	: {}),
 					// ...(specs?.length
 					// 	? {
 					// 			specs: {
@@ -258,16 +207,16 @@ export async function createProduct(
 								},
 						  }
 						: {}),
-					...(features?.length
-						? {
-								features: {
-									create: features.map(({ name, content }) => ({
-										name,
-										content,
-									})),
-								},
-						  }
-						: {}),
+					// ...(features?.length
+					// 	? {
+					// 			features: {
+					// 				create: features.map(({ name, content }) => ({
+					// 					name,
+					// 					content,
+					// 				})),
+					// 			},
+					// 	  }
+					// 	: {}),
 					// ...(specs?.length
 					// 	? {
 					// 			specs: {

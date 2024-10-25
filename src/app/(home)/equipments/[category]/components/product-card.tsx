@@ -11,11 +11,10 @@ type Props = Partial<ProductsType[0]> & {
 };
 
 const ProductCard = (props: Props) => {
-	const { id, name, className, images, category, description, subcategory } =
-		props;
+	const { id, name, className, images, category, description } = props;
 	return (
 		<Card className={cn('  w-full bg-white space-y-1', className)}>
-			<div className="w-full h-56">
+			<div className="w-full h-56 sm:h-64">
 				{images && (
 					<Image
 						src={images[0].url}
@@ -30,7 +29,7 @@ const ProductCard = (props: Props) => {
 			</div>
 			<div className="">
 				<Link
-					href={`/equipments/${category?.slug}/${subcategory?.slug}/${id}`}
+					href={`/equipments/${category?.slug}/${id}`}
 					className="flex flex-col gap-2 px-3 py-2">
 					<h2 className="text-base self-start border-b border-black">{name}</h2>
 					<HtmlText

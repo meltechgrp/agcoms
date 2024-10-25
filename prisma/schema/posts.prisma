@@ -1,21 +1,9 @@
-// Define the Blc og model
 model Posts {
-  id         String          @id @default(cuid())
-  title      String
-  content    String
-  slug       String?
-  category   PostCategories? @relation(fields: [categoryId], references: [id], onDelete: Cascade) // Relation to PostsCategory
-  categoryId String?
-  images     Image[]
-  createdAt  DateTime        @default(now())
-  updatedAt  DateTime        @updatedAt
-}
-
-model PostCategories {
   id        String   @id @default(cuid())
-  name      String   @unique
-  slug      String
-  posts     Posts[]
+  title     String
+  content   String
+  slug      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  images    Image[]
 }

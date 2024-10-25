@@ -66,9 +66,7 @@ export const PostFormSchema = z.object({
 	images: z.array(ImageType).min(1, {
 		message: 'Upload atleast one image',
 	}),
-	category: z.string().min(2, {
-		message: 'Please select a category',
-	}),
+	category: z.string().optional(),
 });
 export type PostFormInput = z.infer<typeof PostFormSchema>;
 
@@ -100,12 +98,12 @@ export const ProductFormSchema = z.object({
 	category: z.string().min(2, {
 		message: 'Please select a category',
 	}),
-	subCategory: z.string().optional(),
+	// subCategory: z.string().optional(),
 	images: z.array(ImageType).min(1, {
 		message: 'Upload at least one image',
 	}),
-	features: z.array(Feature).optional(),
-	specs: z.array(Spec).optional(),
+	// features: z.array(Feature).optional(),
+	// specs: z.array(Spec).optional(),
 });
 
 export type ProductFormInput = z.infer<typeof ProductFormSchema>;

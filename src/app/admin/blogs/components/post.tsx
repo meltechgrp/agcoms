@@ -74,10 +74,6 @@ export function PostAlert({ open, post, postId, edit }: Props) {
 													<span className="text-gray-500">post ID:</span>
 													<span>{post?.id || ''}</span>
 												</div>
-												<div className="flex justify-between items-center w-full text-sm">
-													<span className="text-gray-500">Category:</span>
-													<span>{post.category?.name || ''}</span>
-												</div>
 											</CardContent>
 										</Card>
 										<Card className="px-4 py-2">

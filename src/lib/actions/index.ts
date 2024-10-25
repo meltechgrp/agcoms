@@ -9,15 +9,6 @@ export interface ActionResponse<T> {
 	res?: Partial<Record<keyof T, string | undefined>>;
 }
 
-export const getBlogCategories = async () => {
-	const categories = await prisma.postCategories.findMany({
-		select: {
-			name: true,
-		},
-	});
-	if (categories) return categories;
-	return [];
-};
 export const getProCats = async () => {
 	const proCats = await prisma.productCategories.findMany({
 		select: {
@@ -27,48 +18,21 @@ export const getProCats = async () => {
 	if (proCats) return proCats;
 	return [];
 };
-export const getProSubCats = async (name: string) => {
-	const proSubs = await prisma.productSubCategories.findMany({
-		where: {
-			category: {
-				name,
-			},
-		},
-		select: {
-			name: true,
-		},
-	});
-	if (proSubs) return proSubs;
-	return [];
-};
-export const getSpecGroups = async () => {
-	const specs = await prisma.productSpecs.findMany({
-		select: {
-			name: true,
-		},
-	});
-	if (specs) return specs;
-	return [];
-};
 
 export const getProNavData = async () => {
-	const nav = await prisma.productCategories.findMany({
+	const nav = await prisma.products.findMany({
 		select: {
+			id: true,
 			name: true,
-			slug: true,
-			subcategories: {
+			category: {
 				select: {
 					name: true,
 					slug: true,
-					products: {
-						select: {
-							id: true,
-							name: true,
-						},
-					},
 				},
 			},
 		},
 	});
 	return nav ? nav : [];
 };
+
+export type ProNavData = Awaited<ReturnType<typeof getProNavData>>;

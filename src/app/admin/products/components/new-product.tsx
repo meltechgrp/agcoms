@@ -27,7 +27,6 @@ import { toast } from 'sonner';
 import { AlertDialogFooter } from '@/components/ui/alert-dialog';
 import { Loader, Trash, Plus } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import ProductSubCategorySelect from '@/components/shared/select-product-subCat';
 import ProductCategorySelect from '@/components/shared/select-product-category';
 import ImageUploader from '@/components/shared/image-uploader';
 import { createProduct, ProductType } from '@/lib/actions/product-actions';
@@ -41,12 +40,11 @@ const BasicSchema = ProductFormSchema.pick({
 	price: true,
 	name: true,
 	category: true,
-	subCategory: true,
 });
 
-const FeatsSchema = ProductFormSchema.pick({
-	features: true,
-});
+// const FeatsSchema = ProductFormSchema.pick({
+// 	features: true,
+// });
 
 // const SpecsSchema = ProductFormSchema.pick({
 // 	specs: true,
@@ -66,9 +64,7 @@ const NewProduct = (props: { product?: ProductType }) => {
 			name: product?.name || '',
 			description: product?.description || '',
 			category: product?.category?.name || '',
-			subCategory: product?.subcategory?.name || '',
 			images: product?.images || [],
-			features: product?.features || [],
 			// specs: product?.specs || [],
 		},
 	});
@@ -76,17 +72,17 @@ const NewProduct = (props: { product?: ProductType }) => {
 		if (step === 1) {
 			let parsed = BasicSchema.safeParse(form.getValues());
 			if (!parsed.success) return;
-			form.trigger(['name', 'category', 'price', 'subCategory', 'description']);
+			form.trigger(['name', 'category', 'price', 'description']);
 		}
-		if (step === 2) {
-			let parsed = FeatsSchema.safeParse(form.getValues());
-			if (!parsed.success) return form.trigger(['features']);
-		}
+		// if (step === 2) {
+		// 	let parsed = FeatsSchema.safeParse(form.getValues());
+		// 	if (!parsed.success) return form.trigger(['features']);
+		// }
 		// if (step === 3) {
 		// 	let parsed = SpecsSchema.safeParse(form.getValues());
 		// 	if (!parsed.success) return form.trigger(['specs']);
 		// }
-		if (step === 3) {
+		if (step === 2) {
 			let parsed = ImgsSchema.safeParse(form.getValues());
 			if (!parsed.success) return form.trigger(['images']);
 		}
@@ -94,7 +90,7 @@ const NewProduct = (props: { product?: ProductType }) => {
 		setStep((prev) => prev + 1);
 	}
 	const progress = useMemo(() => {
-		return step * 33;
+		return step * 50;
 	}, [step]);
 	const dismissAlert = useAlertToggle();
 	const [state, dispatch] = useFormState(createProduct, undefined);
@@ -151,9 +147,9 @@ const NewProduct = (props: { product?: ProductType }) => {
 						<form onSubmit={form.handleSubmit(handleSubmit)}>
 							<div className="grid gap-4">
 								{step === 1 && <Basic form={form} />}
-								{step === 2 && <Features form={form} />}
+								{/* {step === 2 && <Features form={form} />} */}
 								{/* {step === 3 && <Specifications form={form} />} */}
-								{step >= 3 && <Images form={form} />}
+								{step >= 2 && <Images form={form} />}
 
 								<Controls
 									loading={loading}
@@ -205,9 +201,9 @@ function Controls(props: ControlProps) {
 				disabled={loading}
 				onClick={handleNext}
 				className=" flex-1"
-				type={step > 3 ? 'submit' : 'button'}>
+				type={step > 2 ? 'submit' : 'button'}>
 				{loading && <Loader className="mr-2 h-4 w-4 animate-spin" />}
-				{step > 2 ? (product?.id ? 'Update' : 'Save') : 'Next'}
+				{step > 1 ? (product?.id ? 'Update' : 'Save') : 'Next'}
 			</Button>
 		</AlertDialogFooter>
 	);
@@ -263,7 +259,7 @@ function Basic({ form }: FormProps) {
 						</FormItem>
 					)}
 				/>
-				<FormField
+				{/* <FormField
 					control={form.control}
 					name="subCategory"
 					render={() => (
@@ -281,7 +277,7 @@ function Basic({ form }: FormProps) {
 							<FormMessage />
 						</FormItem>
 					)}
-				/>
+				/> */}
 			</div>
 
 			<FormField
@@ -301,102 +297,102 @@ function Basic({ form }: FormProps) {
 	);
 }
 
-function Features({ form }: FormProps) {
-	const { fields, append, remove } = useFieldArray({
-		control: form.control,
-		name: 'features',
-	});
-	const { errors } = form.formState;
-	const [currentFeat, setCurrentFeat] = useState('0');
-	return (
-		<div className="grid gap-4">
-			<div className="flex justify-between">
-				<div className="space-y-1">
-					<h3 className="text-sm sm:text-base font-medium">Product features</h3>
-					<p className="text-xs font-medium">Add at least one feature</p>
-				</div>
-			</div>
-			<Accordion
-				type="single"
-				value={currentFeat}
-				onValueChange={setCurrentFeat}
-				className="w-full grid gap-4">
-				{fields.map((field, index) => (
-					<AccordionItem className="" key={field.id} value={index.toString()}>
-						<AccordionTrigger className="w-full text-sm hover:no-underline">
-							Feature {index + 1}
-						</AccordionTrigger>
-						<AccordionContent className="space-y-2">
-							<FormField
-								control={form.control}
-								name={`features.${index}.name`}
-								render={({ field }) => (
-									<FormItem>
-										<FormControl>
-											<Input
-												className="rounded-none focus-visible:ring-0 focus-visible:ring-transparent"
-												placeholder="Feature name"
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name={`features.${index}.content`}
-								render={({ field }) => (
-									<FormItem>
-										<FormControl>
-											<TextEditor placeholder="Feature content" {...field} />
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<div className="flex justify-end items-center gap-3">
-								<Button
-									variant="ghost"
-									type="button"
-									onClick={() => {
-										setCurrentFeat(
-											(parseInt(currentFeat) > 0
-												? parseInt(currentFeat) - 1
-												: parseInt(currentFeat)
-											).toString()
-										);
-										remove(index);
-									}}>
-									<Trash className="h-5 w-5 text-destructive" />
-								</Button>
-								{fields.length - 1 == index && (
-									<Button
-										type="button"
-										variant="outline"
-										className="text-blue-500 px-2 py-1 h-6 border-blue-600"
-										onClick={() => {
-											append(
-												{ name: '', content: '' },
-												{
-													shouldFocus: true,
-												}
-											);
-											setCurrentFeat((parseInt(currentFeat) + 1).toString());
-										}}>
-										<Plus className="h-5 w-5 mr-2" />
-										New
-									</Button>
-								)}
-							</div>
-						</AccordionContent>
-					</AccordionItem>
-				))}
-			</Accordion>
-			<FormMessage>{errors.features?.message}</FormMessage>
-		</div>
-	);
-}
+// function Features({ form }: FormProps) {
+// 	const { fields, append, remove } = useFieldArray({
+// 		control: form.control,
+// 		name: 'features',
+// 	});
+// 	const { errors } = form.formState;
+// 	const [currentFeat, setCurrentFeat] = useState('0');
+// 	return (
+// 		<div className="grid gap-4">
+// 			<div className="flex justify-between">
+// 				<div className="space-y-1">
+// 					<h3 className="text-sm sm:text-base font-medium">Product features</h3>
+// 					<p className="text-xs font-medium">Add at least one feature</p>
+// 				</div>
+// 			</div>
+// 			<Accordion
+// 				type="single"
+// 				value={currentFeat}
+// 				onValueChange={setCurrentFeat}
+// 				className="w-full grid gap-4">
+// 				{fields.map((field, index) => (
+// 					<AccordionItem className="" key={field.id} value={index.toString()}>
+// 						<AccordionTrigger className="w-full text-sm hover:no-underline">
+// 							Feature {index + 1}
+// 						</AccordionTrigger>
+// 						<AccordionContent className="space-y-2">
+// 							<FormField
+// 								control={form.control}
+// 								name={`features.${index}.name`}
+// 								render={({ field }) => (
+// 									<FormItem>
+// 										<FormControl>
+// 											<Input
+// 												className="rounded-none focus-visible:ring-0 focus-visible:ring-transparent"
+// 												placeholder="Feature name"
+// 												{...field}
+// 											/>
+// 										</FormControl>
+// 										<FormMessage />
+// 									</FormItem>
+// 								)}
+// 							/>
+// 							<FormField
+// 								control={form.control}
+// 								name={`features.${index}.content`}
+// 								render={({ field }) => (
+// 									<FormItem>
+// 										<FormControl>
+// 											<TextEditor placeholder="Feature content" {...field} />
+// 										</FormControl>
+// 										<FormMessage />
+// 									</FormItem>
+// 								)}
+// 							/>
+// 							<div className="flex justify-end items-center gap-3">
+// 								<Button
+// 									variant="ghost"
+// 									type="button"
+// 									onClick={() => {
+// 										setCurrentFeat(
+// 											(parseInt(currentFeat) > 0
+// 												? parseInt(currentFeat) - 1
+// 												: parseInt(currentFeat)
+// 											).toString()
+// 										);
+// 										remove(index);
+// 									}}>
+// 									<Trash className="h-5 w-5 text-destructive" />
+// 								</Button>
+// 								{fields.length - 1 == index && (
+// 									<Button
+// 										type="button"
+// 										variant="outline"
+// 										className="text-blue-500 px-2 py-1 h-6 border-blue-600"
+// 										onClick={() => {
+// 											append(
+// 												{ name: '', content: '' },
+// 												{
+// 													shouldFocus: true,
+// 												}
+// 											);
+// 											setCurrentFeat((parseInt(currentFeat) + 1).toString());
+// 										}}>
+// 										<Plus className="h-5 w-5 mr-2" />
+// 										New
+// 									</Button>
+// 								)}
+// 							</div>
+// 						</AccordionContent>
+// 					</AccordionItem>
+// 				))}
+// 			</Accordion>
+// 			<FormMessage>{errors.features?.message}</FormMessage>
+// 		</div>
+// 	);
+// }
 // function Specifications({ form }: FormProps) {
 // 	const { fields, append, remove } = useFieldArray({
 // 		control: form.control,

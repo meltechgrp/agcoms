@@ -1,70 +1,21 @@
 model ProductCategories {
-  id            String                 @id @default(cuid())
-  name          String                 @unique
-  slug          String                 @unique
-  subcategories ProductSubCategories[]
-  images        Image[]
-  products      Products[]
-  createdAt     DateTime               @default(now())
-  updatedAt     DateTime               @updatedAt
+  id        String     @id @default(cuid())
+  name      String     @unique
+  slug      String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  images    Image[]
+  products  Products[]
 }
 
-model ProductSubCategories {
+model Products {
   id          String            @id @default(cuid())
   name        String            @unique
-  description String?
-  category    ProductCategories @relation(fields: [categoryId], references: [id]) // Belongs to a Category
+  description String
+  price       Float?
   categoryId  String
-  slug        String            @unique
-  images      Image[]
-  products    Products[] // A Subcategory has many Products
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt
-}
-
-// Define the Product model
-model Products {
-  id            String                @id @default(cuid())
-  name          String                @unique
-  description   String
-  price         Float?
-  category      ProductCategories     @relation(fields: [categoryId], references: [id], onUpdate: Cascade)
-  categoryId    String
-  subcategory   ProductSubCategories? @relation(fields: [subcategoryId], references: [id], onUpdate: Cascade)
-  subcategoryId String
-  specs         ProductSpecContent[]
-  features      ProductFeatures[]
-  images        Image[] // A Product can have many Images
-  createdAt     DateTime              @default(now())
-  updatedAt     DateTime              @updatedAt
-}
-
-model ProductSpecs {
-  id        String               @id @default(cuid())
-  name      String               @unique
-  contents  ProductSpecContent[]
-  createdAt DateTime             @default(now())
-  updatedAt DateTime             @updatedAt
-}
-
-model ProductFeatures {
-  id        String   @id @default(cuid())
-  product   Products @relation(fields: [productId], references: [id], onDelete: Cascade) // Belongs to a Product
-  productId String
-  name      String
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model ProductSpecContent {
-  id        String       @id @default(cuid())
-  name      String
-  content   String
-  product   Products     @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId String
-  specId    String
-  spec      ProductSpecs @relation(fields: [specId], references: [id])
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
+  images      Image[]
+  category    ProductCategories @relation(fields: [categoryId], references: [id])
 }
