@@ -19,13 +19,14 @@ import {
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import Sidebar from './sidebar';
+import { useRouter } from 'next/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Header() {
 	const headerRef = useRef<HTMLDivElement>(null);
 	const [isFixed, setIsFixed] = useState(false);
-
+	const router = useRouter();
 	useGSAP(() => {
 		const headerEl = headerRef.current;
 
@@ -90,13 +91,16 @@ export default function Header() {
 						<SearchForm containerClassName="hidden sm:block" />
 						<Button
 							variant="outline"
-							className=" p-0 sm:px-4 hover:bg-gray-100 bg-transparent border-blue-500 focus-visible:ring-0 focus-visible:ring-transparent text-black">
-							<Link
-								href={'/contact'}
-								className="flex space-x-2 items-center text-sm text-gray-600">
+							onClick={() =>
+								router.push('?request=quote', {
+									scroll: false,
+								})
+							}
+							className=" hidden sm:block px-2 sm:px-4 hover:bg-gray-100 bg-transparent border-blue-500 focus-visible:ring-0 focus-visible:ring-transparent text-black">
+							<div className="flex space-x-2 items-center text-sm text-gray-600">
 								<CircleHelp className="text-blue-500" />
 								<span className="hidden sm:flex">Request quote</span>
-							</Link>
+							</div>
 						</Button>
 						<Sidebar />
 					</div>

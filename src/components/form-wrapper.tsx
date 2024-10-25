@@ -32,7 +32,9 @@ export function useFormToggle() {
 			searchParams.set(key, value);
 		}
 
-		router.push(`?${searchParams.toString()}`);
+		router.push(`?${searchParams.toString()}`, {
+			scroll: false,
+		});
 	};
 }
 
