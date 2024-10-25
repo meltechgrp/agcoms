@@ -25,7 +25,9 @@ export default function Banner() {
 				</p>
 				<div>
 					<Link href={'/contact'}>
-						<Button size="sm" className="h-8 sm:h-9 text-xs sm:text-sm">
+						<Button
+							size="sm"
+							className="h-8 bg-blue-500 text-white sm:h-9 text-xs sm:text-sm">
 							Read More
 						</Button>
 					</Link>

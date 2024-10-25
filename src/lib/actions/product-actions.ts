@@ -111,7 +111,7 @@ export async function createProduct(
 				},
 			};
 		}
-		const { id, images, name, description, subCategory, category } = data;
+		const { id, images, name, description, category } = data;
 		if (id) {
 			await prisma.products.update({
 				where: {
@@ -125,15 +125,15 @@ export async function createProduct(
 							name: category,
 						},
 					},
-					...(subCategory
-						? {
-								subcategory: {
-									connect: {
-										name: subCategory,
-									},
-								},
-						  }
-						: {}),
+					// ...(subCategory
+					// 	? {
+					// 			subcategory: {
+					// 				connect: {
+					// 					name: subCategory,
+					// 				},
+					// 			},
+					// 	  }
+					// 	: {}),
 					...(images?.length
 						? {
 								images: {
@@ -191,15 +191,15 @@ export async function createProduct(
 							name: category,
 						},
 					},
-					...(subCategory
-						? {
-								subcategory: {
-									connect: {
-										name: subCategory,
-									},
-								},
-						  }
-						: {}),
+					// ...(subCategory
+					// 	? {
+					// 			subcategory: {
+					// 				connect: {
+					// 					name: subCategory,
+					// 				},
+					// 			},
+					// 	  }
+					// 	: {}),
 					...(images
 						? {
 								images: {
