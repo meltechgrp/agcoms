@@ -113,34 +113,22 @@ const footerData = [
 	{
 		title: 'Products & Support',
 		links: [
-			{ title: 'Tractors', url: 'https://www.deere.africa/en/tractors/' },
+			{ title: 'Tractors', url: '/equipments/agriculture' },
 			{
-				title: 'Contact a Dealer',
-				url: 'https://www.deere.africa/en/our-company/contact-us/',
+				title: 'Request a quote',
+				url: '/requests',
 			},
 			{
 				title: 'Shop Parts',
 				url: 'https://www.deere.africa/en/finance/financing/',
 			},
 			{
-				title: 'Free Tractor Operator Training Ts&Cs',
-				url: 'https://parts.deere.africa/',
-			},
-			{
 				title: 'Competition Ts&Cs',
 				url: 'https://www.deere.africa/en/our-company/news-media/news-releases/2022/nov/competitions-terms-and-conditions/',
 			},
 			{
-				title: "Tell us you're a John Deere Fan",
-				url: 'https://www.deere.africa/en/our-company/news-media/news-releases/2022/dec/competition-terms-and-conditions/',
-			},
-			{
-				title: 'John Deere Financial',
-				url: 'https://www.deere.africa/en/campaigns/nampo-2023/',
-			},
-			{
-				title: "Free Service Parts T's and C's",
-				url: 'https://www.deere.com/assets/docs/region-1/ag-free-parts-campaign-5d-5e-6b-customer-tcs.docx',
+				title: "Tell us you're a Agcoms Fan",
+				url: '/about',
 			},
 		],
 	},
@@ -153,38 +141,21 @@ const footerData = [
 			},
 			{
 				title: 'About Our Company',
-				url: 'https://www.deere.africa/en/our-company/',
-			},
-			{
-				title: 'History',
-				url: 'https://www.deere.africa/en/our-company/history/',
-			},
-			{
-				title: 'Careers',
-				url: 'https://www.deere.africa/en/our-company/john-deere-careers/',
+				url: '/about',
 			},
 			{
 				title: 'News and Media',
 				url: 'https://www.deere.africa/en/our-company/news-media/',
 			},
 			{
-				title: 'Sustainability',
-				url: 'https://www.deere.africa/en/current-offers/promotions/',
-			},
-			{
 				title: 'Terms and Conditions',
 				url: 'https://www.deere.africa/en/current-offers/promotions/',
-			},
-			{
-				title: 'Ethics & Compliance',
-				url: 'https://about.deere.com/en-us/explore-john-deere/ethics-compliance/',
 			},
 		],
 	},
 ];
 
 const simpleF = [
-	{ link: 'https://www.deere.africa/en/equipment/', title: 'Site Map' },
 	{
 		link: 'https://www.deere.africa/en/privacy-and-data/',
 		title: 'Privacy and Data',
@@ -198,7 +169,7 @@ const simpleF = [
 		title: 'Terms of Use',
 	},
 	{
-		link: 'https://www.deere.africa/en/our-company/contact-us/',
+		link: '/requests',
 		title: 'Contact Us',
 	},
 ];
