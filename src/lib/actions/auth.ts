@@ -24,7 +24,7 @@ import { env } from '@/env';
 import { UserType } from '@prisma/client';
 import type { ActionResponse } from '@/types';
 import prisma from '../prisma';
-const superAdmins = process.env.WHITELISTED_EMAILS?.split(',') || [];
+const superAdmins = env.WHITELISTED_EMAILS?.split(',') || [];
 
 export async function login(
 	_: any,
@@ -51,7 +51,7 @@ export async function login(
 			email: true,
 		},
 	});
-	if (!allowedEmails && !isSuper) {
+	if (!allowedEmails || !isSuper) {
 		return {
 			formError: 'Unauthorized email address',
 		};
