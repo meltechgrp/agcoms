@@ -14,7 +14,7 @@ export default function RecentRequests(props: {
 	return (
 		<div
 			className={cn(
-				'bg-card recent col-span-2 pt-3 pb-4 rounded-lg border flex-1',
+				'bg-card recent pt-3 pb-4 rounded-lg border flex-1',
 				className
 			)}>
 			<div className="flex h-auto justify-between px-3 items-center">

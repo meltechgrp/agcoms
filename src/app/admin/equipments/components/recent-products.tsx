@@ -15,7 +15,7 @@ function RecentProducts({ data }: RecentProps) {
 			<div className="grid sm:grid-cols-3 gap-2 ">
 				{data.map((b) => (
 					<Card
-						key={b.name}
+						key={b.id}
 						className=" bg-transparent h-96 w-full bg-white  gap-1 grid grid-rows-[60%,auto]">
 						<div className="w-full">
 							<Image

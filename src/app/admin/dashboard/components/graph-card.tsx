@@ -21,7 +21,7 @@ function GraphCard({ data: { title, value, image }, className }: CardProps) {
 						{value}
 					</h2>
 					<p className="text-[10px] sm:text-xs text-green-300">
-						Within this month
+						Within this year
 					</p>
 				</div>
 				<div className="w-full h-full p-2">

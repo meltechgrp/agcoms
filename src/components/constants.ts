@@ -1,5 +1,10 @@
 import { DashboardIcon } from '@radix-ui/react-icons';
-import { Package, MessageCircleIcon, SettingsIcon } from 'lucide-react';
+import {
+	Package,
+	MessageCircleIcon,
+	SettingsIcon,
+	GitPullRequest,
+} from 'lucide-react';
 
 export const AppRoutes = [
 	{
@@ -15,15 +20,23 @@ export const AppRoutes = [
 		name: 'Publications',
 		icon: MessageCircleIcon,
 		section: 'home',
-		note: 'Can edit and delete splits',
+		note: 'Can add, edit and delete publications',
 		hasAction: true,
 	},
 	{
-		path: '/admin/products',
-		name: 'Products',
+		path: '/admin/equipments',
+		name: 'Equipments',
 		icon: Package,
 		section: 'home',
-		note: 'Can edit and delete users',
+		note: 'Can add, edit and delete equipments',
+		hasAction: true,
+	},
+	{
+		path: '/admin/requests',
+		name: 'Quotation Requests',
+		icon: GitPullRequest,
+		section: 'home',
+		note: 'Can view, edit and delete requests',
 		hasAction: true,
 	},
 	{

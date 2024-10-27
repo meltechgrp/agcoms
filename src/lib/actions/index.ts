@@ -20,35 +20,6 @@ export const getProCats = async () => {
 	return [];
 };
 
-// export async function sendMail() {
-// 	try {
-// 		const mailerSend = new MailerSend({
-// 			apiKey:
-// 				'mlsn.65a5c360da06423ad0986881a0d40c5b0b2c707a74b234a43c4f64aa7be11af2',
-// 		});
-
-// 		const sentFrom = new Sender(
-// 			'MS_uQF2IX@trial-351ndgwev9qgzqx8.mlsender.net'
-// 		);
-
-// 		const recipients = [
-// 			new Recipient('joshuahumphrey579@gmail.com', 'Nerds lab'),
-// 		];
-
-// 		const emailParams = new EmailParams()
-// 			.setFrom(sentFrom)
-// 			.setTo(recipients)
-// 			.setReplyTo(sentFrom)
-// 			.setSubject('This is a Subject')
-// 			.setHtml('<strong>This is the HTML content</strong>')
-// 			.setText('This is the text content');
-
-// 		const res = await mailerSend.email.send(emailParams);
-// 		console.log(res, res.body?.warnings);
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-// }
 export const getProNavData = async () => {
 	const nav = await prisma.products.findMany({
 		select: {
@@ -66,3 +37,32 @@ export const getProNavData = async () => {
 };
 
 export type ProNavData = Awaited<ReturnType<typeof getProNavData>>;
+
+export async function getDashboardData() {
+	try {
+		const data = await prisma.$transaction(async (tx) => {
+			const equipments = await tx.products.count();
+			const admins = await tx.user.count();
+			const posts = await tx.posts.count();
+			const requests = await tx.message.count();
+
+			return {
+				equipments,
+				admins,
+				posts,
+				requests,
+			};
+		});
+		return data;
+	} catch (error) {
+		console.log(error);
+		return {
+			equipments: 0,
+			admins: 0,
+			posts: 0,
+			requests: 0,
+		};
+	}
+}
+
+export type DashboardData = Awaited<ReturnType<typeof getDashboardData>>;

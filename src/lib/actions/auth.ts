@@ -24,6 +24,7 @@ import { env } from '@/env';
 import { UserType } from '@prisma/client';
 import type { ActionResponse } from '@/types';
 import prisma from '../prisma';
+const superAdmins = env.WHITELISTED_EMAILS?.split(',') || [];
 
 export async function login(
 	_: any,
@@ -41,21 +42,24 @@ export async function login(
 	}
 
 	const { email, password } = parsed.data;
-	const allowedEmails = await prisma.adminAllowedEmail.findFirst({
-		where: {
-			email: {
-				equals: email,
-				mode: 'insensitive',
+	const isSuper = superAdmins.includes(email);
+	if (!isSuper) {
+		const allowedEmails = await prisma.adminAllowedEmail.findFirst({
+			where: {
+				email: {
+					equals: email,
+					mode: 'insensitive',
+				},
 			},
-		},
-		select: {
-			email: true,
-		},
-	});
-	if (!allowedEmails) {
-		return {
-			formError: 'Unauthorized email address',
-		};
+			select: {
+				email: true,
+			},
+		});
+		if (!allowedEmails) {
+			return {
+				formError: 'Unauthorized email address',
+			};
+		}
 	}
 	const existingUser = await prisma.user.findFirst({
 		where: {
@@ -122,6 +126,22 @@ export async function signup(
 
 	const { email, password, firstName, lastName, phone } = form;
 
+	const isSuper = superAdmins.includes(email);
+	if (!isSuper) {
+		const allowedEmails = await prisma.adminAllowedEmail.findFirst({
+			where: {
+				email,
+			},
+			select: {
+				email: true,
+			},
+		});
+		if (!allowedEmails) {
+			return {
+				formError: 'Unauthorized user',
+			};
+		}
+	}
 	const existingUser = await prisma.user.findFirst({
 		where: {
 			email: {
@@ -133,19 +153,6 @@ export async function signup(
 	if (existingUser) {
 		return {
 			formError: 'Cannot create account with that email',
-		};
-	}
-	const allowedEmails = await prisma.adminAllowedEmail.findFirst({
-		where: {
-			email,
-		},
-		select: {
-			email: true,
-		},
-	});
-	if (!allowedEmails) {
-		return {
-			formError: 'Unauthorized user',
 		};
 	}
 

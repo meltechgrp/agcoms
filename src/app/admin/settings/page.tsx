@@ -42,7 +42,7 @@ export default async function page(props: Props) {
 					<div className="">
 						<h4 className="font-medium text-sm">Account email address</h4>
 					</div>
-					<div className=" place-self-start space-y-4 pr-6">
+					<div className=" sm:place-self-start space-y-4 pr-6">
 						{emails.map((email: any) => (
 							<div key={email} className="flex space-x-4 items-center">
 								<Input

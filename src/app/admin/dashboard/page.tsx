@@ -7,6 +7,10 @@ import g3 from '@/assets/graphs/g3.png';
 import RecentRequests from './components/recent-requests';
 import Stats from './components/stats';
 import { getMessages } from '@/lib/actions/request-actions';
+import { getDashboardData } from '@/lib/actions';
+import { validateRequest } from '@/lib/lucia/validate-request';
+import { redirect } from 'next/navigation';
+import { getProducts } from '@/lib/actions/product-actions';
 
 export const metadata: Metadata = {
 	title: 'AGCOMS Dashboard',
@@ -14,26 +18,38 @@ export const metadata: Metadata = {
 };
 
 export default async function Dashboard() {
+	const { user } = await validateRequest();
+	if (!user) {
+		return redirect('/auth/login');
+	}
 	const data = await getMessages();
+	const info = await getDashboardData();
+	const products = await getProducts({
+		take: 4,
+		orderBy: {
+			createdAt: 'desc',
+		},
+		skip: 0,
+	});
 	const grpahCardData = [
 		{
-			title: 'Total Sessions',
-			value: 200,
+			title: 'Total Equipments',
+			value: info.equipments,
 			image: g1,
 		},
 		{
-			title: 'Total Visitors',
-			value: 100,
+			title: 'Total Publications',
+			value: info.posts,
 			image: g3,
 		},
 		{
-			title: 'Time Spent',
-			value: 50,
+			title: 'Quotation Requests',
+			value: info.requests,
 			image: g2,
 		},
 		{
-			title: 'AVG Request Received',
-			value: 30,
+			title: 'Admin Staffs',
+			value: info.admins,
 			image: g1,
 		},
 	];
@@ -44,10 +60,10 @@ export default async function Dashboard() {
 					<div className=" mt-1 mb-3 px-1 pt-2 flex flex-row justify-between items-center">
 						<div>
 							<h1 className=" font-[RobotoBold] md:text-2xl capitalize text-xl sm:text-2xl">
-								Hello Humphrey 👋
+								Hello {user.firstName} {user.lastName} 👋
 							</h1>
 							<h4 className=" font-[RobotoLight] mt-1.5 lg:text-sm text-xs">
-								Create, manage and AGCOMS activities!
+								Create and manage AGCOMS activities!
 							</h4>
 						</div>
 					</div>
@@ -58,14 +74,11 @@ export default async function Dashboard() {
 									<GraphCard key={d.title} data={d} />
 								))}
 							</div>
-							<Visitors />
+							<Visitors data={info} />
 						</div>
-						<div className="grid grid-cols-1 sm:grid-cols-4  gap-2.5 sm:gap-4">
-							<RecentRequests
-								requests={data}
-								className=" row-start-2 sm:row-start-1 col-start-1 col-end-2 sm:col-end-4"
-							/>
-							<Stats />
+						<div className="grid grid-cols-1 sm:grid-cols-[60%,auto]  gap-2.5 sm:gap-4">
+							<RecentRequests requests={data} className=" " />
+							<Stats data={products} />
 						</div>
 					</div>
 				</div>
