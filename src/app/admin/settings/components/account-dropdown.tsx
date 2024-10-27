@@ -24,7 +24,7 @@ import { toast } from 'sonner';
 
 type Props = {
 	email: string;
-	handleRemoveAdmin?: (email: string) => Promise<boolean>;
+	handleRemoveAdmin: (email: string) => Promise<boolean>;
 };
 export default function AccountDropdown(props: Props) {
 	const { handleRemoveAdmin, email } = props;
@@ -70,7 +70,7 @@ export default function AccountDropdown(props: Props) {
 						<AlertDialogAction
 							onClick={async () => {
 								setOpen(false);
-								// await handleRemoveAdmin(email);
+								await handleRemoveAdmin(email);
 								toast.warning('Admin account privileges have been removed.');
 								navigate.refresh();
 							}}>

@@ -6,6 +6,7 @@ import g2 from '@/assets/graphs/g2.png';
 import g3 from '@/assets/graphs/g3.png';
 import RecentRequests from './components/recent-requests';
 import Stats from './components/stats';
+import { getMessages } from '@/lib/actions/request-actions';
 
 export const metadata: Metadata = {
 	title: 'AGCOMS Dashboard',
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Dashboard() {
+	const data = await getMessages();
 	const grpahCardData = [
 		{
 			title: 'Total Sessions',
@@ -59,7 +61,10 @@ export default async function Dashboard() {
 							<Visitors />
 						</div>
 						<div className="grid grid-cols-1 sm:grid-cols-4  gap-2.5 sm:gap-4">
-							<RecentRequests className=" row-start-2 sm:row-start-1 col-start-1 col-end-2 sm:col-end-4" />
+							<RecentRequests
+								requests={data}
+								className=" row-start-2 sm:row-start-1 col-start-1 col-end-2 sm:col-end-4"
+							/>
 							<Stats />
 						</div>
 					</div>

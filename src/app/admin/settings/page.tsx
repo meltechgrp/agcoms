@@ -3,26 +3,31 @@ import AddAdminDrawer from '@/app/admin/settings/components/add-admin-drawer';
 import { buttonVariants } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-// import { validateRequest } from '@/lib/auth/validate-request';
+import {
+	handleAddAdmin,
+	handleRemoveAdmin,
+	handleUpdateAdmin,
+} from '@/lib/actions/admin-actions';
+import { validateRequest } from '@/lib/lucia/validate-request';
+import prisma from '@/lib/prisma';
 import { PlusIcon } from 'lucide-react';
 import Link from 'next/link';
 
 type Props = {
 	searchParams: {
 		account?: string;
-		orderBy?: string;
-		take?: string;
-		skip?: string;
-		reportId?: string;
 	};
 };
 export default async function page(props: Props) {
 	const {
 		searchParams: { account },
 	} = props;
-	// const session = await validateRequest();
-	const isSuperAdmin = true;
-	const emails: any = [];
+	const session = await validateRequest();
+	const superAdmins = process.env.WHITELISTED_EMAILS?.split(',') || [];
+	const admins = await prisma.adminAllowedEmail.findMany();
+	const emails = [...superAdmins, ...admins.map((admin) => admin.email)];
+	const selectedAdmin = admins.find((admin) => admin.email === account);
+	const isSuperAdmin = superAdmins.includes(session?.user?.email || '');
 	return (
 		<>
 			<Card className="w-full divide-y">
@@ -46,12 +51,12 @@ export default async function page(props: Props) {
 									disabled
 									readOnly
 								/>
-								{/* {superAdmins.includes(email) || !isSuperAdmin ? null : ( */}
-								<AccountDropdown
-									email={email}
-									// handleRemoveAdmin={handleRemoveAdmin}
-								/>
-								{/* )} */}
+								{superAdmins.includes(email) || !isSuperAdmin ? null : (
+									<AccountDropdown
+										email={email}
+										handleRemoveAdmin={handleRemoveAdmin}
+									/>
+								)}
 							</div>
 						))}
 						{isSuperAdmin && (
@@ -65,13 +70,13 @@ export default async function page(props: Props) {
 					</div>
 				</div>
 			</Card>
-			{/* <AddAdminDrawer
+			<AddAdminDrawer
 				open={!!account}
 				account={account as string}
-				// handleAddAdmin={handleAddAdmin}
-				// handleUpdateAdmin={handleUpdateAdmin}
-				// allowedRoutes={selectedAdmin?.allowedPages || []}
-			/> */}
+				handleAddAdmin={handleAddAdmin}
+				handleUpdateAdmin={handleUpdateAdmin}
+				allowedRoutes={selectedAdmin?.allowedPages || []}
+			/>
 		</>
 	);
 }

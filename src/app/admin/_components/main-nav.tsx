@@ -11,8 +11,12 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
 	setOpen?: (state: boolean) => void;
+	email: string;
+	firstName: string | null;
+	lastName: string | null;
 }
-export function MainNav({ setOpen, className, ...props }: MainNavProps) {
+export function MainNav(props: MainNavProps) {
+	const { setOpen, email, className, firstName, lastName } = props;
 	const routeHomeSection = getSectionRoutes('home');
 	const routeSettingsSection = getSectionRoutes('settings');
 	return (
@@ -21,7 +25,7 @@ export function MainNav({ setOpen, className, ...props }: MainNavProps) {
 				'border-none md:border-r w-full pb-4 sm:pb-1 relative bg-white',
 				className
 			)}>
-			<div className="flex h-full w-[220px] md:w-[250px] space-y-0 sm:space-y-8 max-h-screen top-0 relative min-h-screen md:fixed flex-col gap-2">
+			<div className="flex h-full w-[220px] md:w-[250px] space-y-0 sm:space-y-8 max-h-screen top-0 relative min-h-[92vh] sm:min-h-screen md:fixed flex-col gap-2">
 				<div className="flex h-14 items-center px-2 my-2 mb-4 sm:my-8 sm:px-6">
 					<Link
 						href="/admin/dashboard"
@@ -59,6 +63,7 @@ export function MainNav({ setOpen, className, ...props }: MainNavProps) {
 										<span className="text-gray-600 text-sm">{route.name}</span>
 									</LinkItem>
 								))}
+								<Logout />
 							</div>
 						</div>
 					</nav>
@@ -66,13 +71,16 @@ export function MainNav({ setOpen, className, ...props }: MainNavProps) {
 				<div className=" p-1 sm:px-4 pb-6">
 					<div className="flex gap-2 bg-[#f7f9f4] px-2 py-3 rounded-md items-center">
 						<Avatar>
-							<AvatarFallback>HJ</AvatarFallback>
+							<AvatarFallback>
+								{firstName?.charAt(0) || ''}
+								{lastName?.charAt(0) || ''}
+							</AvatarFallback>
 						</Avatar>
 						<div className="flex flex-col gap-1">
 							<span className="text-sm font-bold text-gray-900">
-								Humphrey Joshua
+								{firstName || ''} {lastName || ''}
 							</span>
-							<span className="text-xs text-gray-500">Admin</span>
+							<span className="text-xs line-clamp-1 text-gray-500">Admin</span>
 						</div>
 					</div>
 				</div>

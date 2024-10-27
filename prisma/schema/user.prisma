@@ -4,18 +4,25 @@ model User {
   lastName            String?               @db.VarChar(100)
   email               String                @unique
   phone               String?
-  country             String?
-  countryCode         String?
   password            String?
-  dob                 DateTime?
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
   userType            UserType?
+  country             String?
   emailVerified       DateTime?
   sessions            AuthSession[]
   images              Image[]
   passwordResetTokens PasswordResetTokens[]
   verificationTokens  VerificationToken[]
+}
+
+model AdminAllowedEmail {
+  id           String    @id @default(cuid())
+  uid          Int       @unique @default(autoincrement())
+  email        String    @unique
+  verifiedAt   DateTime?
+  allowedPages String[]
+  createdAt    DateTime  @default(now())
 }
 
 model AuthSession {

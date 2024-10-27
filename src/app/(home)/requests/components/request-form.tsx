@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
-import { PhoneNumberInput } from '@/components/phone-number-input';
 import { Button } from '@/components/ui/button';
 import {
 	Form,
@@ -19,7 +18,8 @@ import { useFormState } from 'react-dom';
 import { toast } from 'sonner';
 import { Loader } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
-import { FormWrapper } from '@/components/form-wrapper';
+import { FormWrapper, useFormToggle } from '@/components/form-wrapper';
+import { saveRequest } from '@/lib/actions/request-actions';
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement> & {
 	open: boolean;
@@ -38,22 +38,28 @@ export default function RequestForm({
 			phone: '',
 			town: '',
 			message: '',
-			countryCode: 'NG',
-			allowMarketing: false,
 		},
 	});
+	const router = useFormToggle();
 	const [loading, setLoading] = React.useState(false);
-	// const [state, dispatch] = useFormState(signup, undefined);
+	const [state, dispatch] = useFormState(saveRequest, undefined);
 
-	// async function handleSubmit() {
-	// 	setLoading(true);
-	// }
-	// React.useEffect(() => {
-	// 	if (state?.formError) {
-	// 		toast.error(state.formError);
-	// 	}
-	// 	setLoading(false);
-	// }, [state?.formError, state?.fieldError]);
+	async function handleSubmit(data: MessageFormInput) {
+		setLoading(true);
+		dispatch(data);
+	}
+	React.useEffect(() => {
+		if (state?.formError) {
+			toast.error(state.formError);
+		}
+		if (state?.data) {
+			toast.success('Message sent successfully!');
+			form.reset();
+			setLoading(false);
+			router('request', 'quote');
+		}
+		setLoading(false);
+	}, [state?.formError, state?.fieldError, state?.data]);
 	return (
 		<>
 			<FormWrapper open={open} formKey={'request'} formValue="quote">
@@ -61,7 +67,7 @@ export default function RequestForm({
 					className={cn('grid gap-6 max-w-lg mx-auto py-6', className)}
 					{...props}>
 					<Form {...form}>
-						<form>
+						<form onSubmit={form.handleSubmit(handleSubmit)}>
 							<div className="grid gap-4">
 								<FormField
 									control={form.control}
@@ -108,14 +114,7 @@ export default function RequestForm({
 												Phone Number<sup className="text-red-500">*</sup>
 											</FormLabel>
 											<FormControl>
-												<PhoneNumberInput
-													placeholder="Your phone number"
-													{...field}
-													countryCodeValue={form.getValues('countryCode')}
-													onCountryCodeChange={(countryCode) => {
-														form.setValue('countryCode', countryCode);
-													}}
-												/>
+												<Input placeholder="Your phone number" {...field} />
 											</FormControl>
 											<FormMessage />
 										</FormItem>

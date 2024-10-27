@@ -13,7 +13,6 @@ export const MessageFormSchema = z.object({
 		message: 'Please enter a valid Town Name.',
 	}),
 	message: z.string().optional(),
-	countryCode: z.string().optional(),
 	allowMarketing: z.boolean().optional(),
 });
 export type MessageFormInput = z.infer<typeof MessageFormSchema>;
@@ -107,3 +106,22 @@ export const ProductFormSchema = z.object({
 });
 
 export type ProductFormInput = z.infer<typeof ProductFormSchema>;
+
+export const AuthSignupFormSchema = z.object({
+	firstName: z.string().min(2, {
+		message: 'Your first name must be at least 2 characters.',
+	}),
+	lastName: z.string().min(2, {
+		message: 'Your last name must be at least 2 characters.',
+	}),
+	email: z.string().email({
+		message: 'Please enter a valid email address.',
+	}),
+	phone: z.string().min(10, {
+		message: 'Please enter a valid phone number.',
+	}),
+	password: z.string().min(8, {
+		message: 'Your password must be at least 8 characters.',
+	}),
+});
+export type AuthSignupFormInput = z.infer<typeof AuthSignupFormSchema>;

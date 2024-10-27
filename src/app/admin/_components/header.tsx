@@ -6,7 +6,13 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { MainNav } from './main-nav';
 import { useState } from 'react';
 
-function Header() {
+interface Props {
+	email: string;
+	firstName: string | null;
+	lastName: string | null;
+}
+
+function Header(props: Props) {
 	const [open, setOpen] = useState(false);
 	return (
 		<header className="sm:hidden flex min-h-16 py-4 items-center w-full gap-4 border-b bg-muted/40 px-4 sm:h-[60px] sm:px-6">
@@ -18,7 +24,7 @@ function Header() {
 					</Button>
 				</SheetTrigger>
 				<SheetContent side="left" className="flex flex-col w-fit px-2">
-					<MainNav setOpen={setOpen} className="block md:hidden" />
+					<MainNav {...props} setOpen={setOpen} className="block md:hidden" />
 				</SheetContent>
 			</Sheet>
 		</header>

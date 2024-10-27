@@ -4,9 +4,10 @@ import RequestStatusBadge from './request-status';
 import EmptyState from '@/components/shared/empty-state';
 import { cn } from '@/lib/utils';
 import { DotsHorizontalIcon } from '@radix-ui/react-icons';
+import { RequestType } from '@/lib/actions/request-actions';
 
 export default function RecentRequests(props: {
-	requests?: any;
+	requests: RequestType;
 	className?: string;
 }) {
 	const { requests, className } = props;
@@ -24,30 +25,23 @@ export default function RecentRequests(props: {
 				<table className="w-full text-muted-foreground">
 					<thead>
 						<tr>
-							<th className=" hidden sm:table-cell">ID</th>
 							<th className="">Full Name</th>
 							<th>Posted</th>
-							<th>Status</th>
-							<th className=" hidden sm:table-cell">Message</th>
+							<th>Phone</th>
 						</tr>
 					</thead>
 					<tbody>
-						{requests && (
-							<tr>
-								<td className=" hidden sm:table-cell">
-									<span className="text-xs">22-334-903-78</span>
+						{requests.map((r) => (
+							<tr key={r.id}>
+								<td>
+									<a href={`#`}>{r.fullName}</a>
 								</td>
 								<td>
-									<a href={`#`}>Humphrey Joshua</a>
+									{format(new Date(new Date(r.createdAt)), 'MMM dd, yyyy')}
 								</td>
-								<td>
-									{format(new Date(new Date(Date.now())), 'MMM dd, yyyy')}
-								</td>
-								<td>
-									<RequestStatusBadge status="PENDING" />
-								</td>
+								<td>{r.phone}</td>
 							</tr>
-						)}
+						))}
 					</tbody>
 				</table>
 				{!requests && (

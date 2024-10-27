@@ -49,12 +49,12 @@ export const midNavigationData: {
 ] as const;
 
 export enum Paths {
-	Home = '/',
-	Login = '/login',
-	Signup = '/signup',
-	Dashboard = '/dashboard',
-	VerifyEmail = '/verify-email',
-	ResetPassword = '/reset-password',
+	Home = '/admin',
+	Login = '/admin/auth/login',
+	Signup = '/admin/auth/signup',
+	Dashboard = '/admin/dashboard',
+	VerifyEmail = '/admin/auth/verify-email',
+	ResetPassword = '/admin/auth/reset-password',
 }
 
 export const APP_TITLE = 'Agcoms' as const;

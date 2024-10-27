@@ -1,4 +1,3 @@
-'use client';
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -11,6 +10,7 @@ import {
 	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
+import { logout } from '@/lib/actions/auth';
 import { cn } from '@/lib/utils';
 import { LogOutIcon } from 'lucide-react';
 import { toast } from 'sonner';
@@ -23,11 +23,11 @@ export default function Logout({ className }: Props) {
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
 				<Button
-					variant={'link'}
+					variant={'ghost'}
 					type="submit"
 					size={'sm'}
 					className={cn(
-						'px-6 py-2  text-gray-500  flex justify-start border border-red-500 rounded-lg',
+						'px-2 py-2 h-11 border-none hover:bg-gray-100 text-gray-500  flex justify-start border  rounded-lg',
 						className
 					)}>
 					<LogOutIcon className="h-4 w-4 mr-2 text-gray-500" />
@@ -44,12 +44,12 @@ export default function Logout({ className }: Props) {
 				<AlertDialogFooter className="flex flex-row gap-2 mt-3 flex-nowrap">
 					<AlertDialogCancel className="w-full mt-0">Cancel</AlertDialogCancel>
 					<form
-						// action={async () => {
-						// 	const res = await logout();
-						// 	if (res?.error) {
-						// 		toast.error(res.error);
-						// 	}
-						// }}
+						action={async () => {
+							const res = await logout();
+							if (res?.error) {
+								toast.error(res.error);
+							}
+						}}
 						className="w-full">
 						<AlertDialogAction type="submit" className="w-full">
 							Continue

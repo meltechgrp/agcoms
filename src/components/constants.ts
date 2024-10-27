@@ -1,10 +1,5 @@
 import { DashboardIcon } from '@radix-ui/react-icons';
-import {
-	Package,
-	HandshakeIcon,
-	MessageCircleIcon,
-	SettingsIcon,
-} from 'lucide-react';
+import { Package, MessageCircleIcon, SettingsIcon } from 'lucide-react';
 
 export const AppRoutes = [
 	{
@@ -27,14 +22,6 @@ export const AppRoutes = [
 		path: '/admin/products',
 		name: 'Products',
 		icon: Package,
-		section: 'home',
-		note: 'Can edit and delete users',
-		hasAction: true,
-	},
-	{
-		path: '/admin/brand-partners',
-		name: 'Brands & Partners',
-		icon: HandshakeIcon,
 		section: 'home',
 		note: 'Can edit and delete users',
 		hasAction: true,

@@ -15,11 +15,11 @@ import { toast } from 'sonner';
 type Props = {
 	open: boolean;
 	account: string;
-	handleAddAdmin?: (payload: {
+	handleAddAdmin: (payload: {
 		email: string;
 		allowedRoutes: string[];
 	}) => Promise<boolean>;
-	handleUpdateAdmin?: (payload: {
+	handleUpdateAdmin: (payload: {
 		email: string;
 		allowedRoutes: string[];
 	}) => Promise<boolean>;
@@ -44,8 +44,8 @@ export default function AddAdminDrawer(props: Props) {
 	);
 	async function onUpdateAdmin() {
 		setLoading(true);
-		// if (account === 'new') await handleAddAdmin({ email, allowedRoutes });
-		// else await handleUpdateAdmin({ email, allowedRoutes });
+		if (account === 'new') await handleAddAdmin({ email, allowedRoutes });
+		else await handleUpdateAdmin({ email, allowedRoutes });
 		toast.success('Admin account privileges have been updated.');
 		setLoading(false);
 		setEmail('');
@@ -61,7 +61,7 @@ export default function AddAdminDrawer(props: Props) {
 	return (
 		<SheetWrapper
 			open={open}
-			sheetKey="driverId"
+			sheetKey="account"
 			sheetValue={account || 'new'}
 			className="w-[460px] pb-4">
 			<div>
@@ -121,7 +121,7 @@ export default function AddAdminDrawer(props: Props) {
 					</div>
 				</Card>
 				<div className="grid grid-cols-2 gap-4">
-					<Button variant="outline" size="lg">
+					<Button onClick={handleClose} variant="outline" size="lg">
 						Cancel
 					</Button>
 					<Button
