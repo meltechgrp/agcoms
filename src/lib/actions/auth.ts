@@ -24,7 +24,6 @@ import { env } from '@/env';
 import { UserType } from '@prisma/client';
 import type { ActionResponse } from '@/types';
 import prisma from '../prisma';
-const superAdmins = env.WHITELISTED_EMAILS?.split(',') || [];
 
 export async function login(
 	_: any,
@@ -42,16 +41,18 @@ export async function login(
 	}
 
 	const { email, password } = parsed.data;
-	const isSuper = superAdmins.includes(email);
 	const allowedEmails = await prisma.adminAllowedEmail.findFirst({
 		where: {
-			email,
+			email: {
+				equals: email,
+				mode: 'insensitive',
+			},
 		},
 		select: {
 			email: true,
 		},
 	});
-	if (!allowedEmails || !isSuper) {
+	if (!allowedEmails) {
 		return {
 			formError: 'Unauthorized email address',
 		};
@@ -134,7 +135,6 @@ export async function signup(
 			formError: 'Cannot create account with that email',
 		};
 	}
-	const isSuper = superAdmins.includes(email);
 	const allowedEmails = await prisma.adminAllowedEmail.findFirst({
 		where: {
 			email,
@@ -143,7 +143,7 @@ export async function signup(
 			email: true,
 		},
 	});
-	if (!isSuper || !allowedEmails) {
+	if (!allowedEmails) {
 		return {
 			formError: 'Unauthorized user',
 		};
