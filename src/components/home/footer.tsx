@@ -1,19 +1,17 @@
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '../ui/button';
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/accordion';
-import NigeriaIcon from '../icons/nigeria-icon';
-import { uniqueId } from '@/lib/utils';
+import { cn, uniqueId } from '@/lib/utils';
 
 export default function Footer() {
 	return (
 		<div className=" sm:px-12 pt-7 sm:pt-16 py-16 mt-6 bg-[#e5e5e5] space-y-8">
-			<div className="hidden sm:grid sm:grid-cols-3 gap-8 border-b border-gray-300 pb-10">
+			<div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-gray-300 pb-10">
 				{footerData.map((fl) => (
 					<div key={fl?.title} className=" space-y-4">
 						<h2 className="text-md font-bold">{fl.title}</h2>
@@ -22,8 +20,14 @@ export default function Footer() {
 								<Link
 									href={link.url}
 									key={uniqueId()}
-									className="text-sm w-fit text-gray-600 font-bold">
-									{link.title}
+									className="text-sm w-fit group relative text-gray-600 font-bold">
+									<div
+										className={cn(
+											'absolute bottom-0 rounded left-0 h-[2px] w-0 bg-tertiary transition-all delay-75 duration-1000 ease-out group-hover:w-full group-hover:translate-x-0'
+										)}></div>
+									<div className="relative z-10 flex items-center gap-2 leading-12">
+										{link.title}
+									</div>
 								</Link>
 							))}
 						</div>
@@ -51,58 +55,56 @@ export default function Footer() {
 					</AccordionItem>
 				))}
 			</Accordion>
-			<div className="space-y-10 sm:space-y-6 px-4">
-				<div className=" w-fit mx-auto">
-					<Link href={'https://www.deere.africa/en/global-country-selector/'}>
-						<Button
-							variant={'outline'}
-							className=" h-12 px-8 flex text-sm font-bold items-center gap-2 bg-transparent border-2 border-gray-300">
-							<NigeriaIcon width={20} height={20} />
-							Africa & the Middle East
-						</Button>
-					</Link>
-				</div>
-				<div className="flex justify-center w-full flex-wrap sm:w-[45%] mx-auto gap-4">
+			<div className="space-y-10 px-4">
+				<div className="flex justify-center w-full flex-wrap sm:w-[45%] mx-auto gap-4 sm:gap-6">
 					{simpleF.map((s) => (
 						<Link
 							href={s.link}
 							key={uniqueId()}
-							className="text-xs font-bold transition-all duration-700  hover:underline text-gray-700">
-							{s.title}
+							className="text-xs font-bold group relative text-gray-700">
+							<div
+								className={cn(
+									'absolute bottom-0 rounded left-0 h-[2px] w-0 bg-tertiary transition-all delay-75 duration-1000 ease-out group-hover:w-full group-hover:translate-x-0'
+								)}></div>
+							<div className="relative z-10 flex items-center gap-2 leading-12">
+								{s.title}
+							</div>
 						</Link>
 					))}
 				</div>
-				<div className="flex justify-center">
-					<span className="text-xs font-bold text-gray-500">
-						Copyright © 2024 Agcoms Company. All Rights Reserved.
-					</span>
-				</div>
-				<div className="flex justify-center space-x-4">
-					{['Facebook', 'Instagram', 'Linkedin', 'Twitter', 'Youtube'].map(
-						(s) => (
-							<Link
-								target="_blank"
-								href={`https://www.${s.toLowerCase()}.com`}
-								key={uniqueId()}
-								className="">
-								{s === 'Facebook' && (
-									<Facebook className="text-blue-600 w-5 h-5" />
-								)}
-								{s === 'Instagram' && (
-									<Instagram className="text-black w-5 h-5" />
-								)}
-								{s === 'Linkedin' && (
-									<Linkedin className="text-blue-600 w-5 h-5" />
-								)}
-								{s === 'Twitter' && (
-									<Twitter className="text-blue-500 w-5 h-5" />
-								)}
-								{s === 'Youtube' && (
-									<Youtube className="text-red-600 w-5 h-5" />
-								)}
-							</Link>
-						)
-					)}
+				<div className="flex flex-col-reverse sm:flex-row justify-between gap-3">
+					<div className="flex justify-center">
+						<span className="text-xs font-bold text-gray-500">
+							Copyright © 2024 Agcoms Company. All Rights Reserved.
+						</span>
+					</div>
+					<div className="flex justify-center space-x-4">
+						{['Facebook', 'Instagram', 'Linkedin', 'Twitter', 'Youtube'].map(
+							(s) => (
+								<Link
+									target="_blank"
+									href={`https://www.${s.toLowerCase()}.com`}
+									key={uniqueId()}
+									className="">
+									{s === 'Facebook' && (
+										<Facebook className="text-blue-600 w-5 h-5" />
+									)}
+									{s === 'Instagram' && (
+										<Instagram className="text-black w-5 h-5" />
+									)}
+									{s === 'Linkedin' && (
+										<Linkedin className="text-blue-600 w-5 h-5" />
+									)}
+									{s === 'Twitter' && (
+										<Twitter className="text-blue-500 w-5 h-5" />
+									)}
+									{s === 'Youtube' && (
+										<Youtube className="text-red-600 w-5 h-5" />
+									)}
+								</Link>
+							)
+						)}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -111,19 +113,19 @@ export default function Footer() {
 
 const footerData = [
 	{
-		title: 'Products & Support',
+		title: 'Equipment',
 		links: [
-			{ title: 'Tractors', url: '/equipments/agriculture' },
+			{ title: 'Agricultural Equipment', url: '/equipment/agriculture' },
 			{
-				title: 'Request a quote',
-				url: '/requests',
+				title: 'Construction Equipment',
+				url: '/equipment/construction',
 			},
 			{
-				title: 'Shop Parts',
-				url: 'https://www.deere.africa/en/finance/financing/',
+				title: 'Turf Management Equipment',
+				url: '/equipment/turf-management',
 			},
 			{
-				title: 'Competition Ts&Cs',
+				title: 'Forestry Equipment',
 				url: 'https://www.deere.africa/en/our-company/news-media/news-releases/2022/nov/competitions-terms-and-conditions/',
 			},
 			{
@@ -133,23 +135,73 @@ const footerData = [
 		],
 	},
 	{
+		title: 'Parts and Services',
+		links: [
+			{
+				title: 'Genuine Parts',
+				url: '#',
+			},
+			{
+				title: 'Expert Service',
+				url: '#',
+			},
+			{
+				title: 'Online Support and Assistance',
+				url: '#',
+			},
+			{
+				title: 'Order Online',
+				url: '#',
+			},
+		],
+	},
+	{
 		title: 'Company Information',
 		links: [
 			{
-				title: 'PAIA MANUAL',
-				url: 'https://www.deere.com/assets/pdfs/region-1/homepage/032024-updated-john-deere-paia-manual-29-feb-2024-publication.pdf',
-			},
-			{
-				title: 'About Our Company',
+				title: 'Corporate office',
 				url: '/about',
 			},
 			{
-				title: 'News and Media',
-				url: 'https://www.deere.africa/en/our-company/news-media/',
+				title: 'Branch Locations',
+				url: '/about',
 			},
 			{
-				title: 'Terms and Conditions',
-				url: 'https://www.deere.africa/en/current-offers/promotions/',
+				title: 'Customer Support',
+				url: '/about',
+			},
+			{
+				title: 'Additional Contacts',
+				url: '/about',
+			},
+			{
+				title: 'Additional Contacts',
+				url: '/about',
+			},
+			{
+				title: 'Social Media ',
+				url: '/about',
+			},
+		],
+	},
+	{
+		title: 'About Us',
+		links: [
+			{
+				title: 'Our Mission',
+				url: '/about',
+			},
+			{
+				title: 'Our Values',
+				url: '/about',
+			},
+			{
+				title: 'Global Reach with Local Support',
+				url: '/about',
+			},
+			{
+				title: 'Our Commitment to Excellence',
+				url: '/about',
 			},
 		],
 	},
@@ -157,19 +209,15 @@ const footerData = [
 
 const simpleF = [
 	{
-		link: 'https://www.deere.africa/en/privacy-and-data/',
-		title: 'Privacy and Data',
+		link: '#',
+		title: 'Privacy Policy',
 	},
 	{
-		link: 'https://www.deere.africa/en/privacy-and-data/cookie-statement/',
-		title: 'Cookie Statement',
+		link: '#',
+		title: 'Terms and Conditions',
 	},
 	{
-		link: 'https://www.deere.africa/en/privacy-and-data/terms/',
-		title: 'Terms of Use',
-	},
-	{
-		link: '/requests',
-		title: 'Contact Us',
+		link: '#',
+		title: 'Copy right information',
 	},
 ];

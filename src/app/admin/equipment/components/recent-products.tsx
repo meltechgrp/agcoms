@@ -31,7 +31,7 @@ function RecentProducts({ data }: RecentProps) {
 								{format(new Date(b.createdAt), 'MMM d, yyyy,  hh:mm a')}
 							</time>
 							<Link
-								href={`/admin/products/?productId=${b.id}`}
+								href={`/admin/equipment/?productId=${b.id}`}
 								className="space-y-2">
 								<h2 className="text-sm">{b.name}</h2>
 								<HtmlText

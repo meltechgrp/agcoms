@@ -23,7 +23,7 @@ export const midNavigationData: {
 	},
 	{
 		title: 'Offers & Discount',
-		link: 'https://www.deere.africa/en/finance/financing/current-offers/',
+		link: '/request',
 		icon: Tag,
 	},
 	{
@@ -38,7 +38,7 @@ export const midNavigationData: {
 	},
 	{
 		title: 'Technology',
-		link: 'https://www.deere.africa/en/technology-products/precision-ag/',
+		link: '/equipment/agriculture',
 		icon: MailOpen,
 	},
 	{

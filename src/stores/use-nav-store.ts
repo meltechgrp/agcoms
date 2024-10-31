@@ -17,45 +17,41 @@ export type State = {
 };
 const initialState: State = {
 	pages: [
-		{ name: 'Equipments', slug: 'equipments', link: '/equipments' },
+		{ name: 'Equipment', slug: 'equipment', link: '/equipment' },
 		{
 			name: 'Parts & Services',
 			slug: 'parts',
 			link: 'https://www.deere.africa/en/parts-service/parts/',
 		},
-		{
-			name: 'Offers and Discount',
-			slug: 'offers',
-			link: 'https://www.deere.africa/en/finance/financing/current-offers/',
-		},
 		{ name: 'Request for Quotation', slug: 'requests', link: '/requests' },
-		{ name: 'About', slug: 'about', link: '/about' },
+		{ name: 'About Us', slug: 'about', link: '/about' },
+		{ name: 'Contact Us', slug: 'contact', link: '/contact' },
 	],
 	product: [
 		{
 			name: 'Agriculture',
 			slug: 'agriculture',
-			link: '/equipments/agriculture',
-		},
-		{
-			name: 'Lawn & Garden',
-			slug: 'lawn-garden',
-			link: '/equipments/lawn-garden',
+			link: '/equipment/agriculture',
 		},
 		{
 			name: 'Construction',
 			slug: 'construction',
-			link: '/equipments/construction',
+			link: '/equipment/construction',
 		},
+		// {
+		// 	name: 'Lawn & Garden',
+		// 	slug: 'lawn-garden',
+		// 	link: '/equipment/lawn-garden',
+		// },
 		{
 			name: 'Golf & Sports Turf',
 			slug: 'golf-sports-turf',
-			link: '/equipments/golf-sports-turf',
+			link: '/equipment/golf-sports-turf',
 		},
 		{
 			name: 'Forestry',
 			slug: 'forestry',
-			link: '/equipments/forestry',
+			link: '/equipment/forestry',
 		},
 	],
 };

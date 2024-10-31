@@ -27,40 +27,41 @@ export default function Header() {
 	const headerRef = useRef<HTMLDivElement>(null);
 	const [isFixed, setIsFixed] = useState(false);
 	const router = useRouter();
-	useGSAP(() => {
-		const headerEl = headerRef.current;
+	// useGSAP(() => {
+	// 	const headerEl = headerRef.current;
 
-		const handleScroll = () => {
-			const scrollTop = window.scrollY || document.documentElement.scrollTop;
+	// 	const handleScroll = () => {
+	// 		const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-			if (scrollTop > 100 && !isFixed) {
-				setIsFixed(true);
-				gsap.to(headerEl, {
-					position: 'fixed',
-					top: 0,
-					y: 0,
-					duration: 0.9,
-					backgroundColor: '#d5d5d5',
-					ease: 'power1.out',
-				});
-			} else if (scrollTop <= 50 && isFixed) {
-				setIsFixed(false);
-				gsap.to(headerEl, {
-					position: 'relative',
-					y: 0,
-					duration: 0.9,
-					ease: 'power1.out',
-					boxShadow: 'none',
-				});
-			}
-		};
+	// if (scrollTop > 100 && !isFixed) {
+	// 	setIsFixed(true);
+	// 	gsap.to(headerEl, {
+	// 		position: 'fixed',
+	// 		top: 0,
+	// 		y: 0,
+	// 		zIndex: 500,
+	// 		duration: 0.9,
+	// 		backgroundColor: '#d5d5d5',
+	// 		ease: 'power1.out',
+	// 	});
+	// } else if (scrollTop <= 50 && isFixed) {
+	// 	setIsFixed(false);
+	// 	gsap.to(headerEl, {
+	// 		position: 'relative',
+	// 		y: 0,
+	// 		duration: 0.9,
+	// 		ease: 'power1.out',
+	// 		boxShadow: 'none',
+	// 	});
+	// }
+	// };
 
-		window.addEventListener('scroll', handleScroll);
+	// 	window.addEventListener('scroll', handleScroll);
 
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, [isFixed]);
+	// 	return () => {
+	// 		window.removeEventListener('scroll', handleScroll);
+	// 	};
+	// }, [isFixed]);
 
 	const options = {
 		duration: 3000,
@@ -92,13 +93,13 @@ export default function Header() {
 						<Button
 							variant="outline"
 							onClick={() =>
-								router.push('?request=quote', {
+								router.push('/requests', {
 									scroll: false,
 								})
 							}
-							className=" hidden sm:block px-2 sm:px-4 hover:bg-gray-100 bg-transparent border-blue-500 focus-visible:ring-0 focus-visible:ring-transparent text-black">
+							className=" hidden sm:block px-2 sm:px-4 hover:bg-gray-100 bg-transparent border-tertiary focus-visible:ring-0 focus-visible:ring-transparent text-black">
 							<div className="flex space-x-2 items-center text-sm text-gray-600">
-								<CircleHelp className="text-blue-500" />
+								<CircleHelp className="text-tertiary" />
 								<span className="hidden sm:flex">Request quote</span>
 							</div>
 						</Button>
@@ -126,7 +127,7 @@ export default function Header() {
 							<Button
 								onClick={() => animateScroll.scrollToTop(options)}
 								variant={'ghost'}
-								className="rounded-full bg-white hover:bg-blue-600 shadow-md z-40 hover:text-white text-blue-600 p-1 px-2.5 fixed bottom-6 right-6">
+								className="rounded-full bg-white hover:bg-blue-600 shadow-md z-40 hover:text-white text-tertiary p-1 px-2.5 fixed bottom-6 right-6">
 								<ChevronUp className="w-5 h-5" strokeWidth={3} />
 							</Button>
 						</TooltipTrigger>

@@ -7,18 +7,22 @@ import { getImageUrl } from '@/hooks/use-image-handler';
 export default function Choose() {
 	const style = {
 		backgroundImage: `url(${getImageUrl(
-			'wave.jpeg',
+			'choose.jpg',
 			'banners',
 			'home-banners'
 		)})`,
 		backgroundSize: 'cover',
 		backgroundRepeat: 'no-repeat',
+		borderImage:
+			'linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0, .4)) fill 1',
 	};
 	return (
 		<div className="py-4 sm:py-16">
 			<div className="flex px-4 sm:px-16  items-center flex-col gap-3">
-				<h1 className="text-xl sm:text-4xl text-blue-500">Why Choose Us</h1>
-				<p className="text-sm w-full sm:w-[65%] text-center">
+				<h1 className="text-2xl pt-10 sm:pt-0 border-b-4 border-tertiary pb-1 self-center sm:text-4xl">
+					Why Choose Us
+				</h1>
+				<p className="text-sm sm:text-base w-full sm:w-[50%] text-center">
 					We’re your trusted local choice for construction and agricultural
 					equipment. With expertise in diverse machines and a commitment to
 					excellence, we deliver top-tier results in agriculture and allied
@@ -26,15 +30,15 @@ export default function Choose() {
 				</p>
 			</div>
 			<div className="pt-16">
-				<div style={style} className="py-20">
+				<div style={style} className=" py-20 sm:py-28">
 					<div className="grid px-4 sm:px-16  sm:grid-cols-3 gap-8">
 						{data.map((item) => (
 							<Card key={uniqueId()} className="p-4 py-8">
 								<div className="flex flex-col gap-4">
-									<div className=" bg-blue-500 rounded-full w-fit p-2">
+									<div className=" bg-tertiary rounded-full w-fit p-2">
 										<item.icon className="w-5 h-5 text-white" />
 									</div>
-									<h2 className="text-lg sm:text-2xl text-blue-500">
+									<h2 className="text-lg sm:text-2xl text-tertiary">
 										{item.title}
 									</h2>
 									<p className="text-base w-full leading-[1.7rem]">

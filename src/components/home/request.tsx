@@ -22,8 +22,10 @@ export default function Request() {
 			<div
 				style={style}
 				className="py-16 h-[28rem] bg-center sm:h-[40rem] px-4 flex items-center sm:justify-end sm:px-16">
-				<div className="flex pt-10 sm:pt-20 flex-col text-white gap-3">
-					<h1 className="text-xl sm:text-4xl">Request a Quote!</h1>
+				<div className="flex pt-10 sm:pt-20 sm:px-16 flex-col text-white gap-3">
+					<h1 className="text-xl border-b-4 border-tertiary pb-1 self-start sm:text-4xl">
+						Request a Quote!
+					</h1>
 					<blockquote className="p-4 italic border-l-4 rounded-md backdrop-blur-sm bg-white/30 text-white border-gray-300">
 						Tailored Solutions for Your Needs &ndash; Get Your Custom Quote
 						Today!

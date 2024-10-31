@@ -66,3 +66,33 @@ export async function getDashboardData() {
 }
 
 export type DashboardData = Awaited<ReturnType<typeof getDashboardData>>;
+
+export async function getProductImages() {
+	try {
+		const data = await prisma.products.findMany({
+			select: {
+				id: true,
+				name: true,
+				images: {
+					select: {
+						url: true,
+					},
+					take: 1,
+				},
+				category: {
+					select: {
+						slug: true,
+					},
+				},
+			},
+			take: 10,
+			orderBy: {
+				createdAt: 'desc',
+			},
+		});
+		return data;
+	} catch (error) {
+		console.log(error);
+		return [];
+	}
+}

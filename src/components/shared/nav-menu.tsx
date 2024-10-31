@@ -24,7 +24,7 @@ export default function NavMenu({ className }: { className?: string }) {
 					className={cn(
 						'h-full flex items-center',
 						pathname === '/'
-							? 'border-blue-700 text-blue-600 text-sm font-normal border-b-2 rounded-none '
+							? 'border-tertiary text-tertiary text-sm font-normal border-b-2 rounded-none '
 							: ''
 					)}>
 					Home
@@ -32,13 +32,13 @@ export default function NavMenu({ className }: { className?: string }) {
 			</MenubarMenu>
 			{pages.map((item, i) => (
 				<>
-					{item.slug === 'equipments' ? (
+					{item.slug === 'equipment' ? (
 						<MenubarMenu key={uniqueId()}>
 							<MenubarTrigger
 								className={cn(
 									'hover:text-blue-500 font-normal transition-colors duration-1000',
 									pathname.split('/')[1] === item.link
-										? 'border-blue-700 text-blue-600 text-sm font-normal border-b-2 rounded-none '
+										? 'border-tertiary text-tertiary text-sm font-normal border-b-2 rounded-none '
 										: ''
 								)}>
 								{item.name}
@@ -52,9 +52,9 @@ export default function NavMenu({ className }: { className?: string }) {
 							<Link
 								href={item.link}
 								className={cn(
-									'hover:text-blue-500 font-semibold transition-colors text-sm text-black duration-1000',
+									'hover:text-tertiary font-semibold transition-colors text-sm text-black duration-1000',
 									pathname === item.slug
-										? 'border-blue-700 text-blue-600 border-b-2 rounded-none '
+										? 'border-tertiary text-tertiary border-b-2 rounded-none '
 										: 'text-black'
 								)}>
 								<Button variant="link" className="font-semibold font-roboto">
@@ -84,7 +84,7 @@ function Product(props: { products: any }) {
 			<ul className="grid">
 				{cats.map((c) => (
 					<Link key={uniqueId()} href={c.link}>
-						<MenubarItem className=" px-2 text-nowrap text-sm text-blue-700 font-medium">
+						<MenubarItem className=" px-2 text-nowrap text-sm text-tertiary font-medium">
 							{c.name}
 						</MenubarItem>
 					</Link>

@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 export default function MidNavigation() {
 	return (
-		<div className="py-8">
-			<div className="w-full px-4 sm:w-fit gap-x-12 xl:gap-x-16 gap-y-2 flex flex-col sm:flex-row  sm:bg-black/80 mx-auto">
+		<div className="py-8 flex sm:px-16 sm:justify-start ">
+			<div className="w-full px-4 gap-x-12 sm:w-fit  xl:gap-x-[3.8rem] gap-y-2 flex flex-col sm:flex-row   sm:bg-black/80">
 				{midNavigationData.map((nav) => (
 					<div
 						key={nav.title}
-						className="w-full border-b sm:border-none py-2 rounded bg-gray-700 sm:bg-transparent ">
+						className="w-full border-b sm:border-none  py-2 rounded bg-gray-700 sm:bg-transparent ">
 						<Link
 							href={uniqueId()}
 							target="_blank"

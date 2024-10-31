@@ -4,8 +4,8 @@ import Image from '../shared/image';
 
 export default function FeaturedProducts() {
 	return (
-		<div className="grid sm:px-16 bg-white py-4">
-			<div className="flex justify-center flex-col sm:flex-row items-center">
+		<div className="sm:flex sm:justify-center sm:px-16 bg-white py-4">
+			<div className="flex justify-center sm:w-fit flex-col sm:gap-8 sm:flex-row items-center">
 				{data.map((c, i) => (
 					<Link key={uniqueId()} href={c.link} className="w-[75%] sm:w-48">
 						<div className="grid grid-cols-2 border-b transition-color duration-1000 has-[h4]:hover:text-blue-600  px-4 sm:px-0 border-gray-200 sm:border-0 sm:grid-cols-1 gap-2 sm:gap-6 justify-center items-center">
@@ -33,11 +33,11 @@ const data = [
 		image: 'agri.png',
 		title: 'Agriculture',
 	},
-	{
-		link: '/equipments/lawn-garden',
-		image: 'lawn.png',
-		title: 'Lawn & Garden',
-	},
+	// {
+	// 	link: '/equipments/lawn-garden',
+	// 	image: 'lawn.png',
+	// 	title: 'Lawn & Garden',
+	// },
 	{
 		link: '/equipments/construction',
 		image: 'construction.png',
