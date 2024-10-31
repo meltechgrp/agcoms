@@ -205,15 +205,15 @@ const footerData = [
 
 const simpleF = [
 	{
-		link: '#',
+		link: '/about',
 		title: 'Privacy Policy',
 	},
 	{
-		link: '#',
+		link: '/about',
 		title: 'Terms and Conditions',
 	},
 	{
-		link: '#',
+		link: '/about',
 		title: 'Copy right information',
 	},
 ];
