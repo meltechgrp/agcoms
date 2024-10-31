@@ -8,10 +8,10 @@ export default function MidNavigation() {
 			<div className="w-full px-4 gap-x-12 sm:w-fit  xl:gap-x-[3.8rem] gap-y-2 flex flex-col sm:flex-row   sm:bg-black/80">
 				{midNavigationData.map((nav) => (
 					<div
-						key={nav.title}
+						key={uniqueId()}
 						className="w-full border-b sm:border-none  py-2 rounded bg-gray-700 sm:bg-transparent ">
 						<Link
-							href={uniqueId()}
+							href={nav.link}
 							target="_blank"
 							className="flex text-white px-4 sm:px-2 transition-all duration-700 hover:text-blue-400 hover:-translate-y-1 items-center">
 							<nav.icon strokeWidth={2} className=" w-10 h-10 mr-2" />
