@@ -35,54 +35,31 @@ function Contact({ searchParams }: Props) {
 					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbPage className="text-sm text-gray-500 font-normal  capitalize">
-							Request
+							Request a Quotation
 						</BreadcrumbPage>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<div>
-				<div className="flex my-8  px-4 sm:px-12 justify-between items-center">
-					<h1 className="text-xl  sm:text-4xl text-center">
-						Request for Quotation
-					</h1>
+			<div className="grid sm:grid-cols-2 gap-6 py-4">
+				<div className="flex flex-col  px-4 sm:px-12 space-y-4 pt-4 sm:pt-12">
+					<h2 className="text-lg sm:text-2xl border-b-4 border-tertiary pb-2 self-start">
+						Core Values and Code of Business Conduct
+					</h2>
+					<p className="text-gray-600 text-base sm:leading-7">
+						We hold ourselves to the highest standards of ethics, prioritizing
+						honesty, respect, and accountability in all our dealings. Our Code
+						of Business Conduct sets clear expectations for ethical behavior
+						across all levels of the organization. It reinforces our dedication
+						to fair business practices, responsible sourcing, and sustainable
+						development, aligning our operations with the best interests of our
+						stakeholders and the communities we serve.
+					</p>
 					<Button
 						onClick={() => router.replace('?request=quote')}
 						variant="outline"
-						className="h-12 hidden sm:flex text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-700 font-bold border-2 border-blue-500">
-						Request a quote
+						className="h-12 w-[15rem] flex bg-tertiary hover:bg-blue-500 text-white hover:text-white transition-colors duration-700 font-bold">
+						Get in Touch
 					</Button>
-				</div>
-				<div className="py-2">
-					<Image
-						src={'request.jpg'}
-						alt={'Contact us'}
-						folderName="home-banners"
-						bucketName="banners"
-						className="w-full h-[350px] sm:h-[520px] object-cover"
-					/>
-				</div>
-				<div className="w-fit mx-auto my-6 px-4 sm:px-12 space-y-4 flex flex-col items-center">
-					<h3 className="text-xl text-center sm:text-2xl">
-						Agcoms Operations Center™
-					</h3>
-					<p className="text-center">
-						Manage your farm or jobsite, including equipment, performance and
-						more
-					</p>
-					<Button
-						onClick={() => router.replace('?request=quote')}
-						className="bg-green-400 hover:bg-green-500 text-black font-semibold w-56 h-12">
-						Request a quote
-					</Button>
-				</div>
-			</div>
-			<div className="grid sm:grid-cols-[auto,65%] gap-6 pt-16">
-				<div className="flex flex-col  px-4 sm:px-12 space-y-4 pt-4 sm:pt-12">
-					<h2 className="text-lg sm:text-2xl">Dealer Tools</h2>
-					<p className="text-gray-600">
-						Agcoms offers a suite of digital tools to provide exceptional
-						customer service.
-					</p>
 				</div>
 				<div className="row-start-1 sm:col-start-2">
 					<Image
@@ -92,6 +69,32 @@ function Contact({ searchParams }: Props) {
 						folderName="home-banners"
 						className="w-full h-[200px] sm:h-[400px] object-cover"
 					/>
+				</div>
+			</div>
+			<div>
+				<div className="py-2">
+					<Image
+						src={'request.jpg'}
+						alt={'Contact us'}
+						folderName="home-banners"
+						bucketName="banners"
+						className="w-full h-[350px] sm:h-[520px] object-cover"
+					/>
+				</div>
+				<div className="w-fit mx-auto my-6 px-4 sm:px-12 space-y-4 flex flex-col">
+					<h2 className="text-lg sm:text-2xl border-b-4 border-tertiary pb-2 self-start">
+						Ethics and Compliance
+					</h2>
+					<p className="text-base sm:w-1/2">
+						Our commitment to ethics and compliance is at the heart of
+						everything we do, guiding our actions and decisions to ensure trust,
+						integrity, and transparency in every relationship.
+					</p>
+					<Button
+						onClick={() => router.replace('?request=quote')}
+						className="bg-green-400 hover:bg-green-500 text-black font-semibold w-56 h-12">
+						Let’s Talk
+					</Button>
 				</div>
 			</div>
 			<RequestForm open={!!searchParams?.request} />

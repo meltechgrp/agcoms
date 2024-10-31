@@ -141,7 +141,7 @@ export default function Contact() {
 					</div>
 				</div>
 				<div className="grid sm:grid-cols-[55%,auto]">
-					<div className="w-full h-[20rem] sm:h-[43rem]">
+					<div className="w-full h-[20rem] sm:h-[40rem]">
 						<Image
 							src={'lecture.jpg'}
 							className="w-full h-full"
@@ -150,7 +150,7 @@ export default function Contact() {
 							folderName="home-banners"
 						/>
 					</div>
-					<div className=" pt-10 px-4 sm:px-16 gap-4 flex flex-col">
+					<div className=" pt-10 w-full px-4 sm:px-8 gap-4 flex flex-col">
 						<h2 className="text-xl self-start font-bold border-b-4 border-tertiary pb-1 leading-tight">
 							WE'D LOVE TO HEAR FROM YOU
 						</h2>

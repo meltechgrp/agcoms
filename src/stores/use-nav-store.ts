@@ -21,7 +21,7 @@ const initialState: State = {
 		{
 			name: 'Parts & Services',
 			slug: 'parts',
-			link: 'https://www.deere.africa/en/parts-service/parts/',
+			link: '/parts',
 		},
 		{ name: 'Request for Quotation', slug: 'requests', link: '/requests' },
 		{ name: 'About Us', slug: 'about', link: '/about' },

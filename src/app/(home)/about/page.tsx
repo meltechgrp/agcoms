@@ -11,6 +11,7 @@ import AboutAgcoms from '@/components/about';
 import Mission from '@/components/about/mission';
 import Values from '@/components/about/values';
 import AboutRequest from '@/components/about/about-request';
+import Governace from '@/components/about/governace';
 
 export default function About() {
 	return (
@@ -36,6 +37,7 @@ export default function About() {
 			<AboutAgcoms />
 			<Mission />
 			<Values />
+			<Governace />
 			<AboutRequest />
 		</div>
 	);

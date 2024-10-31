@@ -126,11 +126,11 @@ const footerData = [
 			},
 			{
 				title: 'Forestry Equipment',
-				url: 'https://www.deere.africa/en/our-company/news-media/news-releases/2022/nov/competitions-terms-and-conditions/',
+				url: '/equipment/forestry',
 			},
 			{
 				title: "Tell us you're a Agcoms Fan",
-				url: '/about',
+				url: '/contact',
 			},
 		],
 	},
@@ -160,27 +160,23 @@ const footerData = [
 		links: [
 			{
 				title: 'Corporate office',
-				url: '/about',
+				url: '/contact',
 			},
 			{
 				title: 'Branch Locations',
-				url: '/about',
+				url: '/contact',
 			},
 			{
 				title: 'Customer Support',
-				url: '/about',
+				url: '/contact',
 			},
 			{
 				title: 'Additional Contacts',
-				url: '/about',
-			},
-			{
-				title: 'Additional Contacts',
-				url: '/about',
+				url: '/contact',
 			},
 			{
 				title: 'Social Media ',
-				url: '/about',
+				url: '/contact',
 			},
 		],
 	},

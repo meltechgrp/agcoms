@@ -18,22 +18,22 @@ export const midNavigationData: {
 }[] = [
 	{
 		title: 'Request quote',
-		link: '/request',
+		link: '/requests',
 		icon: NotepadText,
 	},
 	{
 		title: 'Offers & Discount',
-		link: '/request',
+		link: '/requests',
 		icon: Tag,
 	},
 	{
 		title: 'Parts',
-		link: 'https://www.deere.africa/en/parts-service/parts/',
+		link: '/parts',
 		icon: Shield,
 	},
 	{
-		title: 'Parts Online',
-		link: 'https://parts.deere.africa/index.php?route=common/home',
+		title: 'Expert Service',
+		link: '/parts#expert-service',
 		icon: ShoppingCart,
 	},
 	{

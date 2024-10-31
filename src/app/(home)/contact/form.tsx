@@ -48,7 +48,7 @@ export default function ContactForm({
 			toast.error(state.formError);
 		}
 		if (state?.data) {
-			toast.success('Message sent successfully!');
+			toast.success('Request sent successfully!');
 			form.reset();
 			setLoading(false);
 		}
@@ -58,7 +58,7 @@ export default function ContactForm({
 		<>
 			<div
 				className={cn(
-					'grid gap-6 max-w-lg mx-auto bg-white shadow-md rounded px-4 py-6',
+					'grid gap-6 max-w-lg w-full mx-auto bg-white shadow-md rounded px-4 py-6',
 					className
 				)}>
 				<Form {...form}>

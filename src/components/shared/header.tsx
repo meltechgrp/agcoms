@@ -5,7 +5,7 @@ import SearchForm from './search';
 import NavMenu from './nav-menu';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import logo from '@/assets/Agcoms Logo.png';
 import Image from 'next/image';
@@ -63,6 +63,19 @@ export default function Header() {
 	// 	};
 	// }, [isFixed]);
 
+	useEffect(() => {
+		let Tawk_API: any = 'Tawk_API',
+			Tawk_LoadStart = new Date();
+		(function () {
+			let s1 = document.createElement('script'),
+				s0 = document.getElementsByTagName('script')[0];
+			s1.async = true;
+			s1.src = 'https://embed.tawk.to/67233d6f4304e3196adb0bd8/1ibgqg2s2';
+			s1.charset = 'UTF-8';
+			s1.setAttribute('crossorigin', '*');
+			s0?.parentNode?.insertBefore(s1, s0);
+		})();
+	}, []);
 	const options = {
 		duration: 3000,
 		smooth: 'easeInOutQuad',

@@ -39,7 +39,7 @@ export default function AboutRequest() {
 								})
 							}
 							className="bg-green-500 hover:bg-green-500 text-white font-semibold w-56 h-12">
-							Get in Touch
+							Connect with Us
 						</Button>
 					</div>
 				</div>
