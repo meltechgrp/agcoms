@@ -26,7 +26,7 @@ export default function Solution() {
 					type="video/mp4"
 				/>
 			</video>
-			<div className=" h-full w-full  sm:bg-black/30 relative sm:absolute sm:z-30 top-0 sm:right-10 flex justify-center sm:justify-end px-4 py-6 sm:pt-[10rem] sm:px-20">
+			<div className=" h-full w-full  sm:bg-black/30 relative sm:absolute sm:z-30 top-0 right-0 left-0 sm:right-10 flex justify-center sm:justify-end px-4 py-6 sm:pt-[10rem] sm:px-20">
 				<div className="flex flex-col text-black sm:text-white items-end space-y-8 sm:space-y-16">
 					<div className="space-y-3 sm:space-y-1 flex flex-col items-center sm:items-end">
 						<h2 className="text-xl sm:text-4xl border-b-4 border-tertiary pb-1 self-start font-bold">
