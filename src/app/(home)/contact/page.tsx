@@ -1,4 +1,4 @@
-import MessageForm from '@/components/home/message-form';
+'use client';
 import Image from '@/components/shared/image';
 import {
 	Breadcrumb,
@@ -8,6 +8,7 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import ContactForm from './form';
 
 export default function Contact() {
 	return (
@@ -143,7 +144,7 @@ export default function Contact() {
 					<div className="w-full h-[20rem] sm:h-[43rem]">
 						<Image
 							src={'lecture.jpg'}
-							className=" w-full h-full"
+							className="w-full h-full"
 							alt={'agcoms banner'}
 							bucketName="banners"
 							folderName="home-banners"
@@ -153,7 +154,7 @@ export default function Contact() {
 						<h2 className="text-xl self-start font-bold border-b-4 border-tertiary pb-1 leading-tight">
 							WE'D LOVE TO HEAR FROM YOU
 						</h2>
-						<MessageForm />
+						<ContactForm />
 					</div>
 				</div>
 			</div>

@@ -17,13 +17,11 @@ import { MessageFormInput, MessageFormSchema } from '@/lib/validators/auth';
 import { useFormState } from 'react-dom';
 import { toast } from 'sonner';
 import { Loader } from 'lucide-react';
-import { Checkbox } from '../ui/checkbox';
 import { saveRequest } from '@/lib/actions/request-actions';
-import { useFormToggle } from '../form-wrapper';
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
-export default function MessageForm({
+export default function ContactForm({
 	className,
 	...props
 }: UserAuthFormProps) {
@@ -38,7 +36,6 @@ export default function MessageForm({
 			allowMarketing: false,
 		},
 	});
-	const router = useFormToggle();
 	const [loading, setLoading] = React.useState(false);
 	const [state, dispatch] = useFormState(saveRequest, undefined);
 
@@ -54,7 +51,6 @@ export default function MessageForm({
 			toast.success('Message sent successfully!');
 			form.reset();
 			setLoading(false);
-			router('request', 'quote');
 		}
 		setLoading(false);
 	}, [state?.formError, state?.fieldError, state?.data]);
@@ -151,34 +147,6 @@ export default function MessageForm({
 												placeholder="Please enter your message"
 												{...field}
 											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name="allowMarketing"
-								render={() => (
-									<FormItem>
-										<FormControl>
-											<div className="flex items-center gap-2">
-												<Checkbox
-													id="check"
-													checked={form.getValues('allowMarketing')}
-													onClick={() => {
-														form.setValue(
-															'allowMarketing',
-															!form.getValues('allowMarketing')
-														);
-													}}
-													className=" checked:bg-blue-600"
-												/>
-												<label htmlFor="check" className="text-sm font-normal">
-													Do you want to receive our marketing and promotional
-													information?
-												</label>
-											</div>
 										</FormControl>
 										<FormMessage />
 									</FormItem>
