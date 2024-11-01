@@ -8,8 +8,8 @@ model User {
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
   userType            UserType?
-  country             String?
   emailVerified       DateTime?
+  country             String?
   sessions            AuthSession[]
   images              Image[]
   passwordResetTokens PasswordResetTokens[]

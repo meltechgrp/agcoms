@@ -1,7 +1,7 @@
 'use client';
 import { uniqueId } from '@/lib/utils';
 import { Card } from '../ui/card';
-import { PenTool, Settings, ShieldCheck } from 'lucide-react';
+import { Handshake, PenTool, Settings, ShieldCheck } from 'lucide-react';
 import { getImageUrl } from '@/hooks/use-image-handler';
 
 export default function Choose() {
@@ -14,12 +14,12 @@ export default function Choose() {
 		backgroundSize: 'cover',
 		backgroundRepeat: 'no-repeat',
 		borderImage:
-			'linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0, .4)) fill 1',
+			'linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0, .7)) fill 1',
 	};
 	return (
 		<div className="py-4 sm:py-16">
 			<div className="flex px-4 sm:px-16  items-center flex-col gap-3">
-				<h1 className="text-2xl pt-10 sm:pt-0 border-b-4 border-tertiary pb-1 self-center sm:text-4xl">
+				<h1 className="text-2xl pt-10 sm:pt-0 border-bottom self-center sm:text-4xl">
 					Why Choose Us
 				</h1>
 				<p className="text-sm sm:text-base w-full sm:w-[50%] text-center">
@@ -33,10 +33,10 @@ export default function Choose() {
 				<div style={style} className=" py-20 sm:py-28">
 					<div className="grid px-4 sm:px-16  sm:grid-cols-3 gap-8">
 						{data.map((item) => (
-							<Card key={uniqueId()} className="p-4 py-8">
+							<Card key={uniqueId()} className="p-8 py-8">
 								<div className="flex flex-col gap-4">
-									<div className=" bg-tertiary rounded-full w-fit p-2">
-										<item.icon className="w-5 h-5 text-white" />
+									<div className=" bg-green-600 rounded-full w-fit p-2">
+										<item.icon className="w-8 h-8 text-white " />
 									</div>
 									<h2 className="text-lg sm:text-2xl text-tertiary">
 										{item.title}
@@ -71,6 +71,6 @@ const data = [
 		title: 'Expert Service',
 		description:
 			'With a team of highly trained and experienced technicians, we provide comprehensive service and support for all your agricultural equipment needs. From routine maintenance to complex repairs, our experts are dedicated to ensuring that your machines perform reliably under any conditions. ',
-		icon: ShieldCheck, // Icon representing expert, trusted service
+		icon: Handshake, // Icon representing expert, trusted service
 	},
 ];

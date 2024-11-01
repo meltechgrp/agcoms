@@ -1,11 +1,13 @@
 model ProductCategories {
-  id        String     @id @default(cuid())
-  name      String     @unique
-  slug      String     @unique
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  images    Image[]
-  products  Products[]
+  id           String     @id @default(cuid())
+  name         String     @unique
+  slug         String     @unique
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  description  String?
+  brochureLink String?
+  images       Image[]
+  products     Products[]
 }
 
 model Products {

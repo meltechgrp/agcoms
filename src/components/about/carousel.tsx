@@ -35,11 +35,9 @@ export default function AboutCarousel() {
 					))}
 				</CarouselContent>
 			</Carousel>
-			<div className=" absolute left-5 bottom-[1.5rem] sm:bottom-[5rem] space-y-2 sm:space-y-4  w-[70%] sm:w-[45%]">
-				<h1 className="text-base text-white backdrop-blur-sm rounded-lg bg-black/30 p-4 sm:p-8 sm:text-3xl flex sm:flex-col gap-1 sm:gap-2">
-					Meet Our Dynamic Team
-				</h1>
-				<p className="text-sm p-4 sm:p-8 sm:text-base font-medium text-white backdrop-blur-md rounded-lg bg-black/30">
+			<div className=" absolute p-6 sm:p-9 left-5 bottom-[1.5rem] backdrop-blur-md rounded-xl text-white bg-black/30 sm:bottom-[5rem] space-y-2 sm:space-y-3  w-[70%] sm:w-[45%]">
+				<h1 className="text-base  sm:text-3xl ">Meet Our Dynamic Team</h1>
+				<p className="text-sm ">
 					Together, we collaborate, innovate, and inspire, turning challenges
 					into opportunities and visions into reality. At AGCOMS, our people are
 					not just employees—they are family, united in our mission to build a

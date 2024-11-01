@@ -29,27 +29,27 @@ export default function FeaturedProducts() {
 
 const data = [
 	{
-		link: '/equipments/agriculture',
+		link: '/equipment/agriculture',
 		image: 'agri.png',
 		title: 'Agriculture',
 	},
 	// {
-	// 	link: '/equipments/lawn-garden',
+	// 	link: '/equipment/lawn-garden',
 	// 	image: 'lawn.png',
 	// 	title: 'Lawn & Garden',
 	// },
 	{
-		link: '/equipments/construction',
+		link: '/equipment/construction',
 		image: 'construction.png',
 		title: 'Construction',
 	},
 	{
-		link: '/equipments/golf-sports-turf',
+		link: '/equipment/golf-sports-turf',
 		image: 'sport.png',
 		title: 'Golf & Sports Turf',
 	},
 	{
-		link: '/equipments/forestry',
+		link: '/equipment/forestry',
 		image: 'forestry.png',
 		title: 'Forestry',
 	},

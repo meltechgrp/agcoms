@@ -1,13 +1,14 @@
+import Image from '../shared/image';
 import { Button } from '../ui/button';
 
 export default function Governace() {
 	return (
-		<div className="py-16 bg-center px-4 flex items-center justify-start sm:px-16">
-			<div className="flex  p-4 flex-col gap-8">
-				<h1 className="text-2xl self-start border-b-4 border-tertiary pb-1 sm:text-4xl">
+		<div className="grid sm:grid-cols-[60%,auto]">
+			<div className="p-4 sm:p-16 justify-center flex flex-col  space-y-6 ">
+				<h1 className="text-2xl self-start border-bottom sm:text-4xl">
 					Governance
 				</h1>
-				<p className="w-full sm:w-1/2 text-base">
+				<p className="text-sm sm:text-base leading-6 sm:leading-8">
 					Strong governance is essential to maintaining transparency and
 					accountability in our operations. Our leadership adheres to rigorous
 					governance practices, ensuring responsible decision-making, effective
@@ -23,6 +24,17 @@ export default function Governace() {
 					<Button className="bg-green-500 hover:bg-green-500 text-white font-semibold w-56 h-12">
 						Learn More
 					</Button>
+				</div>
+			</div>
+			<div className="h-full flex items-center">
+				<div className="w-full h-[10rem] px-4 sm:px-16 sm:h-[15rem]">
+					<Image
+						src={'chess.png'}
+						className="w-full h-full object-cover"
+						alt={'agcoms banner'}
+						bucketName="banners"
+						folderName="home-banners"
+					/>
 				</div>
 			</div>
 		</div>

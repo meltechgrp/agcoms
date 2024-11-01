@@ -29,7 +29,7 @@ const ProductCard = (props: Props) => {
 			</div>
 			<div className="">
 				<Link
-					href={`/equipments/${category?.slug}/${id}`}
+					href={`/equipment/${category?.slug}/${id}`}
 					className="flex flex-col gap-2 px-3 py-2">
 					<h2 className="text-base self-start border-b border-black">{name}</h2>
 					<HtmlText

@@ -5,7 +5,7 @@ export default function Mission() {
 		<div>
 			<div className="grid sm:grid-cols-2">
 				<div className="p-4 sm:p-16 justify-center flex flex-col  space-y-6 ">
-					<h1 className="text-2xl self-start border-b-4 border-tertiary pb-1 sm:text-4xl">
+					<h1 className="text-2xl self-start border-bottom sm:text-4xl">
 						Our Mission
 					</h1>
 					<p className="text-sm sm:text-base font-medium leading-6 sm:leading-8">

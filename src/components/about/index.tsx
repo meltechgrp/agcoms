@@ -29,22 +29,18 @@ export default function AboutAgcoms() {
 			<div
 				style={style}
 				className="py-16 h-[20rem] bg-center sm:h-[40rem] px-4 flex items-end sm:justify-end ">
-				<div className="p-4 hidden sm:flex flex-col text-white space-y-6 sm:backdrop-blur-md sm:w-1/2 sm:bg-black/30">
-					<h1 className="text-2xl self-start border-b-4 border-tertiary pb-1 sm:text-4xl">
+				<div className="p-8 sm:p-9 hidden sm:flex flex-col text-white space-y-6 sm:backdrop-blur-md sm:w-1/2 sm:bg-black/30">
+					<h1 className="text-2xl self-start border-bottom sm:text-4xl">
 						ABOUT US
 					</h1>
-					<p className="text-sm sm:text-base font-medium leading-6 sm:leading-8">
-						{content}
-					</p>
+					<p className="text-sm leading-6 sm:leading-8">{content}</p>
 				</div>
 			</div>
-			<div className="p-4 flex sm:hidden flex-col  space-y-6 ">
-				<h1 className="text-2xl self-start border-b-4 border-tertiary pb-1 sm:text-4xl">
+			<div className="p-8 sm:p-9 flex sm:hidden flex-col  space-y-6 ">
+				<h1 className="text-2xl self-start border-bottom sm:text-4xl">
 					ABOUT US
 				</h1>
-				<p className="text-sm sm:text-base font-medium leading-6 sm:leading-8">
-					{content}
-				</p>
+				<p className="text-sm leading-6 sm:leading-8">{content}</p>
 			</div>
 		</div>
 	);

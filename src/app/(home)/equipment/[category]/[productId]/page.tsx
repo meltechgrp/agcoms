@@ -29,15 +29,15 @@ async function Product({ params }: Props) {
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href="/equipments">
-							Equipments
+							href="/equipment">
+							Equipment
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					<BreadcrumbSeparator className=" text-blue-500 font-bold" />
 					<BreadcrumbItem>
 						<BreadcrumbLink
 							className="text-sm font-medium text-blue-500"
-							href={`/equipments/${product?.category.slug}`}>
+							href={`/equipment/${product?.category.slug}`}>
 							{product?.category.name}
 						</BreadcrumbLink>
 					</BreadcrumbItem>

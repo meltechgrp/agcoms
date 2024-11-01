@@ -42,7 +42,7 @@ function Contact({ searchParams }: Props) {
 			</Breadcrumb>
 			<div className="grid sm:grid-cols-2 gap-6 py-4">
 				<div className="flex flex-col  px-4 sm:px-12 space-y-4 pt-4 sm:pt-12">
-					<h2 className="text-lg sm:text-2xl border-b-4 border-tertiary pb-2 self-start">
+					<h2 className="text-lg sm:text-2xl border-bottom self-start">
 						Core Values and Code of Business Conduct
 					</h2>
 					<p className="text-gray-600 text-base sm:leading-7">
@@ -82,7 +82,7 @@ function Contact({ searchParams }: Props) {
 					/>
 				</div>
 				<div className="w-fit mx-auto my-6 px-4 sm:px-12 space-y-4 flex flex-col">
-					<h2 className="text-lg sm:text-2xl border-b-4 border-tertiary pb-2 self-start">
+					<h2 className="text-lg sm:text-2xl border-bottom self-start">
 						Ethics and Compliance
 					</h2>
 					<p className="text-base sm:w-1/2">

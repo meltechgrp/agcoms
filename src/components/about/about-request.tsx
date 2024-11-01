@@ -23,7 +23,7 @@ export default function AboutRequest() {
 				style={style}
 				className="py-16 h-[28rem] bg-center sm:h-[40rem] px-4 flex items-center justify-start sm:px-16">
 				<div className="flex backdrop-blur-sm sm:w-1/3 p-4 flex-col text-white gap-8">
-					<h1 className="text-2xl self-start border-b-4 border-tertiary pb-1 sm:text-4xl">
+					<h1 className="text-2xl self-start border-bottom sm:text-4xl">
 						Contact Us
 					</h1>
 					<p className="w-[20rem] sm:w-full">

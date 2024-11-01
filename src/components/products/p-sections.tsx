@@ -75,7 +75,7 @@ function ProductSections({ navData }: Props) {
 												<div>{p}</div>
 											) : (
 												<Link
-													href={`/equipments/${p.cat}/${p.id}`}
+													href={`/equipment/${p.cat}/${p.id}`}
 													key={p.id}
 													className=" text-sm w-fit text-green-600 font-semibold">
 													{p.name}

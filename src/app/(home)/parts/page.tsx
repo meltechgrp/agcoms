@@ -38,7 +38,7 @@ export default function Parts() {
 				<section
 					id="genuine-parts"
 					className="py-15 px-4 sm:px-16 bg-[#f3f1f1] space-y-6 h-[70vh] flex flex-col justify-center">
-					<h2 className="text-2xl sm:text-3xl self-start font-bold border-b-4 border-tertiary pb-1 leading-tight">
+					<h2 className="text-2xl sm:text-3xl self-start font-bold border-bottom leading-tight">
 						Genuine Parts
 					</h2>
 					<p className="text-gray-600 sm:w-1/2 text-base sm:text-lg leading-9">
@@ -63,7 +63,7 @@ export default function Parts() {
 						/>
 					</div>
 					<div className="  w-full px-4 py-10 sm:px-8 gap-4 flex flex-col">
-						<h2 className="text-2xl sm:text-3xl self-start font-bold border-b-4 border-tertiary pb-1 leading-tight">
+						<h2 className="text-2xl sm:text-3xl self-start font-bold border-bottom leading-tight">
 							Expert Service
 						</h2>
 						<p className=" text-base sm:text-lg leading-9">
@@ -80,7 +80,7 @@ export default function Parts() {
 				<section
 					id="online-support"
 					className="py-15 px-4 sm:px-16 bg-[#f3f1f1] space-y-6 h-[70vh] flex flex-col justify-center">
-					<h2 className="text-2xl sm:text-3xl self-start font-bold border-b-4 border-tertiary pb-1 leading-tight">
+					<h2 className="text-2xl sm:text-3xl self-start font-bold border-bottom leading-tight">
 						Online Support & Assistance
 					</h2>
 					<p className="text-gray-600 sm:w-1/2 text-base sm:text-lg leading-9">
@@ -127,8 +127,8 @@ export default function Parts() {
 				</section>
 
 				<section id="order-online" className="grid sm:grid-cols-2 gap-y-6">
-					<div className=" py-10 w-full px-4 sm:px-8 gap-4 flex flex-col">
-						<h2 className="text-2xl sm:text-3xl self-start font-bold border-b-4 border-tertiary pb-1 leading-tight">
+					<div className=" py-10 w-full px-8 sm:px-9 gap-4 flex flex-col">
+						<h2 className="text-2xl sm:text-3xl self-start font-bold border-bottom leading-tight">
 							Order Online
 						</h2>
 						<p className=" text-base sm:text-lg leading-9">

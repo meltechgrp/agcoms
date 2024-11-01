@@ -21,19 +21,24 @@ export const getProCats = async () => {
 };
 
 export const getProNavData = async () => {
-	const nav = await prisma.products.findMany({
-		select: {
-			id: true,
-			name: true,
-			category: {
-				select: {
-					name: true,
-					slug: true,
+	try {
+		const nav = await prisma.products.findMany({
+			select: {
+				id: true,
+				name: true,
+				category: {
+					select: {
+						name: true,
+						slug: true,
+					},
 				},
 			},
-		},
-	});
-	return nav ? nav : [];
+		});
+		return nav ? nav : [];
+	} catch (error) {
+		console.log(error);
+		return [];
+	}
 };
 
 export type ProNavData = Awaited<ReturnType<typeof getProNavData>>;

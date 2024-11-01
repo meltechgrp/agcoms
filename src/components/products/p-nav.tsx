@@ -59,19 +59,19 @@ function ProductNavigation() {
 			if (menuElement) {
 				const scrollY = window.scrollY;
 
-				if (scrollY > 70) {
+				if (scrollY > 300) {
 					gsap.to(menuElement, {
 						position: 'fixed',
-						top: 105,
+						top: 0,
 						z: 500,
-						duration: 0.3,
+						duration: 0.9,
 						ease: 'power1.out',
 					});
 				} else {
 					gsap.to(menuElement, {
 						position: 'relative',
 						top: 0,
-						duration: 0.3,
+						duration: 0.9,
 						ease: 'power1.out',
 					});
 				}

@@ -139,19 +139,19 @@ const footerData = [
 		links: [
 			{
 				title: 'Genuine Parts',
-				url: '#',
+				url: '/parts',
 			},
 			{
 				title: 'Expert Service',
-				url: '#',
+				url: '/parts#expert-service',
 			},
 			{
 				title: 'Online Support and Assistance',
-				url: '#',
+				url: '/parts#online-support',
 			},
 			{
 				title: 'Order Online',
-				url: '#',
+				url: '/parts#order',
 			},
 		],
 	},

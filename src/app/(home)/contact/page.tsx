@@ -30,20 +30,29 @@ export default function Contact() {
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<div>
-				<div className="py-10 space-y-4 flex flex-col items-center">
-					<h2 className="text-2xl font-bold border-b-4 border-tertiary pb-1 leading-tight">
-						CONTACT US
-					</h2>
-					<p className="text-gray-600 text-center sm:w-1/2 text-base sm:text-lg leading-relaxed">
-						We’re here to support you every step of the way. Connect with us
-						today to learn more about how AGCOMS can enhance your productivity
-						and success.
-					</p>
+			<div className="space-y-8 grid">
+				<div className="relative  space-y-4 flex flex-col items-center">
+					<Image
+						src={'lecture.jpg'}
+						className="w-full h-[28rem] sm:h-[44rem]"
+						alt={'agcoms banner'}
+						bucketName="banners"
+						folderName="home-banners"
+					/>
+					<div className=" absolute flex flex-col left-5 bottom-[6rem] sm:bottom-[10rem] space-y-2 sm:space-y-4 text-white backdrop-blur-sm rounded-xl bg-black/30 w-[70%] sm:w-[45%] px-8 py-7 sm:p-10">
+						<h1 className="text-base sm:text-3xl border-bottom self-start flex ">
+							CONTACT US
+						</h1>
+						<p className="text-[11px] line-clamp-5 sm:line-clamp-none sm:text-sm">
+							We’re here to support you every step of the way. Connect with us
+							today to learn more about how AGCOMS can enhance your productivity
+							and success.
+						</p>
+					</div>
 				</div>
-				<div className="flex flex-col-reverse sm:grid sm:grid-cols-[55%,auto]">
+				<div className="grid sm:grid-cols-[55%,auto]">
 					<div className="space-y-6 flex flex-col py-10  px-4 sm:px-16">
-						<h2 className="text-xl self-start font-bold border-b-4 border-tertiary pb-1 leading-tight">
+						<h2 className="text-xl self-start font-bold border-bottom leading-tight">
 							Company Information
 						</h2>
 						<div className="grid sm:grid-cols-2 sm:gap-10 gap-6">
@@ -131,30 +140,21 @@ export default function Contact() {
 							</div>
 						</div>
 					</div>
-					<div className="w-full h-[20rem] sm:h-[35rem]">
+					<div className=" pt-10 sm:pb-16 w-full px-4 sm:px-8 gap-4 flex flex-col">
+						<h2 className="text-xl self-start font-bold border-bottom leading-tight">
+							WE'D LOVE TO HEAR FROM YOU
+						</h2>
+						<ContactForm />
+					</div>
+				</div>
+				<div className="grid">
+					<div className="w-full h-[20rem] sm:h-[30rem]">
 						<iframe
 							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.4580178777443!2d7.053832574308436!3d4.8201141964698355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cb0eae04fd8f%3A0xe54d33191baba991!2s189%20Peter%20Odili%20Rd%2C%20Trans%20Amadi%2C%20Port%20Harcourt%20500101%2C%20Rivers%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1698651000000!5m2!1sen!2sus"
 							width="100%"
 							height="100%"
 							className="border-0"
 							loading="lazy"></iframe>
-					</div>
-				</div>
-				<div className="grid sm:grid-cols-[55%,auto]">
-					<div className="w-full h-[20rem] sm:h-[40rem]">
-						<Image
-							src={'lecture.jpg'}
-							className="w-full h-full"
-							alt={'agcoms banner'}
-							bucketName="banners"
-							folderName="home-banners"
-						/>
-					</div>
-					<div className=" pt-10 w-full px-4 sm:px-8 gap-4 flex flex-col">
-						<h2 className="text-xl self-start font-bold border-b-4 border-tertiary pb-1 leading-tight">
-							WE'D LOVE TO HEAR FROM YOU
-						</h2>
-						<ContactForm />
 					</div>
 				</div>
 			</div>

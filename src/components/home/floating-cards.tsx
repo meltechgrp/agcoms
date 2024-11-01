@@ -30,7 +30,7 @@ export default function FloatingCards(props: Props) {
 	return (
 		<div className="sm:py-6 bg-gray-50 flex flex-col pb-6 sm:pb-16 gap-8">
 			<div className="flex px-4 sm:px-16  items-center flex-col gap-3">
-				<h1 className="text-2xl pt-10 sm:pt-0 border-b-4 border-tertiary pb-1 self-center sm:text-4xl">
+				<h1 className="text-2xl pt-10 sm:pt-0 border-bottom self-center sm:text-4xl">
 					Equipment
 				</h1>
 				<p className="text-sm sm:text-base w-full sm:w-[50%] text-center">

@@ -4,7 +4,7 @@ export default function Values() {
 	return (
 		<div className="py-20 bg-gray-100">
 			<div className="p-4 sm:p-16 justify-center flex flex-col  space-y-8 ">
-				<h1 className="text-2xl self-center border-b-4 border-tertiary pb-1 sm:text-4xl">
+				<h1 className="text-2xl self-center border-bottom sm:text-4xl">
 					Our Values
 				</h1>
 				<div className="grid grid-cols-1 mx-auto md:grid-cols-3 gap-10">

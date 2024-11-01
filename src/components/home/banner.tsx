@@ -13,7 +13,7 @@ export default function Banner() {
 				folderName="home-banners"
 			/>
 			<div className=" absolute flex flex-col left-5 bottom-[1.5rem] sm:bottom-[5rem] space-y-2 sm:space-y-4 text-white backdrop-blur-sm rounded-xl bg-black/30 w-[60%] sm:w-[45%] px-4 py-7 sm:p-10">
-				<h1 className="text-base sm:text-3xl border-b-4 border-tertiary pb-1 self-start flex ">
+				<h1 className="text-base sm:text-3xl border-bottom self-start flex ">
 					Power Your Progress With AGCOMS
 				</h1>
 				<p className="text-[11px] line-clamp-5 sm:line-clamp-none sm:text-sm">
