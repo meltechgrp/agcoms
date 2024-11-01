@@ -75,9 +75,9 @@ function Product(props: { products: any }) {
 	return (
 		<>
 			<div>
-				<Link href={'/equipments'}>
+				<Link href={'/equipment'}>
 					<MenubarItem className="text-sm flex items-center px-2 font-semibold">
-						All Equipments (A -Z)
+						All Equipment (A -Z)
 					</MenubarItem>
 				</Link>
 			</div>

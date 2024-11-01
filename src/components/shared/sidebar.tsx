@@ -69,7 +69,7 @@ function Sidebar() {
 													<SheetClose
 														onClick={() => setState1(false)}
 														className="text-sm flex items-center px-2 font-medium">
-														All equipments (A -Z)
+														All equipment (A -Z)
 													</SheetClose>
 												</Link>
 											</div>

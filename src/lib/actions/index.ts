@@ -46,13 +46,13 @@ export type ProNavData = Awaited<ReturnType<typeof getProNavData>>;
 export async function getDashboardData() {
 	try {
 		const data = await prisma.$transaction(async (tx) => {
-			const equipments = await tx.products.count();
+			const equipment = await tx.products.count();
 			const admins = await tx.user.count();
 			const posts = await tx.posts.count();
 			const requests = await tx.message.count();
 
 			return {
-				equipments,
+				equipment,
 				admins,
 				posts,
 				requests,
@@ -62,7 +62,7 @@ export async function getDashboardData() {
 	} catch (error) {
 		console.log(error);
 		return {
-			equipments: 0,
+			equipment: 0,
 			admins: 0,
 			posts: 0,
 			requests: 0,

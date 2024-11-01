@@ -33,8 +33,8 @@ export default async function Dashboard() {
 	});
 	const grpahCardData = [
 		{
-			title: 'Total Equipments',
-			value: info.equipments,
+			title: 'Total Equipment',
+			value: info.equipment,
 			image: g1,
 		},
 		{

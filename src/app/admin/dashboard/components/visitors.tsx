@@ -84,7 +84,7 @@ type Colors = {
 	[K in keyof DashboardData]: string;
 };
 const colors: Colors = {
-	equipments: 'bg-[#0b1058]',
+	equipment: 'bg-[#0b1058]',
 	admins: 'bg-[#a9be99]',
 	posts: 'bg-[#dad3cc]',
 	requests: 'bg-[#c09f80]',

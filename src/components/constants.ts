@@ -24,11 +24,11 @@ export const AppRoutes = [
 		hasAction: true,
 	},
 	{
-		path: '/admin/equipments',
-		name: 'Equipments',
+		path: '/admin/equipment',
+		name: 'Equipment',
 		icon: Package,
 		section: 'home',
-		note: 'Can add, edit and delete equipments',
+		note: 'Can add, edit and delete equipment',
 		hasAction: true,
 	},
 	{
