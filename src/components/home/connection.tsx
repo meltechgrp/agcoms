@@ -40,7 +40,7 @@ const data = [
 	{
 		title: 'Get Connected!',
 		url: 'connect1.jpg',
-		link: '/request',
+		link: '/requests',
 	},
 	{
 		title: 'Manage Your Farm, Remotely',

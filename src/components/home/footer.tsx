@@ -75,7 +75,7 @@ export default function Footer() {
 				<div className="flex flex-col-reverse sm:flex-row justify-between gap-3">
 					<div className="flex justify-center">
 						<span className="text-xs font-bold text-gray-500">
-							Copyright © 2024 Agcoms Company. All Rights Reserved.
+							Copyright © 2024 Agcoms.
 						</span>
 					</div>
 					<div className="flex justify-center space-x-4">
