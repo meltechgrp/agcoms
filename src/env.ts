@@ -5,5 +5,9 @@ const schema = z.object({
 	NEXT_PUBLIC_APP_URL: z.string(),
 	NODE_ENV: z.string(),
 	WHITELISTED_EMAILS: z.string(),
+	SMTP_HOST: z.string(),
+	SMTP_PORT: z.string(),
+	SMTP_PASSWORD: z.string(),
+	SMTP_USER: z.string(),
 });
 export const env = schema.parse(process.env);

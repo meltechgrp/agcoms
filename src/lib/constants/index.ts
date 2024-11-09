@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 
+export const EMAIL_SENDER = '"Agcoms Admin" <contact@agcomsinternational.com>';
 export const midNavigationData: {
 	title: string;
 	link: string;
