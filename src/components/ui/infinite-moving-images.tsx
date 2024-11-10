@@ -93,7 +93,7 @@ export const InfiniteMovingImages = ({
 				{items.map((item, idx) => (
 					<Link href={`/equipment/${item?.category}/${item.id}`}>
 						<li
-							className="w-[250px] h-[14rem] overflow-hidden shadow-md md:h-[16rem] max-w-full relative rounded-2xl flex-shrink-0 md:w-[320px]"
+							className="w-[250px] h-[14rem] overflow-hidden shadow-md lg:h-[16rem] max-w-full relative rounded-2xl flex-shrink-0 lg:w-[320px]"
 							key={item.id}>
 							<Image
 								src={item.url}

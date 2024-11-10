@@ -63,19 +63,19 @@ export default function Header() {
 	// 	};
 	// }, [isFixed]);
 
-	useEffect(() => {
-		let Tawk_API: any = 'Tawk_API',
-			Tawk_LoadStart = new Date();
-		(function () {
-			let s1 = document.createElement('script'),
-				s0 = document.getElementsByTagName('script')[0];
-			s1.async = true;
-			s1.src = 'https://embed.tawk.to/67233d6f4304e3196adb0bd8/1ibgqg2s2';
-			s1.charset = 'UTF-8';
-			s1.setAttribute('crossorigin', '*');
-			s0?.parentNode?.insertBefore(s1, s0);
-		})();
-	}, []);
+	// useEffect(() => {
+	// 	let Tawk_API: any = 'Tawk_API',
+	// 		Tawk_LoadStart = new Date();
+	// 	(function () {
+	// 		let s1 = document.createElement('script'),
+	// 			s0 = document.getElementsByTagName('script')[0];
+	// 		s1.async = true;
+	// 		s1.src = 'https://embed.tawk.to/67233d6f4304e3196adb0bd8/1ibgqg2s2';
+	// 		s1.charset = 'UTF-8';
+	// 		s1.setAttribute('crossorigin', '*');
+	// 		s0?.parentNode?.insertBefore(s1, s0);
+	// 	})();
+	// }, []);
 	const options = {
 		duration: 3000,
 		smooth: 'easeInOutQuad',
@@ -90,19 +90,19 @@ export default function Header() {
 				)}>
 				<div
 					className={cn(
-						'flex h-12 md:h-[4.8rem] w-full items-center gap-4 py-0 px-4 md:px-6 md:border-b bg-background',
+						'flex h-12 lg:h-[4.8rem] w-full items-center gap-4 py-0 px-4 lg:px-6 lg:border-b bg-background',
 						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}>
 					<Link href={'/'}>
 						<Image
 							src={logo}
 							style={{ width: 'auto', height: 50 }}
-							className="w-32 md:w-36 object-cover filter brightness-75"
+							className="w-32 lg:w-36 object-cover filter brightness-75"
 							alt="Agcoms logo"
 						/>
 					</Link>
-					<div className="ml-auto flex space-x-4 flex-1 justify-end md:flex-initial items-center h-full">
-						<SearchForm containerClassName="hidden md:block" />
+					<div className="ml-auto flex space-x-4 flex-1 justify-end lg:flex-initial items-center h-full">
+						<SearchForm containerClassName="hidden lg:block" />
 						<Button
 							variant="outline"
 							onClick={() =>
@@ -110,10 +110,10 @@ export default function Header() {
 									scroll: false,
 								})
 							}
-							className=" hidden md:block px-2 md:px-4 hover:bg-gray-100 bg-transparent border-tertiary focus-visible:ring-0 focus-visible:ring-transparent text-black">
+							className=" hidden lg:block px-2 lg:px-4 hover:bg-gray-100 bg-transparent border-tertiary focus-visible:ring-0 focus-visible:ring-transparent text-black">
 							<div className="flex space-x-2 items-center text-sm text-gray-600">
 								<CircleHelp className="text-tertiary" />
-								<span className="hidden md:flex">Request quote</span>
+								<span className="hidden lg:flex">Request quote</span>
 							</div>
 						</Button>
 						<Sidebar />
@@ -121,14 +121,14 @@ export default function Header() {
 				</div>
 				<div
 					className={cn(
-						'bg-gray-300 w-full px-4 py-2 block md:hidden',
+						'bg-gray-300 w-full px-4 py-2 block lg:hidden',
 						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}>
 					<SearchForm className="bg-white text-black border border-black flex-row-reverse" />
 				</div>
 				<NavMenu
 					className={cn(
-						'hidden md:flex h-10 w-full items-center gap-4 border-b bg-background px-4 md:px-6',
+						'hidden lg:flex h-10 w-full items-center gap-4 border-b bg-background px-4 lg:px-6',
 						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}
 				/>

@@ -55,11 +55,11 @@ export default async function Dashboard() {
 	];
 	return (
 		<>
-			<div className="flex-col md:flex w-full">
+			<div className="flex-col lg:flex w-full">
 				<div className="flex-1 space-y-10 ">
 					<div className=" mt-1 mb-3 px-1 pt-2 flex flex-row justify-between items-center">
 						<div>
-							<h1 className=" font-[RobotoBold] md:text-2xl capitalize text-xl md:text-2xl">
+							<h1 className=" font-[RobotoBold] lg:text-2xl capitalize text-xl lg:text-2xl">
 								Hello {user.firstName} {user.lastName} 👋
 							</h1>
 							<h4 className=" font-[RobotoLight] mt-1.5 lg:text-sm text-xs">
@@ -67,16 +67,16 @@ export default async function Dashboard() {
 							</h4>
 						</div>
 					</div>
-					<div className="flex-1 grid gap-2.5 md:gap-4">
-						<div className="grid grid-cols-1 md:grid-cols-2  gap-2.5 md:gap-4">
-							<div className="grid grid-cols-2  gap-2.5 md:gap-4">
+					<div className="flex-1 grid gap-2.5 lg:gap-4">
+						<div className="grid grid-cols-1 lg:grid-cols-2  gap-2.5 lg:gap-4">
+							<div className="grid grid-cols-2  gap-2.5 lg:gap-4">
 								{grpahCardData.map((d) => (
 									<GraphCard key={d.title} data={d} />
 								))}
 							</div>
 							<Visitors data={info} />
 						</div>
-						<div className="grid grid-cols-1 md:grid-cols-[60%,auto]  gap-2.5 md:gap-4">
+						<div className="grid grid-cols-1 lg:grid-cols-[60%,auto]  gap-2.5 lg:gap-4">
 							<RecentRequests requests={data} className=" " />
 							<Stats data={products} />
 						</div>

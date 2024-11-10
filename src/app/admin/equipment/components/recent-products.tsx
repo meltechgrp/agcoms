@@ -12,7 +12,7 @@ interface RecentProps {
 function RecentProducts({ data }: RecentProps) {
 	return (
 		<div>
-			<div className="grid md:grid-cols-3 gap-2 ">
+			<div className="grid lg:grid-cols-3 gap-2 ">
 				{data.map((b) => (
 					<Card
 						key={b.id}

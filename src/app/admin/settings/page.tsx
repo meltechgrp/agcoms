@@ -38,15 +38,15 @@ export default async function page(props: Props) {
 					</div>
 					<div className="ml-auto"></div>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-[40%,auto] p-4 gap-4 py-4 md:py-12">
+				<div className="grid grid-cols-1 lg:grid-cols-[40%,auto] p-4 gap-4 py-4 lg:py-12">
 					<div className="">
 						<h4 className="font-medium text-sm">Account email address</h4>
 					</div>
-					<div className=" md:place-self-start space-y-4 pr-6">
+					<div className=" lg:place-self-start space-y-4 pr-6">
 						{emails.map((email: any) => (
 							<div key={email} className="flex space-x-4 items-center">
 								<Input
-									className="w-full md:min-w-[350px] disabled:bg-gray-50 border-gray-300"
+									className="w-full lg:min-w-[350px] disabled:bg-gray-50 border-gray-300"
 									defaultValue={email}
 									disabled
 									readOnly

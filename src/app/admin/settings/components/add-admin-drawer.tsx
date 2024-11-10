@@ -63,7 +63,7 @@ export default function AddAdminDrawer(props: Props) {
 			open={open}
 			sheetKey="account"
 			sheetValue={account || 'new'}
-			className="md:w-[460px] w-full pb-4">
+			className="lg:w-[460px] w-full pb-4">
 			<div>
 				{' '}
 				<h3>{account === 'new' ? 'Add new admin' : 'Update admin'}</h3>

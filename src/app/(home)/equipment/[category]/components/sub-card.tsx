@@ -27,7 +27,7 @@ function SubCard(props: Props) {
 					/>
 				</div>
 				<div className="space-y-2 px-4 pb-2">
-					<h3 className="text-base md:text-xl capitalize text-green-600 font-bold">
+					<h3 className="text-base lg:text-xl capitalize text-green-600 font-bold">
 						{name}
 					</h3>
 					{description && (

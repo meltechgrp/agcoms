@@ -25,7 +25,7 @@
 // 	return (
 // 		<>
 // 			<div className="w-full flex-1">
-// 				<form className="w-[200px] md:w-[450px]">
+// 				<form className="w-[200px] lg:w-[450px]">
 // 					<div className="relative">
 // 						<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
 // 						<Input
@@ -42,18 +42,18 @@
 // 						variant="outline"
 // 						aria-label="Your profile"
 // 						className={
-// 							'w-[50px] border-none md:border bg-transparent md:w-[250px] focus-within:ring-0 pl-3 md:pl-auto justify-end md:justify-between h-12'
+// 							'w-[50px] border-none lg:border bg-transparent lg:w-[250px] focus-within:ring-0 pl-3 lg:pl-auto justify-end lg:justify-between h-12'
 // 						}>
-// 						<Avatar className="mr-2 h-8 w-8 md:w-10 md-h-10">
+// 						<Avatar className="mr-2 h-8 w-8 lg:w-10 md-h-10">
 // 							<AvatarFallback>
 // 								{user.first_name?.charAt(0) || ''}
 // 								{user.last_name?.charAt(0) || ''}
 // 							</AvatarFallback>
 // 						</Avatar>
-// 						<span className="hidden md:flex">
+// 						<span className="hidden lg:flex">
 // 							{user.first_name || ''} {user.last_name || ''}
 // 						</span>
-// 						<CaretSortIcon className="ml-auto hidden md:flex h-4 w-4 shrink-0 opacity-50" />
+// 						<CaretSortIcon className="ml-auto hidden lg:flex h-4 w-4 shrink-0 opacity-50" />
 // 					</Button>
 // 				</DropdownMenuTrigger>
 // 				<DropdownMenuContent

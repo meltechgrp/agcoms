@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 export function Search() {
 	return (
 		<div>
-			<form className=" w-[40rem] items-center hidden md:flex gap-2 ">
+			<form className=" w-[40rem] items-center hidden lg:flex gap-2 ">
 				<Input
 					type="search"
 					placeholder="Search for a product..."

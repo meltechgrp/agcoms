@@ -3,13 +3,13 @@ import { GlareCard } from '../ui/glare-card';
 export default function Values() {
 	return (
 		<div className="py-20 bg-gray-100">
-			<div className="p-4 md:p-16 justify-center flex flex-col  space-y-8 ">
-				<h1 className="text-2xl self-center border-bottom md:text-4xl">
+			<div className="p-4 lg:p-16 justify-center flex flex-col  space-y-8 ">
+				<h1 className="text-2xl self-center border-bottom lg:text-4xl">
 					Our Values
 				</h1>
-				<div className="grid grid-cols-1 mx-auto md:grid-cols-3 gap-10">
+				<div className="grid grid-cols-1 mx-auto lg:grid-cols-3 gap-10">
 					<GlareCard className="flex bg-white shadow-md backdrop-blur-md text-black flex-col items-start rounded justify-start py-8 px-6">
-						<h4 className="font-bold text-lg md:text-xl border-b-4 self-start border-tertiary pb-1">
+						<h4 className="font-bold text-lg lg:text-xl border-b-4 self-start border-tertiary pb-1">
 							Integrity, innovation, and customer satisfaction
 						</h4>
 						<p className="font-normal text-base mt-4">
@@ -20,7 +20,7 @@ export default function Values() {
 						</p>
 					</GlareCard>
 					<GlareCard className="flex bg-white shadow-md backdrop-blur-md text-black flex-col items-start rounded justify-start py-8 px-6">
-						<h4 className="font-bold text-lg md:text-xl border-b-4 self-start border-tertiary pb-1">
+						<h4 className="font-bold text-lg lg:text-xl border-b-4 self-start border-tertiary pb-1">
 							Global Reach with Local Support
 						</h4>
 						<p className="font-normal text-base mt-4">
@@ -32,7 +32,7 @@ export default function Values() {
 						</p>
 					</GlareCard>
 					<GlareCard className="flex bg-white shadow-md backdrop-blur-md text-black flex-col items-start rounded justify-start py-8 px-6">
-						<h4 className="font-bold text-lg md:text-xl border-b-4 self-start border-tertiary pb-1">
+						<h4 className="font-bold text-lg lg:text-xl border-b-4 self-start border-tertiary pb-1">
 							Our Commitment to Excellence
 						</h4>
 						<p className="font-normal text-base mt-4">

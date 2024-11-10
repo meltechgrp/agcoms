@@ -10,8 +10,8 @@ import { cn, uniqueId } from '@/lib/utils';
 
 export default function Footer() {
 	return (
-		<div className=" md:px-12 pt-7 md:pt-16 py-16 mt-6 bg-[#e5e5e5] space-y-8">
-			<div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-gray-300 pb-10">
+		<div className=" lg:px-12 pt-7 lg:pt-16 py-16 mt-6 bg-[#e5e5e5] space-y-8">
+			<div className="hidden lg:grid lg:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-gray-300 pb-10">
 				{footerData.map((fl) => (
 					<div key={fl?.title} className=" space-y-4">
 						<h2 className="text-md font-bold">{fl.title}</h2>
@@ -34,7 +34,7 @@ export default function Footer() {
 					</div>
 				))}
 			</div>
-			<Accordion type="single" collapsible className=" md:hidden w-full">
+			<Accordion type="single" collapsible className=" lg:hidden w-full">
 				{footerData.map((fl, i) => (
 					<AccordionItem key={uniqueId()} value={`item-${i}`}>
 						<AccordionTrigger
@@ -56,7 +56,7 @@ export default function Footer() {
 				))}
 			</Accordion>
 			<div className="space-y-10 px-4">
-				<div className="flex justify-center w-full flex-wrap md:w-[45%] mx-auto gap-4 md:gap-6">
+				<div className="flex justify-center w-full flex-wrap lg:w-[45%] mx-auto gap-4 lg:gap-6">
 					{simpleF.map((s) => (
 						<Link
 							href={s.link}
@@ -72,7 +72,7 @@ export default function Footer() {
 						</Link>
 					))}
 				</div>
-				<div className="flex flex-col-reverse md:flex-row justify-between gap-3">
+				<div className="flex flex-col-reverse lg:flex-row justify-between gap-3">
 					<div className="flex justify-center">
 						<span className="text-xs font-bold text-gray-500">
 							Copyright © 2024 Agcoms.

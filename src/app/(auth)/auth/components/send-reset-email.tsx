@@ -72,7 +72,7 @@ export function SendResetEmail() {
 						)}
 					/>
 
-					<div className="mt-6 flex flex-col md:flex-row-reverse gap-4">
+					<div className="mt-6 flex flex-col lg:flex-row-reverse gap-4">
 						<Button disabled={pending} className="w-full" type="submit">
 							{pending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
 							Submit

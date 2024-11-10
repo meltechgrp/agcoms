@@ -13,7 +13,7 @@ export default function Error({
 	console.log(error);
 	return (
 		<div className="space-y-4">
-			<h2 className="text-xl md:text-2xl">Something went wrong!</h2>
+			<h2 className="text-xl lg:text-2xl">Something went wrong!</h2>
 			<Button onClick={() => reset()}>Try again</Button>
 		</div>
 	);

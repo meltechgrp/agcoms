@@ -17,7 +17,7 @@ async function Products() {
 	const data = await getProNavData();
 	return (
 		<div>
-			<Breadcrumb className="px-4 md:px-12 py-6">
+			<Breadcrumb className="px-4 lg:px-12 py-6">
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink
@@ -34,23 +34,23 @@ async function Products() {
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<div className=" pt-4 md:py-4">
-				<div className="md:pb-8 relative md:h-[500px] gap-6 flex flex-col justify-center items-center">
-					<div className=" relative w-screen md:w-[1350px] object-fill h-[150px] md:h-[500px] md:top-0 md:left-0">
+			<div className=" pt-4 lg:py-4">
+				<div className="lg:pb-8 relative lg:h-[500px] gap-6 flex flex-col justify-center items-center">
+					<div className=" relative w-screen lg:w-[1350px] object-fill h-[150px] lg:h-[500px] lg:top-0 lg:left-0">
 						<Image
 							src={'equipment.jpg'}
 							alt={'Equipment'}
 							scale={true}
-							className=" md:object-cover relative md:absolute w-full h-full"
+							className=" lg:object-cover relative lg:absolute w-full h-full"
 							bucketName="banners"
 							folderName="home-banners"
 						/>
 					</div>
-					<div className=" hidden absolute md:flex flex-col left-5 bottom-[1.5rem] md:bottom-[5rem] space-y-2 md:space-y-4 text-white backdrop-blur-md rounded-xl bg-black/30 w-[60%] md:w-[45%] px-7 py-8 md:p-10">
-						<h1 className="text-base md:text-3xl border-bottom self-start flex ">
+					<div className=" hidden absolute lg:flex flex-col left-5 bottom-[1.5rem] lg:bottom-[5rem] space-y-2 lg:space-y-4 text-white backdrop-blur-md rounded-xl bg-black/30 w-[60%] lg:w-[45%] px-7 py-8 lg:p-10">
+						<h1 className="text-base lg:text-3xl border-bottom self-start flex ">
 							Equipment Brochure
 						</h1>
-						<p className="text-sm line-clamp-5 md:line-clamp-none md:text-sm">
+						<p className="text-sm line-clamp-5 lg:line-clamp-none lg:text-sm">
 							Explore the potential of AGCOMS International’s robust equipment
 							lineup. Our comprehensive brochure offers detailed insights into
 							our range of machinery for agriculture, construction, forestry,
@@ -74,8 +74,8 @@ async function Products() {
 						</div>
 					</div>
 				</div>
-				<div className=" md:hidden py-6 flex flex-col gap-3 px-4 ">
-					<h1 className="text-base md:text-3xl border-bottom self-start flex ">
+				<div className=" lg:hidden py-6 flex flex-col gap-3 px-4 ">
+					<h1 className="text-base lg:text-3xl border-bottom self-start flex ">
 						Equipment Brochure
 					</h1>
 					<p className="text-sm">

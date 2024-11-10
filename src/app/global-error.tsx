@@ -20,7 +20,7 @@ export default function GlobalError({
 		// global-error must include html and body tags
 		<html>
 			<body className="w-screen h-screen bg-[f5f4f4] text-white justify-center items-center flex-col gap-2">
-				<h2 className="text-xl md:text-3xl font-bold text-red-500">
+				<h2 className="text-xl lg:text-3xl font-bold text-red-500">
 					Something went wrong!
 				</h2>
 				<Button onClick={() => reset()}>Try again</Button>

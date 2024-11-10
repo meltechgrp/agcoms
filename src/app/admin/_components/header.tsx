@@ -15,16 +15,16 @@ interface Props {
 function Header(props: Props) {
 	const [open, setOpen] = useState(false);
 	return (
-		<header className="md:hidden flex min-h-16 py-4 items-center w-full gap-4 border-b bg-muted/40 px-4 md:h-[60px] md:px-6">
+		<header className="lg:hidden flex min-h-16 py-4 items-center w-full gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
 			<Sheet open={open} onOpenChange={setOpen}>
 				<SheetTrigger asChild>
-					<Button variant="outline" size="icon" className="shrink-0 md:hidden">
+					<Button variant="outline" size="icon" className="shrink-0 lg:hidden">
 						<Menu className="h-5 w-5" />
 						<span className="sr-only">Toggle navigation menu</span>
 					</Button>
 				</SheetTrigger>
 				<SheetContent side="left" className="flex flex-col w-fit px-2">
-					<MainNav {...props} setOpen={setOpen} className="block md:hidden" />
+					<MainNav {...props} setOpen={setOpen} className="block lg:hidden" />
 				</SheetContent>
 			</Sheet>
 		</header>

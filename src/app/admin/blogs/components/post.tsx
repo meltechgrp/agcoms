@@ -29,7 +29,7 @@ export function PostAlert({ open, post, postId, edit }: Props) {
 			alertKey="postId"
 			alertValue={postId || 'new'}
 			open={open}
-			className={'md:min-w-[56rem] overflow-scroll max-h-screen md:w-[75vw]'}>
+			className={'lg:min-w-[56rem] overflow-scroll max-h-screen lg:w-[75vw]'}>
 			<div className="overflow-y-scroll">
 				{postId === 'new' || edit === 'true' ? (
 					<NewPost post={post} />
@@ -42,7 +42,7 @@ export function PostAlert({ open, post, postId, edit }: Props) {
 							<div className=" mt-1">
 								<div className="w-full">
 									<div className="flex flex-col gap-5 py-3">
-										<div className="grid md:grid-cols-3 gap-4">
+										<div className="grid lg:grid-cols-3 gap-4">
 											{post?.images?.map((im) => (
 												<div
 													key={uniqueId()}

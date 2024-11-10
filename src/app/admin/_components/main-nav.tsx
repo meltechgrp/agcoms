@@ -22,11 +22,11 @@ export function MainNav(props: MainNavProps) {
 	return (
 		<aside
 			className={cn(
-				'border-none md:border-r w-full pb-4 md:pb-1 relative bg-white',
+				'border-none lg:border-r w-full pb-4 lg:pb-1 relative bg-white',
 				className
 			)}>
-			<div className="flex h-full w-[220px] md:w-[250px] space-y-0 md:space-y-8 max-h-screen top-0 relative min-h-[92vh] md:min-h-screen md:fixed flex-col gap-2">
-				<div className="flex h-14 items-center px-2 my-2 mb-4 md:my-8 md:px-6">
+			<div className="flex h-full w-[220px] lg:w-[250px] space-y-0 lg:space-y-8 max-h-screen top-0 relative min-h-[92vh] lg:min-h-screen lg:fixed flex-col gap-2">
+				<div className="flex h-14 items-center px-2 my-2 mb-4 lg:my-8 lg:px-6">
 					<Link
 						href="/admin/dashboard"
 						onClick={() => {
@@ -42,7 +42,7 @@ export function MainNav(props: MainNavProps) {
 					</Link>
 				</div>
 				<div className="flex-1 h-full">
-					<nav className="grid grid-rows-2 h-full items-start px-1 text-sm font-medium md:px-4">
+					<nav className="grid grid-rows-2 h-full items-start px-1 text-sm font-medium lg:px-4">
 						<div className="space-y-2 flex-col flex  h-full border-b border-border ">
 							<h4 className="text-xs text-gray-500 font-medium">MAIN MENU</h4>
 							<div className="flex flex-col gap-px">
@@ -54,7 +54,7 @@ export function MainNav(props: MainNavProps) {
 								))}
 							</div>
 						</div>
-						<div className="space-y-2 flex flex-col h-full pt-4 md:pt-10">
+						<div className="space-y-2 flex flex-col h-full pt-4 lg:pt-10">
 							<h4 className="text-xs text-gray-500 font-medium">PREFEENCES</h4>
 							<div className="flex flex-col gap-y-px">
 								{routeSettingsSection.map((route, index) => (
@@ -68,7 +68,7 @@ export function MainNav(props: MainNavProps) {
 						</div>
 					</nav>
 				</div>
-				<div className=" p-1 md:px-4 pb-6">
+				<div className=" p-1 lg:px-4 pb-6">
 					<div className="flex gap-2 bg-[#f7f9f4] px-2 py-3 rounded-md items-center">
 						<Avatar>
 							<AvatarFallback>

@@ -3,12 +3,12 @@ import { Button } from '../ui/button';
 
 export default function Governace() {
 	return (
-		<div className="grid md:grid-cols-[60%,auto]">
-			<div className="p-4 md:p-16 justify-center flex flex-col  space-y-6 ">
-				<h1 className="text-2xl self-start border-bottom md:text-4xl">
+		<div className="grid lg:grid-cols-[60%,auto]">
+			<div className="p-4 lg:p-16 justify-center flex flex-col  space-y-6 ">
+				<h1 className="text-2xl self-start border-bottom lg:text-4xl">
 					Governance
 				</h1>
-				<p className="text-sm md:text-base leading-6 md:leading-8">
+				<p className="text-sm lg:text-base leading-6 lg:leading-8">
 					Strong governance is essential to maintaining transparency and
 					accountability in our operations. Our leadership adheres to rigorous
 					governance practices, ensuring responsible decision-making, effective
@@ -27,7 +27,7 @@ export default function Governace() {
 				</div>
 			</div>
 			<div className="h-full flex items-center">
-				<div className="w-full h-[10rem] px-4 md:px-16 md:h-[15rem]">
+				<div className="w-full h-[10rem] px-4 lg:px-16 lg:h-[15rem]">
 					<Image
 						src={'chess.png'}
 						className="w-full h-full object-cover"

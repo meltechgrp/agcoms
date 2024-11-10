@@ -61,7 +61,7 @@ async function ProductCategory({ params: { category } }: Props) {
 	});
 	return (
 		<div>
-			<Breadcrumb className="px-4 md:px-12 py-6">
+			<Breadcrumb className="px-4 lg:px-12 py-6">
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink
@@ -88,20 +88,20 @@ async function ProductCategory({ params: { category } }: Props) {
 			</Breadcrumb>
 			{data ? (
 				<div className="grid gap-4">
-					<div className="py-2 relative md:h-[420px] space-y-4 flex flex-col justify-center items-center">
+					<div className="py-2 relative lg:h-[420px] space-y-4 flex flex-col justify-center items-center">
 						<Image
 							src={data.images[0].url}
 							alt={category}
 							scale={true}
-							className="w-screen md:w-[1350px] object-fill h-[150px] md:h-[420px] md:object-cover relative md:absolute md:top-0 md:left-0"
+							className="w-screen lg:w-[1350px] object-fill h-[150px] lg:h-[420px] lg:object-cover relative lg:absolute lg:top-0 lg:left-0"
 							bucketName="banners"
 							folderName="product-categories"
 						/>
-						<div className=" hidden absolute md:flex flex-col left-5 bottom-[1.5rem] md:bottom-[5rem] space-y-2 md:space-y-4 text-white backdrop-blur-md rounded-xl bg-black/30 w-[60%] md:w-[45%] px-7 py-8 md:p-10">
-							<h1 className="text-base md:text-3xl border-bottom self-start flex ">
+						<div className=" hidden absolute lg:flex flex-col left-5 bottom-[1.5rem] lg:bottom-[5rem] space-y-2 lg:space-y-4 text-white backdrop-blur-md rounded-xl bg-black/30 w-[60%] lg:w-[45%] px-7 py-8 lg:p-10">
+							<h1 className="text-base lg:text-3xl border-bottom self-start flex ">
 								{data.name} Equipment
 							</h1>
-							<p className="text-sm line-clamp-5 md:line-clamp-none md:text-sm">
+							<p className="text-sm line-clamp-5 lg:line-clamp-none lg:text-sm">
 								{data.description}
 							</p>
 							<div>
@@ -119,8 +119,8 @@ async function ProductCategory({ params: { category } }: Props) {
 							</div>
 						</div>
 					</div>
-					<div className=" md:hidden flex flex-col gap-3 px-4 ">
-						<h1 className="text-base md:text-3xl border-bottom self-start flex ">
+					<div className=" lg:hidden flex flex-col gap-3 px-4 ">
+						<h1 className="text-base lg:text-3xl border-bottom self-start flex ">
 							{data.name} Equipment
 						</h1>
 						<p className="text-sm">{data.description}</p>
@@ -138,9 +138,9 @@ async function ProductCategory({ params: { category } }: Props) {
 							</Link>
 						</div>
 					</div>
-					<div className="px-4 md:px-12 py-10 bg-[#f4f3f3]">
+					<div className="px-4 lg:px-12 py-10 bg-[#f4f3f3]">
 						<div className="flex justify-between gap-6 flex-wrap">
-							<ul className="grid grid-cols-2 md:grid-cols-5 gap-2 py-2">
+							<ul className="grid grid-cols-2 lg:grid-cols-5 gap-2 py-2">
 								{data.products.map((p) => (
 									<Link key={p.id} href={`/equipment/${data.slug}/${p.id}`}>
 										<div key={p.id} className=" space-y-2">
@@ -154,11 +154,11 @@ async function ProductCategory({ params: { category } }: Props) {
 						</div>
 					</div>
 					{data.products.length && (
-						<div className="px-4 md:px-12  space-y-3">
+						<div className="px-4 lg:px-12  space-y-3">
 							<div className="py-2 px-2 bg-gray-300 flex justify-between">
 								<h3 className="text-base font-medium">Recent products</h3>
 							</div>
-							<div className="grid md:grid-cols-3 gap-4">
+							<div className="grid lg:grid-cols-3 gap-4">
 								{data.products.map((p) => (
 									<ProductCard key={uniqueId()} {...p} />
 								))}

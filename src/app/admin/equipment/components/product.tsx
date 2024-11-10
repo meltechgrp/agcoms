@@ -28,7 +28,7 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
 			alertValue={productId || 'new'}
 			open={open}
 			className={cn(
-				'md:min-w-[56rem] overflow-scroll max-h-screen md:w-[75vw]',
+				'lg:min-w-[56rem] overflow-scroll max-h-screen lg:w-[75vw]',
 				productId === 'new' || edit === 'true' ? 'px-0 py-0' : ''
 			)}>
 			<div className="overflow-y-scroll">
@@ -42,7 +42,7 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
 						<div className=" mt-1">
 							<div className="w-full">
 								<div className="flex flex-col gap-5 py-3">
-									<div className="grid md:grid-cols-3 gap-4">
+									<div className="grid lg:grid-cols-3 gap-4">
 										{product?.images.map((im) => (
 											<div
 												key={uniqueId()}
