@@ -25,9 +25,15 @@ export async function saveRequest(
 		}
 		const { fullName, email, message = '', town, phone } = data;
 
-		await sendMail(email, EmailTemplate.EmailVerification, {
-			code: '22222',
-		});
+		await sendMail(
+			'joshuahumphrey579@outlook.com',
+			EmailTemplate.RequestTemplate,
+			{
+				name: fullName,
+				email: email,
+				message: message,
+			}
+		);
 		await prisma.message.create({
 			data: {
 				fullName,

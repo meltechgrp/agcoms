@@ -46,7 +46,7 @@ export default async function page(props: Props) {
 						{emails.map((email: any) => (
 							<div key={email} className="flex space-x-4 items-center">
 								<Input
-									className="w-full disabled:bg-gray-50 border-gray-300"
+									className="w-full sm:min-w-[350px] disabled:bg-gray-50 border-gray-300"
 									defaultValue={email}
 									disabled
 									readOnly

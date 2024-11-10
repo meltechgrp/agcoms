@@ -68,6 +68,8 @@ const smtpConfig = {
 		user: env.SMTP_USER,
 		pass: env.SMTP_PASSWORD,
 	},
+	logger: true,
+	tls: { rejectUnauthorized: false },
 };
 
 const transporter = createTransport(smtpConfig as TransportOptions);
@@ -87,7 +89,6 @@ export const sendMail = async <T extends EmailTemplate>(
 	// 	);
 	// 	return;
 	// }
-
 	const { subject, body } = getEmailTemplate(template, props);
 	const res = await body;
 

@@ -10,10 +10,16 @@ import {
 import { APP_TITLE } from '@/lib/constants';
 
 export interface RequestTemplateProps {
-	code: string;
+	name: string;
+	email: string;
+	message: string;
 }
 
-export const RequestTemplate = ({ code }: RequestTemplateProps) => {
+export const RequestTemplate = ({
+	name,
+	email,
+	message,
+}: RequestTemplateProps) => {
 	return (
 		<Html>
 			<Head />
@@ -22,15 +28,11 @@ export const RequestTemplate = ({ code }: RequestTemplateProps) => {
 				<Container style={container}>
 					<Section>
 						<Text style={title}>{APP_TITLE}</Text>
-						<Text style={text}>Hi,</Text>
-						<Text style={text}>
-							Thank you for registering for an account on {APP_TITLE}. To
-							complete your registration, please verify your your account by
-							using the following code:
-						</Text>
-						<Text style={codePlaceholder}>{code}</Text>
+						<Text style={text}>{name}</Text>
+						<Text style={text}>{email}</Text>
+						<Text style={codePlaceholder}>{message}</Text>
 
-						<Text style={text}>Have a nice day!</Text>
+						{/* <Text style={text}>Have a nice day!</Text> */}
 					</Section>
 				</Container>
 			</Body>
