@@ -29,7 +29,7 @@ export default async function Page(props: Props) {
 	return (
 		<div className="w-full h-full py-8 space-y-6">
 			<div>
-				<h1 className=" text-xl sm:text-3xl font-medium mb-1">Equipments</h1>
+				<h1 className=" text-xl md:text-3xl font-medium mb-1">Equipments</h1>
 				<p className="text-gray-500">View all producted equipments.</p>
 			</div>
 			{data.length > 0 ? (

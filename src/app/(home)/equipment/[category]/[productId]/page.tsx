@@ -24,7 +24,7 @@ async function Product({ params }: Props) {
 	const product = await getProductData(productId);
 	return (
 		<div>
-			<Breadcrumb className="px-4 sm:px-12 py-6">
+			<Breadcrumb className="px-4 md:px-12 py-6">
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink
@@ -51,13 +51,13 @@ async function Product({ params }: Props) {
 			</Breadcrumb>
 			{product ? (
 				<div className=" space-y-8 ">
-					<div className="grid sm:grid-cols-[60%,auto] bg-white">
-						<div className="relative h-[18rem] sm:h-[36rem]">
+					<div className="grid md:grid-cols-[60%,auto] bg-white">
+						<div className="relative h-[18rem] md:h-[36rem]">
 							<ImageSlides images={product.images} />
 						</div>
-						<div className="px-7 sm:px-8 py-4">
+						<div className="px-7 md:px-8 py-4">
 							<div className="space-y-3 pb-4">
-								<h2 className="text-2xl sm:text-3xl text-blue-600 font-bold">
+								<h2 className="text-2xl md:text-3xl text-blue-600 font-bold">
 									{product.name}
 								</h2>
 								<HtmlText
@@ -84,7 +84,7 @@ async function Product({ params }: Props) {
 									Related models
 								</h3>
 							</div>
-							<div className="grid sm:grid-cols-3 gap-4 px-4 sm:px-12">
+							<div className="grid md:grid-cols-3 gap-4 px-4 md:px-12">
 								{product.category?.products.map((p) => (
 									<ProductCard key={p.id} {...p} />
 								))}

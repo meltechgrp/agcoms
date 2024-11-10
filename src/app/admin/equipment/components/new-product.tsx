@@ -240,7 +240,7 @@ function Basic({ form }: FormProps) {
 					</FormItem>
 				)}
 			/>
-			<div className="grid sm:grid-cols-2 gap-4">
+			<div className="grid md:grid-cols-2 gap-4">
 				<FormField
 					control={form.control}
 					name="category"
@@ -308,7 +308,7 @@ function Basic({ form }: FormProps) {
 // 		<div className="grid gap-4">
 // 			<div className="flex justify-between">
 // 				<div className="space-y-1">
-// 					<h3 className="text-sm sm:text-base font-medium">Product features</h3>
+// 					<h3 className="text-sm md:text-base font-medium">Product features</h3>
 // 					<p className="text-xs font-medium">Add at least one feature</p>
 // 				</div>
 // 			</div>
@@ -404,7 +404,7 @@ function Basic({ form }: FormProps) {
 // 		<div className="grid gap-4">
 // 			<div className="flex justify-between">
 // 				<div className="space-y-1">
-// 					<h3 className="text-sm sm:text-base font-medium">
+// 					<h3 className="text-sm md:text-base font-medium">
 // 						Product specifications
 // 					</h3>
 // 					<p className="text-xs font-medium">
@@ -423,7 +423,7 @@ function Basic({ form }: FormProps) {
 // 							Specification {index + 1}
 // 						</AccordionTrigger>
 // 						<AccordionContent className="space-y-2">
-// 							<div className="grid sm:grid-cols-[70%,auto] gap-2">
+// 							<div className="grid md:grid-cols-[70%,auto] gap-2">
 // 								<FormField
 // 									control={form.control}
 // 									name={`specs.${index}.name`}

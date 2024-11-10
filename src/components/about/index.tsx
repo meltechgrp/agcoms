@@ -25,22 +25,22 @@ export default function AboutAgcoms() {
 						them suitable for both large-scale commercial operations and
 						smaller, specialized applications.`;
 	return (
-		<div className="py-12 flex flex-col-reverse sm:flex-row space-y-8">
+		<div className="py-12 flex flex-col-reverse md:flex-row space-y-8">
 			<div
 				style={style}
-				className="py-16 h-[20rem] bg-center sm:h-[40rem] px-4 flex items-end sm:justify-end ">
-				<div className="p-8 sm:p-9 hidden sm:flex flex-col text-white space-y-6 sm:backdrop-blur-md sm:w-1/2 sm:bg-black/30">
-					<h1 className="text-2xl self-start border-bottom sm:text-4xl">
+				className="py-16 h-[20rem] bg-center md:h-[40rem] px-4 flex items-end md:justify-end ">
+				<div className="p-8 md:p-9 hidden md:flex flex-col text-white space-y-6 md:backdrop-blur-md md:w-1/2 md:bg-black/30">
+					<h1 className="text-2xl self-start border-bottom md:text-4xl">
 						ABOUT US
 					</h1>
-					<p className="text-sm leading-6 sm:leading-8">{content}</p>
+					<p className="text-sm leading-6 md:leading-8">{content}</p>
 				</div>
 			</div>
-			<div className="p-8 sm:p-9 flex sm:hidden flex-col  space-y-6 ">
-				<h1 className="text-2xl self-start border-bottom sm:text-4xl">
+			<div className="p-8 md:p-9 flex md:hidden flex-col  space-y-6 ">
+				<h1 className="text-2xl self-start border-bottom md:text-4xl">
 					ABOUT US
 				</h1>
-				<p className="text-sm leading-6 sm:leading-8">{content}</p>
+				<p className="text-sm leading-6 md:leading-8">{content}</p>
 			</div>
 		</div>
 	);

@@ -7,12 +7,12 @@ export default function PartsBanner() {
 		<div className="relative">
 			<Image
 				src={'parts.jpg'}
-				className="w-full h-[25rem] sm:h-[30rem]"
+				className="w-full h-[25rem] md:h-[30rem]"
 				alt={'agcoms banner'}
 				bucketName="banners"
 				folderName="home-banners"
 			/>
-			<div className=" absolute flex flex-col left-5 bottom-[1.5rem] sm:bottom-[5rem] space-y-2 sm:space-y-4 text-white backdrop-blur-sm rounded-xl bg-black/30 w-[70%] sm:w-[45%] px-4 py-7 sm:p-10">
+			<div className=" absolute flex flex-col left-5 bottom-[1.5rem] md:bottom-[5rem] space-y-2 md:space-y-4 text-white backdrop-blur-sm rounded-xl bg-black/30 w-[70%] md:w-[45%] px-4 py-7 md:p-10">
 				<p className="text-sm ">
 					At AGCOMS, we know that reliable equipment is essential for productive
 					work. Our comprehensive parts and service support is designed to keep
@@ -25,7 +25,7 @@ export default function PartsBanner() {
 					<Link href={'/equipment'}>
 						<Button
 							size="sm"
-							className="h-8 bg-tertiary text-white sm:h-9 text-xs sm:text-sm">
+							className="h-8 bg-tertiary text-white md:h-9 text-xs md:text-sm">
 							Available parts
 						</Button>
 					</Link>

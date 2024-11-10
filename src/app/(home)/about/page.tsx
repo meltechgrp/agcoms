@@ -16,7 +16,7 @@ import Governace from '@/components/about/governace';
 export default function About() {
 	return (
 		<div>
-			<Breadcrumb className=" py-6 px-4 sm:px-16">
+			<Breadcrumb className=" py-6 px-4 md:px-16">
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink

@@ -15,7 +15,7 @@ interface Props {
 function Header(props: Props) {
 	const [open, setOpen] = useState(false);
 	return (
-		<header className="sm:hidden flex min-h-16 py-4 items-center w-full gap-4 border-b bg-muted/40 px-4 sm:h-[60px] sm:px-6">
+		<header className="md:hidden flex min-h-16 py-4 items-center w-full gap-4 border-b bg-muted/40 px-4 md:h-[60px] md:px-6">
 			<Sheet open={open} onOpenChange={setOpen}>
 				<SheetTrigger asChild>
 					<Button variant="outline" size="icon" className="shrink-0 md:hidden">

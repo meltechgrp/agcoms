@@ -19,7 +19,7 @@ export default function RequestDrawer(props: SplitsDetailsProps) {
 			sheetKey="requestId"
 			sheetValue={request?.id || ''}
 			open={open}
-			className="w-full sm:min-w-[450px] px-2">
+			className="w-full md:min-w-[450px] px-2">
 			{request && (
 				<>
 					<SheetTitle className="flex items-center space-x-2">
@@ -67,7 +67,7 @@ export default function RequestDrawer(props: SplitsDetailsProps) {
 							</Card>
 							{request.message && (
 								<Card className="py-2 space-y-3 px-3">
-									<h4 className="text-sm sm:text-base text-gray-500 font-normal">
+									<h4 className="text-sm md:text-base text-gray-500 font-normal">
 										Request message
 									</h4>
 									<span className="text-sm font-normal text-black/80">

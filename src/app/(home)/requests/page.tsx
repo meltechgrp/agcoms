@@ -23,7 +23,7 @@ function Contact({ searchParams }: Props) {
 	const router = useRouter();
 	return (
 		<div className="">
-			<Breadcrumb className=" py-6 px-4 sm:px-12">
+			<Breadcrumb className=" py-6 px-4 md:px-12">
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink
@@ -40,12 +40,12 @@ function Contact({ searchParams }: Props) {
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<div className="grid sm:grid-cols-2 gap-6 py-4">
-				<div className="flex flex-col  px-4 sm:px-12 space-y-4 pt-4 sm:pt-12">
-					<h2 className="text-lg sm:text-2xl border-bottom self-start">
+			<div className="grid md:grid-cols-2 gap-6 py-4">
+				<div className="flex flex-col  px-4 md:px-12 space-y-4 pt-4 md:pt-12">
+					<h2 className="text-lg md:text-2xl border-bottom self-start">
 						Core Values and Code of Business Conduct
 					</h2>
-					<p className="text-gray-600 text-base sm:leading-7">
+					<p className="text-gray-600 text-base md:leading-7">
 						We hold ourselves to the highest standards of ethics, prioritizing
 						honesty, respect, and accountability in all our dealings. Our Code
 						of Business Conduct sets clear expectations for ethical behavior
@@ -61,13 +61,13 @@ function Contact({ searchParams }: Props) {
 						Get in Touch
 					</Button>
 				</div>
-				<div className="row-start-1 sm:col-start-2">
+				<div className="row-start-1 md:col-start-2">
 					<Image
 						src={'help.jpg'}
 						alt="Dealer Tools"
 						bucketName="banners"
 						folderName="home-banners"
-						className="w-full h-[200px] sm:h-[400px] object-cover"
+						className="w-full h-[200px] md:h-[400px] object-cover"
 					/>
 				</div>
 			</div>
@@ -78,14 +78,14 @@ function Contact({ searchParams }: Props) {
 						alt={'Contact us'}
 						folderName="home-banners"
 						bucketName="banners"
-						className="w-full h-[350px] sm:h-[520px] object-cover"
+						className="w-full h-[350px] md:h-[520px] object-cover"
 					/>
 				</div>
-				<div className="w-fit mx-auto my-6 px-4 sm:px-12 space-y-4 flex flex-col">
-					<h2 className="text-lg sm:text-2xl border-bottom self-start">
+				<div className="w-fit mx-auto my-6 px-4 md:px-12 space-y-4 flex flex-col">
+					<h2 className="text-lg md:text-2xl border-bottom self-start">
 						Ethics and Compliance
 					</h2>
-					<p className="text-base sm:w-1/2">
+					<p className="text-base md:w-1/2">
 						Our commitment to ethics and compliance is at the heart of
 						everything we do, guiding our actions and decisions to ensure trust,
 						integrity, and transparency in every relationship.

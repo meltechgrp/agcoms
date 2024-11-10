@@ -25,7 +25,7 @@ export default function AboutCarousel() {
 							<div className="">
 								<Image
 									src={images[index]}
-									className="w-full h-[28rem] sm:h-[40rem]"
+									className="w-full h-[28rem] md:h-[40rem]"
 									alt={'agcoms banner'}
 									bucketName="banners"
 									folderName="home-banners"
@@ -35,8 +35,8 @@ export default function AboutCarousel() {
 					))}
 				</CarouselContent>
 			</Carousel>
-			<div className=" absolute p-6 sm:p-9 left-5 bottom-[1.5rem] backdrop-blur-md rounded-xl text-white bg-black/30 sm:bottom-[5rem] space-y-2 sm:space-y-3  w-[70%] sm:w-[45%]">
-				<h1 className="text-base  sm:text-3xl ">Meet Our Dynamic Team</h1>
+			<div className=" absolute p-6 md:p-9 left-5 bottom-[1.5rem] backdrop-blur-md rounded-xl text-white bg-black/30 md:bottom-[5rem] space-y-2 md:space-y-3  w-[70%] md:w-[45%]">
+				<h1 className="text-base  md:text-3xl ">Meet Our Dynamic Team</h1>
 				<p className="text-sm ">
 					Together, we collaborate, innovate, and inspire, turning challenges
 					into opportunities and visions into reality. At AGCOMS, our people are

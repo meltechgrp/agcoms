@@ -11,7 +11,7 @@ type keys = keyof DashboardData;
 function Visitors(props: Props) {
 	const { data } = props;
 	return (
-		<Card className="w-full h-60 sm:h-full px-4 py-4">
+		<Card className="w-full h-60 md:h-full px-4 py-4">
 			<div className="flex h-auto justify-between items-center">
 				<h2 className="text-sm text-gray-500">Agcoms data</h2>
 				<DotsHorizontalIcon className="h-6 w-6 font-bold text-gray-300" />
@@ -61,17 +61,17 @@ function Circle({ className, value, item, index }: CircleProps) {
 			case 0:
 				return 'z-10';
 			case 1:
-				return 'absolute w-24 h-24 sm:w-32 sm:h-32 sm:t-4 sm:right-10 top-0 z-20 right-8';
+				return 'absolute w-24 h-24 md:w-32 md:h-32 md:t-4 md:right-10 top-0 z-20 right-8';
 			case 2:
-				return 'absolute w-20 h-20 sm:w-28 sm:h-28 bottom-4 z-20 right-16';
+				return 'absolute w-20 h-20 md:w-28 md:h-28 bottom-4 z-20 right-16';
 			default:
-				return 'absolute w-16 h-16 sm:w-20 sm:h-20 sm:bottom-8 sm:left-20 bottom-4 -z-0 left-16';
+				return 'absolute w-16 h-16 md:w-20 md:h-20 md:bottom-8 md:left-20 bottom-4 -z-0 left-16';
 		}
 	}, [index]);
 	return (
 		<div
 			className={cn(
-				'sm:w-40 sm:h-40 w-28 h-28 text-2xl font-bold bg-gray-300 text-white rounded-full flex justify-center items-center',
+				'md:w-40 md:h-40 w-28 h-28 text-2xl font-bold bg-gray-300 text-white rounded-full flex justify-center items-center',
 				colors[item],
 				shape,
 				className

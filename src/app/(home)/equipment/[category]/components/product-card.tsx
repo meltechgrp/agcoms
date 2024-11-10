@@ -14,7 +14,7 @@ const ProductCard = (props: Props) => {
 	const { id, name, className, images, category, description } = props;
 	return (
 		<Card className={cn('  w-full bg-white space-y-1', className)}>
-			<div className="w-full h-56 sm:h-64">
+			<div className="w-full h-56 md:h-64">
 				{images && (
 					<Image
 						src={images[0].url}

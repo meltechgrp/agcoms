@@ -59,10 +59,10 @@ function ProductSections({ navData }: Props) {
 		setGrouped(groupedProducts);
 	}, [navData]);
 	return (
-		<div className="grid gap-6 px-4 pt-12 pb-6 sm:px-12 bg-[#d5d5d5]">
+		<div className="grid gap-6 px-4 pt-12 pb-6 md:px-12 bg-[#d5d5d5]">
 			{Object.entries(grouped).map(([key, value]) => (
 				<Element name={key} key={key} className="grid gap-6">
-					<h2 className="text-lg sm:text-2xl capitalize text-gray-900 font-bold">
+					<h2 className="text-lg md:text-2xl capitalize text-gray-900 font-bold">
 						{key}
 					</h2>
 					<div className="flex justify-between gap-4">

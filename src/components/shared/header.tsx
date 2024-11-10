@@ -90,19 +90,19 @@ export default function Header() {
 				)}>
 				<div
 					className={cn(
-						'flex h-12 sm:h-[4.8rem] w-full items-center gap-4 py-0 px-4 md:px-6 sm:border-b bg-background',
+						'flex h-12 md:h-[4.8rem] w-full items-center gap-4 py-0 px-4 md:px-6 md:border-b bg-background',
 						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}>
 					<Link href={'/'}>
 						<Image
 							src={logo}
 							style={{ width: 'auto', height: 50 }}
-							className="w-32 sm:w-36 object-cover filter brightness-75"
+							className="w-32 md:w-36 object-cover filter brightness-75"
 							alt="Agcoms logo"
 						/>
 					</Link>
-					<div className="ml-auto flex space-x-4 flex-1 justify-end sm:flex-initial items-center h-full">
-						<SearchForm containerClassName="hidden sm:block" />
+					<div className="ml-auto flex space-x-4 flex-1 justify-end md:flex-initial items-center h-full">
+						<SearchForm containerClassName="hidden md:block" />
 						<Button
 							variant="outline"
 							onClick={() =>
@@ -110,10 +110,10 @@ export default function Header() {
 									scroll: false,
 								})
 							}
-							className=" hidden sm:block px-2 sm:px-4 hover:bg-gray-100 bg-transparent border-tertiary focus-visible:ring-0 focus-visible:ring-transparent text-black">
+							className=" hidden md:block px-2 md:px-4 hover:bg-gray-100 bg-transparent border-tertiary focus-visible:ring-0 focus-visible:ring-transparent text-black">
 							<div className="flex space-x-2 items-center text-sm text-gray-600">
 								<CircleHelp className="text-tertiary" />
-								<span className="hidden sm:flex">Request quote</span>
+								<span className="hidden md:flex">Request quote</span>
 							</div>
 						</Button>
 						<Sidebar />
@@ -121,14 +121,14 @@ export default function Header() {
 				</div>
 				<div
 					className={cn(
-						'bg-gray-300 w-full px-4 py-2 block sm:hidden',
+						'bg-gray-300 w-full px-4 py-2 block md:hidden',
 						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}>
 					<SearchForm className="bg-white text-black border border-black flex-row-reverse" />
 				</div>
 				<NavMenu
 					className={cn(
-						'hidden sm:flex h-10 w-full items-center gap-4 border-b bg-background px-4 md:px-6',
+						'hidden md:flex h-10 w-full items-center gap-4 border-b bg-background px-4 md:px-6',
 						isFixed ? 'max-w-[1350px] mx-auto' : ''
 					)}
 				/>

@@ -20,7 +20,7 @@ export function DataTableToolbar<TData>({
 	const isFiltered = table.getState().columnFilters.length > 0;
 
 	return (
-		<div className="flex items-center justify-between space-x-4 sm:w-full">
+		<div className="flex items-center justify-between space-x-4 md:w-full">
 			<Input
 				placeholder="Filter members..."
 				value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}

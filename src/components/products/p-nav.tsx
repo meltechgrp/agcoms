@@ -87,8 +87,8 @@ function ProductNavigation() {
 	return (
 		<div
 			ref={menuRef}
-			className="transition-all w-screen sm:w-[1350px] sm:max-w-[1350px] duration-300 bg-[#d3d1d1] px-16 shadow sm:px-4 ">
-			<div className="space-x-2 hidden sm:flex">
+			className="transition-all w-screen md:w-[1350px] md:max-w-[1350px] duration-300 bg-[#d3d1d1] px-16 shadow md:px-4 ">
+			<div className="space-x-2 hidden md:flex">
 				{grouped.map((key) => (
 					<ScrollLink
 						to={key}
@@ -98,7 +98,7 @@ function ProductNavigation() {
 						duration={500}
 						offset={-300}
 						onSetActive={() => handleSetActive(key)}
-						className={` cursor-pointer px-0 flex justify-center sm:px-3 py-4 text-base font-bold ${
+						className={` cursor-pointer px-0 flex justify-center md:px-3 py-4 text-base font-bold ${
 							active.key === key ? 'bg-[#d5d5d5] text-green-600' : ''
 						}`}>
 						{key}
@@ -112,7 +112,7 @@ function ProductNavigation() {
 				opts={{
 					duration: 30,
 				}}
-				className="w-full bg-[#d3d1d1] max-w-sm sm:hidden">
+				className="w-full bg-[#d3d1d1] max-w-sm md:hidden">
 				<CarouselContent className="-ml-1 flex items-center">
 					{Array.from({ length: 27 }).map((_, index) => (
 						<CarouselItem key={index} className="pl-1 basis-[8vw]">
@@ -124,7 +124,7 @@ function ProductNavigation() {
 								duration={500}
 								offset={-300}
 								onSetActive={() => handleSetActive(grouped[index])}
-								className={` cursor-pointer px-0 flex justify-center sm:px-3 py-4 text-sm font-bold ${
+								className={` cursor-pointer px-0 flex justify-center md:px-3 py-4 text-sm font-bold ${
 									active.key === grouped[index] || active.index === index
 										? 'bg-[#d5d5d5] text-green-600'
 										: ''

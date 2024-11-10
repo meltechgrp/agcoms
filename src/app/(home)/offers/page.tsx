@@ -25,7 +25,7 @@ async function Financing() {
 	});
 	return (
 		<div className="">
-			<Breadcrumb className="px-4 sm:px-12 py-6">
+			<Breadcrumb className="px-4 md:px-12 py-6">
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink
@@ -43,32 +43,32 @@ async function Financing() {
 				</BreadcrumbList>
 			</Breadcrumb>
 			<div>
-				<div className="py-2 sm:h-[460px] relative space-y-4">
+				<div className="py-2 md:h-[460px] relative space-y-4">
 					<Image
 						src={'financing.jpg'}
 						alt={'Financing'}
 						bucketName="banners"
 						folderName="home-banners"
-						className="w-screen sm:w-[1350px] object-fill h-[250px] sm:h-[460px] sm:object-cover relative sm:absolute sm:top-0 sm:left-0"
+						className="w-screen md:w-[1350px] object-fill h-[250px] md:h-[460px] md:object-cover relative md:absolute md:top-0 md:left-0"
 					/>
-					<div className="relative px-8 py-8 flex flex-col z-10 w-full space-y-2 items-center sm:items-end">
-						<h2 className="text-3xl sm:text-5xl text-center sm:text-end  capitalize text-black sm:text-white font-bold">
+					<div className="relative px-8 py-8 flex flex-col z-10 w-full space-y-2 items-center md:items-end">
+						<h2 className="text-3xl md:text-5xl text-center md:text-end  capitalize text-black md:text-white font-bold">
 							Run your business
 						</h2>
-						<p className="text-center sm:text-end text-black sm:text-white">
+						<p className="text-center md:text-end text-black md:text-white">
 							with a partner you can trust
 						</p>
 						<div className="space-x-3 py-5">
 							<Link href={'#'}>
 								<Button
-									className="h-12 w-36 border-2 font-bold text-sm bg-transparent border-green-600 sm:border-white sm:text-white text-green-600 sm:hover:bg-white hover:bg-green-500 sm:hover:text-green-500 hover:text-white transition-colors duration-700"
+									className="h-12 w-36 border-2 font-bold text-sm bg-transparent border-green-600 md:border-white md:text-white text-green-600 md:hover:bg-white hover:bg-green-500 md:hover:text-green-500 hover:text-white transition-colors duration-700"
 									variant={'outline'}>
 									Contact Us
 								</Button>
 							</Link>
 							<Link href={'#'}>
 								<Button
-									className="h-12 w-36 border-2 font-bold text-sm bg-transparent border-green-600 sm:border-white sm:text-white text-green-600 sm:hover:bg-white hover:bg-green-500 sm:hover:text-green-500 hover:text-white transition-colors duration-700"
+									className="h-12 w-36 border-2 font-bold text-sm bg-transparent border-green-600 md:border-white md:text-white text-green-600 md:hover:bg-white hover:bg-green-500 md:hover:text-green-500 hover:text-white transition-colors duration-700"
 									variant={'outline'}>
 									View Offers
 								</Button>
@@ -76,12 +76,12 @@ async function Financing() {
 						</div>
 					</div>
 				</div>
-				<div className=" pt-4 sm:pt-8 grid gap-10">
-					<div className="grid sm:grid-cols-4 gap-4 px-4 sm:px-12">
+				<div className=" pt-4 md:pt-8 grid gap-10">
+					<div className="grid md:grid-cols-4 gap-4 px-4 md:px-12">
 						{financeCardData.map((c, i) => (
-							<div key={c.title} className="flex flex-col sm:flex-row gap-4">
+							<div key={c.title} className="flex flex-col md:flex-row gap-4">
 								<Card className="px-6 bg-[#f5f4f4] py-6 flex flex-col space-y-4">
-									<h2 className="text-xl text-green-600 sm:text-2xl border-b border-gray-300 pb-3">
+									<h2 className="text-xl text-green-600 md:text-2xl border-b border-gray-300 pb-3">
 										{c.title}
 									</h2>
 									<p className="text-base flex-1 text-black/90">{c.des}</p>
@@ -97,19 +97,19 @@ async function Financing() {
 									<>
 										<Separator
 											orientation="vertical"
-											className="border-gray-600 hidden sm:block"
+											className="border-gray-600 hidden md:block"
 										/>
 										<Separator
 											orientation="horizontal"
-											className="border-gray-600  sm:hidden"
+											className="border-gray-600  md:hidden"
 										/>
 									</>
 								)}
 							</div>
 						))}
 					</div>
-					<div className="bg-[#333] grid sm:grid-cols-[auto,60%] text-white">
-						<div className="py-8 pt-16 px-4 sm:px-12 flex flex-col gap-4">
+					<div className="bg-[#333] grid md:grid-cols-[auto,60%] text-white">
+						<div className="py-8 pt-16 px-4 md:px-12 flex flex-col gap-4">
 							<h3 className="text-xl font-bold">Get Finance</h3>
 							<p>
 								Whether you are getting ready for a new season or starting a new
@@ -147,7 +147,7 @@ async function Financing() {
 								allowFullScreen></iframe>
 						</div>
 					</div>
-					{/* <div className="grid sm:grid-cols-3 gap-4 px-4 mt-3 sm:px-12 ">
+					{/* <div className="grid md:grid-cols-3 gap-4 px-4 mt-3 md:px-12 ">
 						{financeData.map((b) => (
 							<div
 								key={b.title}
@@ -160,7 +160,7 @@ async function Financing() {
 									/>
 								</div>
 								<div className="flex flex-1 flex-col gap-1 py-2">
-									<h2 className="text-lg sm:text-xl text-green-500">
+									<h2 className="text-lg md:text-xl text-green-500">
 										{b.title}
 									</h2>
 									<div className="flex-1">
@@ -177,13 +177,13 @@ async function Financing() {
 							</div>
 						))}
 					</div> */}
-					<div className="grid gap-8 px-4 py-8 bg-[#f4f3f3] sm:px-12">
+					<div className="grid gap-8 px-4 py-8 bg-[#f4f3f3] md:px-12">
 						<div>
-							<h1 className="text-xl sm:text-3xl text-center">
+							<h1 className="text-xl md:text-3xl text-center">
 								Latest News & Updates
 							</h1>
 						</div>
-						<div className="grid sm:grid-cols-3 gap-4 px-4 sm:px-12 ">
+						<div className="grid md:grid-cols-3 gap-4 px-4 md:px-12 ">
 							{data.map((b) => (
 								<div
 									key={b.title}
@@ -196,7 +196,7 @@ async function Financing() {
 										/>
 									</div>
 									<div className="flex flex-1 flex-col gap-1 py-2">
-										<h2 className="text-lg sm:text-xl text-green-500">
+										<h2 className="text-lg md:text-xl text-green-500">
 											{b.title}
 										</h2>
 										<div className="flex-1">

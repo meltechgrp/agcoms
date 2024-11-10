@@ -28,7 +28,7 @@
 // 		<>
 // 			{features.length > 0 && (
 // 				<Element name="feats">
-// 					<div className="space-y-2 px-4 sm:px-12 py-8 bg-[#eff0f0]">
+// 					<div className="space-y-2 px-4 md:px-12 py-8 bg-[#eff0f0]">
 // 						<div className="flex justify-between items-center">
 // 							<h3 className="text-xl font-bold">Features</h3>
 // 							<Button

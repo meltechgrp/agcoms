@@ -81,7 +81,7 @@ export default function ImageUploader({
 										<img
 											src={getImageUrl(image.url)}
 											alt=""
-											className="w-[150px] sm:w-[250px] h-100px] sm:h-[150px] object-cover"
+											className="w-[150px] md:w-[250px] h-100px] md:h-[150px] object-cover"
 										/>
 										<div className="flex gap-3">
 											<Button

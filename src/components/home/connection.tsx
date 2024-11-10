@@ -4,11 +4,11 @@ import Image from '../shared/image';
 
 export default function Connection() {
 	return (
-		<div className="px-4 sm:px-12 my-10">
-			<div className="grid sm:grid-cols-2 gap-6">
+		<div className="px-4 md:px-12 my-10">
+			<div className="grid md:grid-cols-2 gap-6">
 				{data.map((item) => (
 					<div key={item.title} className="grid space-y-6">
-						<div className=" bg-gray-200 rounded-xl h-72 sm:h-96 w-full">
+						<div className=" bg-gray-200 rounded-xl h-72 md:h-96 w-full">
 							<Image
 								src={item.url}
 								className="w-full h-full rounded-xl shadow"
@@ -19,7 +19,7 @@ export default function Connection() {
 						</div>
 						<div className="space-y-6">
 							<h3 className="text-xl font-medium">{item.title}</h3>
-							<div className="flex justify-center sm:justify-start">
+							<div className="flex justify-center md:justify-start">
 								<Link href={item.link}>
 									<Button
 										variant={'outline'}

@@ -28,7 +28,7 @@ export default function TabsView(props: Props) {
 				columns={columns}
 				data={data}
 				HeaderComponent={({ table }) => (
-					<div className="py-4 px-2 sm:px-6 overflow-aut0 relative w-full border-b flex sm:justify-between space-x-4">
+					<div className="py-4 px-2 md:px-6 overflow-aut0 relative w-full border-b flex md:justify-between space-x-4">
 						<TabsList className=" bg-white shadow-custom-2 border border-slate-200">
 							<TabsTrigger
 								className="data-[state=active]:bg-slate-200"

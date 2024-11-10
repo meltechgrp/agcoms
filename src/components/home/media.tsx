@@ -4,20 +4,20 @@ import Image from '../shared/image';
 
 export default function Media() {
 	return (
-		<div className="space-y-8 px-4 flex flex-col sm:px-12 my-6">
-			<h2 className="text-center text-black/80 self-center border-b-2 border-btertiary pb-1 text-xl sm:text-3xl font-bold">
+		<div className="space-y-8 px-4 flex flex-col md:px-12 my-6">
+			<h2 className="text-center text-black/80 self-center border-b-2 border-btertiary pb-1 text-xl md:text-3xl font-bold">
 				News & Media
 			</h2>
-			<div className="grid sm:grid-cols-3 gap-4 sm:gap-8">
+			<div className="grid md:grid-cols-3 gap-4 md:gap-8">
 				{data.map((m, i) => (
 					<Link
 						key={m.title}
 						href={m.link}
 						className={cn(
-							'space-y-4 w-full h-full overflow-hidden pb-10 border-0 sm:pb-0 border-b-gray-300 sm:border-r-gray-300 sm:pr-8',
-							i < 2 ? 'sm:border-r border-b sm:border-b-0  ' : ''
+							'space-y-4 w-full h-full overflow-hidden pb-10 border-0 md:pb-0 border-b-gray-300 md:border-r-gray-300 md:pr-8',
+							i < 2 ? 'md:border-r border-b md:border-b-0  ' : ''
 						)}>
-						<h3 className="text-lg text-black/80 sm:text-2xl font-semibold">
+						<h3 className="text-lg text-black/80 md:text-2xl font-semibold">
 							{m.title}
 						</h3>
 						<div className="flex-1 h-full">

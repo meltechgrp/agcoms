@@ -50,7 +50,7 @@ export function FormWrapper(props: FormProps) {
 				onOpenChange={() => {
 					handleClose(formKey, formValue);
 				}}>
-				<DialogContent className="sm:max-w-[500px]">{children}</DialogContent>
+				<DialogContent className="md:max-w-[500px]">{children}</DialogContent>
 			</Dialog>
 		);
 	}

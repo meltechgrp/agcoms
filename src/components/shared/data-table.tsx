@@ -76,7 +76,7 @@ export function DataTable<TData, TValue>({
 			{HeaderComponent ? (
 				<HeaderComponent table={table} />
 			) : (
-				<div className="py-4 px-2 sm:px-6 border-b flex">
+				<div className="py-4 px-2 md:px-6 border-b flex">
 					<DataTableToolbar table={table} />
 				</div>
 			)}
