@@ -29,17 +29,17 @@ export default async function Page(props: Props) {
 	return (
 		<div className="w-full h-full py-8 space-y-6">
 			<div>
-				<h1 className=" text-xl lg:text-3xl font-medium mb-1">Equipments</h1>
-				<p className="text-gray-500">View all producted equipments.</p>
+				<h1 className=" text-xl lg:text-3xl font-medium mb-1">Equipment</h1>
+				<p className="text-gray-500">View all producted equipment.</p>
 			</div>
 			{data.length > 0 ? (
 				<>
 					<Card className="w-full divide-y">
 						<div className="p-6 flex justify-between">
 							<div className="flex-1">
-								<h2 className="font-medium text-lg">All agcoms equipments</h2>
+								<h2 className="font-medium text-lg">All agcoms equipment</h2>
 								<p className="text-gray-500 text-xs">
-									Find all new and existing equipments.
+									Find all new and existing equipment.
 								</p>
 							</div>
 

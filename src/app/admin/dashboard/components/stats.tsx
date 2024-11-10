@@ -13,7 +13,7 @@ function Stats(props: Props) {
 	return (
 		<Card className="w-full space-y-4 h-full px-3 py-4">
 			<div className="flex h-auto justify-between items-center">
-				<h2 className="text-sm text-gray-500">Recent equipments</h2>
+				<h2 className="text-sm text-gray-500">Recent equipment</h2>
 				<DotsHorizontalIcon className="h-6 w-6 font-bold text-gray-300" />
 			</div>
 			<div className="flex-1 grid gap-2">
