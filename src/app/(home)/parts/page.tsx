@@ -109,7 +109,7 @@ export default function Parts() {
 					<div className="flex gap-4">
 						<Link href={'/requests'}>
 							<Button
-								size="md"
+								size="sm"
 								variant={'outline'}
 								className="h-12 border border-tertiary text-black px-8 md:h-9 font-medium text-sm">
 								Request a Part
@@ -117,7 +117,7 @@ export default function Parts() {
 						</Link>
 						<Link href={'/contact'}>
 							<Button
-								size="md"
+								size="sm"
 								variant={'outline'}
 								className="h-12 border border-tertiary text-black px-8 md:h-9 font-medium text-sm">
 								Book a Service
@@ -142,7 +142,7 @@ export default function Parts() {
 						<div>
 							<Link href={'/requests'}>
 								<Button
-									size="md"
+									size="sm"
 									variant={'outline'}
 									className="h-12 border border-tertiary text-black px-8 md:h-9 font-medium text-sm">
 									Order Now

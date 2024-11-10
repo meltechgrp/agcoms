@@ -24,7 +24,7 @@ export default function PartsBanner() {
 				<div>
 					<Link href={'/equipment'}>
 						<Button
-							size="md"
+							size="sm"
 							className="h-8 bg-tertiary text-white md:h-9 text-xs md:text-sm">
 							Available parts
 						</Button>

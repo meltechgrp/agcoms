@@ -25,7 +25,7 @@ export default function Banner() {
 				<div>
 					<Link href={'/about'}>
 						<Button
-							size="md"
+							size="sm"
 							className="h-8 bg-tertiary text-white md:h-9 text-xs md:text-sm">
 							Read More
 						</Button>
