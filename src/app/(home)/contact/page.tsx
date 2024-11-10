@@ -8,6 +8,7 @@ import {
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import ContactForm from './form';
+import { Mail, Map, MapPin, Phone } from 'lucide-react';
 
 export default async function Contact() {
 	return (
@@ -66,7 +67,7 @@ export default async function Contact() {
 									</h5>
 									<div className="flex flex-col gap-2">
 										<span className="flex gap-2 text-sm">
-											Location:{' '}
+											<MapPin className="w-5 h-5 text-tertiary" />
 											<span className="text-sm font-light">
 												18 Ziguinchor street, Wuse zone 4 Abuja
 											</span>
@@ -85,7 +86,9 @@ export default async function Contact() {
 								</div>
 								<div className="flex flex-col gap-2">
 									<span className="flex gap-2 text-sm">
-										Location:{' '}
+										<span>
+											<MapPin className="w-5 h-5 text-tertiary" />
+										</span>
 										<span className="text-sm font-light">
 											Plot 2 Block XI Phase V, Core Area, Asaba Delta State
 											Nigeria
@@ -102,7 +105,9 @@ export default async function Contact() {
 									</h5>
 									<div className="flex flex-col gap-2">
 										<span className="flex items-center gap-2 text-sm">
-											Email:{' '}
+											<span>
+												<Mail className="w-5 h-5 text-tertiary" />
+											</span>
 											<a
 												className=" text-tertiary"
 												href="mailto:info@agcomsinternational.com">
@@ -110,7 +115,9 @@ export default async function Contact() {
 											</a>
 										</span>
 										<span className="flex text-nowrap items-center gap-2 text-sm">
-											Phone:{' '}
+											<span>
+												<Phone className="w-5 h-5 text-tertiary" />
+											</span>
 											<a className=" text-tertiary" href="tel:+2349169211111">
 												+234 916 9211 111
 											</a>
@@ -127,7 +134,9 @@ export default async function Contact() {
 									</h5>
 									<div className="flex flex-col gap-2">
 										<span className="flex items-center gap-2 text-sm">
-											Email:{' '}
+											<span>
+												<Mail className="w-5 h-5 text-tertiary" />
+											</span>
 											<a
 												className=" text-tertiary"
 												href="mailto:info@agcomsinternational.com">
@@ -135,7 +144,9 @@ export default async function Contact() {
 											</a>
 										</span>
 										<span className="flex text-nowrap items-center gap-2 text-sm">
-											Phone:{' '}
+											<span>
+												<Phone className="w-5 h-5 text-tertiary" />
+											</span>
 											<a className=" text-tertiary" href="tel:+2349169211111">
 												+234 916 9211 111
 											</a>
