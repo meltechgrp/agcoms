@@ -26,7 +26,7 @@ export async function saveRequest(
 		const { fullName, email, message = '', town, phone } = data;
 
 		await sendMail(
-			'joshuahumphrey579@outlook.com',
+			'joshuahumphrey579@gmail.com',
 			EmailTemplate.RequestTemplate,
 			{
 				name: fullName,
