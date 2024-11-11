@@ -3,7 +3,7 @@
 import { ActionResponse } from '@/types';
 import { MessageFormInput, MessageFormSchema } from '../validators/auth';
 import prisma from '../prisma';
-import { EmailTemplate, sendMail } from '../email';
+import { RequestTemplate } from '../email';
 
 export async function saveRequest(
 	_: any,
@@ -25,15 +25,11 @@ export async function saveRequest(
 		}
 		const { fullName, email, message = '', town, phone } = data;
 
-		await sendMail(
-			'joshuahumphrey579@gmail.com',
-			EmailTemplate.RequestTemplate,
-			{
-				name: fullName,
-				email: email,
-				message: message,
-			}
-		);
+		await RequestTemplate({
+			name: fullName,
+			email: email,
+			message: message,
+		});
 		await prisma.message.create({
 			data: {
 				fullName,
