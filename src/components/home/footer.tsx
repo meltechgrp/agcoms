@@ -1,4 +1,11 @@
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
+import {
+	Facebook,
+	Instagram,
+	Linkedin,
+	Twitter,
+	X,
+	Youtube,
+} from 'lucide-react';
 import Link from 'next/link';
 import {
 	Accordion,
@@ -75,35 +82,38 @@ export default function Footer() {
 				<div className="flex flex-col-reverse lg:flex-row justify-between gap-3">
 					<div className="flex justify-center">
 						<span className="text-xs font-bold text-gray-500">
-							Copyright © 2024 Agcoms.
+							Copyright © {new Date(Date.now()).getFullYear()} Agcoms
+							International.
 						</span>
 					</div>
 					<div className="flex justify-center space-x-4">
-						{['Facebook', 'Instagram', 'Linkedin', 'Twitter', 'Youtube'].map(
-							(s) => (
-								<Link
-									target="_blank"
-									href={`https://www.${s.toLowerCase()}.com`}
-									key={uniqueId()}
-									className="">
-									{s === 'Facebook' && (
-										<Facebook className="text-blue-600 w-5 h-5" />
-									)}
-									{s === 'Instagram' && (
-										<Instagram className="text-black w-5 h-5" />
-									)}
-									{s === 'Linkedin' && (
-										<Linkedin className="text-blue-600 w-5 h-5" />
-									)}
-									{s === 'Twitter' && (
-										<Twitter className="text-blue-500 w-5 h-5" />
-									)}
-									{s === 'Youtube' && (
-										<Youtube className="text-red-600 w-5 h-5" />
-									)}
-								</Link>
-							)
-						)}
+						{[
+							{ name: 'Facebook', link: 'https://www.facebook.com/agcomsintl' },
+							{
+								name: 'Instagram',
+								link: 'https://www.instagram.com/agcomsintl',
+							},
+							{
+								name: 'Linkedin',
+								link: 'https://www.linkedin.com/company/agcomsinternational/',
+							},
+							{ name: 'Twitter', link: 'https://x.com/Agcomsintl' },
+						].map((s) => (
+							<Link target="_blank" href={s.link} key={uniqueId()} className="">
+								{s.name === 'Facebook' && (
+									<Facebook className="text-blue-600 w-5 h-5" />
+								)}
+								{s.name === 'Instagram' && (
+									<Instagram className="text-blue-500 w-5 h-5" />
+								)}
+								{s.name === 'Linkedin' && (
+									<Linkedin className="text-blue-600 w-5 h-5" />
+								)}
+								{s.name === 'Twitter' && (
+									<X strokeWidth={3} className="text-blue-500 w-5 h-5" />
+								)}
+							</Link>
+						))}
 					</div>
 				</div>
 			</div>
