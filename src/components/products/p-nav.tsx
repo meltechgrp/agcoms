@@ -59,7 +59,7 @@ function ProductNavigation() {
 			if (menuElement) {
 				const scrollY = window.scrollY;
 
-				if (scrollY > 300) {
+				if (scrollY > 1000) {
 					gsap.to(menuElement, {
 						position: 'fixed',
 						top: 0,

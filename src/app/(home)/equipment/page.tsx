@@ -34,11 +34,11 @@ async function Products() {
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<div className=" pt-4 lg:py-4">
-				<div className="lg:pb-8 relative lg:h-[500px] gap-6 flex flex-col justify-center items-center">
-					<div className=" relative w-screen lg:w-[1350px] object-fill h-[150px] lg:h-[500px] lg:top-0 lg:left-0">
+			<div className=" pt-4">
+				<div className=" mb-12 relative lg:h-[50rem] gap-6 flex flex-col justify-center items-center">
+					<div className=" relative w-screen lg:w-[1350px] object-fill h-[20rem] lg:h-[50rem] lg:top-0 lg:left-0">
 						<Image
-							src={'equipment.jpg'}
+							src={'equipment-banner.png'}
 							alt={'Equipment'}
 							scale={true}
 							className=" lg:object-cover relative lg:absolute w-full h-full"
@@ -59,14 +59,24 @@ async function Products() {
 							Discover specifications, features, and unique benefits tailored to
 							your industry’s needs
 						</p>
-						<div>
+						<div className=" flex gap-4">
 							<Link
-								href={'#'}
+								href={'/AGCOMS Company Profile.pdf'}
+								target="_blank"
+								rel="noopener noreferrer">
+								<Button
+									className=" bg-tertiary hover:bg-tertiary/90 text-white dark:text-white font-bold text-base"
+									size={'lg'}>
+									View Brochure
+								</Button>
+							</Link>
+							<Link
+								href={'/AGCOMS Company Profile.pdf'}
 								download
 								target="_blank"
 								rel="noopener noreferrer">
 								<Button
-									className=" bg-tertiary hover:bg-tertiary/90 text-white"
+									className=" bg-secondary hover:bg-secondary/90 text-black text-base font-bold"
 									size={'lg'}>
 									Download Brochure
 								</Button>
