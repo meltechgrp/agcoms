@@ -1,14 +1,13 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["postgresqlExtensions", "tracing", "views", "relationJoins", "prismaSchemaFolder"]
+  previewFeatures = ["postgresqlExtensions", "views", "relationJoins", "prismaSchemaFolder"]
   seed            = "ts-node --transpile-only prisma/seed.ts"
 }
 
 datasource db {
   provider   = "postgresql"
   url        = env("POSTGRES_URL")
-  directUrl  = env("DIRECT_URL")
-  extensions = [postgis, uuid_ossp(map: "uuid-ossp", schema: "extensions")]
+  extensions = [uuid_ossp(map: "uuid-ossp", schema: "extensions")]
 }
 
 model Message {
