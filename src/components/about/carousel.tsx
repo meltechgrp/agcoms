@@ -29,7 +29,6 @@ export default function AboutCarousel() {
                   className="w-full h-[28rem] lg:h-[40rem]"
                   alt={"agcoms banner"}
                   folderName="banners"
-                  folderName="home-banners"
                 />
               </div>
             </CarouselItem>

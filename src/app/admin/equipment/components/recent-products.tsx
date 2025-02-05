@@ -24,7 +24,6 @@ function RecentProducts({ data }: RecentProps) {
                 className="rounded-md"
                 alt={b.name}
                 folderName="images"
-                folderName="product-images"
               />
             </div>
             <div className="flex flex-col gap-1 px-3 py-2">

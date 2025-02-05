@@ -27,7 +27,6 @@ export default function Media() {
                 className="h-[180px] rounded"
                 alt={m.title}
                 folderName="banners"
-                folderName="home-banners"
               />
             </div>
           </Link>

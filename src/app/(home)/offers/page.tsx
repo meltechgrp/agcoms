@@ -49,7 +49,6 @@ async function Financing() {
             src={"financing.jpg"}
             alt={"Financing"}
             folderName="banners"
-            folderName="home-banners"
             className="w-screen lg:w-[1350px] object-fill h-[250px] lg:h-[460px] lg:object-cover relative lg:absolute lg:top-0 lg:left-0"
           />
           <div className="relative px-8 py-8 flex flex-col z-10 w-full space-y-2 items-center lg:items-end">

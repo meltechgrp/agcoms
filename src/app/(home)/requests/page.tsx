@@ -68,7 +68,6 @@ function Contact({ searchParams }: Props) {
             src={"help.jpg"}
             alt="Dealer Tools"
             folderName="banners"
-            folderName="home-banners"
             className="w-full h-[200px] lg:h-[400px] object-cover"
           />
         </div>
@@ -78,7 +77,6 @@ function Contact({ searchParams }: Props) {
           <Image
             src={"request.jpg"}
             alt={"Contact us"}
-            folderName="home-banners"
             folderName="banners"
             className="w-full h-[350px] lg:h-[520px] object-cover"
           />

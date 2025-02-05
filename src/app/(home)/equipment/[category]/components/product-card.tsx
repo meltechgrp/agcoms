@@ -21,7 +21,6 @@ const ProductCard = (props: Props) => {
             className="rounded-md"
             alt={name ?? ""}
             folderName="images"
-            folderName="product-images"
             scale={true}
             zoomIn={true}
           />

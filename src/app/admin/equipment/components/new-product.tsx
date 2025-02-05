@@ -526,7 +526,6 @@ function Images({ form }: FormProps) {
           <FormControl>
             <ImageUploader
               folderName="images"
-              folderName="product-images"
               images={form.getValues("images") as any}
               saveImages={(image) => form.setValue("images", image)}
             />

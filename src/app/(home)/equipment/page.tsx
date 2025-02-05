@@ -44,7 +44,6 @@ async function Products() {
               scale={true}
               className=" lg:object-cover relative lg:absolute w-full h-full"
               folderName="banners"
-              folderName="home-banners"
             />
           </div>
           <div className=" hidden absolute lg:flex flex-col left-5 bottom-[1.5rem] lg:bottom-[5rem] space-y-2 lg:space-y-4 text-white backdrop-blur-md rounded-xl bg-black/30 w-[60%] lg:w-[45%] px-7 py-8 lg:p-10">

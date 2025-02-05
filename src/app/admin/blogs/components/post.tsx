@@ -53,7 +53,6 @@ export function PostAlert({ open, post, postId, edit }: Props) {
                             src={im.url}
                             alt={post.title}
                             folderName="images"
-                            folderName="blog-images"
                           />
                         </div>
                       ))}

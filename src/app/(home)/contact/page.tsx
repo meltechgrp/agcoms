@@ -38,7 +38,6 @@ export default async function Contact() {
             className="w-full h-[28rem] lg:h-[44rem]"
             alt={"agcoms banner"}
             folderName="banners"
-            folderName="home-banners"
           />
           <div className=" absolute flex flex-col left-5 bottom-[6rem] lg:bottom-[10rem] space-y-2 lg:space-y-4 text-white backdrop-blur-sm rounded-xl bg-black/30 w-[70%] lg:w-[45%] px-8 py-7 lg:p-10">
             <h1 className="text-base lg:text-3xl border-bottom self-start flex ">

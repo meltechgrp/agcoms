@@ -62,7 +62,6 @@ export default function Parts() {
               className="w-full h-full"
               alt={"agcoms banner"}
               folderName="banners"
-              folderName="home-banners"
             />
           </div>
           <div className="  w-full px-4 py-10 lg:px-8 gap-4 flex flex-col">
@@ -164,7 +163,6 @@ export default function Parts() {
               className="w-full h-full"
               alt={"agcoms banner"}
               folderName="banners"
-              folderName="home-banners"
             />
           </div>
         </section>

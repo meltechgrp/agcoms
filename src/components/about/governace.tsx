@@ -33,7 +33,6 @@ export default function Governace() {
             className="w-full h-full object-cover"
             alt={"agcoms banner"}
             folderName="banners"
-            folderName="home-banners"
           />
         </div>
       </div>

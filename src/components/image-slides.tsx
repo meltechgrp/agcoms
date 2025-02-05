@@ -33,7 +33,6 @@ const ImageSlides = ({ images }: Props) => {
                     onClick={() => setCurrentImage(image)}
                     className="rounded-md h-full"
                     folderName="images"
-                    folderName="product-images"
                   />
                 </div>
               ))}
@@ -45,7 +44,6 @@ const ImageSlides = ({ images }: Props) => {
             src={currentImage.url}
             folderName="images"
             alt={currentImage.url.split(".")[0]}
-            folderName="product-images"
             className="object-cover"
           />
         </div>

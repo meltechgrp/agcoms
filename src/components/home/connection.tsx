@@ -14,7 +14,6 @@ export default function Connection() {
                 className="w-full h-full rounded-xl shadow"
                 alt={item.title}
                 folderName="banners"
-                folderName="home-banners"
               />
             </div>
             <div className="space-y-6">

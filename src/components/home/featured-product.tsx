@@ -15,7 +15,6 @@ export default function FeaturedProducts() {
                   className=" object-cover w-full h-full transition-transform duration-1000 hover:scale-110"
                   alt={c.title}
                   folderName="banners"
-                  folderName="home-machines"
                 />
               </div>
               <h4 className="text-base font-semibold text-center">{c.title}</h4>

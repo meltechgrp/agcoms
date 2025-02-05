@@ -35,7 +35,6 @@ function Stats(props: Props) {
                 className="rounded-md"
                 alt={b.name}
                 folderName="images"
-                folderName="product-images"
               />
             </div>
           </Card>

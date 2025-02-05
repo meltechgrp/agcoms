@@ -23,7 +23,6 @@ function SubCard(props: Props) {
             className="rounded-md"
             alt={name}
             folderName="banners"
-            folderName="product-sub-categories"
           />
         </div>
         <div className="space-y-2 px-4 pb-2">

@@ -21,7 +21,6 @@ export default function Mission() {
             className="w-full h-full object-cover"
             alt={"agcoms banner"}
             folderName="banners"
-            folderName="home-banners"
           />
         </div>
       </div>

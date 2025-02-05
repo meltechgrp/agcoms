@@ -150,7 +150,6 @@ const NewPost = (props: { post?: PostType }) => {
                     <FormControl>
                       <ImageUploader
                         folderName="images"
-                        folderName="blog-images"
                         images={form.getValues("images") as ImageType[]}
                         saveImages={(image) => form.setValue("images", image)}
                       />
