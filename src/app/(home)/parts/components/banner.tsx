@@ -6,7 +6,7 @@ export default function PartsBanner() {
   return (
     <div className="relative">
       <Image
-        src={"parts.jpg"}
+        src={"parts.avif"}
         className="w-full h-[25rem] lg:h-[30rem]"
         alt={"agcoms banner"}
         folderName="banners"

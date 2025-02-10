@@ -58,10 +58,10 @@ export default function Parts() {
         >
           <div className="w-full h-[20rem] lg:h-[30rem]">
             <Image
-              src={"lecture.jpg"}
+              src={"ag12.jpg"}
               className="w-full h-full"
               alt={"agcoms banner"}
-              folderName="banners"
+              folderName="company"
             />
           </div>
           <div className="  w-full px-4 py-10 lg:px-8 gap-4 flex flex-col">
@@ -159,10 +159,10 @@ export default function Parts() {
           </div>
           <div className="w-full h-[20rem] lg:h-[30rem]">
             <Image
-              src={"lecture.jpg"}
+              src={"ag14.jpg"}
               className="w-full h-full"
               alt={"agcoms banner"}
-              folderName="banners"
+              folderName="company"
             />
           </div>
         </section>

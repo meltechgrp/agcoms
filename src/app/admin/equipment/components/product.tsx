@@ -52,7 +52,7 @@ export function ProductAlert({ open, product, productId, edit }: Props) {
                         <Image
                           src={im.url}
                           alt={product.name}
-                          folderName="images"
+                          folderName="products"
                         />
                       </div>
                     ))}

@@ -96,7 +96,7 @@ async function ProductCategory({ params: { category } }: Props) {
               alt={category}
               scale={true}
               className="w-screen lg:w-[1350px] object-fill h-[150px] lg:h-[420px] lg:object-cover relative lg:absolute lg:top-0 lg:left-0"
-              folderName="banners"
+              folderName="products"
             />
             <div className=" hidden absolute lg:flex flex-col left-5 bottom-[1.5rem] lg:bottom-[5rem] space-y-2 lg:space-y-4 text-white backdrop-blur-md rounded-xl bg-black/30 w-[60%] lg:w-[45%] px-7 py-8 lg:p-10">
               <h1 className="text-base lg:text-3xl border-bottom self-start flex ">

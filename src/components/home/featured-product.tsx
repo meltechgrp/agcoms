@@ -14,7 +14,7 @@ export default function FeaturedProducts() {
                   src={c.image}
                   className=" object-cover w-full h-full transition-transform duration-1000 hover:scale-110"
                   alt={c.title}
-                  folderName="banners"
+                  folderName="categories"
                 />
               </div>
               <h4 className="text-base font-semibold text-center">{c.title}</h4>
@@ -29,7 +29,7 @@ export default function FeaturedProducts() {
 const data = [
   {
     link: "/equipment/agriculture",
-    image: "agri.png",
+    image: "agri.avif",
     title: "Agriculture",
   },
   // {
@@ -39,17 +39,17 @@ const data = [
   // },
   {
     link: "/equipment/construction",
-    image: "construction.png",
+    image: "construction.avif",
     title: "Construction",
   },
   {
     link: "/equipment/golf-sports-turf",
-    image: "sport.png",
+    image: "sport.avif",
     title: "Golf & Sports Turf",
   },
   {
     link: "/equipment/forestry",
-    image: "forestry.png",
+    image: "forestry.webp",
     title: "Forestry",
   },
 ];

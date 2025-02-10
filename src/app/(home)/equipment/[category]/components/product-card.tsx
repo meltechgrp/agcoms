@@ -20,7 +20,7 @@ const ProductCard = (props: Props) => {
             src={images[0].url}
             className="rounded-md"
             alt={name ?? ""}
-            folderName="images"
+            folderName="products"
             scale={true}
             zoomIn={true}
           />

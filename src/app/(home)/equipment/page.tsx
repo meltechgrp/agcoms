@@ -39,7 +39,7 @@ async function Products() {
         <div className=" mb-12 relative lg:h-[50rem] gap-6 flex flex-col justify-center items-center">
           <div className=" relative w-screen lg:w-[1350px] object-fill h-[20rem] lg:h-[50rem] lg:top-0 lg:left-0">
             <Image
-              src={"equipment-banner.png"}
+              src={"equipment.jpg"}
               alt={"Equipment"}
               scale={true}
               className=" lg:object-cover relative lg:absolute w-full h-full"

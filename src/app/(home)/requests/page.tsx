@@ -65,9 +65,9 @@ function Contact({ searchParams }: Props) {
         </div>
         <div className="row-start-1 lg:col-start-2">
           <Image
-            src={"help.jpg"}
+            src={"ag17.jpg"}
             alt="Dealer Tools"
-            folderName="banners"
+            folderName="company"
             className="w-full h-[200px] lg:h-[400px] object-cover"
           />
         </div>
@@ -75,9 +75,9 @@ function Contact({ searchParams }: Props) {
       <div>
         <div className="py-2">
           <Image
-            src={"request.jpg"}
+            src={"ag16.jpg"}
             alt={"Contact us"}
-            folderName="banners"
+            folderName="company"
             className="w-full h-[350px] lg:h-[520px] object-cover"
           />
         </div>

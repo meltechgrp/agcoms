@@ -5,7 +5,7 @@ import { Handshake, PenTool, Settings, ShieldCheck } from "lucide-react";
 
 export default function Choose() {
   const style = {
-    backgroundImage: `url(${getImageUrl("banners", "choose.jpg")})`,
+    backgroundImage: `url(${getImageUrl("company", "ag10.jpg")})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     borderImage:

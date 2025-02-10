@@ -23,7 +23,7 @@ function RecentProducts({ data }: RecentProps) {
                 src={b.images[0].url}
                 className="rounded-md"
                 alt={b.name}
-                folderName="images"
+                folderName="products"
               />
             </div>
             <div className="flex flex-col gap-1 px-3 py-2">

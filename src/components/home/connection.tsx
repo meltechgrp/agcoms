@@ -13,7 +13,7 @@ export default function Connection() {
                 src={item.url}
                 className="w-full h-full rounded-xl shadow"
                 alt={item.title}
-                folderName="banners"
+                folderName="company"
               />
             </div>
             <div className="space-y-6">
@@ -39,12 +39,12 @@ export default function Connection() {
 const data = [
   {
     title: "Get Connected!",
-    url: "connect1.jpg",
+    url: "ag6.jpg",
     link: "/requests",
   },
   {
     title: "Manage Your Farm, Remotely",
-    url: "afme-tractor-banner.png",
+    url: "ag14.jpg",
     link: "/equipment/agriculture",
   },
 ];
