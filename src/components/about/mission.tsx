@@ -17,10 +17,10 @@ export default function Mission() {
         </div>
         <div className="w-full h-[20rem] lg:h-[33rem]">
           <Image
-            src={"our-mission.jpg"}
+            src={"ag11.jpg"}
             className="w-full h-full object-cover"
             alt={"agcoms banner"}
-            folderName="banners"
+            folderName="company"
           />
         </div>
       </div>

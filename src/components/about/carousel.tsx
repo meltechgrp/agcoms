@@ -8,7 +8,7 @@ import Image from "../shared/image";
 import Autoplay from "embla-carousel-autoplay";
 
 export default function AboutCarousel() {
-  const images = ["groupimage.jpg", "banner.jpg", "help.jpg", "connect1.jpg"];
+  const images = ["ag1.jpg", "ag10.jpg", "ag16.jpg", "ag5.jpg", "ag7.jpg"];
   return (
     <div className=" relative">
       <Carousel
@@ -28,7 +28,7 @@ export default function AboutCarousel() {
                   src={images[index]}
                   className="w-full h-[28rem] lg:h-[40rem]"
                   alt={"agcoms banner"}
-                  folderName="banners"
+                  folderName="company"
                 />
               </div>
             </CarouselItem>

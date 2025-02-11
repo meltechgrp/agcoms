@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 export default function AboutRequest() {
   const router = useRouter();
   const style = {
-    backgroundImage: `url(${getImageUrl("banners", "request.jpg")})`,
+    backgroundImage: `url(${getImageUrl("company", "ag17.jpg")})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     borderImage:

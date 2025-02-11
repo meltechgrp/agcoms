@@ -4,7 +4,7 @@ import { getImageUrl } from "@/lib/utils";
 
 export default function AboutAgcoms() {
   const style = {
-    backgroundImage: `url(${getImageUrl("banners", "building.jpg")})`,
+    backgroundImage: `url(${getImageUrl("company", "ag5.jpg")})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     borderImage:

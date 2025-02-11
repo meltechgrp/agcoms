@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 
 export default function Governace() {
   return (
-    <div className="grid lg:grid-cols-[60%,auto]">
+    <div className="grid lg:grid-cols-2 py-4">
       <div className="p-4 lg:p-16 justify-center flex flex-col  space-y-6 ">
         <h1 className="text-2xl self-start border-bottom lg:text-4xl">
           Governance
@@ -27,12 +27,12 @@ export default function Governace() {
         </div>
       </div>
       <div className="h-full flex items-center">
-        <div className="w-full h-[10rem] px-4 lg:px-16 lg:h-[15rem]">
+        <div className="w-full h-full  ">
           <Image
-            src={"chess.png"}
+            src={"ag12.jpg"}
             className="w-full h-full object-cover"
             alt={"agcoms banner"}
-            folderName="banners"
+            folderName="company"
           />
         </div>
       </div>
