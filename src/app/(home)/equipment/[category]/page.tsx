@@ -105,21 +105,6 @@ async function ProductCategory({ params: { category } }: Props) {
               <p className="text-sm line-clamp-5 lg:line-clamp-none lg:text-sm">
                 {data.description}
               </p>
-              <div>
-                <Link
-                  href={data?.brochureLink || "#"}
-                  download
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    className=" bg-tertiary hover:bg-tertiary/90 text-white"
-                    size={"lg"}
-                  >
-                    Download Brochure
-                  </Button>
-                </Link>
-              </div>
             </div>
           </div>
           <div className=" lg:hidden flex flex-col gap-3 px-4 ">
