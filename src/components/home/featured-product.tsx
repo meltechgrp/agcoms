@@ -29,27 +29,27 @@ export default function FeaturedProducts() {
 const data = [
   {
     link: "/equipment",
-    image: "combines.avif",
-    title: "Combines",
+    image: "agri.png",
+    title: "Agriculture",
   },
   {
     link: "/equipment",
-    image: "Gator.avif",
-    title: "Gator Utitily Vehicles",
+    image: "construction.png",
+    title: "Construction",
+  },
+  {
+    link: "/equipments",
+    image: "lawn.png",
+    title: "Lawn & Garden",
   },
   {
     link: "/equipment",
-    image: "mowers.avif",
-    title: "Mowers",
+    image: "sport.png",
+    title: "Golf & Sports Turf",
   },
   {
     link: "/equipment",
-    image: "excavators.webp",
-    title: "Excavators",
-  },
-  {
-    link: "/equipment",
-    image: "compact.webp",
-    title: "Compact Tractors",
+    image: "forestry.png",
+    title: "Forestry",
   },
 ];
