@@ -25,7 +25,7 @@ export async function saveRequest(
 		}
 		const { fullName, email, message = '', town, phone } = data;
 
-		await RequestTemplate({
+		RequestTemplate({
 			name: fullName,
 			email: email,
 			message: message,
