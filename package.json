@@ -63,7 +63,7 @@
     "lucide-react": "^0.441.0",
     "mailersend": "^2.3.0",
     "mime": "^4.0.4",
-    "next": "14.2.12",
+    "next": "14.2.35",
     "node-appwrite": "^14.1.0",
     "nodemailer": "^6.9.16",
     "oslo": "^1.2.1",
