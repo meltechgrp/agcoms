@@ -32,11 +32,11 @@ const data = [
     image: "agri.png",
     title: "Agriculture",
   },
-  {
-    link: "/equipment",
-    image: "construction.png",
-    title: "Construction",
-  },
+  // {
+  //   link: "/equipment",
+  //   image: "construction.png",
+  //   title: "Construction",
+  // },
   {
     link: "/equipments",
     image: "lawn.png",
@@ -47,9 +47,9 @@ const data = [
     image: "sport.png",
     title: "Golf & Sports Turf",
   },
-  {
-    link: "/equipment",
-    image: "forestry.png",
-    title: "Forestry",
-  },
+  // {
+  //   link: "/equipment",
+  //   image: "forestry.png",
+  //   title: "Forestry",
+  // },
 ];
