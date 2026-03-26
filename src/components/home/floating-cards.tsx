@@ -35,10 +35,9 @@ export default function FloatingCards(props: Props) {
         </h1>
         <p className="text-sm lg:text-base w-full lg:w-[50%] text-center">
           Explore our comprehensive range of high-performance equipment tailored
-          for agriculture, construction, forestry, golf, and turf maintenance
-          across Africa and the Middle East. Built for durability and
-          efficiency, our machines are designed to meet the unique demands of
-          varied terrains and challenging conditions.
+          for agriculture across Africa and the Middle East. Built for
+          durability and efficiency, our machines are designed to meet the
+          unique demands of varied terrains and challenging conditions.
         </p>
       </div>
       <InfiniteMovingImages
