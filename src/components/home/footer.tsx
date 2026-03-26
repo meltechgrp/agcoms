@@ -31,7 +31,7 @@ export default function Footer() {
                 >
                   <div
                     className={cn(
-                      "absolute bottom-0 rounded left-0 h-[2px] w-0 bg-tertiary transition-all delay-75 duration-1000 ease-out group-hover:w-full group-hover:translate-x-0"
+                      "absolute bottom-0 rounded left-0 h-[2px] w-0 bg-tertiary transition-all delay-75 duration-1000 ease-out group-hover:w-full group-hover:translate-x-0",
                     )}
                   ></div>
                   <div className="relative z-10 flex items-center gap-2 leading-12">
@@ -76,7 +76,7 @@ export default function Footer() {
             >
               <div
                 className={cn(
-                  "absolute bottom-0 rounded left-0 h-[2px] w-0 bg-tertiary transition-all delay-75 duration-1000 ease-out group-hover:w-full group-hover:translate-x-0"
+                  "absolute bottom-0 rounded left-0 h-[2px] w-0 bg-tertiary transition-all delay-75 duration-1000 ease-out group-hover:w-full group-hover:translate-x-0",
                 )}
               ></div>
               <div className="relative z-10 flex items-center gap-2 leading-12">
@@ -142,14 +142,14 @@ const footerData = [
     title: "Equipment",
     links: [
       { title: "Agricultural Equipment", url: "/equipment/agriculture" },
-      {
-        title: "Construction Equipment",
-        url: "/equipment/construction",
-      },
-      {
-        title: "Forestry Equipment",
-        url: "/equipment/forestry",
-      },
+      // {
+      //   title: "Construction Equipment",
+      //   url: "/equipment/construction",
+      // },
+      // {
+      //   title: "Forestry Equipment",
+      //   url: "/equipment/forestry",
+      // },
       {
         title: "Tell us you're a Agcoms Fan",
         url: "/contact",

@@ -4,20 +4,18 @@ import { getImageUrl } from "@/lib/utils";
 
 export default function AboutAgcoms() {
   const style = {
-    backgroundImage: `url(${getImageUrl("company", "ag5.jpg")})`,
+    backgroundImage: `url(${getImageUrl("company", "ag5.png")})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     borderImage:
       "linear-gradient(to right, rgba(0,0,0,.3), rgba(0,0,0,.5)) fill 1",
   };
   const content = `AGCOMS International Trading Limited stands at the forefront of
-						innovation, providing advanced solutions in agricultural and
-						construction equipment. Rooted in a commitment to excellence, AGCOMS
-						is dedicated to empowering farmers, builders, and industries
-						worldwide with high-quality, reliable machinery that drives
+						innovation, providing advanced solutions in agricultural equipment. Rooted in a commitment to excellence, AGCOMS
+						is dedicated to empowering farmers, with high-quality, reliable machinery that drives
 						productivity and efficiency. We specialize in offering a
 						comprehensive range of equipment tailored for various sectors,
-						including agriculture, forestry, mining, and construction. Our
+						including agriculture. Our
 						products are built to withstand diverse working environments, making
 						them suitable for both large-scale commercial operations and
 						smaller, specialized applications.`;

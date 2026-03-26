@@ -18,10 +18,9 @@ export default function Choose() {
           Why Choose Us
         </h1>
         <p className="text-sm lg:text-base w-full lg:w-[50%] text-center">
-          We’re your trusted local choice for construction and agricultural
-          equipment. With expertise in diverse machines and a commitment to
-          excellence, we deliver top-tier results in agriculture and allied
-          fields.
+          We’re your trusted local choice for agricultural equipment. With
+          expertise in diverse machines and a commitment to excellence, we
+          deliver top-tier results in agriculture and allied fields.
         </p>
       </div>
       <div className="pt-16">

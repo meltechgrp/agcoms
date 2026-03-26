@@ -65,11 +65,10 @@ async function Products() {
             <p className="text-sm line-clamp-5 lg:line-clamp-none lg:text-sm">
               Explore the potential of AGCOMS International’s robust equipment
               lineup. Our comprehensive brochure offers detailed insights into
-              our range of machinery for agriculture, construction, forestry,
-              golf, and turf. Each piece is engineered to excel in diverse
-              environments, ensuring maximum efficiency and reliability.
-              Discover specifications, features, and unique benefits tailored to
-              your industry’s needs
+              our range of machinery for agriculture, golf, and turf. Each piece
+              is engineered to excel in diverse environments, ensuring maximum
+              efficiency and reliability. Discover specifications, features, and
+              unique benefits tailored to your industry’s needs
             </p>
             <div className=" flex gap-4">
               <Link
