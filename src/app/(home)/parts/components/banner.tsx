@@ -15,10 +15,9 @@ export default function PartsBanner() {
         <p className="text-sm ">
           At AGCOMS, we know that reliable equipment is essential for productive
           work. Our comprehensive parts and service support is designed to keep
-          your machines running at peak performance, supporting everything from
-          farms to construction sites and forestry projects. Our dedicated
-          service team and genuine parts ensure minimal downtime and maximum
-          efficiency.
+          your machines running at peak performance, supporting everything for
+          farm projects. Our dedicated service team and genuine parts ensure
+          minimal downtime and maximum efficiency
         </p>
         <div>
           <Link href={"/equipment"}>
