@@ -18,10 +18,11 @@ export default function Banner() {
           Delivering Nigeria's Agricultural Transformation at National Scale
         </h1>
         <p className="text-[11px] line-clamp-5 lg:line-clamp-none lg:text-sm">
-          Welcome to Agcoms International Trading Limited, a trusted dealer of
-          agricultural, construction, golf & Turf, and forestry equipment across
-          Africa and Middle East. Our commitment is to provide you with
-          reliable, high-performance tools that keep you ahead in your industry”
+          Appointed under Nigeria's Federal Executive Council-approved NADF
+          programme to supply and support 2,000 John Deere tractors for the
+          Government of Nigeria — AGCOMS International brings sovereign-level
+          procurement capability, proven technical expertise, and a sustained
+          commitment to agricultural transformation at national scale.
         </p>
         <div>
           <Link href={"/about"}>
