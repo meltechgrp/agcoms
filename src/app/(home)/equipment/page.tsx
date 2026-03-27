@@ -71,11 +71,7 @@ async function Products() {
               unique benefits tailored to your industry’s needs
             </p>
             <div className=" flex gap-4">
-              <Link
-                href={"/AGCOMS Company Profile.pdf"}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href={"#"} target="_blank" rel="noopener noreferrer">
                 <Button
                   className=" bg-tertiary hover:bg-tertiary/90 text-white dark:text-white font-bold text-base"
                   size={"lg"}
@@ -84,7 +80,7 @@ async function Products() {
                 </Button>
               </Link>
               <Link
-                href={"/AGCOMS Company Profile.pdf"}
+                href={"#"}
                 download
                 target="_blank"
                 rel="noopener noreferrer"

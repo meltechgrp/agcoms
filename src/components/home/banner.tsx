@@ -16,7 +16,12 @@ import Autoplay from "embla-carousel-autoplay";
 export default function Banner() {
   const [api, setApi] = React.useState<CarouselApi>();
   const plugin = React.useRef(Autoplay({ delay: 4000 }));
-  const slides = ["ag-slide2.jpeg", "ag-slide1.jpeg", "ag-slide3.jpeg"];
+  const slides = [
+    "ag-slide.jpeg",
+    "ag-slide2.jpeg",
+    "ag-slide1.jpeg",
+    "ag-slide3.jpeg",
+  ];
   return (
     <div className="relative">
       {/* <Carousel> */}
