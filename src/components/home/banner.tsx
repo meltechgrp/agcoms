@@ -1,18 +1,48 @@
+"use client";
 import Link from "next/link";
 import Image from "../shared/image";
 import { Button } from "../ui/button";
-import { Carousel } from "../ui/carousel";
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
+import React from "react";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Banner() {
+  const [api, setApi] = React.useState<CarouselApi>();
+  const plugin = React.useRef(Autoplay({ delay: 4000 }));
+  const slides = ["ag-slide2.jpeg", "ag-slide1.jpeg", "ag-slide3.jpeg"];
   return (
     <div className="relative">
       {/* <Carousel> */}
-      <Image
-        src={"ag4.jpeg"}
-        className="w-full h-[28rem] lg:h-[44rem]"
-        alt={"agcoms banner"}
-        folderName="company"
-      />
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        setApi={setApi}
+        plugins={[plugin.current]}
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+      >
+        <CarouselContent className="w-full h-[28rem] lg:h-[44rem]">
+          {slides.map((_) => (
+            <CarouselItem>
+              <Image
+                src={_}
+                className="w-full h-full"
+                alt={"agcoms banner"}
+                folderName="company"
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
       <div className=" absolute flex flex-col left-5 bottom-[1.5rem] lg:bottom-[5rem] space-y-2 lg:space-y-4 text-white backdrop-blur-sm rounded-xl bg-black/30 w-[60%] lg:w-[45%] px-4 py-7 lg:p-10">
         <h1 className="text-base lg:text-3xl border-bottom self-start flex ">
           Delivering Nigeria's Agricultural Transformation at National Scale
