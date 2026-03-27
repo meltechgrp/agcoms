@@ -1,26 +1,27 @@
 import Link from "next/link";
 import Image from "../shared/image";
 import { Button } from "../ui/button";
+import { Carousel } from "../ui/carousel";
 
 export default function Banner() {
   return (
     <div className="relative">
+      {/* <Carousel> */}
       <Image
-        src={"ag4.jpg"}
+        src={"ag4.jpeg"}
         className="w-full h-[28rem] lg:h-[44rem]"
         alt={"agcoms banner"}
         folderName="company"
       />
       <div className=" absolute flex flex-col left-5 bottom-[1.5rem] lg:bottom-[5rem] space-y-2 lg:space-y-4 text-white backdrop-blur-sm rounded-xl bg-black/30 w-[60%] lg:w-[45%] px-4 py-7 lg:p-10">
         <h1 className="text-base lg:text-3xl border-bottom self-start flex ">
-          Power Your Progress With AGCOMS
+          Delivering Nigeria's Agricultural Transformation at National Scale
         </h1>
         <p className="text-[11px] line-clamp-5 lg:line-clamp-none lg:text-sm">
-          Appointed under Nigeria's Federal Executive Council-approved NADF
-          programme to supply and support 2,000 John Deere tractors for the
-          Government of Nigeria — AGCOMS International brings sovereign-level
-          procurement capability, proven technical expertise, and a sustained
-          commitment to agricultural transformation at national scale.
+          Welcome to Agcoms International Trading Limited, a trusted dealer of
+          agricultural, construction, golf & Turf, and forestry equipment across
+          Africa and Middle East. Our commitment is to provide you with
+          reliable, high-performance tools that keep you ahead in your industry”
         </p>
         <div>
           <Link href={"/about"}>
